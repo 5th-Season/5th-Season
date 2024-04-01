@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.4",
+    "esbuild": "^0.20.2",
+    "esbuild-rails": "^1.0.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "yarn": "^1.22.22"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "watch": "esbuild --watch --bundle app/javascript/application.js --outfile=app/assets/javascripts/application.js"
+  }
+}
