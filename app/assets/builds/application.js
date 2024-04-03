@@ -1102,7 +1102,7 @@ var require_react_development = __commonJS({
           }
           return element;
         };
-        function createElement2(type, config, children) {
+        function createElement3(type, config, children) {
           var propName;
           var props = {};
           var key = null;
@@ -1563,26 +1563,26 @@ var require_react_development = __commonJS({
           }
           return lazyType;
         }
-        function forwardRef(render2) {
+        function forwardRef(render3) {
           {
-            if (render2 != null && render2.$$typeof === REACT_MEMO_TYPE) {
+            if (render3 != null && render3.$$typeof === REACT_MEMO_TYPE) {
               error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
-            } else if (typeof render2 !== "function") {
-              error("forwardRef requires a render function but was given %s.", render2 === null ? "null" : typeof render2);
+            } else if (typeof render3 !== "function") {
+              error("forwardRef requires a render function but was given %s.", render3 === null ? "null" : typeof render3);
             } else {
-              if (render2.length !== 0 && render2.length !== 2) {
-                error("forwardRef render functions accept exactly two parameters: props and ref. %s", render2.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined.");
+              if (render3.length !== 0 && render3.length !== 2) {
+                error("forwardRef render functions accept exactly two parameters: props and ref. %s", render3.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined.");
               }
             }
-            if (render2 != null) {
-              if (render2.defaultProps != null || render2.propTypes != null) {
+            if (render3 != null) {
+              if (render3.defaultProps != null || render3.propTypes != null) {
                 error("forwardRef render functions do not support propTypes or defaultProps. Did you accidentally pass a React component?");
               }
             }
           }
           var elementType2 = {
             $$typeof: REACT_FORWARD_REF_TYPE,
-            render: render2
+            render: render3
           };
           {
             var ownName;
@@ -1594,8 +1594,8 @@ var require_react_development = __commonJS({
               },
               set: function(name) {
                 ownName = name;
-                if (!render2.name && !render2.displayName) {
-                  render2.displayName = name;
+                if (!render3.name && !render3.displayName) {
+                  render3.displayName = name;
                 }
               }
             });
@@ -2201,7 +2201,7 @@ var require_react_development = __commonJS({
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement2.apply(this, arguments);
+          var element = createElement3.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -2974,9 +2974,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React2 = require_react();
+        var React3 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React3.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4581,7 +4581,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React2.Children.forEach(props.children, function(child) {
+                React3.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -9980,7 +9980,7 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function createElement2(type, props, rootContainerElement, parentNamespace) {
+        function createElement3(type, props, rootContainerElement, parentNamespace) {
           var isCustomComponentTag;
           var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
           var domElement;
@@ -10841,7 +10841,7 @@ var require_react_dom_development = __commonJS({
             }
             parentNamespace = hostContextDev.namespace;
           }
-          var domElement = createElement2(type, props, rootContainerInstance, parentNamespace);
+          var domElement = createElement3(type, props, rootContainerInstance, parentNamespace);
           precacheFiberNode(internalInstanceHandle, domElement);
           updateFiberProps(domElement, props);
           return domElement;
@@ -13028,7 +13028,7 @@ var require_react_dom_development = __commonJS({
           }
         }
         var fakeInternalInstance = {};
-        var emptyRefsObject = new React2.Component().refs;
+        var emptyRefsObject = new React3.Component().refs;
         var didWarnAboutStateAssignmentForComponent;
         var didWarnAboutUninitializedState;
         var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -16810,7 +16810,7 @@ var require_react_dom_development = __commonJS({
               }
             }
           }
-          var render3 = Component.render;
+          var render4 = Component.render;
           var ref = workInProgress2.ref;
           var nextChildren;
           var hasId;
@@ -16821,12 +16821,12 @@ var require_react_dom_development = __commonJS({
           {
             ReactCurrentOwner$1.current = workInProgress2;
             setIsRendering(true);
-            nextChildren = renderWithHooks(current2, workInProgress2, render3, nextProps, ref, renderLanes2);
+            nextChildren = renderWithHooks(current2, workInProgress2, render4, nextProps, ref, renderLanes2);
             hasId = checkDidRenderIdHook();
             if (workInProgress2.mode & StrictLegacyMode) {
               setIsStrictModeForDevtools(true);
               try {
-                nextChildren = renderWithHooks(current2, workInProgress2, render3, nextProps, ref, renderLanes2);
+                nextChildren = renderWithHooks(current2, workInProgress2, render4, nextProps, ref, renderLanes2);
                 hasId = checkDidRenderIdHook();
               } finally {
                 setIsStrictModeForDevtools(false);
@@ -18166,9 +18166,9 @@ var require_react_dom_development = __commonJS({
             }
           }
           var newProps = workInProgress2.pendingProps;
-          var render3 = newProps.children;
+          var render4 = newProps.children;
           {
-            if (typeof render3 !== "function") {
+            if (typeof render4 !== "function") {
               error("A context consumer was rendered with multiple children, or a child that isn't a function. A context consumer expects a single child that is a function. If you did pass a function, make sure there is no trailing or leading whitespace around it.");
             }
           }
@@ -18181,7 +18181,7 @@ var require_react_dom_development = __commonJS({
           {
             ReactCurrentOwner$1.current = workInProgress2;
             setIsRendering(true);
-            newChildren = render3(newValue);
+            newChildren = render4(newValue);
             setIsRendering(false);
           }
           {
@@ -23901,7 +23901,7 @@ var require_react_dom_development = __commonJS({
           }
           return legacyRenderSubtreeIntoContainer(null, element, container, true, callback);
         }
-        function render2(element, container, callback) {
+        function render3(element, container, callback) {
           {
             error("ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot");
           }
@@ -24042,7 +24042,7 @@ var require_react_dom_development = __commonJS({
         exports.flushSync = flushSync$1;
         exports.hydrate = hydrate;
         exports.hydrateRoot = hydrateRoot$1;
-        exports.render = render2;
+        exports.render = render3;
         exports.unmountComponentAtNode = unmountComponentAtNode;
         exports.unstable_batchedUpdates = batchedUpdates$1;
         exports.unstable_renderSubtreeIntoContainer = renderSubtreeIntoContainer;
@@ -25898,14 +25898,14 @@ var PageSnapshot = class _PageSnapshot extends Snapshot {
 var ViewTransitioner = class {
   #viewTransitionStarted = false;
   #lastOperation = Promise.resolve();
-  renderChange(useViewTransition, render2) {
+  renderChange(useViewTransition, render3) {
     if (useViewTransition && this.viewTransitionsAvailable && !this.#viewTransitionStarted) {
       this.#viewTransitionStarted = true;
       this.#lastOperation = this.#lastOperation.then(async () => {
-        await document.startViewTransition(render2).finished;
+        await document.startViewTransition(render3).finished;
       });
     } else {
-      this.#lastOperation = this.#lastOperation.then(render2);
+      this.#lastOperation = this.#lastOperation.then(render3);
     }
     return this.#lastOperation;
   }
@@ -28327,10 +28327,10 @@ var Session = class {
     const event = this.notifyApplicationBeforeRender(element, options);
     const {
       defaultPrevented,
-      detail: { render: render2 }
+      detail: { render: render3 }
     } = event;
-    if (this.view.renderer && render2) {
-      this.view.renderer.renderElement = render2;
+    if (this.view.renderer && render3) {
+      this.view.renderer.renderElement = render3;
     }
     return !defaultPrevented;
   }
@@ -28707,10 +28707,10 @@ var FrameController = class {
     });
     const {
       defaultPrevented,
-      detail: { render: render2 }
+      detail: { render: render3 }
     } = event;
-    if (this.view.renderer && render2) {
-      this.view.renderer.renderElement = render2;
+    if (this.view.renderer && render3) {
+      this.view.renderer.renderElement = render3;
     }
     return !defaultPrevented;
   }
@@ -29324,6 +29324,17 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Loading React");
   const rootEl = document.getElementById("root");
   ReactDOM.render(/* @__PURE__ */ React.createElement(App, { arg: "Rails 7 with ESBuild" }), rootEl);
+});
+
+// app/javascript/components/header.jsx
+var React2 = __toESM(require_react());
+var ReactDOM2 = __toESM(require_react_dom());
+var Header = ({ arg }) => {
+  return /* @__PURE__ */ React2.createElement("div", { className: "primaryNav" }, /* @__PURE__ */ React2.createElement("div", { className: "primaryNav-strip" }, /* @__PURE__ */ React2.createElement("ul", { className: "coreNav" }, /* @__PURE__ */ React2.createElement("li", { className: "navItem" }, /* @__PURE__ */ React2.createElement("a", { class: "coreNavigationLink", href: "/assets?tracking_source=nav20" }, /* @__PURE__ */ React2.createElement("span", { class: "coreNavigationLabel" }, "Assets"))))));
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const rootEl = document.getElementById("header");
+  ReactDOM2.render(/* @__PURE__ */ React2.createElement(Header, null), rootEl);
 });
 /*! Bundled license information:
 
