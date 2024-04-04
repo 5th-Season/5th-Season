@@ -13,7 +13,12 @@ const App = ({ arg }) => {
           <div className="mainProject">
             <div className="projectOwner">
               <div className="ownerAvatar">
-                <img src="https://mir-s3-cdn-cf.behance.net/user/100/3dd2973423597.619b4ec2e9a46.png" />
+                <img src="/javon.png" />
+              </div>
+              <div className="projectCaption">
+              <div class="projectTitleRow">
+                <h1 class="projectTitle">Jevon Terance</h1>
+              </div>
               </div>
             </div>
           </div>

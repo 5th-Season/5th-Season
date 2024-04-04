@@ -9,6 +9,7 @@ body {
 	position: fixed;
 	right: 0;
 	top: 0;
+	z-index: 1;
 }
 
 .primaryNav-strip {
@@ -88,7 +89,7 @@ body {
 	display: flex;
 	height: 83px;
 	position: absolute;
-	top: -83px;
+	top: 0;
 	width: 100%;
 	background: transparent;
 	padding: 20px 0;
@@ -96,10 +97,10 @@ body {
 }
 
 .ownerAvatar {
-	height: 40px;
-    width: 40px;
-    min-height: 40px;
-    min-width: 40px;
+	height: 100px;
+    width: 100px;
+    min-height: 60px;
+    min-width: 60px;
 		backface-visibility: hidden;
     background-color: #e8e8e8;
     border-radius: 50%;
@@ -107,4 +108,35 @@ body {
     display: block;
     line-height: 0;
     overflow: hidden;
+}
+
+.ownerAvatar img {
+		object-fit: contain;
+		align-items: center;
+		justify-content: center;
+		width: 100px;
+}
+
+.projectCaption {
+	flex-grow: 1;
+  margin: -2px 0 0 10px
+}
+
+.projectTitleRow{
+  align-items: center;
+	column-gap: 8px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.projectTitle {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: inherit;
+	margin: 0;
+	max-width: 100%;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
