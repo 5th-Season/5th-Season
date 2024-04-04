@@ -29318,12 +29318,12 @@ addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 var React = __toESM(require_react());
 var ReactDOM = __toESM(require_react_dom());
 var App = ({ arg }) => {
-  return /* @__PURE__ */ React.createElement("div", null, `Hello, ${arg}!`);
+  return /* @__PURE__ */ React.createElement("div", { className: "topPanel" }, /* @__PURE__ */ React.createElement("main", null, /* @__PURE__ */ React.createElement("div", { className: "siteContent" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mainContent" }, /* @__PURE__ */ React.createElement("div", { className: "mainProject" }, /* @__PURE__ */ React.createElement("div", { className: "projectOwner" }, /* @__PURE__ */ React.createElement("div", { className: "ownerAvatar" }, /* @__PURE__ */ React.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/user/100/3dd2973423597.619b4ec2e9a46.png" })))))))));
 };
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Loading React");
   const rootEl = document.getElementById("root");
-  ReactDOM.render(/* @__PURE__ */ React.createElement(App, { arg: "Rails 7 with ESBuild" }), rootEl);
+  ReactDOM.render(/* @__PURE__ */ React.createElement(App, null), rootEl);
 });
 
 // app/javascript/components/header.jsx

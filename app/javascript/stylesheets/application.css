@@ -56,3 +56,55 @@ body {
 	margin: 0;
 	position: relative;
 }
+
+.topPanel {
+	padding-top: 57px;
+	min-height: 100vh;
+}
+
+.siteContent {
+	padding-bottom: 0;
+	padding-top: 0;
+	text-align: center;
+	margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+	padding: 50px 50px 96px;
+	position: relative;
+	z-index: 1;
+}
+
+.mainContent {
+	text-align: left;
+	top: 0;
+	max-width: 1400px;
+}
+
+.mainProject {
+	width: 100%;
+}
+
+.projectOwner {
+	display: flex;
+	height: 83px;
+	position: absolute;
+	top: -83px;
+	width: 100%;
+	background: transparent;
+	padding: 20px 0;
+	color: #191919;
+}
+
+.ownerAvatar {
+	height: 40px;
+    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+		backface-visibility: hidden;
+    background-color: #e8e8e8;
+    border-radius: 50%;
+    box-sizing: content-box !important;
+    display: block;
+    line-height: 0;
+    overflow: hidden;
+}
