@@ -8,9 +8,9 @@ const Header = ({ arg }) => {
 	<div className="primaryNav">
 		<div className="primaryNav-strip">
 			<ul className="coreNav">
-				<li className="navItem">
+				{/* <li className="navItem">
 				<a class="coreNavigationLink" href="/assets?tracking_source=nav20"><span class="coreNavigationLabel">Assets</span></a>
-				</li>
+				</li> */}
 			</ul>
 		</div>
 	</div>

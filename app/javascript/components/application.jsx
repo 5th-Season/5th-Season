@@ -21,6 +21,44 @@ const App = ({ arg }) => {
               </div>
               </div>
             </div>
+            <div class="projectContentWrap">
+              <div className="projectModule">
+                <section className="projectSecionSingle">
+                  <img src="/javon1.png" />
+                </section>
+                <section className="projectSecionDuo"> 
+                  <img src="/javon2.png" />
+                  <img src="/javon3.png" />
+                </section>
+                <section className="projectSecionSingle">
+                  <img src="/javon4.png" />
+                </section>
+                <section className="projectSecionSingle">
+                  <img src="/javon5.png" />
+                </section>
+                <section className="projectSecionDuo"> 
+                  <img src="/javon7.png" />
+                  <img src="/javon8.png" />
+                </section>
+                <section className="thanksSection">
+                  <div className="thanksMessage">
+                    <div class="main-text">
+                     <div>
+                      <br/>
+                      <span className="texteditor-inline-color">
+                        <span class="texteditor-inline-fontsize">Thanks for watching!</span>
+                      </span>
+                    </div>
+                    <div>
+                      <span className="texteditor-inline-fontsize">
+                        <a href="https://supremesneaker.org/" target="_blank" rel="nofollow">Website</a> | <a href="https://www.instagram.com/jevonterance/" target="_blank" rel="nofollow">Instagram</a>
+                      </span>
+                    </div>
+</div>
+                  </div>
+                </section>
+              </div>
+            </div>
           </div>
         </div>
       </div>
