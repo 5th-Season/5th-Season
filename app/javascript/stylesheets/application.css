@@ -2,6 +2,7 @@ body {
 	color: #191919;
     font-family: "acumin-pro", "Acumin Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.3;
+	background-color: #f9f9f9;
 }
 
 .primaryNav {
@@ -76,9 +77,9 @@ body {
 }
 
 .mainContent {
-	text-align: left;
+	/* text-align: left; */
 	top: 0;
-	max-width: 1400px;
+	max-width: 950px;
 }
 
 .mainProject {
@@ -171,4 +172,50 @@ body {
 
 .thanksMessage {
 	margin: 0 auto;
+}
+
+.sideContent {
+	display: block;
+    float: right;
+    height: 100%;
+	position: fixed;
+    right: 20%;
+}
+
+.userOptions {
+	top: 143px;
+	margin-left: 25px;
+}
+
+.tooltipWrapper {
+	cursor: pointer;
+	margin: 12px 0 6px;
+	display: block;
+}
+
+.tooltipButton {
+	height: 65px;
+    margin-left: 0;
+    width: 65px;
+	align-items: center;
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.actionName {
+	color: #696969;
+    cursor: pointer;
+    display: flex;
+    font-size: 11px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-top: 8px;
+    pointer-events: all;
+    text-align: center;
 }
