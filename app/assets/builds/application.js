@@ -1102,7 +1102,7 @@ var require_react_development = __commonJS({
           }
           return element;
         };
-        function createElement3(type, config, children) {
+        function createElement4(type, config, children) {
           var propName;
           var props = {};
           var key = null;
@@ -2201,7 +2201,7 @@ var require_react_development = __commonJS({
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement3.apply(this, arguments);
+          var element = createElement4.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -2974,9 +2974,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React3 = require_react();
+        var React4 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React3.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React4.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -3025,7 +3025,7 @@ var require_react_dom_development = __commonJS({
         var HostPortal = 4;
         var HostComponent = 5;
         var HostText = 6;
-        var Fragment = 7;
+        var Fragment2 = 7;
         var Mode = 8;
         var ContextConsumer = 9;
         var ContextProvider = 10;
@@ -4181,7 +4181,7 @@ var require_react_dom_development = __commonJS({
               return "DehydratedFragment";
             case ForwardRef:
               return getWrappedName$1(type, type.render, "ForwardRef");
-            case Fragment:
+            case Fragment2:
               return "Fragment";
             case HostComponent:
               return type;
@@ -4581,7 +4581,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React3.Children.forEach(props.children, function(child) {
+                React4.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -9980,7 +9980,7 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function createElement3(type, props, rootContainerElement, parentNamespace) {
+        function createElement4(type, props, rootContainerElement, parentNamespace) {
           var isCustomComponentTag;
           var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
           var domElement;
@@ -10841,7 +10841,7 @@ var require_react_dom_development = __commonJS({
             }
             parentNamespace = hostContextDev.namespace;
           }
-          var domElement = createElement3(type, props, rootContainerInstance, parentNamespace);
+          var domElement = createElement4(type, props, rootContainerInstance, parentNamespace);
           precacheFiberNode(internalInstanceHandle, domElement);
           updateFiberProps(domElement, props);
           return domElement;
@@ -13028,7 +13028,7 @@ var require_react_dom_development = __commonJS({
           }
         }
         var fakeInternalInstance = {};
-        var emptyRefsObject = new React3.Component().refs;
+        var emptyRefsObject = new React4.Component().refs;
         var didWarnAboutStateAssignmentForComponent;
         var didWarnAboutUninitializedState;
         var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -13852,7 +13852,7 @@ var require_react_dom_development = __commonJS({
             }
           }
           function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-            if (current2 === null || current2.tag !== Fragment) {
+            if (current2 === null || current2.tag !== Fragment2) {
               var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
               created.return = returnFiber;
               return created;
@@ -14255,7 +14255,7 @@ var require_react_dom_development = __commonJS({
               if (child.key === key) {
                 var elementType2 = element.type;
                 if (elementType2 === REACT_FRAGMENT_TYPE) {
-                  if (child.tag === Fragment) {
+                  if (child.tag === Fragment2) {
                     deleteRemainingChildren(returnFiber, child.sibling);
                     var existing = useFiber(child, element.props.children);
                     existing.return = returnFiber;
@@ -18430,7 +18430,7 @@ var require_react_dom_development = __commonJS({
               var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
               return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
             }
-            case Fragment:
+            case Fragment2:
               return updateFragment(current2, workInProgress2, renderLanes2);
             case Mode:
               return updateMode(current2, workInProgress2, renderLanes2);
@@ -18703,7 +18703,7 @@ var require_react_dom_development = __commonJS({
             case SimpleMemoComponent:
             case FunctionComponent:
             case ForwardRef:
-            case Fragment:
+            case Fragment2:
             case Mode:
             case Profiler:
             case ContextConsumer:
@@ -22962,7 +22962,7 @@ var require_react_dom_development = __commonJS({
           return fiber;
         }
         function createFiberFromFragment(elements, mode, lanes, key) {
-          var fiber = createFiber(Fragment, elements, key, mode);
+          var fiber = createFiber(Fragment2, elements, key, mode);
           fiber.lanes = lanes;
           return fiber;
         }
@@ -29315,26 +29315,35 @@ window.Turbo = turbo_es2017_esm_exports;
 addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
 // app/javascript/components/application.jsx
-var React = __toESM(require_react());
+var React2 = __toESM(require_react());
 var ReactDOM = __toESM(require_react_dom());
+
+// app/javascript/components/OtherProjects.jsx
+var React = __toESM(require_react());
+var OtherProjects = () => {
+  return /* @__PURE__ */ React.createElement("div", { className: "moreProjects" }, /* @__PURE__ */ React.createElement("div", { className: "moreProjectsHeader" }, /* @__PURE__ */ React.createElement("div", { className: "moreProjectsProjectOwner" }, /* @__PURE__ */ React.createElement("div", { className: "ownerAvatar" }, /* @__PURE__ */ React.createElement("img", { src: "/javon.png" })), /* @__PURE__ */ React.createElement("div", { className: "projectCaption" }, /* @__PURE__ */ React.createElement("div", { class: "projectTitleRow" }, /* @__PURE__ */ React.createElement("h1", { class: "otherProjectTitle" }, "Jevon Terance")), /* @__PURE__ */ React.createElement("div", { className: "FollowButton" }, /* @__PURE__ */ React.createElement("div", { class: "userFollow" }, /* @__PURE__ */ React.createElement("a", { tabindex: "0", role: "button", className: "followButtonRef" }, /* @__PURE__ */ React.createElement("span", { class: "rf-button__label" }, "Following"))))))), /* @__PURE__ */ React.createElement("div", { className: "moreProjectsProjects" }, /* @__PURE__ */ React.createElement("div", { className: "moreProjectsProject" }, /* @__PURE__ */ React.createElement("img", { className: "projectImage", src: "/bazaar.png" })), /* @__PURE__ */ React.createElement("div", { className: "moreProjectsProject" }, /* @__PURE__ */ React.createElement("img", { className: "projectImage", src: "/billy.png" })), /* @__PURE__ */ React.createElement("div", { className: "moreProjectsProject" }, /* @__PURE__ */ React.createElement("img", { className: "projectImage", sizes: "390px", src: "/purse.png" })), /* @__PURE__ */ React.createElement("div", { className: "moreProjectsProject" }, /* @__PURE__ */ React.createElement("img", { className: "projectImage", sizes: "390px", src: "/starter.png" }))));
+};
+var OtherProjects_default = OtherProjects;
+
+// app/javascript/components/application.jsx
 var App = ({ arg }) => {
-  return /* @__PURE__ */ React.createElement("div", { className: "topPanel" }, /* @__PURE__ */ React.createElement("main", null, /* @__PURE__ */ React.createElement("div", { className: "siteContent" }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex" } }, /* @__PURE__ */ React.createElement("div", { className: "mainContent" }, /* @__PURE__ */ React.createElement("div", { className: "mainProject" }, /* @__PURE__ */ React.createElement("div", { className: "projectOwner" }, /* @__PURE__ */ React.createElement("div", { className: "ownerAvatar" }, /* @__PURE__ */ React.createElement("img", { src: "/javon.png" })), /* @__PURE__ */ React.createElement("div", { className: "projectCaption" }, /* @__PURE__ */ React.createElement("div", { class: "projectTitleRow" }, /* @__PURE__ */ React.createElement("h1", { class: "projectTitle" }, "Jevon Terance")))), /* @__PURE__ */ React.createElement("div", { class: "projectContentWrap" }, /* @__PURE__ */ React.createElement("div", { className: "projectModule" }, /* @__PURE__ */ React.createElement("section", { className: "projectSecionSingle" }, /* @__PURE__ */ React.createElement("img", { src: "/javon1.png" })), /* @__PURE__ */ React.createElement("section", { className: "projectSecionDuo" }, /* @__PURE__ */ React.createElement("img", { src: "/javon2.png" }), /* @__PURE__ */ React.createElement("img", { src: "/javon3.png" })), /* @__PURE__ */ React.createElement("section", { className: "projectSecionSingle" }, /* @__PURE__ */ React.createElement("img", { src: "/javon4.png" })), /* @__PURE__ */ React.createElement("section", { className: "projectSecionSingle" }, /* @__PURE__ */ React.createElement("img", { src: "/javon5.png" })), /* @__PURE__ */ React.createElement("section", { className: "projectSecionDuo" }, /* @__PURE__ */ React.createElement("img", { src: "/javon7.png" }), /* @__PURE__ */ React.createElement("img", { src: "/javon8.png" })), /* @__PURE__ */ React.createElement("section", { className: "thanksSection" }, /* @__PURE__ */ React.createElement("div", { className: "thanksMessage" }, /* @__PURE__ */ React.createElement("div", { class: "main-text" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { className: "texteditor-inline-color" }, /* @__PURE__ */ React.createElement("span", { class: "texteditor-inline-fontsize" }, "Thanks for watching!"))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("span", { className: "texteditor-inline-fontsize" }, /* @__PURE__ */ React.createElement("a", { href: "https://supremesneaker.org/", target: "_blank", rel: "nofollow" }, "Website"), " | ", /* @__PURE__ */ React.createElement("a", { href: "https://www.instagram.com/jevonterance/", target: "_blank", rel: "nofollow" }, "Instagram")))))))))), /* @__PURE__ */ React.createElement("div", { className: "sideContent" }, /* @__PURE__ */ React.createElement("div", { className: "userOptions" }, /* @__PURE__ */ React.createElement("div", { className: "tooltipWrapper" }, /* @__PURE__ */ React.createElement("button", { className: "tooltipButton" }, /* @__PURE__ */ React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "35", height: "35", viewBox: "0.5 0.5 16 16", class: "Appreciations-icon-Z4i Appreciate-icon-jRA Project-appreciateTopSidebarThumbSize-p77" }, /* @__PURE__ */ React.createElement("path", { fill: "none", d: "M.5.5h16v16H.5z" }), /* @__PURE__ */ React.createElement("path", { d: "M.5 7.5h3v8h-3zM7.207 15.207c.193.19.425.29.677.293H12c.256 0 .512-.098.707-.293l2.5-2.5c.19-.19.288-.457.293-.707V8.5c0-.553-.445-1-1-1h-5L11 5s.5-.792.5-1.5v-1c0-.553-.447-1-1-1l-1 2-4 4v6l1.707 1.707z" })))), /* @__PURE__ */ React.createElement("span", { className: "actionName" }, "Save Look"), /* @__PURE__ */ React.createElement("div", { className: "tooltipWrapper" }, /* @__PURE__ */ React.createElement("button", { className: "tooltipButton" }, /* @__PURE__ */ React.createElement("svg", { width: "800px", height: "800px", viewBox: "0 -8 72 72", id: "Layer_1", "data-name": "Layer 1", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React.createElement("defs", null), /* @__PURE__ */ React.createElement("title", null, "handshake"), /* @__PURE__ */ React.createElement("path", { class: "cls-1", d: "M64,12.78v17s-3.63.71-4.38.81-3.08.85-4.78-.78C52.22,27.25,42.93,18,42.93,18a3.54,3.54,0,0,0-4.18-.21c-2.36,1.24-5.87,3.07-7.33,3.78a3.37,3.37,0,0,1-5.06-2.64,3.44,3.44,0,0,1,2.1-3c3.33-2,10.36-6,13.29-7.52,1.78-1,3.06-1,5.51,1C50.27,12,53,14.27,53,14.27a2.75,2.75,0,0,0,2.26.43C58.63,14,64,12.78,64,12.78ZM27,41.5a3,3,0,0,0-3.55-4.09,3.07,3.07,0,0,0-.64-3,3.13,3.13,0,0,0-3-.75,3.07,3.07,0,0,0-.65-3,3.38,3.38,0,0,0-4.72.13c-1.38,1.32-2.27,3.72-1,5.14s2.64.55,3.72.3c-.3,1.07-1.2,2.07-.09,3.47s2.64.55,3.72.3c-.3,1.07-1.16,2.16-.1,3.46s2.84.61,4,.25c-.45,1.15-1.41,2.39-.18,3.79s4.08.75,5.47-.58a3.32,3.32,0,0,0,.3-4.68A3.18,3.18,0,0,0,27,41.5Zm25.35-8.82L41.62,22a3.53,3.53,0,0,0-3.77-.68c-1.5.66-3.43,1.56-4.89,2.24a8.15,8.15,0,0,1-3.29,1.1,5.59,5.59,0,0,1-3-10.34C29,12.73,34.09,10,34.09,10a6.46,6.46,0,0,0-5-2C25.67,8,18.51,12.7,18.51,12.7a5.61,5.61,0,0,1-4.93.13L8,10.89v19.4s1.59.46,3,1a6.33,6.33,0,0,1,1.56-2.47,6.17,6.17,0,0,1,8.48-.06,5.4,5.4,0,0,1,1.34,2.37,5.49,5.49,0,0,1,2.29,1.4A5.4,5.4,0,0,1,26,34.94a5.47,5.47,0,0,1,3.71,4,5.38,5.38,0,0,1,2.39,1.43,5.65,5.65,0,0,1,1.48,4.89,0,0,0,0,1,0,0s.8.9,1.29,1.39a2.46,2.46,0,0,0,3.48-3.48s2,2.48,4.28,1c2-1.4,1.69-3.06.74-4a3.19,3.19,0,0,0,4.77.13,2.45,2.45,0,0,0,.13-3.3s1.33,1.81,4,.12c1.89-1.6,1-3.43,0-4.39Z" })))), /* @__PURE__ */ React.createElement("span", { className: "actionName" }, "Collaborate"), /* @__PURE__ */ React.createElement("div", { className: "tooltipWrapper" }, /* @__PURE__ */ React.createElement("button", { className: "tooltipButton" }, /* @__PURE__ */ React.createElement("svg", { fill: "#000000", height: "150px", width: "150px", version: "1.1", id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", "xmlns:xlink": "http://www.w3.org/1999/xlink", viewBox: "0 0 512 512", "xml:space": "preserve" }, /* @__PURE__ */ React.createElement("g", { id: "SVGRepo_bgCarrier", "stroke-width": "0" }), /* @__PURE__ */ React.createElement("g", { id: "SVGRepo_tracerCarrier", "stroke-linecap": "round", "stroke-linejoin": "round" }), /* @__PURE__ */ React.createElement("g", { id: "SVGRepo_iconCarrier" }, " ", /* @__PURE__ */ React.createElement("g", null, " ", /* @__PURE__ */ React.createElement("g", null, " ", /* @__PURE__ */ React.createElement("path", { d: "M475.743,186.351c-0.61-0.983-0.976-2.113-1.061-3.264c-6.714-92.04,2.5-78.245-81.815-112.608 c-1.069-0.436-2.029-1.133-2.775-2.016C330.965-1.576,346.708,3.547,257.717,25.451c-1.124,0.276-2.31,0.276-3.433,0 C165.477,3.593,181.17-1.734,121.909,68.462c-0.747,0.884-1.707,1.581-2.779,2.018c-84.911,34.605-75.148,21.247-81.814,112.605 c-0.084,1.155-0.451,2.284-1.06,3.265c-48.234,77.709-48.451,61.131,0,139.189c0.61,0.983,0.976,2.113,1.061,3.264 c6.658,91.276-3.175,77.971,81.815,112.608c1.069,0.435,2.029,1.133,2.775,2.016c59.135,70.046,43.415,64.909,132.376,43.013 c1.124-0.276,2.31-0.276,3.433,0c88.384,21.753,72.646,27.74,132.376-43.011c0.747-0.884,1.707-1.581,2.779-2.018 c84.911-34.606,75.148-21.247,81.814-112.605c0.084-1.155,0.451-2.284,1.06-3.265C523.977,247.832,524.194,264.41,475.743,186.351 z M244.998,238.898h22.006c62.659,0,67.945,92.414,6.1,99.949v26.158c0,8.779-6.432,16.481-15.157,17.444 c-10.316,1.138-19.047-6.908-19.047-16.995v-26.223h-26.914c-8.779,0-16.481-6.432-17.444-15.157 c-1.138-10.316,6.908-19.047,16.995-19.047h55.468c21.094,0,21.095-31.924,0-31.924h-22.006c-62.659,0-67.945-92.414-6.1-99.949 v-26.158c0-8.779,6.432-16.481,15.157-17.444c10.316-1.138,19.047,6.908,19.047,16.995v26.223h26.914 c8.779,0,16.481,6.432,17.444,15.157c1.138,10.316-6.908,19.047-16.995,19.047h-55.468 C223.903,206.974,223.903,238.898,244.998,238.898z" }), " "), " "), " ")))), /* @__PURE__ */ React.createElement("span", { className: "actionName" }, "Purchase")))))));
+  return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement("div", { className: "topPanel" }, /* @__PURE__ */ React2.createElement("main", null, /* @__PURE__ */ React2.createElement("div", { className: "siteContent" }, /* @__PURE__ */ React2.createElement("div", { style: { display: "flex" } }, /* @__PURE__ */ React2.createElement("div", { className: "mainContent" }, /* @__PURE__ */ React2.createElement("div", { className: "mainProject" }, /* @__PURE__ */ React2.createElement("div", { className: "projectOwner" }, /* @__PURE__ */ React2.createElement("div", { className: "ownerAvatar" }, /* @__PURE__ */ React2.createElement("img", { src: "/javon.png" })), /* @__PURE__ */ React2.createElement("div", { className: "projectCaption" }, /* @__PURE__ */ React2.createElement("div", { class: "projectTitleRow" }, /* @__PURE__ */ React2.createElement("h1", { class: "projectTitle" }, "Jevon Terance")))), /* @__PURE__ */ React2.createElement("div", { class: "projectContentWrap" }, /* @__PURE__ */ React2.createElement("div", { className: "projectModule" }, /* @__PURE__ */ React2.createElement("section", { className: "projectSecionSingle" }, /* @__PURE__ */ React2.createElement("img", { src: "/javon1.png" })), /* @__PURE__ */ React2.createElement("section", { className: "projectSecionDuo" }, /* @__PURE__ */ React2.createElement("img", { src: "/javon2.png" }), /* @__PURE__ */ React2.createElement("img", { src: "/javon3.png" })), /* @__PURE__ */ React2.createElement("section", { className: "projectSecionSingle" }, /* @__PURE__ */ React2.createElement("img", { src: "/javon4.png" })), /* @__PURE__ */ React2.createElement("section", { className: "projectSecionSingle" }, /* @__PURE__ */ React2.createElement("img", { src: "/javon5.png" })), /* @__PURE__ */ React2.createElement("section", { className: "projectSecionDuo" }, /* @__PURE__ */ React2.createElement("img", { src: "/javon7.png" }), /* @__PURE__ */ React2.createElement("img", { src: "/javon8.png" })), /* @__PURE__ */ React2.createElement("section", { className: "thanksSection" }, /* @__PURE__ */ React2.createElement("div", { className: "thanksMessage" }, /* @__PURE__ */ React2.createElement("div", { class: "main-text" }, /* @__PURE__ */ React2.createElement("div", null, /* @__PURE__ */ React2.createElement("div", { className: "tooltipWrapper" }, /* @__PURE__ */ React2.createElement("button", { className: "thankYouLikeButton" }, /* @__PURE__ */ React2.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "35", height: "35", viewBox: "0.5 0.5 16 16", class: "Appreciations-icon-Z4i Appreciate-icon-jRA Project-appreciateTopSidebarThumbSize-p77" }, /* @__PURE__ */ React2.createElement("path", { fill: "none", d: "M.5.5h16v16H.5z" }), /* @__PURE__ */ React2.createElement("path", { d: "M.5 7.5h3v8h-3zM7.207 15.207c.193.19.425.29.677.293H12c.256 0 .512-.098.707-.293l2.5-2.5c.19-.19.288-.457.293-.707V8.5c0-.553-.445-1-1-1h-5L11 5s.5-.792.5-1.5v-1c0-.553-.447-1-1-1l-1 2-4 4v6l1.707 1.707z" })))), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("span", { className: "texteditor-inline-color" }, /* @__PURE__ */ React2.createElement("span", { class: "texteditor-inline-fontsize" }, "Thanks for watching!"))), /* @__PURE__ */ React2.createElement("div", null, /* @__PURE__ */ React2.createElement("span", { className: "texteditor-inline-fontsize" }, /* @__PURE__ */ React2.createElement("a", { href: "https://supremesneaker.org/", target: "_blank", rel: "nofollow" }, "Website"), " | ", /* @__PURE__ */ React2.createElement("a", { href: "https://www.instagram.com/jevonterance/", target: "_blank", rel: "nofollow" }, "Instagram"))))))))), /* @__PURE__ */ React2.createElement(OtherProjects_default, null)), /* @__PURE__ */ React2.createElement("div", { className: "sideContent" }, /* @__PURE__ */ React2.createElement("div", { className: "userOptions" }, /* @__PURE__ */ React2.createElement("div", { className: "tooltipWrapper" }, /* @__PURE__ */ React2.createElement("button", { className: "tooltipButton" }, /* @__PURE__ */ React2.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "35", height: "35", viewBox: "0.5 0.5 16 16", class: "Appreciations-icon-Z4i Appreciate-icon-jRA Project-appreciateTopSidebarThumbSize-p77" }, /* @__PURE__ */ React2.createElement("path", { fill: "none", d: "M.5.5h16v16H.5z" }), /* @__PURE__ */ React2.createElement("path", { d: "M.5 7.5h3v8h-3zM7.207 15.207c.193.19.425.29.677.293H12c.256 0 .512-.098.707-.293l2.5-2.5c.19-.19.288-.457.293-.707V8.5c0-.553-.445-1-1-1h-5L11 5s.5-.792.5-1.5v-1c0-.553-.447-1-1-1l-1 2-4 4v6l1.707 1.707z" })))), /* @__PURE__ */ React2.createElement("span", { className: "actionName" }, "Save Look"), /* @__PURE__ */ React2.createElement("div", { className: "tooltipWrapper" }, /* @__PURE__ */ React2.createElement("button", { className: "tooltipButton" }, /* @__PURE__ */ React2.createElement("svg", { width: "800px", height: "800px", viewBox: "0 -8 72 72", id: "Layer_1", "data-name": "Layer 1", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ React2.createElement("defs", null), /* @__PURE__ */ React2.createElement("title", null, "handshake"), /* @__PURE__ */ React2.createElement("path", { class: "cls-1", d: "M64,12.78v17s-3.63.71-4.38.81-3.08.85-4.78-.78C52.22,27.25,42.93,18,42.93,18a3.54,3.54,0,0,0-4.18-.21c-2.36,1.24-5.87,3.07-7.33,3.78a3.37,3.37,0,0,1-5.06-2.64,3.44,3.44,0,0,1,2.1-3c3.33-2,10.36-6,13.29-7.52,1.78-1,3.06-1,5.51,1C50.27,12,53,14.27,53,14.27a2.75,2.75,0,0,0,2.26.43C58.63,14,64,12.78,64,12.78ZM27,41.5a3,3,0,0,0-3.55-4.09,3.07,3.07,0,0,0-.64-3,3.13,3.13,0,0,0-3-.75,3.07,3.07,0,0,0-.65-3,3.38,3.38,0,0,0-4.72.13c-1.38,1.32-2.27,3.72-1,5.14s2.64.55,3.72.3c-.3,1.07-1.2,2.07-.09,3.47s2.64.55,3.72.3c-.3,1.07-1.16,2.16-.1,3.46s2.84.61,4,.25c-.45,1.15-1.41,2.39-.18,3.79s4.08.75,5.47-.58a3.32,3.32,0,0,0,.3-4.68A3.18,3.18,0,0,0,27,41.5Zm25.35-8.82L41.62,22a3.53,3.53,0,0,0-3.77-.68c-1.5.66-3.43,1.56-4.89,2.24a8.15,8.15,0,0,1-3.29,1.1,5.59,5.59,0,0,1-3-10.34C29,12.73,34.09,10,34.09,10a6.46,6.46,0,0,0-5-2C25.67,8,18.51,12.7,18.51,12.7a5.61,5.61,0,0,1-4.93.13L8,10.89v19.4s1.59.46,3,1a6.33,6.33,0,0,1,1.56-2.47,6.17,6.17,0,0,1,8.48-.06,5.4,5.4,0,0,1,1.34,2.37,5.49,5.49,0,0,1,2.29,1.4A5.4,5.4,0,0,1,26,34.94a5.47,5.47,0,0,1,3.71,4,5.38,5.38,0,0,1,2.39,1.43,5.65,5.65,0,0,1,1.48,4.89,0,0,0,0,1,0,0s.8.9,1.29,1.39a2.46,2.46,0,0,0,3.48-3.48s2,2.48,4.28,1c2-1.4,1.69-3.06.74-4a3.19,3.19,0,0,0,4.77.13,2.45,2.45,0,0,0,.13-3.3s1.33,1.81,4,.12c1.89-1.6,1-3.43,0-4.39Z" })))), /* @__PURE__ */ React2.createElement("span", { className: "actionName" }, "Collaborate"), /* @__PURE__ */ React2.createElement("div", { className: "tooltipWrapper" }, /* @__PURE__ */ React2.createElement("button", { className: "tooltipButton" }, /* @__PURE__ */ React2.createElement("svg", { fill: "#000000", height: "150px", width: "150px", version: "1.1", id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", "xmlns:xlink": "http://www.w3.org/1999/xlink", viewBox: "0 0 512 512", "xml:space": "preserve" }, /* @__PURE__ */ React2.createElement("g", { id: "SVGRepo_bgCarrier", "stroke-width": "0" }), /* @__PURE__ */ React2.createElement("g", { id: "SVGRepo_tracerCarrier", "stroke-linecap": "round", "stroke-linejoin": "round" }), /* @__PURE__ */ React2.createElement("g", { id: "SVGRepo_iconCarrier" }, " ", /* @__PURE__ */ React2.createElement("g", null, " ", /* @__PURE__ */ React2.createElement("g", null, " ", /* @__PURE__ */ React2.createElement("path", { d: "M475.743,186.351c-0.61-0.983-0.976-2.113-1.061-3.264c-6.714-92.04,2.5-78.245-81.815-112.608 c-1.069-0.436-2.029-1.133-2.775-2.016C330.965-1.576,346.708,3.547,257.717,25.451c-1.124,0.276-2.31,0.276-3.433,0 C165.477,3.593,181.17-1.734,121.909,68.462c-0.747,0.884-1.707,1.581-2.779,2.018c-84.911,34.605-75.148,21.247-81.814,112.605 c-0.084,1.155-0.451,2.284-1.06,3.265c-48.234,77.709-48.451,61.131,0,139.189c0.61,0.983,0.976,2.113,1.061,3.264 c6.658,91.276-3.175,77.971,81.815,112.608c1.069,0.435,2.029,1.133,2.775,2.016c59.135,70.046,43.415,64.909,132.376,43.013 c1.124-0.276,2.31-0.276,3.433,0c88.384,21.753,72.646,27.74,132.376-43.011c0.747-0.884,1.707-1.581,2.779-2.018 c84.911-34.606,75.148-21.247,81.814-112.605c0.084-1.155,0.451-2.284,1.06-3.265C523.977,247.832,524.194,264.41,475.743,186.351 z M244.998,238.898h22.006c62.659,0,67.945,92.414,6.1,99.949v26.158c0,8.779-6.432,16.481-15.157,17.444 c-10.316,1.138-19.047-6.908-19.047-16.995v-26.223h-26.914c-8.779,0-16.481-6.432-17.444-15.157 c-1.138-10.316,6.908-19.047,16.995-19.047h55.468c21.094,0,21.095-31.924,0-31.924h-22.006c-62.659,0-67.945-92.414-6.1-99.949 v-26.158c0-8.779,6.432-16.481,15.157-17.444c10.316-1.138,19.047,6.908,19.047,16.995v26.223h26.914 c8.779,0,16.481,6.432,17.444,15.157c1.138,10.316-6.908,19.047-16.995,19.047h-55.468 C223.903,206.974,223.903,238.898,244.998,238.898z" }), " "), " "), " ")))), /* @__PURE__ */ React2.createElement("span", { className: "actionName" }, "Purchase"))))))));
 };
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Loading React");
   const rootEl = document.getElementById("root");
-  ReactDOM.render(/* @__PURE__ */ React.createElement(App, null), rootEl);
+  ReactDOM.render(/* @__PURE__ */ React2.createElement(App, null), rootEl);
 });
 
 // app/javascript/components/header.jsx
-var React2 = __toESM(require_react());
+var React3 = __toESM(require_react());
 var ReactDOM2 = __toESM(require_react_dom());
 var Header = ({ arg }) => {
-  return /* @__PURE__ */ React2.createElement("div", { className: "primaryNav" }, /* @__PURE__ */ React2.createElement("div", { className: "primaryNav-strip" }, /* @__PURE__ */ React2.createElement("ul", { className: "coreNav" })));
+  return /* @__PURE__ */ React3.createElement("div", { className: "primaryNav" }, /* @__PURE__ */ React3.createElement("div", { className: "primaryNav-strip" }, /* @__PURE__ */ React3.createElement("ul", { className: "coreNav" })));
 };
 document.addEventListener("DOMContentLoaded", () => {
   const rootEl = document.getElementById("header");
-  ReactDOM2.render(/* @__PURE__ */ React2.createElement(Header, null), rootEl);
+  ReactDOM2.render(/* @__PURE__ */ React3.createElement(Header, null), rootEl);
 });
 /*! Bundled license information:
 

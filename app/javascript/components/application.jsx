@@ -1,10 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import OtherProjects from "./OtherProjects";
 
 
 
 const App = ({ arg }) => {
  return (
+  <>
  <div className="topPanel">
   <main>
     <div className="siteContent">
@@ -40,10 +42,17 @@ const App = ({ arg }) => {
                   <img src="/javon7.png" />
                   <img src="/javon8.png" />
                 </section>
+
                 <section className="thanksSection">
                   <div className="thanksMessage">
                     <div class="main-text">
                      <div>
+                     <div className="tooltipWrapper">
+                      <button className="thankYouLikeButton">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0.5 0.5 16 16" class="Appreciations-icon-Z4i Appreciate-icon-jRA Project-appreciateTopSidebarThumbSize-p77"><path fill="none" d="M.5.5h16v16H.5z"></path><path d="M.5 7.5h3v8h-3zM7.207 15.207c.193.19.425.29.677.293H12c.256 0 .512-.098.707-.293l2.5-2.5c.19-.19.288-.457.293-.707V8.5c0-.553-.445-1-1-1h-5L11 5s.5-.792.5-1.5v-1c0-.553-.447-1-1-1l-1 2-4 4v6l1.707 1.707z"></path></svg>
+
+                      </button>
+                    </div>
                       <br/>
                       <span className="texteditor-inline-color">
                         <span class="texteditor-inline-fontsize">Thanks for watching!</span>
@@ -57,9 +66,11 @@ const App = ({ arg }) => {
 </div>
                   </div>
                 </section>
+
               </div>
             </div>
           </div>
+          <OtherProjects />
         </div>
         <div className="sideContent">
           <div className="userOptions">
@@ -91,6 +102,8 @@ const App = ({ arg }) => {
     </div>
   </main>
  </div>
+
+ </>
  );
 };
 
