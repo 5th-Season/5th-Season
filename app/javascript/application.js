@@ -2,5 +2,7 @@
 import "@hotwired/turbo-rails"
 //import "controllers"
 import "./components/application";
+import "./components/collaborate";
 import "./components/header";
 import "./stylesheets/application.css";
+import "./stylesheets/collaborate.css";

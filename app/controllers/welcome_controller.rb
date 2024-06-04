@@ -4,4 +4,7 @@ class WelcomeController < ApplicationController
 
     def stats
     end
+
+    def collaborate
+    end
 end

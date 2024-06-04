@@ -1102,7 +1102,7 @@ var require_react_development = __commonJS({
           }
           return element;
         };
-        function createElement4(type, config, children) {
+        function createElement6(type, config, children) {
           var propName;
           var props = {};
           var key = null;
@@ -1563,26 +1563,26 @@ var require_react_development = __commonJS({
           }
           return lazyType;
         }
-        function forwardRef(render3) {
+        function forwardRef(render4) {
           {
-            if (render3 != null && render3.$$typeof === REACT_MEMO_TYPE) {
+            if (render4 != null && render4.$$typeof === REACT_MEMO_TYPE) {
               error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
-            } else if (typeof render3 !== "function") {
-              error("forwardRef requires a render function but was given %s.", render3 === null ? "null" : typeof render3);
+            } else if (typeof render4 !== "function") {
+              error("forwardRef requires a render function but was given %s.", render4 === null ? "null" : typeof render4);
             } else {
-              if (render3.length !== 0 && render3.length !== 2) {
-                error("forwardRef render functions accept exactly two parameters: props and ref. %s", render3.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined.");
+              if (render4.length !== 0 && render4.length !== 2) {
+                error("forwardRef render functions accept exactly two parameters: props and ref. %s", render4.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined.");
               }
             }
-            if (render3 != null) {
-              if (render3.defaultProps != null || render3.propTypes != null) {
+            if (render4 != null) {
+              if (render4.defaultProps != null || render4.propTypes != null) {
                 error("forwardRef render functions do not support propTypes or defaultProps. Did you accidentally pass a React component?");
               }
             }
           }
           var elementType2 = {
             $$typeof: REACT_FORWARD_REF_TYPE,
-            render: render3
+            render: render4
           };
           {
             var ownName;
@@ -1594,8 +1594,8 @@ var require_react_development = __commonJS({
               },
               set: function(name) {
                 ownName = name;
-                if (!render3.name && !render3.displayName) {
-                  render3.displayName = name;
+                if (!render4.name && !render4.displayName) {
+                  render4.displayName = name;
                 }
               }
             });
@@ -2201,7 +2201,7 @@ var require_react_development = __commonJS({
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement4.apply(this, arguments);
+          var element = createElement6.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -2974,9 +2974,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React4 = require_react();
+        var React6 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React4.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React6.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4581,7 +4581,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React4.Children.forEach(props.children, function(child) {
+                React6.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -9980,7 +9980,7 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function createElement4(type, props, rootContainerElement, parentNamespace) {
+        function createElement6(type, props, rootContainerElement, parentNamespace) {
           var isCustomComponentTag;
           var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
           var domElement;
@@ -10841,7 +10841,7 @@ var require_react_dom_development = __commonJS({
             }
             parentNamespace = hostContextDev.namespace;
           }
-          var domElement = createElement4(type, props, rootContainerInstance, parentNamespace);
+          var domElement = createElement6(type, props, rootContainerInstance, parentNamespace);
           precacheFiberNode(internalInstanceHandle, domElement);
           updateFiberProps(domElement, props);
           return domElement;
@@ -13028,7 +13028,7 @@ var require_react_dom_development = __commonJS({
           }
         }
         var fakeInternalInstance = {};
-        var emptyRefsObject = new React4.Component().refs;
+        var emptyRefsObject = new React6.Component().refs;
         var didWarnAboutStateAssignmentForComponent;
         var didWarnAboutUninitializedState;
         var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -16810,7 +16810,7 @@ var require_react_dom_development = __commonJS({
               }
             }
           }
-          var render4 = Component.render;
+          var render5 = Component.render;
           var ref = workInProgress2.ref;
           var nextChildren;
           var hasId;
@@ -16821,12 +16821,12 @@ var require_react_dom_development = __commonJS({
           {
             ReactCurrentOwner$1.current = workInProgress2;
             setIsRendering(true);
-            nextChildren = renderWithHooks(current2, workInProgress2, render4, nextProps, ref, renderLanes2);
+            nextChildren = renderWithHooks(current2, workInProgress2, render5, nextProps, ref, renderLanes2);
             hasId = checkDidRenderIdHook();
             if (workInProgress2.mode & StrictLegacyMode) {
               setIsStrictModeForDevtools(true);
               try {
-                nextChildren = renderWithHooks(current2, workInProgress2, render4, nextProps, ref, renderLanes2);
+                nextChildren = renderWithHooks(current2, workInProgress2, render5, nextProps, ref, renderLanes2);
                 hasId = checkDidRenderIdHook();
               } finally {
                 setIsStrictModeForDevtools(false);
@@ -18166,9 +18166,9 @@ var require_react_dom_development = __commonJS({
             }
           }
           var newProps = workInProgress2.pendingProps;
-          var render4 = newProps.children;
+          var render5 = newProps.children;
           {
-            if (typeof render4 !== "function") {
+            if (typeof render5 !== "function") {
               error("A context consumer was rendered with multiple children, or a child that isn't a function. A context consumer expects a single child that is a function. If you did pass a function, make sure there is no trailing or leading whitespace around it.");
             }
           }
@@ -18181,7 +18181,7 @@ var require_react_dom_development = __commonJS({
           {
             ReactCurrentOwner$1.current = workInProgress2;
             setIsRendering(true);
-            newChildren = render4(newValue);
+            newChildren = render5(newValue);
             setIsRendering(false);
           }
           {
@@ -23901,7 +23901,7 @@ var require_react_dom_development = __commonJS({
           }
           return legacyRenderSubtreeIntoContainer(null, element, container, true, callback);
         }
-        function render3(element, container, callback) {
+        function render4(element, container, callback) {
           {
             error("ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot");
           }
@@ -24042,7 +24042,7 @@ var require_react_dom_development = __commonJS({
         exports.flushSync = flushSync$1;
         exports.hydrate = hydrate;
         exports.hydrateRoot = hydrateRoot$1;
-        exports.render = render3;
+        exports.render = render4;
         exports.unmountComponentAtNode = unmountComponentAtNode;
         exports.unstable_batchedUpdates = batchedUpdates$1;
         exports.unstable_renderSubtreeIntoContainer = renderSubtreeIntoContainer;
@@ -25898,14 +25898,14 @@ var PageSnapshot = class _PageSnapshot extends Snapshot {
 var ViewTransitioner = class {
   #viewTransitionStarted = false;
   #lastOperation = Promise.resolve();
-  renderChange(useViewTransition, render3) {
+  renderChange(useViewTransition, render4) {
     if (useViewTransition && this.viewTransitionsAvailable && !this.#viewTransitionStarted) {
       this.#viewTransitionStarted = true;
       this.#lastOperation = this.#lastOperation.then(async () => {
-        await document.startViewTransition(render3).finished;
+        await document.startViewTransition(render4).finished;
       });
     } else {
-      this.#lastOperation = this.#lastOperation.then(render3);
+      this.#lastOperation = this.#lastOperation.then(render4);
     }
     return this.#lastOperation;
   }
@@ -28327,10 +28327,10 @@ var Session = class {
     const event = this.notifyApplicationBeforeRender(element, options);
     const {
       defaultPrevented,
-      detail: { render: render3 }
+      detail: { render: render4 }
     } = event;
-    if (this.view.renderer && render3) {
-      this.view.renderer.renderElement = render3;
+    if (this.view.renderer && render4) {
+      this.view.renderer.renderElement = render4;
     }
     return !defaultPrevented;
   }
@@ -28707,10 +28707,10 @@ var FrameController = class {
     });
     const {
       defaultPrevented,
-      detail: { render: render3 }
+      detail: { render: render4 }
     } = event;
-    if (this.view.renderer && render3) {
-      this.view.renderer.renderElement = render3;
+    if (this.view.renderer && render4) {
+      this.view.renderer.renderElement = render4;
     }
     return !defaultPrevented;
   }
@@ -29335,15 +29335,36 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(/* @__PURE__ */ React2.createElement(App, null), rootEl);
 });
 
-// app/javascript/components/header.jsx
-var React3 = __toESM(require_react());
+// app/javascript/components/collaborate.jsx
+var React4 = __toESM(require_react());
 var ReactDOM2 = __toESM(require_react_dom());
+
+// app/javascript/components/GridItem.jsx
+var React3 = __toESM(require_react());
+var GridItem = () => {
+  return /* @__PURE__ */ React3.createElement("div", { className: "gridItem" }, /* @__PURE__ */ React3.createElement("div", { className: "innerGridItem" }, /* @__PURE__ */ React3.createElement("div", { className: "gridTopRow" }, /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/projects/404/91c7ad196034489.Y3JvcCwzMjMyLDI1MjgsMCww.png", class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/projects/115/a5fa59197921359.Y3JvcCwxMDA3LDc4OCwyMDQsMA.png", class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/030496110860863.Y3JvcCwxNDAwLDEwOTUsMCwxOTQ.jpg", class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" }))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Avatar" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-ImageWrap" }, /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/user/115/8e476f199493.65f3771b78f7d.png" }))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Data" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Name" }, "Larry S"), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Location" }, /* @__PURE__ */ React3.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "-4808 -20688 14.286 20", className: "UserSummaryInfo-locationIcon" }, /* @__PURE__ */ React3.createElement("g", null, /* @__PURE__ */ React3.createElement("path", { d: "M-4800.857-20688a7.143 7.143 0 0 0-7.143 7.143c0 5.714 7.143 12.857 7.143 12.857s7.143-7.143 7.143-12.857a7.142 7.142 0 0 0-7.143-7.143zm0 10a2.857 2.857 0 1 1 2.857-2.859 2.858 2.858 0 0 1-2.857 2.859z" }))), /* @__PURE__ */ React3.createElement("span", null, "Houston, TX")), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Available" }, /* @__PURE__ */ React3.createElement("button", null, /* @__PURE__ */ React3.createElement("span", null, "Featured"))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-CollabButton" }, /* @__PURE__ */ React3.createElement("button", null, "Collab with Larry \u{1F918}"))))));
+};
+var GridItem_default = GridItem;
+
+// app/javascript/components/collaborate.jsx
+var Collab = ({ arg }) => {
+  return /* @__PURE__ */ React4.createElement("div", { className: "CollabGrid" }, /* @__PURE__ */ React4.createElement(GridItem_default, null), /* @__PURE__ */ React4.createElement(GridItem_default, null), /* @__PURE__ */ React4.createElement(GridItem_default, null), /* @__PURE__ */ React4.createElement(GridItem_default, null), /* @__PURE__ */ React4.createElement(GridItem_default, null), /* @__PURE__ */ React4.createElement(GridItem_default, null));
+};
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Loading React");
+  const rootEl = document.getElementById("collab-root");
+  ReactDOM2.render(/* @__PURE__ */ React4.createElement(Collab, null), rootEl);
+});
+
+// app/javascript/components/header.jsx
+var React5 = __toESM(require_react());
+var ReactDOM3 = __toESM(require_react_dom());
 var Header = ({ arg }) => {
-  return /* @__PURE__ */ React3.createElement("div", { className: "primaryNav" }, /* @__PURE__ */ React3.createElement("div", { className: "primaryNav-strip" }, /* @__PURE__ */ React3.createElement("ul", { className: "coreNav" })));
+  return /* @__PURE__ */ React5.createElement("div", { className: "primaryNav" }, /* @__PURE__ */ React5.createElement("div", { className: "primaryNav-strip" }, /* @__PURE__ */ React5.createElement("ul", { className: "coreNav" })));
 };
 document.addEventListener("DOMContentLoaded", () => {
   const rootEl = document.getElementById("header");
-  ReactDOM2.render(/* @__PURE__ */ React3.createElement(Header, null), rootEl);
+  ReactDOM3.render(/* @__PURE__ */ React5.createElement(Header, null), rootEl);
 });
 /*! Bundled license information:
 

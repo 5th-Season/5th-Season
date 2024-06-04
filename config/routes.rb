@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'welcome#index'
-  get'stats', to: 'welcome#stats'
+  get 'stats', to: 'welcome#stats'
+  get 'collaborate', to: 'welcome#collaborate'
 end
