@@ -32,17 +32,19 @@
     overflow: hidden;
     position: relative;
     transition: filter .2s linear;
-    z-index: 1;
+    /* z-index: 1; */
     grid-template-columns: repeat(3, 1fr);
     height: 111.2px;
 }
 
 .CollabGrid {
+    margin: 70px auto;
     display: grid;
-    grid-gap: 20px;
-    margin: 0 auto;
-    max-width: 600px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     width: 100%;
+    max-width: 90%;
+    margin-top: 70px;
 }
 
 .thumbnail {
@@ -67,7 +69,7 @@
     position: relative;
     transform: translate(0, -50%);
     width: 25%;
-    z-index: 2;
+    /* z-index: 2; */
     border-radius: 50%;
 }
 
@@ -87,7 +89,7 @@
     justify-content: center;
     position: absolute;
     width: 100%;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .UserInfo-Name {
@@ -152,7 +154,7 @@
     padding: 25px 20px 0;
     transition: opacity .1s linear;
     width: 100%;
-    z-index: 1;
+    /* z-index: 1; */
     align-items: center;
     font-weight: 600;
     height: 30px;
