@@ -22,7 +22,8 @@ const GridItem = (props) => {
                 <div className="UserInfo">
                     <div className="UserInfo-Avatar">
                         <div className="UserInfo-ImageWrap">
-                            <img src="https://mir-s3-cdn-cf.behance.net/user/115/8e476f199493.65f3771b78f7d.png" />
+                          {props.avatar && <img src={props.avatar} />}
+                            {!props.avatar && <img src="https://mir-s3-cdn-cf.behance.net/user/115/8e476f199493.65f3771b78f7d.png" />}
                         </div>
 
                     </div>

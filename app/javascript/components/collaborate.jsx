@@ -8,12 +8,15 @@ const Collab = ({ arg }) => {
  return (
     <div className="CollabGrid">
         <GridItem
-          name={"Larry S"} 
+          name={"Aurora James"} 
           location={"Cleveland, OH"}
+          brand={"Brother Vellies"}
+          avatar={"/designers/aurora.jpeg"}
         />
         <GridItem
-          name={"Chanel"}
+          name={"Romeo Hunte"}
           location={"Houston, TX"}
+          avatar={"/designers/romeo.jpg"}
         />
         <GridItem
           name={"Albert"}
