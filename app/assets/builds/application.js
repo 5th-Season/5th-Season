@@ -29341,8 +29341,28 @@ var ReactDOM2 = __toESM(require_react_dom());
 
 // app/javascript/components/GridItem.jsx
 var React3 = __toESM(require_react());
+var IMAGE_OPTIONS = [
+  "https://mir-s3-cdn-cf.behance.net/projects/404/bbfca0201191827.Y3JvcCw4NTEsNjY2LDAsNDEx.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/f18409192606781.Y3JvcCwyNDgwLDE5MzksMCwzNDM.png",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/5a7872192601261.Y3JvcCwxNTU5LDEyMTksNTk0LDQyOA.png",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/e168fd162774099.Y3JvcCwxMDIyLDgwMCw0NSww.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/bb10db186335523.Y3JvcCw0MDk2LDMyMDMsMCwyNzM.png",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/178cf7166242179.Y3JvcCwxNDAwLDEwOTUsMCw2NQ.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/3c4cfd200139477.Y3JvcCwyODEyLDIxOTksMCw2OQ.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/91c7ad196034489.Y3JvcCwzMjMyLDI1MjgsMCww.png",
+  "https://mir-s3-cdn-cf.behance.net/projects/115/a5fa59197921359.Y3JvcCwxMDA3LDc4OCwyMDQsMA.png",
+  "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/030496110860863.Y3JvcCwxNDAwLDEwOTUsMCwxOTQ.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/a6171c185851747.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/81b68e186337863.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/c0866f67122107.Y3JvcCwxMjAwLDkzOCwwLDI2.jpg",
+  "https://mir-s3-cdn-cf.behance.net/projects/404/ed727f197461843.Y3JvcCwxNDIyLDExMTIsMzgsMA.jpg"
+];
+function getRandomElement(arr) {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
 var GridItem = (props) => {
-  return /* @__PURE__ */ React3.createElement("div", { className: "gridItem" }, /* @__PURE__ */ React3.createElement("div", { className: "innerGridItem" }, /* @__PURE__ */ React3.createElement("div", { className: "gridTopRow" }, /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/projects/404/91c7ad196034489.Y3JvcCwzMjMyLDI1MjgsMCww.png", class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/projects/115/a5fa59197921359.Y3JvcCwxMDA3LDc4OCwyMDQsMA.png", class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/030496110860863.Y3JvcCwxNDAwLDEwOTUsMCwxOTQ.jpg", class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" }))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Avatar" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-ImageWrap" }, props.avatar && /* @__PURE__ */ React3.createElement("img", { src: props.avatar }), !props.avatar && /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/user/115/8e476f199493.65f3771b78f7d.png" }))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Data" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Name" }, props.name), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Location" }, /* @__PURE__ */ React3.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "-4808 -20688 14.286 20", className: "UserSummaryInfo-locationIcon" }, /* @__PURE__ */ React3.createElement("g", null, /* @__PURE__ */ React3.createElement("path", { d: "M-4800.857-20688a7.143 7.143 0 0 0-7.143 7.143c0 5.714 7.143 12.857 7.143 12.857s7.143-7.143 7.143-12.857a7.142 7.142 0 0 0-7.143-7.143zm0 10a2.857 2.857 0 1 1 2.857-2.859 2.858 2.858 0 0 1-2.857 2.859z" }))), /* @__PURE__ */ React3.createElement("span", null, props.location)), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Available" }, /* @__PURE__ */ React3.createElement("button", null, /* @__PURE__ */ React3.createElement("span", null, "Featured"))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-CollabButton" }, /* @__PURE__ */ React3.createElement("button", null, "Collab with Larry \u{1F918}"))))));
+  return /* @__PURE__ */ React3.createElement("div", { className: "gridItem" }, /* @__PURE__ */ React3.createElement("div", { className: "innerGridItem" }, /* @__PURE__ */ React3.createElement("div", { className: "gridTopRow" }, /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React3.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React3.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" }))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Avatar" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-ImageWrap" }, props.avatar && /* @__PURE__ */ React3.createElement("img", { src: props.avatar }), !props.avatar && /* @__PURE__ */ React3.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/user/115/8e476f199493.65f3771b78f7d.png" }))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Data" }, /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Name" }, props.name), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Location" }, /* @__PURE__ */ React3.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "-4808 -20688 14.286 20", className: "UserSummaryInfo-locationIcon" }, /* @__PURE__ */ React3.createElement("g", null, /* @__PURE__ */ React3.createElement("path", { d: "M-4800.857-20688a7.143 7.143 0 0 0-7.143 7.143c0 5.714 7.143 12.857 7.143 12.857s7.143-7.143 7.143-12.857a7.142 7.142 0 0 0-7.143-7.143zm0 10a2.857 2.857 0 1 1 2.857-2.859 2.858 2.858 0 0 1-2.857 2.859z" }))), /* @__PURE__ */ React3.createElement("span", null, props.location)), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-Available" }, /* @__PURE__ */ React3.createElement("button", null, /* @__PURE__ */ React3.createElement("span", null, "Featured"))), /* @__PURE__ */ React3.createElement("div", { className: "UserInfo-CollabButton" }, /* @__PURE__ */ React3.createElement("button", null, `Collab with ${props.name} \u{1F918}`))))));
 };
 var GridItem_default = GridItem;
 
@@ -29366,32 +29386,37 @@ var Collab = ({ arg }) => {
   ), /* @__PURE__ */ React4.createElement(
     GridItem_default,
     {
-      name: "Albert",
-      location: "Dallas, TX"
+      name: "Carly Cushnie",
+      location: "New York City, NY",
+      avatar: "/designers/carly.jpeg"
     }
   ), /* @__PURE__ */ React4.createElement(
     GridItem_default,
     {
-      name: "Albert",
-      location: "New Orleans, LA"
+      name: "LaQuan Smith",
+      location: "New Orleans, LA",
+      avatar: "/designers/laquan.jpeg"
     }
   ), /* @__PURE__ */ React4.createElement(
     GridItem_default,
     {
-      name: "Albert",
-      location: "New York, NY"
+      name: "Rihanna",
+      location: "Los Angeles, CA",
+      avatar: "/designers/rihanna.jpeg"
     }
   ), /* @__PURE__ */ React4.createElement(
     GridItem_default,
     {
-      name: "Albert",
-      location: "Buffalo, NY"
+      name: "Chris Rogers",
+      location: "New York City, NY",
+      avatar: "/designers/chris.jpeg"
     }
   ), /* @__PURE__ */ React4.createElement(
     GridItem_default,
     {
-      name: "Albert",
-      location: "New Orleans, LA"
+      name: "Dapper Dan",
+      location: "Harlem, NY",
+      avatar: "/designers/dan.jpeg"
     }
   ), /* @__PURE__ */ React4.createElement(
     GridItem_default,

@@ -19,24 +19,29 @@ const Collab = ({ arg }) => {
           avatar={"/designers/romeo.jpg"}
         />
         <GridItem
-          name={"Albert"}
-          location={"Dallas, TX"} 
+          name={"Carly Cushnie"}
+          location={"New York City, NY"} 
+          avatar={"/designers/carly.jpeg"}
         />
         <GridItem
-          name={"Albert"}
+          name={"LaQuan Smith"}
           location={"New Orleans, LA"} 
+          avatar={"/designers/laquan.jpeg"}
         />
         <GridItem
-          name={"Albert"} 
-          location={"New York, NY"}
+          name={"Rihanna"} 
+          location={"Los Angeles, CA"}
+          avatar={"/designers/rihanna.jpeg"}
         />
         <GridItem
-          name={"Albert"} 
-          location={"Buffalo, NY"}
+          name={"Chris Rogers"} 
+          location={"New York City, NY"}
+          avatar={"/designers/chris.jpeg"}
         />
          <GridItem
-          name={"Albert"}
-          location={"New Orleans, LA"} 
+          name={"Dapper Dan"}
+          location={"Harlem, NY"} 
+          avatar={"/designers/dan.jpeg"}
         />
         <GridItem
           name={"Albert"} 
