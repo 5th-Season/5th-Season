@@ -2,14 +2,28 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
-    "esbuild": "^0.20.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.14",
+    "esbuild": "^0.23.0",
+    "esbuild-plugin-inline-image": "^0.0.9",
     "esbuild-rails": "^1.0.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "postcss": "^8.4.41",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.0",
+    "postcss-nested": "^6.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-on-rails": "^14.0.4",
+    "react-router-dom": "^6.26.0",
+    "tailwindcss": "^3.4.9",
+    "typescript": "^5.5.4",
     "yarn": "^1.22.22"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "node esbuild.config.js",
     "watch": "esbuild --watch --bundle app/javascript/application.js --outfile=app/assets/javascripts/application.js"
+  },
+  "devDependencies": {
+    "esbuild-sass-plugin": "^3.3.1"
   }
 }

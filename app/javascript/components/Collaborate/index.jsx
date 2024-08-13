@@ -1,10 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import GridItem from "./GridItem";
+import React from "react";
+import GridItem from "../GridItem";
 
 
 
-const Collab = ({ arg }) => {
+const Collaborate = ({ arg }) => {
  return (
     <div className="CollabGrid">
         <GridItem
@@ -55,8 +54,10 @@ const Collab = ({ arg }) => {
  );
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Loading React")
-  const rootEl = document.getElementById("collab-root");
- ReactDOM.render(<Collab />, rootEl);
-});
+export default Collaborate;
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     console.log("Loading React")
+//   const rootEl = document.getElementById("collab-root");
+//  ReactDOM.render(<Collab />, rootEl);
+// });

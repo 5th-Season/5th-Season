@@ -107,8 +107,7 @@ const App = ({ arg }) => {
  );
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Loading React")
-  const rootEl = document.getElementById("root");
- ReactDOM.render(<App />, rootEl);
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   const rootEl = document.getElementById("root");
+//  ReactDOM.render(<App />, rootEl);
+// });

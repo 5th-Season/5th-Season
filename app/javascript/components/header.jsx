@@ -17,7 +17,7 @@ const Header = ({ arg }) => {
  );
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  const rootEl = document.getElementById("header");
- ReactDOM.render(<Header />, rootEl);
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   const rootEl = document.getElementById("header");
+//  ReactDOM.render(<Header />, rootEl);
+// });
