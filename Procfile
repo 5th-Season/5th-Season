@@ -1,2 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-js: yarn build
+js: yarn build --watch

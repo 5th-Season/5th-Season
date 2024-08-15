@@ -28,7 +28,7 @@ require("esbuild").context({
 .then((r) => {
   console.log("⚡ Done")
 
-  // r.watch();
+  r.watch();
   // console.log('watching...');
 })
 .catch(() => process.exit(1));
