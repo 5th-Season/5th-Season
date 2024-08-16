@@ -2,7 +2,7 @@ const {sassPlugin} = require('esbuild-sass-plugin');
 const inlineImage = require("esbuild-plugin-inline-image");
 const args = process.argv.slice(2);
 
-require("esbuild").build({
+require("esbuild").context({
   entryPoints: ["./app/javascript/application.js"],
   outdir: "./app/assets/builds",
   bundle: true,
@@ -28,7 +28,7 @@ require("esbuild").build({
 .then((r) => {
   console.log("⚡ Done")
 
-  r.watch();
+  // r.watch();
   // console.log('watching...');
 })
 .catch(() => process.exit(1));
