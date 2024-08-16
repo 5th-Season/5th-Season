@@ -2,7 +2,7 @@ const {sassPlugin} = require('esbuild-sass-plugin');
 const inlineImage = require("esbuild-plugin-inline-image");
 const args = process.argv.slice(2);
 
-require("esbuild").context({
+require("esbuild").build({
   entryPoints: ["./app/javascript/application.js"],
   outdir: "./app/assets/builds",
   bundle: true,
