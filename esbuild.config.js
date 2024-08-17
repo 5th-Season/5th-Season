@@ -1,8 +1,9 @@
-const {sassPlugin} = require('esbuild-sass-plugin');
+const { sassPlugin } = require('esbuild-sass-plugin');
 const inlineImage = require("esbuild-plugin-inline-image");
 const args = process.argv.slice(2);
+const isHeroku = process.env.NODE_ENV === 'production';
 
-require("esbuild").context({
+require("esbuild").build({
   entryPoints: ["./app/javascript/application.js"],
   outdir: "./app/assets/builds",
   bundle: true,
@@ -21,14 +22,8 @@ require("esbuild").context({
     })
   ],
   format: "esm",
-  sourcemap: true,
   publicPath: 'assets',
-  // watch: args.includes('--watch'),
-})
-.then((r) => {
-  console.log("⚡ Done")
-
-  // r.watch();
-  // console.log('watching...');
-})
-.catch(() => process.exit(1));
+  watch: !isHeroku && args.includes('--watch'),
+}).then(() => {
+  console.log("⚡ Done");
+}).catch(() => process.exit(1));
