@@ -1,7 +1,7 @@
 const { sassPlugin } = require('esbuild-sass-plugin');
 const inlineImage = require("esbuild-plugin-inline-image");
 const args = process.argv.slice(2);
-const isHeroku = process.env.NODE_ENV === 'production';
+const isHeroku = true;//process.env.NODE_ENV === 'production';
 
 const buildOptions = {
   entryPoints: ["./app/javascript/application.js"],
