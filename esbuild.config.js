@@ -3,7 +3,7 @@ const inlineImage = require("esbuild-plugin-inline-image");
 const args = process.argv.slice(2);
 const isHeroku = process.env.NODE_ENV === 'production';
 
-require("esbuild").build({
+const buildOptions = {
   entryPoints: ["./app/javascript/application.js"],
   outdir: "./app/assets/builds",
   bundle: true,
@@ -23,7 +23,26 @@ require("esbuild").build({
   ],
   format: "esm",
   publicPath: 'assets',
-  watch: !isHeroku && args.includes('--watch'),
-}).then(() => {
-  console.log("⚡ Done");
-}).catch(() => process.exit(1));
+};
+
+// For production build (e.g., on Heroku)
+if (isHeroku) {
+  require("esbuild").build(buildOptions)
+    .then(() => {
+      console.log("⚡ Production build complete");
+    })
+    .catch(() => process.exit(1));
+} else {
+  // For development, with watch mode
+  require("esbuild").context(buildOptions)
+    .then((context) => {
+      if (args.includes('--watch')) {
+        context.watch();
+        console.log('⚡ Watching for changes...');
+      } else {
+        context.rebuild();
+        console.log('⚡ Development build complete');
+      }
+    })
+    .catch(() => process.exit(1));
+}
