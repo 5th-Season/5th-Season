@@ -3,6 +3,8 @@ import "@hotwired/turbo-rails"
 import "tailwindcss/base";
 import "tailwindcss/components";
 import "tailwindcss/utilities";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import "./stylesheets/index.scss";
 import "./components";
 //import "controllers"

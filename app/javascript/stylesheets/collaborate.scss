@@ -16,6 +16,24 @@
     width: 100%;
 }
 
+.tag-container {
+    display: inline-flex; /* Use inline-flex to center the tags within the container */
+    justify-content: center; /* Ensure tags are centered */
+    flex-wrap: wrap; /* Allow tags to wrap if there are too many */
+    margin-top: 10px;
+  }
+  
+  .tag {
+    background-color: #f3f4f6;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  display: inline-block;
+  }
+
 .innerGridItem {
     display: flex;
     flex-direction: column;
@@ -177,3 +195,36 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.event-form-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .progress-indicator {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .step-indicator {
+    width: 30px;
+    height: 30px;
+    background-color: #e2e8f0;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+  }
+  
+  .step.active .step-indicator {
+    background-color: #6366f1;
+  }
+  
+  button {
+    transition: opacity 0.2s ease;
+  }
+  

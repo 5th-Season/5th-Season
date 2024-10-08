@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import Home from '../components/Home';
 import Collaborate from '../components/Collaborate';
 import Events from '../components/Events';
+import EventForm from '../components/EventForm';
 
 const AppRoutes = () => {
   return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="/collaborate" element={<Collaborate />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/event/create" element={<EventForm />} />
         </Routes>
       </Router>
   )

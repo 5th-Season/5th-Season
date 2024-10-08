@@ -1,6 +1,61 @@
 @import "./base.scss";
 @import "./collaborate.scss";
 
+.event-form-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.progress-indicator {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.step {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.step-indicator {
+  width: 30px;
+  height: 30px;
+  background-color: #e2e8f0;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+}
+
+.step.active .step-indicator {
+  background-color: #6366f1;
+}
+
+button {
+  transition: opacity 0.2s ease;
+}
+
+.event-form-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.celebration-icon {
+  font-size: 3rem;
+}
+
+.image-thumbnail img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+button {
+  transition: opacity 0.2s ease;
+}
+
+
+
 .about-fashionista {
   margin-top: 100px;
   .asc-container {

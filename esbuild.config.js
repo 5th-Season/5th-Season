@@ -9,12 +9,13 @@ const buildOptions = {
   bundle: true,
   sourcemap: true,
   allowOverwrite: true,
+  loader: { '.woff': 'copy', '.ttf': 'copy', '.eot': 'copy' },
   plugins: [
     sassPlugin({
       loadPaths: ['./node_modules']
     }),
     inlineImage({
-      extensions: ["jpg", "jpeg", "gif"]
+      extensions: ["jpg", "jpeg", "gif", "svg"]
     }),
     inlineImage({
       limit: 2000,
