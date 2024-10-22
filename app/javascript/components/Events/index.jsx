@@ -3,10 +3,18 @@ import React from "react";
 const Events = () => {
   return (
     <div class="container mx-auto p-8">
-    <div class="mb-6">
-        <h1 class="text-3xl font-bold mb-2">Coming soon</h1>
-        <p class="text-gray-600">Be among the first to know when new products launch</p>
-    </div>
+      <div className="mb-6 flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold mb-2">Coming soon</h1>
+          <p className="text-gray-600">Be among the first to know when new products launch</p>
+        </div>
+        <a
+          href="/event/create"
+          className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 text-sm font-semibold"
+        >
+          Create Event
+        </a>
+      </div>
 
     <div class="flex flex-col lg:flex-row lg:space-x-16">
         <div class="flex-1">

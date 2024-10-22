@@ -1063,7 +1063,7 @@ var require_react_development = __commonJS({
             }
           }
         }
-        var ReactElement = function(type, key, ref, self, source, owner, props) {
+        var ReactElement = function(type, key, ref, self2, source, owner, props) {
           var element = {
             // This tag allows us to uniquely identify this as a React Element
             $$typeof: REACT_ELEMENT_TYPE,
@@ -1087,7 +1087,7 @@ var require_react_development = __commonJS({
               configurable: false,
               enumerable: false,
               writable: false,
-              value: self
+              value: self2
             });
             Object.defineProperty(element, "_source", {
               configurable: false,
@@ -1107,7 +1107,7 @@ var require_react_development = __commonJS({
           var props = {};
           var key = null;
           var ref = null;
-          var self = null;
+          var self2 = null;
           var source = null;
           if (config != null) {
             if (hasValidRef(config)) {
@@ -1122,7 +1122,7 @@ var require_react_development = __commonJS({
               }
               key = "" + config.key;
             }
-            self = config.__self === void 0 ? null : config.__self;
+            self2 = config.__self === void 0 ? null : config.__self;
             source = config.__source === void 0 ? null : config.__source;
             for (propName in config) {
               if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
@@ -1164,7 +1164,7 @@ var require_react_development = __commonJS({
               }
             }
           }
-          return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+          return ReactElement(type, key, ref, self2, source, ReactCurrentOwner.current, props);
         }
         function cloneAndReplaceKey(oldElement, newKey) {
           var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
@@ -1178,7 +1178,7 @@ var require_react_development = __commonJS({
           var props = assign({}, element.props);
           var key = element.key;
           var ref = element.ref;
-          var self = element._self;
+          var self2 = element._self;
           var source = element._source;
           var owner = element._owner;
           if (config != null) {
@@ -1216,7 +1216,7 @@ var require_react_development = __commonJS({
             }
             props.children = childArray;
           }
-          return ReactElement(element.type, key, ref, self, source, owner, props);
+          return ReactElement(element.type, key, ref, self2, source, owner, props);
         }
         function isValidElement2(object) {
           return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -1676,7 +1676,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context);
         }
-        function useState4(initialState) {
+        function useState5(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -1684,7 +1684,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useReducer(reducer, initialArg, init);
         }
-        function useRef5(initialValue) {
+        function useRef6(initialValue) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
@@ -2478,8 +2478,8 @@ var require_react_development = __commonJS({
         exports.useLayoutEffect = useLayoutEffect3;
         exports.useMemo = useMemo3;
         exports.useReducer = useReducer;
-        exports.useRef = useRef5;
-        exports.useState = useState4;
+        exports.useRef = useRef6;
+        exports.useState = useState5;
         exports.useSyncExternalStore = useSyncExternalStore;
         exports.useTransition = useTransition;
         exports.version = ReactVersion;
@@ -2975,9 +2975,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React11 = require_react();
+        var React12 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React11.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React12.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4582,7 +4582,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React11.Children.forEach(props.children, function(child) {
+                React12.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -24115,6 +24115,3893 @@ var require_client = __commonJS({
   }
 });
 
+// node_modules/react-slick/lib/initial-state.js
+var require_initial_state = __commonJS({
+  "node_modules/react-slick/lib/initial-state.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports["default"] = void 0;
+    var initialState = {
+      animating: false,
+      autoplaying: null,
+      currentDirection: 0,
+      currentLeft: null,
+      currentSlide: 0,
+      direction: 1,
+      dragging: false,
+      edgeDragged: false,
+      initialized: false,
+      lazyLoadedList: [],
+      listHeight: null,
+      listWidth: null,
+      scrolling: false,
+      slideCount: null,
+      slideHeight: null,
+      slideWidth: null,
+      swipeLeft: null,
+      swiped: false,
+      // used by swipeEvent. differentites between touch and swipe.
+      swiping: false,
+      touchObject: {
+        startX: 0,
+        startY: 0,
+        curX: 0,
+        curY: 0
+      },
+      trackStyle: {},
+      trackWidth: 0,
+      targetSlide: 0
+    };
+    var _default = exports["default"] = initialState;
+  }
+});
+
+// node_modules/lodash.debounce/index.js
+var require_lodash = __commonJS({
+  "node_modules/lodash.debounce/index.js"(exports, module) {
+    var FUNC_ERROR_TEXT = "Expected a function";
+    var NAN = 0 / 0;
+    var symbolTag = "[object Symbol]";
+    var reTrim = /^\s+|\s+$/g;
+    var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+    var reIsBinary = /^0b[01]+$/i;
+    var reIsOctal = /^0o[0-7]+$/i;
+    var freeParseInt = parseInt;
+    var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
+    var freeSelf = typeof self == "object" && self && self.Object === Object && self;
+    var root = freeGlobal || freeSelf || Function("return this")();
+    var objectProto = Object.prototype;
+    var objectToString = objectProto.toString;
+    var nativeMax = Math.max;
+    var nativeMin = Math.min;
+    var now2 = function() {
+      return root.Date.now();
+    };
+    function debounce2(func, wait, options) {
+      var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+      if (typeof func != "function") {
+        throw new TypeError(FUNC_ERROR_TEXT);
+      }
+      wait = toNumber(wait) || 0;
+      if (isObject(options)) {
+        leading = !!options.leading;
+        maxing = "maxWait" in options;
+        maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+        trailing = "trailing" in options ? !!options.trailing : trailing;
+      }
+      function invokeFunc(time) {
+        var args = lastArgs, thisArg = lastThis;
+        lastArgs = lastThis = void 0;
+        lastInvokeTime = time;
+        result = func.apply(thisArg, args);
+        return result;
+      }
+      function leadingEdge(time) {
+        lastInvokeTime = time;
+        timerId = setTimeout(timerExpired, wait);
+        return leading ? invokeFunc(time) : result;
+      }
+      function remainingWait(time) {
+        var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, result2 = wait - timeSinceLastCall;
+        return maxing ? nativeMin(result2, maxWait - timeSinceLastInvoke) : result2;
+      }
+      function shouldInvoke(time) {
+        var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+        return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+      }
+      function timerExpired() {
+        var time = now2();
+        if (shouldInvoke(time)) {
+          return trailingEdge(time);
+        }
+        timerId = setTimeout(timerExpired, remainingWait(time));
+      }
+      function trailingEdge(time) {
+        timerId = void 0;
+        if (trailing && lastArgs) {
+          return invokeFunc(time);
+        }
+        lastArgs = lastThis = void 0;
+        return result;
+      }
+      function cancel() {
+        if (timerId !== void 0) {
+          clearTimeout(timerId);
+        }
+        lastInvokeTime = 0;
+        lastArgs = lastCallTime = lastThis = timerId = void 0;
+      }
+      function flush() {
+        return timerId === void 0 ? result : trailingEdge(now2());
+      }
+      function debounced() {
+        var time = now2(), isInvoking = shouldInvoke(time);
+        lastArgs = arguments;
+        lastThis = this;
+        lastCallTime = time;
+        if (isInvoking) {
+          if (timerId === void 0) {
+            return leadingEdge(lastCallTime);
+          }
+          if (maxing) {
+            timerId = setTimeout(timerExpired, wait);
+            return invokeFunc(lastCallTime);
+          }
+        }
+        if (timerId === void 0) {
+          timerId = setTimeout(timerExpired, wait);
+        }
+        return result;
+      }
+      debounced.cancel = cancel;
+      debounced.flush = flush;
+      return debounced;
+    }
+    function isObject(value) {
+      var type = typeof value;
+      return !!value && (type == "object" || type == "function");
+    }
+    function isObjectLike(value) {
+      return !!value && typeof value == "object";
+    }
+    function isSymbol(value) {
+      return typeof value == "symbol" || isObjectLike(value) && objectToString.call(value) == symbolTag;
+    }
+    function toNumber(value) {
+      if (typeof value == "number") {
+        return value;
+      }
+      if (isSymbol(value)) {
+        return NAN;
+      }
+      if (isObject(value)) {
+        var other = typeof value.valueOf == "function" ? value.valueOf() : value;
+        value = isObject(other) ? other + "" : other;
+      }
+      if (typeof value != "string") {
+        return value === 0 ? value : +value;
+      }
+      value = value.replace(reTrim, "");
+      var isBinary = reIsBinary.test(value);
+      return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+    }
+    module.exports = debounce2;
+  }
+});
+
+// node_modules/classnames/index.js
+var require_classnames = __commonJS({
+  "node_modules/classnames/index.js"(exports, module) {
+    (function() {
+      "use strict";
+      var hasOwn = {}.hasOwnProperty;
+      function classNames() {
+        var classes = "";
+        for (var i = 0; i < arguments.length; i++) {
+          var arg = arguments[i];
+          if (arg) {
+            classes = appendClass(classes, parseValue(arg));
+          }
+        }
+        return classes;
+      }
+      function parseValue(arg) {
+        if (typeof arg === "string" || typeof arg === "number") {
+          return arg;
+        }
+        if (typeof arg !== "object") {
+          return "";
+        }
+        if (Array.isArray(arg)) {
+          return classNames.apply(null, arg);
+        }
+        if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes("[native code]")) {
+          return arg.toString();
+        }
+        var classes = "";
+        for (var key in arg) {
+          if (hasOwn.call(arg, key) && arg[key]) {
+            classes = appendClass(classes, key);
+          }
+        }
+        return classes;
+      }
+      function appendClass(value, newClass) {
+        if (!newClass) {
+          return value;
+        }
+        if (value) {
+          return value + " " + newClass;
+        }
+        return value + newClass;
+      }
+      if (typeof module !== "undefined" && module.exports) {
+        classNames.default = classNames;
+        module.exports = classNames;
+      } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
+        define("classnames", [], function() {
+          return classNames;
+        });
+      } else {
+        window.classNames = classNames;
+      }
+    })();
+  }
+});
+
+// node_modules/react-slick/lib/default-props.js
+var require_default_props = __commonJS({
+  "node_modules/react-slick/lib/default-props.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports["default"] = void 0;
+    var _react = _interopRequireDefault(require_react());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    var defaultProps = {
+      accessibility: true,
+      adaptiveHeight: false,
+      afterChange: null,
+      appendDots: function appendDots(dots) {
+        return /* @__PURE__ */ _react["default"].createElement("ul", {
+          style: {
+            display: "block"
+          }
+        }, dots);
+      },
+      arrows: true,
+      autoplay: false,
+      autoplaySpeed: 3e3,
+      beforeChange: null,
+      centerMode: false,
+      centerPadding: "50px",
+      className: "",
+      cssEase: "ease",
+      customPaging: function customPaging(i) {
+        return /* @__PURE__ */ _react["default"].createElement("button", null, i + 1);
+      },
+      dots: false,
+      dotsClass: "slick-dots",
+      draggable: true,
+      easing: "linear",
+      edgeFriction: 0.35,
+      fade: false,
+      focusOnSelect: false,
+      infinite: true,
+      initialSlide: 0,
+      lazyLoad: null,
+      nextArrow: null,
+      onEdge: null,
+      onInit: null,
+      onLazyLoadError: null,
+      onReInit: null,
+      pauseOnDotsHover: false,
+      pauseOnFocus: false,
+      pauseOnHover: true,
+      prevArrow: null,
+      responsive: null,
+      rows: 1,
+      rtl: false,
+      slide: "div",
+      slidesPerRow: 1,
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      speed: 500,
+      swipe: true,
+      swipeEvent: null,
+      swipeToSlide: false,
+      touchMove: true,
+      touchThreshold: 5,
+      useCSS: true,
+      useTransform: true,
+      variableWidth: false,
+      vertical: false,
+      waitForAnimate: true,
+      asNavFor: null
+    };
+    var _default = exports["default"] = defaultProps;
+  }
+});
+
+// node_modules/react-slick/lib/utils/innerSliderUtils.js
+var require_innerSliderUtils = __commonJS({
+  "node_modules/react-slick/lib/utils/innerSliderUtils.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.checkSpecKeys = exports.checkNavigable = exports.changeSlide = exports.canUseDOM = exports.canGoNext = void 0;
+    exports.clamp = clamp;
+    exports.extractObject = void 0;
+    exports.filterSettings = filterSettings;
+    exports.validSettings = exports.swipeStart = exports.swipeMove = exports.swipeEnd = exports.slidesOnRight = exports.slidesOnLeft = exports.slideHandler = exports.siblingDirection = exports.safePreventDefault = exports.lazyStartIndex = exports.lazySlidesOnRight = exports.lazySlidesOnLeft = exports.lazyEndIndex = exports.keyHandler = exports.initializedState = exports.getWidth = exports.getTrackLeft = exports.getTrackCSS = exports.getTrackAnimateCSS = exports.getTotalSlides = exports.getSwipeDirection = exports.getSlideCount = exports.getRequiredLazySlides = exports.getPreClones = exports.getPostClones = exports.getOnDemandLazySlides = exports.getNavigableIndexes = exports.getHeight = void 0;
+    var _react = _interopRequireDefault(require_react());
+    var _defaultProps = _interopRequireDefault(require_default_props());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    function _typeof(o) {
+      "@babel/helpers - typeof";
+      return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+        return typeof o2;
+      } : function(o2) {
+        return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+      }, _typeof(o);
+    }
+    function ownKeys(e, r) {
+      var t = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r2) {
+          return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+        })), t.push.apply(t, o);
+      }
+      return t;
+    }
+    function _objectSpread(e) {
+      for (var r = 1; r < arguments.length; r++) {
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+          _defineProperty(e, r2, t[r2]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+          Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+        });
+      }
+      return e;
+    }
+    function _defineProperty(obj, key, value) {
+      key = _toPropertyKey(key);
+      if (key in obj) {
+        Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+      } else {
+        obj[key] = value;
+      }
+      return obj;
+    }
+    function _toPropertyKey(t) {
+      var i = _toPrimitive(t, "string");
+      return "symbol" == _typeof(i) ? i : String(i);
+    }
+    function _toPrimitive(t, r) {
+      if ("object" != _typeof(t) || !t) return t;
+      var e = t[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r ? String : Number)(t);
+    }
+    function clamp(number, lowerBound, upperBound) {
+      return Math.max(lowerBound, Math.min(number, upperBound));
+    }
+    var safePreventDefault = exports.safePreventDefault = function safePreventDefault2(event) {
+      var passiveEvents = ["onTouchStart", "onTouchMove", "onWheel"];
+      if (!passiveEvents.includes(event._reactName)) {
+        event.preventDefault();
+      }
+    };
+    var getOnDemandLazySlides = exports.getOnDemandLazySlides = function getOnDemandLazySlides2(spec) {
+      var onDemandSlides = [];
+      var startIndex = lazyStartIndex(spec);
+      var endIndex = lazyEndIndex(spec);
+      for (var slideIndex = startIndex; slideIndex < endIndex; slideIndex++) {
+        if (spec.lazyLoadedList.indexOf(slideIndex) < 0) {
+          onDemandSlides.push(slideIndex);
+        }
+      }
+      return onDemandSlides;
+    };
+    var getRequiredLazySlides = exports.getRequiredLazySlides = function getRequiredLazySlides2(spec) {
+      var requiredSlides = [];
+      var startIndex = lazyStartIndex(spec);
+      var endIndex = lazyEndIndex(spec);
+      for (var slideIndex = startIndex; slideIndex < endIndex; slideIndex++) {
+        requiredSlides.push(slideIndex);
+      }
+      return requiredSlides;
+    };
+    var lazyStartIndex = exports.lazyStartIndex = function lazyStartIndex2(spec) {
+      return spec.currentSlide - lazySlidesOnLeft(spec);
+    };
+    var lazyEndIndex = exports.lazyEndIndex = function lazyEndIndex2(spec) {
+      return spec.currentSlide + lazySlidesOnRight(spec);
+    };
+    var lazySlidesOnLeft = exports.lazySlidesOnLeft = function lazySlidesOnLeft2(spec) {
+      return spec.centerMode ? Math.floor(spec.slidesToShow / 2) + (parseInt(spec.centerPadding) > 0 ? 1 : 0) : 0;
+    };
+    var lazySlidesOnRight = exports.lazySlidesOnRight = function lazySlidesOnRight2(spec) {
+      return spec.centerMode ? Math.floor((spec.slidesToShow - 1) / 2) + 1 + (parseInt(spec.centerPadding) > 0 ? 1 : 0) : spec.slidesToShow;
+    };
+    var getWidth = exports.getWidth = function getWidth2(elem) {
+      return elem && elem.offsetWidth || 0;
+    };
+    var getHeight = exports.getHeight = function getHeight2(elem) {
+      return elem && elem.offsetHeight || 0;
+    };
+    var getSwipeDirection = exports.getSwipeDirection = function getSwipeDirection2(touchObject) {
+      var verticalSwiping = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
+      var xDist, yDist, r, swipeAngle;
+      xDist = touchObject.startX - touchObject.curX;
+      yDist = touchObject.startY - touchObject.curY;
+      r = Math.atan2(yDist, xDist);
+      swipeAngle = Math.round(r * 180 / Math.PI);
+      if (swipeAngle < 0) {
+        swipeAngle = 360 - Math.abs(swipeAngle);
+      }
+      if (swipeAngle <= 45 && swipeAngle >= 0 || swipeAngle <= 360 && swipeAngle >= 315) {
+        return "left";
+      }
+      if (swipeAngle >= 135 && swipeAngle <= 225) {
+        return "right";
+      }
+      if (verticalSwiping === true) {
+        if (swipeAngle >= 35 && swipeAngle <= 135) {
+          return "up";
+        } else {
+          return "down";
+        }
+      }
+      return "vertical";
+    };
+    var canGoNext = exports.canGoNext = function canGoNext2(spec) {
+      var canGo = true;
+      if (!spec.infinite) {
+        if (spec.centerMode && spec.currentSlide >= spec.slideCount - 1) {
+          canGo = false;
+        } else if (spec.slideCount <= spec.slidesToShow || spec.currentSlide >= spec.slideCount - spec.slidesToShow) {
+          canGo = false;
+        }
+      }
+      return canGo;
+    };
+    var extractObject = exports.extractObject = function extractObject2(spec, keys) {
+      var newObject = {};
+      keys.forEach(function(key) {
+        return newObject[key] = spec[key];
+      });
+      return newObject;
+    };
+    var initializedState = exports.initializedState = function initializedState2(spec) {
+      var slideCount = _react["default"].Children.count(spec.children);
+      var listNode = spec.listRef;
+      var listWidth = Math.ceil(getWidth(listNode));
+      var trackNode = spec.trackRef && spec.trackRef.node;
+      var trackWidth = Math.ceil(getWidth(trackNode));
+      var slideWidth;
+      if (!spec.vertical) {
+        var centerPaddingAdj = spec.centerMode && parseInt(spec.centerPadding) * 2;
+        if (typeof spec.centerPadding === "string" && spec.centerPadding.slice(-1) === "%") {
+          centerPaddingAdj *= listWidth / 100;
+        }
+        slideWidth = Math.ceil((listWidth - centerPaddingAdj) / spec.slidesToShow);
+      } else {
+        slideWidth = listWidth;
+      }
+      var slideHeight = listNode && getHeight(listNode.querySelector('[data-index="0"]'));
+      var listHeight = slideHeight * spec.slidesToShow;
+      var currentSlide = spec.currentSlide === void 0 ? spec.initialSlide : spec.currentSlide;
+      if (spec.rtl && spec.currentSlide === void 0) {
+        currentSlide = slideCount - 1 - spec.initialSlide;
+      }
+      var lazyLoadedList = spec.lazyLoadedList || [];
+      var slidesToLoad = getOnDemandLazySlides(_objectSpread(_objectSpread({}, spec), {}, {
+        currentSlide,
+        lazyLoadedList
+      }));
+      lazyLoadedList = lazyLoadedList.concat(slidesToLoad);
+      var state = {
+        slideCount,
+        slideWidth,
+        listWidth,
+        trackWidth,
+        currentSlide,
+        slideHeight,
+        listHeight,
+        lazyLoadedList
+      };
+      if (spec.autoplaying === null && spec.autoplay) {
+        state["autoplaying"] = "playing";
+      }
+      return state;
+    };
+    var slideHandler = exports.slideHandler = function slideHandler2(spec) {
+      var waitForAnimate = spec.waitForAnimate, animating = spec.animating, fade = spec.fade, infinite = spec.infinite, index = spec.index, slideCount = spec.slideCount, lazyLoad = spec.lazyLoad, currentSlide = spec.currentSlide, centerMode = spec.centerMode, slidesToScroll = spec.slidesToScroll, slidesToShow = spec.slidesToShow, useCSS = spec.useCSS;
+      var lazyLoadedList = spec.lazyLoadedList;
+      if (waitForAnimate && animating) return {};
+      var animationSlide = index, finalSlide, animationLeft, finalLeft;
+      var state = {}, nextState = {};
+      var targetSlide = infinite ? index : clamp(index, 0, slideCount - 1);
+      if (fade) {
+        if (!infinite && (index < 0 || index >= slideCount)) return {};
+        if (index < 0) {
+          animationSlide = index + slideCount;
+        } else if (index >= slideCount) {
+          animationSlide = index - slideCount;
+        }
+        if (lazyLoad && lazyLoadedList.indexOf(animationSlide) < 0) {
+          lazyLoadedList = lazyLoadedList.concat(animationSlide);
+        }
+        state = {
+          animating: true,
+          currentSlide: animationSlide,
+          lazyLoadedList,
+          targetSlide: animationSlide
+        };
+        nextState = {
+          animating: false,
+          targetSlide: animationSlide
+        };
+      } else {
+        finalSlide = animationSlide;
+        if (animationSlide < 0) {
+          finalSlide = animationSlide + slideCount;
+          if (!infinite) finalSlide = 0;
+          else if (slideCount % slidesToScroll !== 0) finalSlide = slideCount - slideCount % slidesToScroll;
+        } else if (!canGoNext(spec) && animationSlide > currentSlide) {
+          animationSlide = finalSlide = currentSlide;
+        } else if (centerMode && animationSlide >= slideCount) {
+          animationSlide = infinite ? slideCount : slideCount - 1;
+          finalSlide = infinite ? 0 : slideCount - 1;
+        } else if (animationSlide >= slideCount) {
+          finalSlide = animationSlide - slideCount;
+          if (!infinite) finalSlide = slideCount - slidesToShow;
+          else if (slideCount % slidesToScroll !== 0) finalSlide = 0;
+        }
+        if (!infinite && animationSlide + slidesToShow >= slideCount) {
+          finalSlide = slideCount - slidesToShow;
+        }
+        animationLeft = getTrackLeft(_objectSpread(_objectSpread({}, spec), {}, {
+          slideIndex: animationSlide
+        }));
+        finalLeft = getTrackLeft(_objectSpread(_objectSpread({}, spec), {}, {
+          slideIndex: finalSlide
+        }));
+        if (!infinite) {
+          if (animationLeft === finalLeft) animationSlide = finalSlide;
+          animationLeft = finalLeft;
+        }
+        if (lazyLoad) {
+          lazyLoadedList = lazyLoadedList.concat(getOnDemandLazySlides(_objectSpread(_objectSpread({}, spec), {}, {
+            currentSlide: animationSlide
+          })));
+        }
+        if (!useCSS) {
+          state = {
+            currentSlide: finalSlide,
+            trackStyle: getTrackCSS(_objectSpread(_objectSpread({}, spec), {}, {
+              left: finalLeft
+            })),
+            lazyLoadedList,
+            targetSlide
+          };
+        } else {
+          state = {
+            animating: true,
+            currentSlide: finalSlide,
+            trackStyle: getTrackAnimateCSS(_objectSpread(_objectSpread({}, spec), {}, {
+              left: animationLeft
+            })),
+            lazyLoadedList,
+            targetSlide
+          };
+          nextState = {
+            animating: false,
+            currentSlide: finalSlide,
+            trackStyle: getTrackCSS(_objectSpread(_objectSpread({}, spec), {}, {
+              left: finalLeft
+            })),
+            swipeLeft: null,
+            targetSlide
+          };
+        }
+      }
+      return {
+        state,
+        nextState
+      };
+    };
+    var changeSlide = exports.changeSlide = function changeSlide2(spec, options) {
+      var indexOffset, previousInt, slideOffset, unevenOffset, targetSlide;
+      var slidesToScroll = spec.slidesToScroll, slidesToShow = spec.slidesToShow, slideCount = spec.slideCount, currentSlide = spec.currentSlide, previousTargetSlide = spec.targetSlide, lazyLoad = spec.lazyLoad, infinite = spec.infinite;
+      unevenOffset = slideCount % slidesToScroll !== 0;
+      indexOffset = unevenOffset ? 0 : (slideCount - currentSlide) % slidesToScroll;
+      if (options.message === "previous") {
+        slideOffset = indexOffset === 0 ? slidesToScroll : slidesToShow - indexOffset;
+        targetSlide = currentSlide - slideOffset;
+        if (lazyLoad && !infinite) {
+          previousInt = currentSlide - slideOffset;
+          targetSlide = previousInt === -1 ? slideCount - 1 : previousInt;
+        }
+        if (!infinite) {
+          targetSlide = previousTargetSlide - slidesToScroll;
+        }
+      } else if (options.message === "next") {
+        slideOffset = indexOffset === 0 ? slidesToScroll : indexOffset;
+        targetSlide = currentSlide + slideOffset;
+        if (lazyLoad && !infinite) {
+          targetSlide = (currentSlide + slidesToScroll) % slideCount + indexOffset;
+        }
+        if (!infinite) {
+          targetSlide = previousTargetSlide + slidesToScroll;
+        }
+      } else if (options.message === "dots") {
+        targetSlide = options.index * options.slidesToScroll;
+      } else if (options.message === "children") {
+        targetSlide = options.index;
+        if (infinite) {
+          var direction = siblingDirection(_objectSpread(_objectSpread({}, spec), {}, {
+            targetSlide
+          }));
+          if (targetSlide > options.currentSlide && direction === "left") {
+            targetSlide = targetSlide - slideCount;
+          } else if (targetSlide < options.currentSlide && direction === "right") {
+            targetSlide = targetSlide + slideCount;
+          }
+        }
+      } else if (options.message === "index") {
+        targetSlide = Number(options.index);
+      }
+      return targetSlide;
+    };
+    var keyHandler = exports.keyHandler = function keyHandler2(e, accessibility, rtl) {
+      if (e.target.tagName.match("TEXTAREA|INPUT|SELECT") || !accessibility) return "";
+      if (e.keyCode === 37) return rtl ? "next" : "previous";
+      if (e.keyCode === 39) return rtl ? "previous" : "next";
+      return "";
+    };
+    var swipeStart = exports.swipeStart = function swipeStart2(e, swipe, draggable) {
+      e.target.tagName === "IMG" && safePreventDefault(e);
+      if (!swipe || !draggable && e.type.indexOf("mouse") !== -1) return "";
+      return {
+        dragging: true,
+        touchObject: {
+          startX: e.touches ? e.touches[0].pageX : e.clientX,
+          startY: e.touches ? e.touches[0].pageY : e.clientY,
+          curX: e.touches ? e.touches[0].pageX : e.clientX,
+          curY: e.touches ? e.touches[0].pageY : e.clientY
+        }
+      };
+    };
+    var swipeMove = exports.swipeMove = function swipeMove2(e, spec) {
+      var scrolling = spec.scrolling, animating = spec.animating, vertical = spec.vertical, swipeToSlide = spec.swipeToSlide, verticalSwiping = spec.verticalSwiping, rtl = spec.rtl, currentSlide = spec.currentSlide, edgeFriction = spec.edgeFriction, edgeDragged = spec.edgeDragged, onEdge = spec.onEdge, swiped = spec.swiped, swiping = spec.swiping, slideCount = spec.slideCount, slidesToScroll = spec.slidesToScroll, infinite = spec.infinite, touchObject = spec.touchObject, swipeEvent = spec.swipeEvent, listHeight = spec.listHeight, listWidth = spec.listWidth;
+      if (scrolling) return;
+      if (animating) return safePreventDefault(e);
+      if (vertical && swipeToSlide && verticalSwiping) safePreventDefault(e);
+      var swipeLeft, state = {};
+      var curLeft = getTrackLeft(spec);
+      touchObject.curX = e.touches ? e.touches[0].pageX : e.clientX;
+      touchObject.curY = e.touches ? e.touches[0].pageY : e.clientY;
+      touchObject.swipeLength = Math.round(Math.sqrt(Math.pow(touchObject.curX - touchObject.startX, 2)));
+      var verticalSwipeLength = Math.round(Math.sqrt(Math.pow(touchObject.curY - touchObject.startY, 2)));
+      if (!verticalSwiping && !swiping && verticalSwipeLength > 10) {
+        return {
+          scrolling: true
+        };
+      }
+      if (verticalSwiping) touchObject.swipeLength = verticalSwipeLength;
+      var positionOffset = (!rtl ? 1 : -1) * (touchObject.curX > touchObject.startX ? 1 : -1);
+      if (verticalSwiping) positionOffset = touchObject.curY > touchObject.startY ? 1 : -1;
+      var dotCount = Math.ceil(slideCount / slidesToScroll);
+      var swipeDirection = getSwipeDirection(spec.touchObject, verticalSwiping);
+      var touchSwipeLength = touchObject.swipeLength;
+      if (!infinite) {
+        if (currentSlide === 0 && (swipeDirection === "right" || swipeDirection === "down") || currentSlide + 1 >= dotCount && (swipeDirection === "left" || swipeDirection === "up") || !canGoNext(spec) && (swipeDirection === "left" || swipeDirection === "up")) {
+          touchSwipeLength = touchObject.swipeLength * edgeFriction;
+          if (edgeDragged === false && onEdge) {
+            onEdge(swipeDirection);
+            state["edgeDragged"] = true;
+          }
+        }
+      }
+      if (!swiped && swipeEvent) {
+        swipeEvent(swipeDirection);
+        state["swiped"] = true;
+      }
+      if (!vertical) {
+        if (!rtl) {
+          swipeLeft = curLeft + touchSwipeLength * positionOffset;
+        } else {
+          swipeLeft = curLeft - touchSwipeLength * positionOffset;
+        }
+      } else {
+        swipeLeft = curLeft + touchSwipeLength * (listHeight / listWidth) * positionOffset;
+      }
+      if (verticalSwiping) {
+        swipeLeft = curLeft + touchSwipeLength * positionOffset;
+      }
+      state = _objectSpread(_objectSpread({}, state), {}, {
+        touchObject,
+        swipeLeft,
+        trackStyle: getTrackCSS(_objectSpread(_objectSpread({}, spec), {}, {
+          left: swipeLeft
+        }))
+      });
+      if (Math.abs(touchObject.curX - touchObject.startX) < Math.abs(touchObject.curY - touchObject.startY) * 0.8) {
+        return state;
+      }
+      if (touchObject.swipeLength > 10) {
+        state["swiping"] = true;
+        safePreventDefault(e);
+      }
+      return state;
+    };
+    var swipeEnd = exports.swipeEnd = function swipeEnd2(e, spec) {
+      var dragging = spec.dragging, swipe = spec.swipe, touchObject = spec.touchObject, listWidth = spec.listWidth, touchThreshold = spec.touchThreshold, verticalSwiping = spec.verticalSwiping, listHeight = spec.listHeight, swipeToSlide = spec.swipeToSlide, scrolling = spec.scrolling, onSwipe = spec.onSwipe, targetSlide = spec.targetSlide, currentSlide = spec.currentSlide, infinite = spec.infinite;
+      if (!dragging) {
+        if (swipe) safePreventDefault(e);
+        return {};
+      }
+      var minSwipe = verticalSwiping ? listHeight / touchThreshold : listWidth / touchThreshold;
+      var swipeDirection = getSwipeDirection(touchObject, verticalSwiping);
+      var state = {
+        dragging: false,
+        edgeDragged: false,
+        scrolling: false,
+        swiping: false,
+        swiped: false,
+        swipeLeft: null,
+        touchObject: {}
+      };
+      if (scrolling) {
+        return state;
+      }
+      if (!touchObject.swipeLength) {
+        return state;
+      }
+      if (touchObject.swipeLength > minSwipe) {
+        safePreventDefault(e);
+        if (onSwipe) {
+          onSwipe(swipeDirection);
+        }
+        var slideCount, newSlide;
+        var activeSlide = infinite ? currentSlide : targetSlide;
+        switch (swipeDirection) {
+          case "left":
+          case "up":
+            newSlide = activeSlide + getSlideCount(spec);
+            slideCount = swipeToSlide ? checkNavigable(spec, newSlide) : newSlide;
+            state["currentDirection"] = 0;
+            break;
+          case "right":
+          case "down":
+            newSlide = activeSlide - getSlideCount(spec);
+            slideCount = swipeToSlide ? checkNavigable(spec, newSlide) : newSlide;
+            state["currentDirection"] = 1;
+            break;
+          default:
+            slideCount = activeSlide;
+        }
+        state["triggerSlideHandler"] = slideCount;
+      } else {
+        var currentLeft = getTrackLeft(spec);
+        state["trackStyle"] = getTrackAnimateCSS(_objectSpread(_objectSpread({}, spec), {}, {
+          left: currentLeft
+        }));
+      }
+      return state;
+    };
+    var getNavigableIndexes = exports.getNavigableIndexes = function getNavigableIndexes2(spec) {
+      var max = spec.infinite ? spec.slideCount * 2 : spec.slideCount;
+      var breakpoint = spec.infinite ? spec.slidesToShow * -1 : 0;
+      var counter = spec.infinite ? spec.slidesToShow * -1 : 0;
+      var indexes = [];
+      while (breakpoint < max) {
+        indexes.push(breakpoint);
+        breakpoint = counter + spec.slidesToScroll;
+        counter += Math.min(spec.slidesToScroll, spec.slidesToShow);
+      }
+      return indexes;
+    };
+    var checkNavigable = exports.checkNavigable = function checkNavigable2(spec, index) {
+      var navigables = getNavigableIndexes(spec);
+      var prevNavigable = 0;
+      if (index > navigables[navigables.length - 1]) {
+        index = navigables[navigables.length - 1];
+      } else {
+        for (var n in navigables) {
+          if (index < navigables[n]) {
+            index = prevNavigable;
+            break;
+          }
+          prevNavigable = navigables[n];
+        }
+      }
+      return index;
+    };
+    var getSlideCount = exports.getSlideCount = function getSlideCount2(spec) {
+      var centerOffset = spec.centerMode ? spec.slideWidth * Math.floor(spec.slidesToShow / 2) : 0;
+      if (spec.swipeToSlide) {
+        var swipedSlide;
+        var slickList = spec.listRef;
+        var slides = slickList.querySelectorAll && slickList.querySelectorAll(".slick-slide") || [];
+        Array.from(slides).every(function(slide) {
+          if (!spec.vertical) {
+            if (slide.offsetLeft - centerOffset + getWidth(slide) / 2 > spec.swipeLeft * -1) {
+              swipedSlide = slide;
+              return false;
+            }
+          } else {
+            if (slide.offsetTop + getHeight(slide) / 2 > spec.swipeLeft * -1) {
+              swipedSlide = slide;
+              return false;
+            }
+          }
+          return true;
+        });
+        if (!swipedSlide) {
+          return 0;
+        }
+        var currentIndex = spec.rtl === true ? spec.slideCount - spec.currentSlide : spec.currentSlide;
+        var slidesTraversed = Math.abs(swipedSlide.dataset.index - currentIndex) || 1;
+        return slidesTraversed;
+      } else {
+        return spec.slidesToScroll;
+      }
+    };
+    var checkSpecKeys = exports.checkSpecKeys = function checkSpecKeys2(spec, keysArray) {
+      return keysArray.reduce(function(value, key) {
+        return value && spec.hasOwnProperty(key);
+      }, true) ? null : console.error("Keys Missing:", spec);
+    };
+    var getTrackCSS = exports.getTrackCSS = function getTrackCSS2(spec) {
+      checkSpecKeys(spec, ["left", "variableWidth", "slideCount", "slidesToShow", "slideWidth"]);
+      var trackWidth, trackHeight;
+      var trackChildren = spec.slideCount + 2 * spec.slidesToShow;
+      if (!spec.vertical) {
+        trackWidth = getTotalSlides(spec) * spec.slideWidth;
+      } else {
+        trackHeight = trackChildren * spec.slideHeight;
+      }
+      var style = {
+        opacity: 1,
+        transition: "",
+        WebkitTransition: ""
+      };
+      if (spec.useTransform) {
+        var WebkitTransform = !spec.vertical ? "translate3d(" + spec.left + "px, 0px, 0px)" : "translate3d(0px, " + spec.left + "px, 0px)";
+        var transform = !spec.vertical ? "translate3d(" + spec.left + "px, 0px, 0px)" : "translate3d(0px, " + spec.left + "px, 0px)";
+        var msTransform = !spec.vertical ? "translateX(" + spec.left + "px)" : "translateY(" + spec.left + "px)";
+        style = _objectSpread(_objectSpread({}, style), {}, {
+          WebkitTransform,
+          transform,
+          msTransform
+        });
+      } else {
+        if (spec.vertical) {
+          style["top"] = spec.left;
+        } else {
+          style["left"] = spec.left;
+        }
+      }
+      if (spec.fade) style = {
+        opacity: 1
+      };
+      if (trackWidth) style.width = trackWidth;
+      if (trackHeight) style.height = trackHeight;
+      if (window && !window.addEventListener && window.attachEvent) {
+        if (!spec.vertical) {
+          style.marginLeft = spec.left + "px";
+        } else {
+          style.marginTop = spec.left + "px";
+        }
+      }
+      return style;
+    };
+    var getTrackAnimateCSS = exports.getTrackAnimateCSS = function getTrackAnimateCSS2(spec) {
+      checkSpecKeys(spec, ["left", "variableWidth", "slideCount", "slidesToShow", "slideWidth", "speed", "cssEase"]);
+      var style = getTrackCSS(spec);
+      if (spec.useTransform) {
+        style.WebkitTransition = "-webkit-transform " + spec.speed + "ms " + spec.cssEase;
+        style.transition = "transform " + spec.speed + "ms " + spec.cssEase;
+      } else {
+        if (spec.vertical) {
+          style.transition = "top " + spec.speed + "ms " + spec.cssEase;
+        } else {
+          style.transition = "left " + spec.speed + "ms " + spec.cssEase;
+        }
+      }
+      return style;
+    };
+    var getTrackLeft = exports.getTrackLeft = function getTrackLeft2(spec) {
+      if (spec.unslick) {
+        return 0;
+      }
+      checkSpecKeys(spec, ["slideIndex", "trackRef", "infinite", "centerMode", "slideCount", "slidesToShow", "slidesToScroll", "slideWidth", "listWidth", "variableWidth", "slideHeight"]);
+      var slideIndex = spec.slideIndex, trackRef = spec.trackRef, infinite = spec.infinite, centerMode = spec.centerMode, slideCount = spec.slideCount, slidesToShow = spec.slidesToShow, slidesToScroll = spec.slidesToScroll, slideWidth = spec.slideWidth, listWidth = spec.listWidth, variableWidth = spec.variableWidth, slideHeight = spec.slideHeight, fade = spec.fade, vertical = spec.vertical;
+      var slideOffset = 0;
+      var targetLeft;
+      var targetSlide;
+      var verticalOffset = 0;
+      if (fade || spec.slideCount === 1) {
+        return 0;
+      }
+      var slidesToOffset = 0;
+      if (infinite) {
+        slidesToOffset = -getPreClones(spec);
+        if (slideCount % slidesToScroll !== 0 && slideIndex + slidesToScroll > slideCount) {
+          slidesToOffset = -(slideIndex > slideCount ? slidesToShow - (slideIndex - slideCount) : slideCount % slidesToScroll);
+        }
+        if (centerMode) {
+          slidesToOffset += parseInt(slidesToShow / 2);
+        }
+      } else {
+        if (slideCount % slidesToScroll !== 0 && slideIndex + slidesToScroll > slideCount) {
+          slidesToOffset = slidesToShow - slideCount % slidesToScroll;
+        }
+        if (centerMode) {
+          slidesToOffset = parseInt(slidesToShow / 2);
+        }
+      }
+      slideOffset = slidesToOffset * slideWidth;
+      verticalOffset = slidesToOffset * slideHeight;
+      if (!vertical) {
+        targetLeft = slideIndex * slideWidth * -1 + slideOffset;
+      } else {
+        targetLeft = slideIndex * slideHeight * -1 + verticalOffset;
+      }
+      if (variableWidth === true) {
+        var targetSlideIndex;
+        var trackElem = trackRef && trackRef.node;
+        targetSlideIndex = slideIndex + getPreClones(spec);
+        targetSlide = trackElem && trackElem.childNodes[targetSlideIndex];
+        targetLeft = targetSlide ? targetSlide.offsetLeft * -1 : 0;
+        if (centerMode === true) {
+          targetSlideIndex = infinite ? slideIndex + getPreClones(spec) : slideIndex;
+          targetSlide = trackElem && trackElem.children[targetSlideIndex];
+          targetLeft = 0;
+          for (var slide = 0; slide < targetSlideIndex; slide++) {
+            targetLeft -= trackElem && trackElem.children[slide] && trackElem.children[slide].offsetWidth;
+          }
+          targetLeft -= parseInt(spec.centerPadding);
+          targetLeft += targetSlide && (listWidth - targetSlide.offsetWidth) / 2;
+        }
+      }
+      return targetLeft;
+    };
+    var getPreClones = exports.getPreClones = function getPreClones2(spec) {
+      if (spec.unslick || !spec.infinite) {
+        return 0;
+      }
+      if (spec.variableWidth) {
+        return spec.slideCount;
+      }
+      return spec.slidesToShow + (spec.centerMode ? 1 : 0);
+    };
+    var getPostClones = exports.getPostClones = function getPostClones2(spec) {
+      if (spec.unslick || !spec.infinite) {
+        return 0;
+      }
+      return spec.slideCount;
+    };
+    var getTotalSlides = exports.getTotalSlides = function getTotalSlides2(spec) {
+      return spec.slideCount === 1 ? 1 : getPreClones(spec) + spec.slideCount + getPostClones(spec);
+    };
+    var siblingDirection = exports.siblingDirection = function siblingDirection2(spec) {
+      if (spec.targetSlide > spec.currentSlide) {
+        if (spec.targetSlide > spec.currentSlide + slidesOnRight(spec)) {
+          return "left";
+        }
+        return "right";
+      } else {
+        if (spec.targetSlide < spec.currentSlide - slidesOnLeft(spec)) {
+          return "right";
+        }
+        return "left";
+      }
+    };
+    var slidesOnRight = exports.slidesOnRight = function slidesOnRight2(_ref) {
+      var slidesToShow = _ref.slidesToShow, centerMode = _ref.centerMode, rtl = _ref.rtl, centerPadding = _ref.centerPadding;
+      if (centerMode) {
+        var right = (slidesToShow - 1) / 2 + 1;
+        if (parseInt(centerPadding) > 0) right += 1;
+        if (rtl && slidesToShow % 2 === 0) right += 1;
+        return right;
+      }
+      if (rtl) {
+        return 0;
+      }
+      return slidesToShow - 1;
+    };
+    var slidesOnLeft = exports.slidesOnLeft = function slidesOnLeft2(_ref2) {
+      var slidesToShow = _ref2.slidesToShow, centerMode = _ref2.centerMode, rtl = _ref2.rtl, centerPadding = _ref2.centerPadding;
+      if (centerMode) {
+        var left = (slidesToShow - 1) / 2 + 1;
+        if (parseInt(centerPadding) > 0) left += 1;
+        if (!rtl && slidesToShow % 2 === 0) left += 1;
+        return left;
+      }
+      if (rtl) {
+        return slidesToShow - 1;
+      }
+      return 0;
+    };
+    var canUseDOM = exports.canUseDOM = function canUseDOM2() {
+      return !!(typeof window !== "undefined" && window.document && window.document.createElement);
+    };
+    var validSettings = exports.validSettings = Object.keys(_defaultProps["default"]);
+    function filterSettings(settings) {
+      return validSettings.reduce(function(acc, settingName) {
+        if (settings.hasOwnProperty(settingName)) {
+          acc[settingName] = settings[settingName];
+        }
+        return acc;
+      }, {});
+    }
+  }
+});
+
+// node_modules/react-slick/lib/track.js
+var require_track = __commonJS({
+  "node_modules/react-slick/lib/track.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.Track = void 0;
+    var _react = _interopRequireDefault(require_react());
+    var _classnames = _interopRequireDefault(require_classnames());
+    var _innerSliderUtils = require_innerSliderUtils();
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    function _typeof(o) {
+      "@babel/helpers - typeof";
+      return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+        return typeof o2;
+      } : function(o2) {
+        return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+      }, _typeof(o);
+    }
+    function _extends4() {
+      _extends4 = Object.assign ? Object.assign.bind() : function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      };
+      return _extends4.apply(this, arguments);
+    }
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+      }
+    }
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+      }
+    }
+    function _createClass(Constructor, protoProps, staticProps) {
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) _defineProperties(Constructor, staticProps);
+      Object.defineProperty(Constructor, "prototype", { writable: false });
+      return Constructor;
+    }
+    function _inherits(subClass, superClass) {
+      if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function");
+      }
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
+      Object.defineProperty(subClass, "prototype", { writable: false });
+      if (superClass) _setPrototypeOf(subClass, superClass);
+    }
+    function _setPrototypeOf(o, p) {
+      _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf2(o2, p2) {
+        o2.__proto__ = p2;
+        return o2;
+      };
+      return _setPrototypeOf(o, p);
+    }
+    function _createSuper(Derived) {
+      var hasNativeReflectConstruct = _isNativeReflectConstruct();
+      return function _createSuperInternal() {
+        var Super = _getPrototypeOf(Derived), result;
+        if (hasNativeReflectConstruct) {
+          var NewTarget = _getPrototypeOf(this).constructor;
+          result = Reflect.construct(Super, arguments, NewTarget);
+        } else {
+          result = Super.apply(this, arguments);
+        }
+        return _possibleConstructorReturn(this, result);
+      };
+    }
+    function _possibleConstructorReturn(self2, call) {
+      if (call && (_typeof(call) === "object" || typeof call === "function")) {
+        return call;
+      } else if (call !== void 0) {
+        throw new TypeError("Derived constructors may only return object or undefined");
+      }
+      return _assertThisInitialized(self2);
+    }
+    function _assertThisInitialized(self2) {
+      if (self2 === void 0) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      }
+      return self2;
+    }
+    function _isNativeReflectConstruct() {
+      try {
+        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+        }));
+      } catch (t2) {
+      }
+      return (_isNativeReflectConstruct = function _isNativeReflectConstruct2() {
+        return !!t;
+      })();
+    }
+    function _getPrototypeOf(o) {
+      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf2(o2) {
+        return o2.__proto__ || Object.getPrototypeOf(o2);
+      };
+      return _getPrototypeOf(o);
+    }
+    function ownKeys(e, r) {
+      var t = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r2) {
+          return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+        })), t.push.apply(t, o);
+      }
+      return t;
+    }
+    function _objectSpread(e) {
+      for (var r = 1; r < arguments.length; r++) {
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+          _defineProperty(e, r2, t[r2]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+          Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+        });
+      }
+      return e;
+    }
+    function _defineProperty(obj, key, value) {
+      key = _toPropertyKey(key);
+      if (key in obj) {
+        Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+      } else {
+        obj[key] = value;
+      }
+      return obj;
+    }
+    function _toPropertyKey(t) {
+      var i = _toPrimitive(t, "string");
+      return "symbol" == _typeof(i) ? i : String(i);
+    }
+    function _toPrimitive(t, r) {
+      if ("object" != _typeof(t) || !t) return t;
+      var e = t[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r ? String : Number)(t);
+    }
+    var getSlideClasses = function getSlideClasses2(spec) {
+      var slickActive, slickCenter, slickCloned;
+      var centerOffset, index;
+      if (spec.rtl) {
+        index = spec.slideCount - 1 - spec.index;
+      } else {
+        index = spec.index;
+      }
+      slickCloned = index < 0 || index >= spec.slideCount;
+      if (spec.centerMode) {
+        centerOffset = Math.floor(spec.slidesToShow / 2);
+        slickCenter = (index - spec.currentSlide) % spec.slideCount === 0;
+        if (index > spec.currentSlide - centerOffset - 1 && index <= spec.currentSlide + centerOffset) {
+          slickActive = true;
+        }
+      } else {
+        slickActive = spec.currentSlide <= index && index < spec.currentSlide + spec.slidesToShow;
+      }
+      var focusedSlide;
+      if (spec.targetSlide < 0) {
+        focusedSlide = spec.targetSlide + spec.slideCount;
+      } else if (spec.targetSlide >= spec.slideCount) {
+        focusedSlide = spec.targetSlide - spec.slideCount;
+      } else {
+        focusedSlide = spec.targetSlide;
+      }
+      var slickCurrent = index === focusedSlide;
+      return {
+        "slick-slide": true,
+        "slick-active": slickActive,
+        "slick-center": slickCenter,
+        "slick-cloned": slickCloned,
+        "slick-current": slickCurrent
+        // dubious in case of RTL
+      };
+    };
+    var getSlideStyle = function getSlideStyle2(spec) {
+      var style = {};
+      if (spec.variableWidth === void 0 || spec.variableWidth === false) {
+        style.width = spec.slideWidth;
+      }
+      if (spec.fade) {
+        style.position = "relative";
+        if (spec.vertical) {
+          style.top = -spec.index * parseInt(spec.slideHeight);
+        } else {
+          style.left = -spec.index * parseInt(spec.slideWidth);
+        }
+        style.opacity = spec.currentSlide === spec.index ? 1 : 0;
+        style.zIndex = spec.currentSlide === spec.index ? 999 : 998;
+        if (spec.useCSS) {
+          style.transition = "opacity " + spec.speed + "ms " + spec.cssEase + ", visibility " + spec.speed + "ms " + spec.cssEase;
+        }
+      }
+      return style;
+    };
+    var getKey = function getKey2(child, fallbackKey) {
+      return child.key || fallbackKey;
+    };
+    var renderSlides = function renderSlides2(spec) {
+      var key;
+      var slides = [];
+      var preCloneSlides = [];
+      var postCloneSlides = [];
+      var childrenCount = _react["default"].Children.count(spec.children);
+      var startIndex = (0, _innerSliderUtils.lazyStartIndex)(spec);
+      var endIndex = (0, _innerSliderUtils.lazyEndIndex)(spec);
+      _react["default"].Children.forEach(spec.children, function(elem, index) {
+        var child;
+        var childOnClickOptions = {
+          message: "children",
+          index,
+          slidesToScroll: spec.slidesToScroll,
+          currentSlide: spec.currentSlide
+        };
+        if (!spec.lazyLoad || spec.lazyLoad && spec.lazyLoadedList.indexOf(index) >= 0) {
+          child = elem;
+        } else {
+          child = /* @__PURE__ */ _react["default"].createElement("div", null);
+        }
+        var childStyle = getSlideStyle(_objectSpread(_objectSpread({}, spec), {}, {
+          index
+        }));
+        var slideClass = child.props.className || "";
+        var slideClasses = getSlideClasses(_objectSpread(_objectSpread({}, spec), {}, {
+          index
+        }));
+        slides.push(/* @__PURE__ */ _react["default"].cloneElement(child, {
+          key: "original" + getKey(child, index),
+          "data-index": index,
+          className: (0, _classnames["default"])(slideClasses, slideClass),
+          tabIndex: "-1",
+          "aria-hidden": !slideClasses["slick-active"],
+          style: _objectSpread(_objectSpread({
+            outline: "none"
+          }, child.props.style || {}), childStyle),
+          onClick: function onClick(e) {
+            child.props && child.props.onClick && child.props.onClick(e);
+            if (spec.focusOnSelect) {
+              spec.focusOnSelect(childOnClickOptions);
+            }
+          }
+        }));
+        if (spec.infinite && spec.fade === false) {
+          var preCloneNo = childrenCount - index;
+          if (preCloneNo <= (0, _innerSliderUtils.getPreClones)(spec)) {
+            key = -preCloneNo;
+            if (key >= startIndex) {
+              child = elem;
+            }
+            slideClasses = getSlideClasses(_objectSpread(_objectSpread({}, spec), {}, {
+              index: key
+            }));
+            preCloneSlides.push(/* @__PURE__ */ _react["default"].cloneElement(child, {
+              key: "precloned" + getKey(child, key),
+              "data-index": key,
+              tabIndex: "-1",
+              className: (0, _classnames["default"])(slideClasses, slideClass),
+              "aria-hidden": !slideClasses["slick-active"],
+              style: _objectSpread(_objectSpread({}, child.props.style || {}), childStyle),
+              onClick: function onClick(e) {
+                child.props && child.props.onClick && child.props.onClick(e);
+                if (spec.focusOnSelect) {
+                  spec.focusOnSelect(childOnClickOptions);
+                }
+              }
+            }));
+          }
+          key = childrenCount + index;
+          if (key < endIndex) {
+            child = elem;
+          }
+          slideClasses = getSlideClasses(_objectSpread(_objectSpread({}, spec), {}, {
+            index: key
+          }));
+          postCloneSlides.push(/* @__PURE__ */ _react["default"].cloneElement(child, {
+            key: "postcloned" + getKey(child, key),
+            "data-index": key,
+            tabIndex: "-1",
+            className: (0, _classnames["default"])(slideClasses, slideClass),
+            "aria-hidden": !slideClasses["slick-active"],
+            style: _objectSpread(_objectSpread({}, child.props.style || {}), childStyle),
+            onClick: function onClick(e) {
+              child.props && child.props.onClick && child.props.onClick(e);
+              if (spec.focusOnSelect) {
+                spec.focusOnSelect(childOnClickOptions);
+              }
+            }
+          }));
+        }
+      });
+      if (spec.rtl) {
+        return preCloneSlides.concat(slides, postCloneSlides).reverse();
+      } else {
+        return preCloneSlides.concat(slides, postCloneSlides);
+      }
+    };
+    var Track = exports.Track = /* @__PURE__ */ function(_React$PureComponent) {
+      _inherits(Track2, _React$PureComponent);
+      var _super = _createSuper(Track2);
+      function Track2() {
+        var _this;
+        _classCallCheck(this, Track2);
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+        _this = _super.call.apply(_super, [this].concat(args));
+        _defineProperty(_assertThisInitialized(_this), "node", null);
+        _defineProperty(_assertThisInitialized(_this), "handleRef", function(ref) {
+          _this.node = ref;
+        });
+        return _this;
+      }
+      _createClass(Track2, [{
+        key: "render",
+        value: function render() {
+          var slides = renderSlides(this.props);
+          var _this$props = this.props, onMouseEnter = _this$props.onMouseEnter, onMouseOver = _this$props.onMouseOver, onMouseLeave = _this$props.onMouseLeave;
+          var mouseEvents = {
+            onMouseEnter,
+            onMouseOver,
+            onMouseLeave
+          };
+          return /* @__PURE__ */ _react["default"].createElement("div", _extends4({
+            ref: this.handleRef,
+            className: "slick-track",
+            style: this.props.trackStyle
+          }, mouseEvents), slides);
+        }
+      }]);
+      return Track2;
+    }(_react["default"].PureComponent);
+  }
+});
+
+// node_modules/react-slick/lib/dots.js
+var require_dots = __commonJS({
+  "node_modules/react-slick/lib/dots.js"(exports) {
+    "use strict";
+    function _typeof(o) {
+      "@babel/helpers - typeof";
+      return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+        return typeof o2;
+      } : function(o2) {
+        return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+      }, _typeof(o);
+    }
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.Dots = void 0;
+    var _react = _interopRequireDefault(require_react());
+    var _classnames = _interopRequireDefault(require_classnames());
+    var _innerSliderUtils = require_innerSliderUtils();
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    function ownKeys(e, r) {
+      var t = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r2) {
+          return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+        })), t.push.apply(t, o);
+      }
+      return t;
+    }
+    function _objectSpread(e) {
+      for (var r = 1; r < arguments.length; r++) {
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+          _defineProperty(e, r2, t[r2]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+          Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+        });
+      }
+      return e;
+    }
+    function _defineProperty(obj, key, value) {
+      key = _toPropertyKey(key);
+      if (key in obj) {
+        Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+      } else {
+        obj[key] = value;
+      }
+      return obj;
+    }
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+      }
+    }
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+      }
+    }
+    function _createClass(Constructor, protoProps, staticProps) {
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) _defineProperties(Constructor, staticProps);
+      Object.defineProperty(Constructor, "prototype", { writable: false });
+      return Constructor;
+    }
+    function _toPropertyKey(t) {
+      var i = _toPrimitive(t, "string");
+      return "symbol" == _typeof(i) ? i : String(i);
+    }
+    function _toPrimitive(t, r) {
+      if ("object" != _typeof(t) || !t) return t;
+      var e = t[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r ? String : Number)(t);
+    }
+    function _inherits(subClass, superClass) {
+      if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function");
+      }
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
+      Object.defineProperty(subClass, "prototype", { writable: false });
+      if (superClass) _setPrototypeOf(subClass, superClass);
+    }
+    function _setPrototypeOf(o, p) {
+      _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf2(o2, p2) {
+        o2.__proto__ = p2;
+        return o2;
+      };
+      return _setPrototypeOf(o, p);
+    }
+    function _createSuper(Derived) {
+      var hasNativeReflectConstruct = _isNativeReflectConstruct();
+      return function _createSuperInternal() {
+        var Super = _getPrototypeOf(Derived), result;
+        if (hasNativeReflectConstruct) {
+          var NewTarget = _getPrototypeOf(this).constructor;
+          result = Reflect.construct(Super, arguments, NewTarget);
+        } else {
+          result = Super.apply(this, arguments);
+        }
+        return _possibleConstructorReturn(this, result);
+      };
+    }
+    function _possibleConstructorReturn(self2, call) {
+      if (call && (_typeof(call) === "object" || typeof call === "function")) {
+        return call;
+      } else if (call !== void 0) {
+        throw new TypeError("Derived constructors may only return object or undefined");
+      }
+      return _assertThisInitialized(self2);
+    }
+    function _assertThisInitialized(self2) {
+      if (self2 === void 0) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      }
+      return self2;
+    }
+    function _isNativeReflectConstruct() {
+      try {
+        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+        }));
+      } catch (t2) {
+      }
+      return (_isNativeReflectConstruct = function _isNativeReflectConstruct2() {
+        return !!t;
+      })();
+    }
+    function _getPrototypeOf(o) {
+      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf2(o2) {
+        return o2.__proto__ || Object.getPrototypeOf(o2);
+      };
+      return _getPrototypeOf(o);
+    }
+    var getDotCount = function getDotCount2(spec) {
+      var dots;
+      if (spec.infinite) {
+        dots = Math.ceil(spec.slideCount / spec.slidesToScroll);
+      } else {
+        dots = Math.ceil((spec.slideCount - spec.slidesToShow) / spec.slidesToScroll) + 1;
+      }
+      return dots;
+    };
+    var Dots = exports.Dots = /* @__PURE__ */ function(_React$PureComponent) {
+      _inherits(Dots2, _React$PureComponent);
+      var _super = _createSuper(Dots2);
+      function Dots2() {
+        _classCallCheck(this, Dots2);
+        return _super.apply(this, arguments);
+      }
+      _createClass(Dots2, [{
+        key: "clickHandler",
+        value: function clickHandler(options, e) {
+          e.preventDefault();
+          this.props.clickHandler(options);
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var _this$props = this.props, onMouseEnter = _this$props.onMouseEnter, onMouseOver = _this$props.onMouseOver, onMouseLeave = _this$props.onMouseLeave, infinite = _this$props.infinite, slidesToScroll = _this$props.slidesToScroll, slidesToShow = _this$props.slidesToShow, slideCount = _this$props.slideCount, currentSlide = _this$props.currentSlide;
+          var dotCount = getDotCount({
+            slideCount,
+            slidesToScroll,
+            slidesToShow,
+            infinite
+          });
+          var mouseEvents = {
+            onMouseEnter,
+            onMouseOver,
+            onMouseLeave
+          };
+          var dots = [];
+          for (var i = 0; i < dotCount; i++) {
+            var _rightBound = (i + 1) * slidesToScroll - 1;
+            var rightBound = infinite ? _rightBound : (0, _innerSliderUtils.clamp)(_rightBound, 0, slideCount - 1);
+            var _leftBound = rightBound - (slidesToScroll - 1);
+            var leftBound = infinite ? _leftBound : (0, _innerSliderUtils.clamp)(_leftBound, 0, slideCount - 1);
+            var className = (0, _classnames["default"])({
+              "slick-active": infinite ? currentSlide >= leftBound && currentSlide <= rightBound : currentSlide === leftBound
+            });
+            var dotOptions = {
+              message: "dots",
+              index: i,
+              slidesToScroll,
+              currentSlide
+            };
+            var onClick = this.clickHandler.bind(this, dotOptions);
+            dots = dots.concat(/* @__PURE__ */ _react["default"].createElement("li", {
+              key: i,
+              className
+            }, /* @__PURE__ */ _react["default"].cloneElement(this.props.customPaging(i), {
+              onClick
+            })));
+          }
+          return /* @__PURE__ */ _react["default"].cloneElement(this.props.appendDots(dots), _objectSpread({
+            className: this.props.dotsClass
+          }, mouseEvents));
+        }
+      }]);
+      return Dots2;
+    }(_react["default"].PureComponent);
+  }
+});
+
+// node_modules/react-slick/lib/arrows.js
+var require_arrows = __commonJS({
+  "node_modules/react-slick/lib/arrows.js"(exports) {
+    "use strict";
+    function _typeof(o) {
+      "@babel/helpers - typeof";
+      return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+        return typeof o2;
+      } : function(o2) {
+        return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+      }, _typeof(o);
+    }
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.PrevArrow = exports.NextArrow = void 0;
+    var _react = _interopRequireDefault(require_react());
+    var _classnames = _interopRequireDefault(require_classnames());
+    var _innerSliderUtils = require_innerSliderUtils();
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    function _extends4() {
+      _extends4 = Object.assign ? Object.assign.bind() : function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      };
+      return _extends4.apply(this, arguments);
+    }
+    function ownKeys(e, r) {
+      var t = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r2) {
+          return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+        })), t.push.apply(t, o);
+      }
+      return t;
+    }
+    function _objectSpread(e) {
+      for (var r = 1; r < arguments.length; r++) {
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+          _defineProperty(e, r2, t[r2]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+          Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+        });
+      }
+      return e;
+    }
+    function _defineProperty(obj, key, value) {
+      key = _toPropertyKey(key);
+      if (key in obj) {
+        Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+      } else {
+        obj[key] = value;
+      }
+      return obj;
+    }
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+      }
+    }
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+      }
+    }
+    function _createClass(Constructor, protoProps, staticProps) {
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) _defineProperties(Constructor, staticProps);
+      Object.defineProperty(Constructor, "prototype", { writable: false });
+      return Constructor;
+    }
+    function _toPropertyKey(t) {
+      var i = _toPrimitive(t, "string");
+      return "symbol" == _typeof(i) ? i : String(i);
+    }
+    function _toPrimitive(t, r) {
+      if ("object" != _typeof(t) || !t) return t;
+      var e = t[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r ? String : Number)(t);
+    }
+    function _inherits(subClass, superClass) {
+      if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function");
+      }
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
+      Object.defineProperty(subClass, "prototype", { writable: false });
+      if (superClass) _setPrototypeOf(subClass, superClass);
+    }
+    function _setPrototypeOf(o, p) {
+      _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf2(o2, p2) {
+        o2.__proto__ = p2;
+        return o2;
+      };
+      return _setPrototypeOf(o, p);
+    }
+    function _createSuper(Derived) {
+      var hasNativeReflectConstruct = _isNativeReflectConstruct();
+      return function _createSuperInternal() {
+        var Super = _getPrototypeOf(Derived), result;
+        if (hasNativeReflectConstruct) {
+          var NewTarget = _getPrototypeOf(this).constructor;
+          result = Reflect.construct(Super, arguments, NewTarget);
+        } else {
+          result = Super.apply(this, arguments);
+        }
+        return _possibleConstructorReturn(this, result);
+      };
+    }
+    function _possibleConstructorReturn(self2, call) {
+      if (call && (_typeof(call) === "object" || typeof call === "function")) {
+        return call;
+      } else if (call !== void 0) {
+        throw new TypeError("Derived constructors may only return object or undefined");
+      }
+      return _assertThisInitialized(self2);
+    }
+    function _assertThisInitialized(self2) {
+      if (self2 === void 0) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      }
+      return self2;
+    }
+    function _isNativeReflectConstruct() {
+      try {
+        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+        }));
+      } catch (t2) {
+      }
+      return (_isNativeReflectConstruct = function _isNativeReflectConstruct2() {
+        return !!t;
+      })();
+    }
+    function _getPrototypeOf(o) {
+      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf2(o2) {
+        return o2.__proto__ || Object.getPrototypeOf(o2);
+      };
+      return _getPrototypeOf(o);
+    }
+    var PrevArrow = exports.PrevArrow = /* @__PURE__ */ function(_React$PureComponent) {
+      _inherits(PrevArrow2, _React$PureComponent);
+      var _super = _createSuper(PrevArrow2);
+      function PrevArrow2() {
+        _classCallCheck(this, PrevArrow2);
+        return _super.apply(this, arguments);
+      }
+      _createClass(PrevArrow2, [{
+        key: "clickHandler",
+        value: function clickHandler(options, e) {
+          if (e) {
+            e.preventDefault();
+          }
+          this.props.clickHandler(options, e);
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var prevClasses = {
+            "slick-arrow": true,
+            "slick-prev": true
+          };
+          var prevHandler = this.clickHandler.bind(this, {
+            message: "previous"
+          });
+          if (!this.props.infinite && (this.props.currentSlide === 0 || this.props.slideCount <= this.props.slidesToShow)) {
+            prevClasses["slick-disabled"] = true;
+            prevHandler = null;
+          }
+          var prevArrowProps = {
+            key: "0",
+            "data-role": "none",
+            className: (0, _classnames["default"])(prevClasses),
+            style: {
+              display: "block"
+            },
+            onClick: prevHandler
+          };
+          var customProps = {
+            currentSlide: this.props.currentSlide,
+            slideCount: this.props.slideCount
+          };
+          var prevArrow;
+          if (this.props.prevArrow) {
+            prevArrow = /* @__PURE__ */ _react["default"].cloneElement(this.props.prevArrow, _objectSpread(_objectSpread({}, prevArrowProps), customProps));
+          } else {
+            prevArrow = /* @__PURE__ */ _react["default"].createElement("button", _extends4({
+              key: "0",
+              type: "button"
+            }, prevArrowProps), " ", "Previous");
+          }
+          return prevArrow;
+        }
+      }]);
+      return PrevArrow2;
+    }(_react["default"].PureComponent);
+    var NextArrow = exports.NextArrow = /* @__PURE__ */ function(_React$PureComponent2) {
+      _inherits(NextArrow2, _React$PureComponent2);
+      var _super2 = _createSuper(NextArrow2);
+      function NextArrow2() {
+        _classCallCheck(this, NextArrow2);
+        return _super2.apply(this, arguments);
+      }
+      _createClass(NextArrow2, [{
+        key: "clickHandler",
+        value: function clickHandler(options, e) {
+          if (e) {
+            e.preventDefault();
+          }
+          this.props.clickHandler(options, e);
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var nextClasses = {
+            "slick-arrow": true,
+            "slick-next": true
+          };
+          var nextHandler = this.clickHandler.bind(this, {
+            message: "next"
+          });
+          if (!(0, _innerSliderUtils.canGoNext)(this.props)) {
+            nextClasses["slick-disabled"] = true;
+            nextHandler = null;
+          }
+          var nextArrowProps = {
+            key: "1",
+            "data-role": "none",
+            className: (0, _classnames["default"])(nextClasses),
+            style: {
+              display: "block"
+            },
+            onClick: nextHandler
+          };
+          var customProps = {
+            currentSlide: this.props.currentSlide,
+            slideCount: this.props.slideCount
+          };
+          var nextArrow;
+          if (this.props.nextArrow) {
+            nextArrow = /* @__PURE__ */ _react["default"].cloneElement(this.props.nextArrow, _objectSpread(_objectSpread({}, nextArrowProps), customProps));
+          } else {
+            nextArrow = /* @__PURE__ */ _react["default"].createElement("button", _extends4({
+              key: "1",
+              type: "button"
+            }, nextArrowProps), " ", "Next");
+          }
+          return nextArrow;
+        }
+      }]);
+      return NextArrow2;
+    }(_react["default"].PureComponent);
+  }
+});
+
+// node_modules/resize-observer-polyfill/dist/ResizeObserver.js
+var require_ResizeObserver = __commonJS({
+  "node_modules/resize-observer-polyfill/dist/ResizeObserver.js"(exports, module) {
+    (function(global2, factory) {
+      typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : global2.ResizeObserver = factory();
+    })(exports, function() {
+      "use strict";
+      var MapShim = function() {
+        if (typeof Map !== "undefined") {
+          return Map;
+        }
+        function getIndex(arr, key) {
+          var result = -1;
+          arr.some(function(entry, index2) {
+            if (entry[0] === key) {
+              result = index2;
+              return true;
+            }
+            return false;
+          });
+          return result;
+        }
+        return (
+          /** @class */
+          function() {
+            function class_1() {
+              this.__entries__ = [];
+            }
+            Object.defineProperty(class_1.prototype, "size", {
+              /**
+               * @returns {boolean}
+               */
+              get: function() {
+                return this.__entries__.length;
+              },
+              enumerable: true,
+              configurable: true
+            });
+            class_1.prototype.get = function(key) {
+              var index2 = getIndex(this.__entries__, key);
+              var entry = this.__entries__[index2];
+              return entry && entry[1];
+            };
+            class_1.prototype.set = function(key, value) {
+              var index2 = getIndex(this.__entries__, key);
+              if (~index2) {
+                this.__entries__[index2][1] = value;
+              } else {
+                this.__entries__.push([key, value]);
+              }
+            };
+            class_1.prototype.delete = function(key) {
+              var entries = this.__entries__;
+              var index2 = getIndex(entries, key);
+              if (~index2) {
+                entries.splice(index2, 1);
+              }
+            };
+            class_1.prototype.has = function(key) {
+              return !!~getIndex(this.__entries__, key);
+            };
+            class_1.prototype.clear = function() {
+              this.__entries__.splice(0);
+            };
+            class_1.prototype.forEach = function(callback, ctx) {
+              if (ctx === void 0) {
+                ctx = null;
+              }
+              for (var _i = 0, _a = this.__entries__; _i < _a.length; _i++) {
+                var entry = _a[_i];
+                callback.call(ctx, entry[1], entry[0]);
+              }
+            };
+            return class_1;
+          }()
+        );
+      }();
+      var isBrowser2 = typeof window !== "undefined" && typeof document !== "undefined" && window.document === document;
+      var global$1 = function() {
+        if (typeof global !== "undefined" && global.Math === Math) {
+          return global;
+        }
+        if (typeof self !== "undefined" && self.Math === Math) {
+          return self;
+        }
+        if (typeof window !== "undefined" && window.Math === Math) {
+          return window;
+        }
+        return Function("return this")();
+      }();
+      var requestAnimationFrame$1 = function() {
+        if (typeof requestAnimationFrame === "function") {
+          return requestAnimationFrame.bind(global$1);
+        }
+        return function(callback) {
+          return setTimeout(function() {
+            return callback(Date.now());
+          }, 1e3 / 60);
+        };
+      }();
+      var trailingTimeout = 2;
+      function throttle(callback, delay) {
+        var leadingCall = false, trailingCall = false, lastCallTime = 0;
+        function resolvePending() {
+          if (leadingCall) {
+            leadingCall = false;
+            callback();
+          }
+          if (trailingCall) {
+            proxy();
+          }
+        }
+        function timeoutCallback() {
+          requestAnimationFrame$1(resolvePending);
+        }
+        function proxy() {
+          var timeStamp = Date.now();
+          if (leadingCall) {
+            if (timeStamp - lastCallTime < trailingTimeout) {
+              return;
+            }
+            trailingCall = true;
+          } else {
+            leadingCall = true;
+            trailingCall = false;
+            setTimeout(timeoutCallback, delay);
+          }
+          lastCallTime = timeStamp;
+        }
+        return proxy;
+      }
+      var REFRESH_DELAY = 20;
+      var transitionKeys = ["top", "right", "bottom", "left", "width", "height", "size", "weight"];
+      var mutationObserverSupported = typeof MutationObserver !== "undefined";
+      var ResizeObserverController = (
+        /** @class */
+        function() {
+          function ResizeObserverController2() {
+            this.connected_ = false;
+            this.mutationEventsAdded_ = false;
+            this.mutationsObserver_ = null;
+            this.observers_ = [];
+            this.onTransitionEnd_ = this.onTransitionEnd_.bind(this);
+            this.refresh = throttle(this.refresh.bind(this), REFRESH_DELAY);
+          }
+          ResizeObserverController2.prototype.addObserver = function(observer) {
+            if (!~this.observers_.indexOf(observer)) {
+              this.observers_.push(observer);
+            }
+            if (!this.connected_) {
+              this.connect_();
+            }
+          };
+          ResizeObserverController2.prototype.removeObserver = function(observer) {
+            var observers2 = this.observers_;
+            var index2 = observers2.indexOf(observer);
+            if (~index2) {
+              observers2.splice(index2, 1);
+            }
+            if (!observers2.length && this.connected_) {
+              this.disconnect_();
+            }
+          };
+          ResizeObserverController2.prototype.refresh = function() {
+            var changesDetected = this.updateObservers_();
+            if (changesDetected) {
+              this.refresh();
+            }
+          };
+          ResizeObserverController2.prototype.updateObservers_ = function() {
+            var activeObservers = this.observers_.filter(function(observer) {
+              return observer.gatherActive(), observer.hasActive();
+            });
+            activeObservers.forEach(function(observer) {
+              return observer.broadcastActive();
+            });
+            return activeObservers.length > 0;
+          };
+          ResizeObserverController2.prototype.connect_ = function() {
+            if (!isBrowser2 || this.connected_) {
+              return;
+            }
+            document.addEventListener("transitionend", this.onTransitionEnd_);
+            window.addEventListener("resize", this.refresh);
+            if (mutationObserverSupported) {
+              this.mutationsObserver_ = new MutationObserver(this.refresh);
+              this.mutationsObserver_.observe(document, {
+                attributes: true,
+                childList: true,
+                characterData: true,
+                subtree: true
+              });
+            } else {
+              document.addEventListener("DOMSubtreeModified", this.refresh);
+              this.mutationEventsAdded_ = true;
+            }
+            this.connected_ = true;
+          };
+          ResizeObserverController2.prototype.disconnect_ = function() {
+            if (!isBrowser2 || !this.connected_) {
+              return;
+            }
+            document.removeEventListener("transitionend", this.onTransitionEnd_);
+            window.removeEventListener("resize", this.refresh);
+            if (this.mutationsObserver_) {
+              this.mutationsObserver_.disconnect();
+            }
+            if (this.mutationEventsAdded_) {
+              document.removeEventListener("DOMSubtreeModified", this.refresh);
+            }
+            this.mutationsObserver_ = null;
+            this.mutationEventsAdded_ = false;
+            this.connected_ = false;
+          };
+          ResizeObserverController2.prototype.onTransitionEnd_ = function(_a) {
+            var _b = _a.propertyName, propertyName = _b === void 0 ? "" : _b;
+            var isReflowProperty = transitionKeys.some(function(key) {
+              return !!~propertyName.indexOf(key);
+            });
+            if (isReflowProperty) {
+              this.refresh();
+            }
+          };
+          ResizeObserverController2.getInstance = function() {
+            if (!this.instance_) {
+              this.instance_ = new ResizeObserverController2();
+            }
+            return this.instance_;
+          };
+          ResizeObserverController2.instance_ = null;
+          return ResizeObserverController2;
+        }()
+      );
+      var defineConfigurable = function(target, props) {
+        for (var _i = 0, _a = Object.keys(props); _i < _a.length; _i++) {
+          var key = _a[_i];
+          Object.defineProperty(target, key, {
+            value: props[key],
+            enumerable: false,
+            writable: false,
+            configurable: true
+          });
+        }
+        return target;
+      };
+      var getWindowOf = function(target) {
+        var ownerGlobal = target && target.ownerDocument && target.ownerDocument.defaultView;
+        return ownerGlobal || global$1;
+      };
+      var emptyRect = createRectInit(0, 0, 0, 0);
+      function toFloat(value) {
+        return parseFloat(value) || 0;
+      }
+      function getBordersSize(styles) {
+        var positions = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+          positions[_i - 1] = arguments[_i];
+        }
+        return positions.reduce(function(size, position) {
+          var value = styles["border-" + position + "-width"];
+          return size + toFloat(value);
+        }, 0);
+      }
+      function getPaddings(styles) {
+        var positions = ["top", "right", "bottom", "left"];
+        var paddings = {};
+        for (var _i = 0, positions_1 = positions; _i < positions_1.length; _i++) {
+          var position = positions_1[_i];
+          var value = styles["padding-" + position];
+          paddings[position] = toFloat(value);
+        }
+        return paddings;
+      }
+      function getSVGContentRect(target) {
+        var bbox = target.getBBox();
+        return createRectInit(0, 0, bbox.width, bbox.height);
+      }
+      function getHTMLElementContentRect(target) {
+        var clientWidth = target.clientWidth, clientHeight = target.clientHeight;
+        if (!clientWidth && !clientHeight) {
+          return emptyRect;
+        }
+        var styles = getWindowOf(target).getComputedStyle(target);
+        var paddings = getPaddings(styles);
+        var horizPad = paddings.left + paddings.right;
+        var vertPad = paddings.top + paddings.bottom;
+        var width = toFloat(styles.width), height = toFloat(styles.height);
+        if (styles.boxSizing === "border-box") {
+          if (Math.round(width + horizPad) !== clientWidth) {
+            width -= getBordersSize(styles, "left", "right") + horizPad;
+          }
+          if (Math.round(height + vertPad) !== clientHeight) {
+            height -= getBordersSize(styles, "top", "bottom") + vertPad;
+          }
+        }
+        if (!isDocumentElement(target)) {
+          var vertScrollbar = Math.round(width + horizPad) - clientWidth;
+          var horizScrollbar = Math.round(height + vertPad) - clientHeight;
+          if (Math.abs(vertScrollbar) !== 1) {
+            width -= vertScrollbar;
+          }
+          if (Math.abs(horizScrollbar) !== 1) {
+            height -= horizScrollbar;
+          }
+        }
+        return createRectInit(paddings.left, paddings.top, width, height);
+      }
+      var isSVGGraphicsElement = function() {
+        if (typeof SVGGraphicsElement !== "undefined") {
+          return function(target) {
+            return target instanceof getWindowOf(target).SVGGraphicsElement;
+          };
+        }
+        return function(target) {
+          return target instanceof getWindowOf(target).SVGElement && typeof target.getBBox === "function";
+        };
+      }();
+      function isDocumentElement(target) {
+        return target === getWindowOf(target).document.documentElement;
+      }
+      function getContentRect(target) {
+        if (!isBrowser2) {
+          return emptyRect;
+        }
+        if (isSVGGraphicsElement(target)) {
+          return getSVGContentRect(target);
+        }
+        return getHTMLElementContentRect(target);
+      }
+      function createReadOnlyRect(_a) {
+        var x = _a.x, y = _a.y, width = _a.width, height = _a.height;
+        var Constr = typeof DOMRectReadOnly !== "undefined" ? DOMRectReadOnly : Object;
+        var rect = Object.create(Constr.prototype);
+        defineConfigurable(rect, {
+          x,
+          y,
+          width,
+          height,
+          top: y,
+          right: x + width,
+          bottom: height + y,
+          left: x
+        });
+        return rect;
+      }
+      function createRectInit(x, y, width, height) {
+        return { x, y, width, height };
+      }
+      var ResizeObservation = (
+        /** @class */
+        function() {
+          function ResizeObservation2(target) {
+            this.broadcastWidth = 0;
+            this.broadcastHeight = 0;
+            this.contentRect_ = createRectInit(0, 0, 0, 0);
+            this.target = target;
+          }
+          ResizeObservation2.prototype.isActive = function() {
+            var rect = getContentRect(this.target);
+            this.contentRect_ = rect;
+            return rect.width !== this.broadcastWidth || rect.height !== this.broadcastHeight;
+          };
+          ResizeObservation2.prototype.broadcastRect = function() {
+            var rect = this.contentRect_;
+            this.broadcastWidth = rect.width;
+            this.broadcastHeight = rect.height;
+            return rect;
+          };
+          return ResizeObservation2;
+        }()
+      );
+      var ResizeObserverEntry = (
+        /** @class */
+        /* @__PURE__ */ function() {
+          function ResizeObserverEntry2(target, rectInit) {
+            var contentRect = createReadOnlyRect(rectInit);
+            defineConfigurable(this, { target, contentRect });
+          }
+          return ResizeObserverEntry2;
+        }()
+      );
+      var ResizeObserverSPI = (
+        /** @class */
+        function() {
+          function ResizeObserverSPI2(callback, controller, callbackCtx) {
+            this.activeObservations_ = [];
+            this.observations_ = new MapShim();
+            if (typeof callback !== "function") {
+              throw new TypeError("The callback provided as parameter 1 is not a function.");
+            }
+            this.callback_ = callback;
+            this.controller_ = controller;
+            this.callbackCtx_ = callbackCtx;
+          }
+          ResizeObserverSPI2.prototype.observe = function(target) {
+            if (!arguments.length) {
+              throw new TypeError("1 argument required, but only 0 present.");
+            }
+            if (typeof Element === "undefined" || !(Element instanceof Object)) {
+              return;
+            }
+            if (!(target instanceof getWindowOf(target).Element)) {
+              throw new TypeError('parameter 1 is not of type "Element".');
+            }
+            var observations = this.observations_;
+            if (observations.has(target)) {
+              return;
+            }
+            observations.set(target, new ResizeObservation(target));
+            this.controller_.addObserver(this);
+            this.controller_.refresh();
+          };
+          ResizeObserverSPI2.prototype.unobserve = function(target) {
+            if (!arguments.length) {
+              throw new TypeError("1 argument required, but only 0 present.");
+            }
+            if (typeof Element === "undefined" || !(Element instanceof Object)) {
+              return;
+            }
+            if (!(target instanceof getWindowOf(target).Element)) {
+              throw new TypeError('parameter 1 is not of type "Element".');
+            }
+            var observations = this.observations_;
+            if (!observations.has(target)) {
+              return;
+            }
+            observations.delete(target);
+            if (!observations.size) {
+              this.controller_.removeObserver(this);
+            }
+          };
+          ResizeObserverSPI2.prototype.disconnect = function() {
+            this.clearActive();
+            this.observations_.clear();
+            this.controller_.removeObserver(this);
+          };
+          ResizeObserverSPI2.prototype.gatherActive = function() {
+            var _this = this;
+            this.clearActive();
+            this.observations_.forEach(function(observation) {
+              if (observation.isActive()) {
+                _this.activeObservations_.push(observation);
+              }
+            });
+          };
+          ResizeObserverSPI2.prototype.broadcastActive = function() {
+            if (!this.hasActive()) {
+              return;
+            }
+            var ctx = this.callbackCtx_;
+            var entries = this.activeObservations_.map(function(observation) {
+              return new ResizeObserverEntry(observation.target, observation.broadcastRect());
+            });
+            this.callback_.call(ctx, entries, ctx);
+            this.clearActive();
+          };
+          ResizeObserverSPI2.prototype.clearActive = function() {
+            this.activeObservations_.splice(0);
+          };
+          ResizeObserverSPI2.prototype.hasActive = function() {
+            return this.activeObservations_.length > 0;
+          };
+          return ResizeObserverSPI2;
+        }()
+      );
+      var observers = typeof WeakMap !== "undefined" ? /* @__PURE__ */ new WeakMap() : new MapShim();
+      var ResizeObserver = (
+        /** @class */
+        /* @__PURE__ */ function() {
+          function ResizeObserver2(callback) {
+            if (!(this instanceof ResizeObserver2)) {
+              throw new TypeError("Cannot call a class as a function.");
+            }
+            if (!arguments.length) {
+              throw new TypeError("1 argument required, but only 0 present.");
+            }
+            var controller = ResizeObserverController.getInstance();
+            var observer = new ResizeObserverSPI(callback, controller, this);
+            observers.set(this, observer);
+          }
+          return ResizeObserver2;
+        }()
+      );
+      [
+        "observe",
+        "unobserve",
+        "disconnect"
+      ].forEach(function(method) {
+        ResizeObserver.prototype[method] = function() {
+          var _a;
+          return (_a = observers.get(this))[method].apply(_a, arguments);
+        };
+      });
+      var index = function() {
+        if (typeof global$1.ResizeObserver !== "undefined") {
+          return global$1.ResizeObserver;
+        }
+        return ResizeObserver;
+      }();
+      return index;
+    });
+  }
+});
+
+// node_modules/react-slick/lib/inner-slider.js
+var require_inner_slider = __commonJS({
+  "node_modules/react-slick/lib/inner-slider.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.InnerSlider = void 0;
+    var _react = _interopRequireDefault(require_react());
+    var _initialState = _interopRequireDefault(require_initial_state());
+    var _lodash = _interopRequireDefault(require_lodash());
+    var _classnames = _interopRequireDefault(require_classnames());
+    var _innerSliderUtils = require_innerSliderUtils();
+    var _track = require_track();
+    var _dots = require_dots();
+    var _arrows = require_arrows();
+    var _resizeObserverPolyfill = _interopRequireDefault(require_ResizeObserver());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    function _typeof(o) {
+      "@babel/helpers - typeof";
+      return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+        return typeof o2;
+      } : function(o2) {
+        return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+      }, _typeof(o);
+    }
+    function _extends4() {
+      _extends4 = Object.assign ? Object.assign.bind() : function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      };
+      return _extends4.apply(this, arguments);
+    }
+    function _objectWithoutProperties(source, excluded) {
+      if (source == null) return {};
+      var target = _objectWithoutPropertiesLoose2(source, excluded);
+      var key, i;
+      if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for (i = 0; i < sourceSymbolKeys.length; i++) {
+          key = sourceSymbolKeys[i];
+          if (excluded.indexOf(key) >= 0) continue;
+          if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+          target[key] = source[key];
+        }
+      }
+      return target;
+    }
+    function _objectWithoutPropertiesLoose2(source, excluded) {
+      if (source == null) return {};
+      var target = {};
+      var sourceKeys = Object.keys(source);
+      var key, i;
+      for (i = 0; i < sourceKeys.length; i++) {
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+      }
+      return target;
+    }
+    function ownKeys(e, r) {
+      var t = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r2) {
+          return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+        })), t.push.apply(t, o);
+      }
+      return t;
+    }
+    function _objectSpread(e) {
+      for (var r = 1; r < arguments.length; r++) {
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+          _defineProperty(e, r2, t[r2]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+          Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+        });
+      }
+      return e;
+    }
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+      }
+    }
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+      }
+    }
+    function _createClass(Constructor, protoProps, staticProps) {
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) _defineProperties(Constructor, staticProps);
+      Object.defineProperty(Constructor, "prototype", { writable: false });
+      return Constructor;
+    }
+    function _inherits(subClass, superClass) {
+      if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function");
+      }
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
+      Object.defineProperty(subClass, "prototype", { writable: false });
+      if (superClass) _setPrototypeOf(subClass, superClass);
+    }
+    function _setPrototypeOf(o, p) {
+      _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf2(o2, p2) {
+        o2.__proto__ = p2;
+        return o2;
+      };
+      return _setPrototypeOf(o, p);
+    }
+    function _createSuper(Derived) {
+      var hasNativeReflectConstruct = _isNativeReflectConstruct();
+      return function _createSuperInternal() {
+        var Super = _getPrototypeOf(Derived), result;
+        if (hasNativeReflectConstruct) {
+          var NewTarget = _getPrototypeOf(this).constructor;
+          result = Reflect.construct(Super, arguments, NewTarget);
+        } else {
+          result = Super.apply(this, arguments);
+        }
+        return _possibleConstructorReturn(this, result);
+      };
+    }
+    function _possibleConstructorReturn(self2, call) {
+      if (call && (_typeof(call) === "object" || typeof call === "function")) {
+        return call;
+      } else if (call !== void 0) {
+        throw new TypeError("Derived constructors may only return object or undefined");
+      }
+      return _assertThisInitialized(self2);
+    }
+    function _assertThisInitialized(self2) {
+      if (self2 === void 0) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      }
+      return self2;
+    }
+    function _isNativeReflectConstruct() {
+      try {
+        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+        }));
+      } catch (t2) {
+      }
+      return (_isNativeReflectConstruct = function _isNativeReflectConstruct2() {
+        return !!t;
+      })();
+    }
+    function _getPrototypeOf(o) {
+      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf2(o2) {
+        return o2.__proto__ || Object.getPrototypeOf(o2);
+      };
+      return _getPrototypeOf(o);
+    }
+    function _defineProperty(obj, key, value) {
+      key = _toPropertyKey(key);
+      if (key in obj) {
+        Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+      } else {
+        obj[key] = value;
+      }
+      return obj;
+    }
+    function _toPropertyKey(t) {
+      var i = _toPrimitive(t, "string");
+      return "symbol" == _typeof(i) ? i : String(i);
+    }
+    function _toPrimitive(t, r) {
+      if ("object" != _typeof(t) || !t) return t;
+      var e = t[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r ? String : Number)(t);
+    }
+    var InnerSlider = exports.InnerSlider = /* @__PURE__ */ function(_React$Component) {
+      _inherits(InnerSlider2, _React$Component);
+      var _super = _createSuper(InnerSlider2);
+      function InnerSlider2(props) {
+        var _this;
+        _classCallCheck(this, InnerSlider2);
+        _this = _super.call(this, props);
+        _defineProperty(_assertThisInitialized(_this), "listRefHandler", function(ref) {
+          return _this.list = ref;
+        });
+        _defineProperty(_assertThisInitialized(_this), "trackRefHandler", function(ref) {
+          return _this.track = ref;
+        });
+        _defineProperty(_assertThisInitialized(_this), "adaptHeight", function() {
+          if (_this.props.adaptiveHeight && _this.list) {
+            var elem = _this.list.querySelector('[data-index="'.concat(_this.state.currentSlide, '"]'));
+            _this.list.style.height = (0, _innerSliderUtils.getHeight)(elem) + "px";
+          }
+        });
+        _defineProperty(_assertThisInitialized(_this), "componentDidMount", function() {
+          _this.props.onInit && _this.props.onInit();
+          if (_this.props.lazyLoad) {
+            var slidesToLoad = (0, _innerSliderUtils.getOnDemandLazySlides)(_objectSpread(_objectSpread({}, _this.props), _this.state));
+            if (slidesToLoad.length > 0) {
+              _this.setState(function(prevState) {
+                return {
+                  lazyLoadedList: prevState.lazyLoadedList.concat(slidesToLoad)
+                };
+              });
+              if (_this.props.onLazyLoad) {
+                _this.props.onLazyLoad(slidesToLoad);
+              }
+            }
+          }
+          var spec = _objectSpread({
+            listRef: _this.list,
+            trackRef: _this.track
+          }, _this.props);
+          _this.updateState(spec, true, function() {
+            _this.adaptHeight();
+            _this.props.autoplay && _this.autoPlay("update");
+          });
+          if (_this.props.lazyLoad === "progressive") {
+            _this.lazyLoadTimer = setInterval(_this.progressiveLazyLoad, 1e3);
+          }
+          _this.ro = new _resizeObserverPolyfill["default"](function() {
+            if (_this.state.animating) {
+              _this.onWindowResized(false);
+              _this.callbackTimers.push(setTimeout(function() {
+                return _this.onWindowResized();
+              }, _this.props.speed));
+            } else {
+              _this.onWindowResized();
+            }
+          });
+          _this.ro.observe(_this.list);
+          document.querySelectorAll && Array.prototype.forEach.call(document.querySelectorAll(".slick-slide"), function(slide) {
+            slide.onfocus = _this.props.pauseOnFocus ? _this.onSlideFocus : null;
+            slide.onblur = _this.props.pauseOnFocus ? _this.onSlideBlur : null;
+          });
+          if (window.addEventListener) {
+            window.addEventListener("resize", _this.onWindowResized);
+          } else {
+            window.attachEvent("onresize", _this.onWindowResized);
+          }
+        });
+        _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function() {
+          if (_this.animationEndCallback) {
+            clearTimeout(_this.animationEndCallback);
+          }
+          if (_this.lazyLoadTimer) {
+            clearInterval(_this.lazyLoadTimer);
+          }
+          if (_this.callbackTimers.length) {
+            _this.callbackTimers.forEach(function(timer) {
+              return clearTimeout(timer);
+            });
+            _this.callbackTimers = [];
+          }
+          if (window.addEventListener) {
+            window.removeEventListener("resize", _this.onWindowResized);
+          } else {
+            window.detachEvent("onresize", _this.onWindowResized);
+          }
+          if (_this.autoplayTimer) {
+            clearInterval(_this.autoplayTimer);
+          }
+          _this.ro.disconnect();
+        });
+        _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function(prevProps) {
+          _this.checkImagesLoad();
+          _this.props.onReInit && _this.props.onReInit();
+          if (_this.props.lazyLoad) {
+            var slidesToLoad = (0, _innerSliderUtils.getOnDemandLazySlides)(_objectSpread(_objectSpread({}, _this.props), _this.state));
+            if (slidesToLoad.length > 0) {
+              _this.setState(function(prevState) {
+                return {
+                  lazyLoadedList: prevState.lazyLoadedList.concat(slidesToLoad)
+                };
+              });
+              if (_this.props.onLazyLoad) {
+                _this.props.onLazyLoad(slidesToLoad);
+              }
+            }
+          }
+          _this.adaptHeight();
+          var spec = _objectSpread(_objectSpread({
+            listRef: _this.list,
+            trackRef: _this.track
+          }, _this.props), _this.state);
+          var setTrackStyle = _this.didPropsChange(prevProps);
+          setTrackStyle && _this.updateState(spec, setTrackStyle, function() {
+            if (_this.state.currentSlide >= _react["default"].Children.count(_this.props.children)) {
+              _this.changeSlide({
+                message: "index",
+                index: _react["default"].Children.count(_this.props.children) - _this.props.slidesToShow,
+                currentSlide: _this.state.currentSlide
+              });
+            }
+            if (_this.props.autoplay) {
+              _this.autoPlay("update");
+            } else {
+              _this.pause("paused");
+            }
+          });
+        });
+        _defineProperty(_assertThisInitialized(_this), "onWindowResized", function(setTrackStyle) {
+          if (_this.debouncedResize) _this.debouncedResize.cancel();
+          _this.debouncedResize = (0, _lodash["default"])(function() {
+            return _this.resizeWindow(setTrackStyle);
+          }, 50);
+          _this.debouncedResize();
+        });
+        _defineProperty(_assertThisInitialized(_this), "resizeWindow", function() {
+          var setTrackStyle = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : true;
+          var isTrackMounted = Boolean(_this.track && _this.track.node);
+          if (!isTrackMounted) return;
+          var spec = _objectSpread(_objectSpread({
+            listRef: _this.list,
+            trackRef: _this.track
+          }, _this.props), _this.state);
+          _this.updateState(spec, setTrackStyle, function() {
+            if (_this.props.autoplay) _this.autoPlay("update");
+            else _this.pause("paused");
+          });
+          _this.setState({
+            animating: false
+          });
+          clearTimeout(_this.animationEndCallback);
+          delete _this.animationEndCallback;
+        });
+        _defineProperty(_assertThisInitialized(_this), "updateState", function(spec, setTrackStyle, callback) {
+          var updatedState = (0, _innerSliderUtils.initializedState)(spec);
+          spec = _objectSpread(_objectSpread(_objectSpread({}, spec), updatedState), {}, {
+            slideIndex: updatedState.currentSlide
+          });
+          var targetLeft = (0, _innerSliderUtils.getTrackLeft)(spec);
+          spec = _objectSpread(_objectSpread({}, spec), {}, {
+            left: targetLeft
+          });
+          var trackStyle = (0, _innerSliderUtils.getTrackCSS)(spec);
+          if (setTrackStyle || _react["default"].Children.count(_this.props.children) !== _react["default"].Children.count(spec.children)) {
+            updatedState["trackStyle"] = trackStyle;
+          }
+          _this.setState(updatedState, callback);
+        });
+        _defineProperty(_assertThisInitialized(_this), "ssrInit", function() {
+          if (_this.props.variableWidth) {
+            var _trackWidth = 0, _trackLeft = 0;
+            var childrenWidths = [];
+            var preClones = (0, _innerSliderUtils.getPreClones)(_objectSpread(_objectSpread(_objectSpread({}, _this.props), _this.state), {}, {
+              slideCount: _this.props.children.length
+            }));
+            var postClones = (0, _innerSliderUtils.getPostClones)(_objectSpread(_objectSpread(_objectSpread({}, _this.props), _this.state), {}, {
+              slideCount: _this.props.children.length
+            }));
+            _this.props.children.forEach(function(child) {
+              childrenWidths.push(child.props.style.width);
+              _trackWidth += child.props.style.width;
+            });
+            for (var i = 0; i < preClones; i++) {
+              _trackLeft += childrenWidths[childrenWidths.length - 1 - i];
+              _trackWidth += childrenWidths[childrenWidths.length - 1 - i];
+            }
+            for (var _i = 0; _i < postClones; _i++) {
+              _trackWidth += childrenWidths[_i];
+            }
+            for (var _i2 = 0; _i2 < _this.state.currentSlide; _i2++) {
+              _trackLeft += childrenWidths[_i2];
+            }
+            var _trackStyle = {
+              width: _trackWidth + "px",
+              left: -_trackLeft + "px"
+            };
+            if (_this.props.centerMode) {
+              var currentWidth = "".concat(childrenWidths[_this.state.currentSlide], "px");
+              _trackStyle.left = "calc(".concat(_trackStyle.left, " + (100% - ").concat(currentWidth, ") / 2 ) ");
+            }
+            return {
+              trackStyle: _trackStyle
+            };
+          }
+          var childrenCount = _react["default"].Children.count(_this.props.children);
+          var spec = _objectSpread(_objectSpread(_objectSpread({}, _this.props), _this.state), {}, {
+            slideCount: childrenCount
+          });
+          var slideCount = (0, _innerSliderUtils.getPreClones)(spec) + (0, _innerSliderUtils.getPostClones)(spec) + childrenCount;
+          var trackWidth = 100 / _this.props.slidesToShow * slideCount;
+          var slideWidth = 100 / slideCount;
+          var trackLeft = -slideWidth * ((0, _innerSliderUtils.getPreClones)(spec) + _this.state.currentSlide) * trackWidth / 100;
+          if (_this.props.centerMode) {
+            trackLeft += (100 - slideWidth * trackWidth / 100) / 2;
+          }
+          var trackStyle = {
+            width: trackWidth + "%",
+            left: trackLeft + "%"
+          };
+          return {
+            slideWidth: slideWidth + "%",
+            trackStyle
+          };
+        });
+        _defineProperty(_assertThisInitialized(_this), "checkImagesLoad", function() {
+          var images = _this.list && _this.list.querySelectorAll && _this.list.querySelectorAll(".slick-slide img") || [];
+          var imagesCount = images.length, loadedCount = 0;
+          Array.prototype.forEach.call(images, function(image) {
+            var handler = function handler2() {
+              return ++loadedCount && loadedCount >= imagesCount && _this.onWindowResized();
+            };
+            if (!image.onclick) {
+              image.onclick = function() {
+                return image.parentNode.focus();
+              };
+            } else {
+              var prevClickHandler = image.onclick;
+              image.onclick = function(e) {
+                prevClickHandler(e);
+                image.parentNode.focus();
+              };
+            }
+            if (!image.onload) {
+              if (_this.props.lazyLoad) {
+                image.onload = function() {
+                  _this.adaptHeight();
+                  _this.callbackTimers.push(setTimeout(_this.onWindowResized, _this.props.speed));
+                };
+              } else {
+                image.onload = handler;
+                image.onerror = function() {
+                  handler();
+                  _this.props.onLazyLoadError && _this.props.onLazyLoadError();
+                };
+              }
+            }
+          });
+        });
+        _defineProperty(_assertThisInitialized(_this), "progressiveLazyLoad", function() {
+          var slidesToLoad = [];
+          var spec = _objectSpread(_objectSpread({}, _this.props), _this.state);
+          for (var index = _this.state.currentSlide; index < _this.state.slideCount + (0, _innerSliderUtils.getPostClones)(spec); index++) {
+            if (_this.state.lazyLoadedList.indexOf(index) < 0) {
+              slidesToLoad.push(index);
+              break;
+            }
+          }
+          for (var _index = _this.state.currentSlide - 1; _index >= -(0, _innerSliderUtils.getPreClones)(spec); _index--) {
+            if (_this.state.lazyLoadedList.indexOf(_index) < 0) {
+              slidesToLoad.push(_index);
+              break;
+            }
+          }
+          if (slidesToLoad.length > 0) {
+            _this.setState(function(state) {
+              return {
+                lazyLoadedList: state.lazyLoadedList.concat(slidesToLoad)
+              };
+            });
+            if (_this.props.onLazyLoad) {
+              _this.props.onLazyLoad(slidesToLoad);
+            }
+          } else {
+            if (_this.lazyLoadTimer) {
+              clearInterval(_this.lazyLoadTimer);
+              delete _this.lazyLoadTimer;
+            }
+          }
+        });
+        _defineProperty(_assertThisInitialized(_this), "slideHandler", function(index) {
+          var dontAnimate = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
+          var _this$props = _this.props, asNavFor = _this$props.asNavFor, beforeChange = _this$props.beforeChange, onLazyLoad = _this$props.onLazyLoad, speed = _this$props.speed, afterChange = _this$props.afterChange;
+          var currentSlide = _this.state.currentSlide;
+          var _slideHandler = (0, _innerSliderUtils.slideHandler)(_objectSpread(_objectSpread(_objectSpread({
+            index
+          }, _this.props), _this.state), {}, {
+            trackRef: _this.track,
+            useCSS: _this.props.useCSS && !dontAnimate
+          })), state = _slideHandler.state, nextState = _slideHandler.nextState;
+          if (!state) return;
+          beforeChange && beforeChange(currentSlide, state.currentSlide);
+          var slidesToLoad = state.lazyLoadedList.filter(function(value) {
+            return _this.state.lazyLoadedList.indexOf(value) < 0;
+          });
+          onLazyLoad && slidesToLoad.length > 0 && onLazyLoad(slidesToLoad);
+          if (!_this.props.waitForAnimate && _this.animationEndCallback) {
+            clearTimeout(_this.animationEndCallback);
+            afterChange && afterChange(currentSlide);
+            delete _this.animationEndCallback;
+          }
+          _this.setState(state, function() {
+            if (asNavFor && _this.asNavForIndex !== index) {
+              _this.asNavForIndex = index;
+              asNavFor.innerSlider.slideHandler(index);
+            }
+            if (!nextState) return;
+            _this.animationEndCallback = setTimeout(function() {
+              var animating = nextState.animating, firstBatch = _objectWithoutProperties(nextState, ["animating"]);
+              _this.setState(firstBatch, function() {
+                _this.callbackTimers.push(setTimeout(function() {
+                  return _this.setState({
+                    animating
+                  });
+                }, 10));
+                afterChange && afterChange(state.currentSlide);
+                delete _this.animationEndCallback;
+              });
+            }, speed);
+          });
+        });
+        _defineProperty(_assertThisInitialized(_this), "changeSlide", function(options) {
+          var dontAnimate = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
+          var spec = _objectSpread(_objectSpread({}, _this.props), _this.state);
+          var targetSlide = (0, _innerSliderUtils.changeSlide)(spec, options);
+          if (targetSlide !== 0 && !targetSlide) return;
+          if (dontAnimate === true) {
+            _this.slideHandler(targetSlide, dontAnimate);
+          } else {
+            _this.slideHandler(targetSlide);
+          }
+          _this.props.autoplay && _this.autoPlay("update");
+          if (_this.props.focusOnSelect) {
+            var nodes = _this.list.querySelectorAll(".slick-current");
+            nodes[0] && nodes[0].focus();
+          }
+        });
+        _defineProperty(_assertThisInitialized(_this), "clickHandler", function(e) {
+          if (_this.clickable === false) {
+            e.stopPropagation();
+            e.preventDefault();
+          }
+          _this.clickable = true;
+        });
+        _defineProperty(_assertThisInitialized(_this), "keyHandler", function(e) {
+          var dir = (0, _innerSliderUtils.keyHandler)(e, _this.props.accessibility, _this.props.rtl);
+          dir !== "" && _this.changeSlide({
+            message: dir
+          });
+        });
+        _defineProperty(_assertThisInitialized(_this), "selectHandler", function(options) {
+          _this.changeSlide(options);
+        });
+        _defineProperty(_assertThisInitialized(_this), "disableBodyScroll", function() {
+          var preventDefault = function preventDefault2(e) {
+            e = e || window.event;
+            if (e.preventDefault) e.preventDefault();
+            e.returnValue = false;
+          };
+          window.ontouchmove = preventDefault;
+        });
+        _defineProperty(_assertThisInitialized(_this), "enableBodyScroll", function() {
+          window.ontouchmove = null;
+        });
+        _defineProperty(_assertThisInitialized(_this), "swipeStart", function(e) {
+          if (_this.props.verticalSwiping) {
+            _this.disableBodyScroll();
+          }
+          var state = (0, _innerSliderUtils.swipeStart)(e, _this.props.swipe, _this.props.draggable);
+          state !== "" && _this.setState(state);
+        });
+        _defineProperty(_assertThisInitialized(_this), "swipeMove", function(e) {
+          var state = (0, _innerSliderUtils.swipeMove)(e, _objectSpread(_objectSpread(_objectSpread({}, _this.props), _this.state), {}, {
+            trackRef: _this.track,
+            listRef: _this.list,
+            slideIndex: _this.state.currentSlide
+          }));
+          if (!state) return;
+          if (state["swiping"]) {
+            _this.clickable = false;
+          }
+          _this.setState(state);
+        });
+        _defineProperty(_assertThisInitialized(_this), "swipeEnd", function(e) {
+          var state = (0, _innerSliderUtils.swipeEnd)(e, _objectSpread(_objectSpread(_objectSpread({}, _this.props), _this.state), {}, {
+            trackRef: _this.track,
+            listRef: _this.list,
+            slideIndex: _this.state.currentSlide
+          }));
+          if (!state) return;
+          var triggerSlideHandler = state["triggerSlideHandler"];
+          delete state["triggerSlideHandler"];
+          _this.setState(state);
+          if (triggerSlideHandler === void 0) return;
+          _this.slideHandler(triggerSlideHandler);
+          if (_this.props.verticalSwiping) {
+            _this.enableBodyScroll();
+          }
+        });
+        _defineProperty(_assertThisInitialized(_this), "touchEnd", function(e) {
+          _this.swipeEnd(e);
+          _this.clickable = true;
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickPrev", function() {
+          _this.callbackTimers.push(setTimeout(function() {
+            return _this.changeSlide({
+              message: "previous"
+            });
+          }, 0));
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickNext", function() {
+          _this.callbackTimers.push(setTimeout(function() {
+            return _this.changeSlide({
+              message: "next"
+            });
+          }, 0));
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickGoTo", function(slide) {
+          var dontAnimate = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
+          slide = Number(slide);
+          if (isNaN(slide)) return "";
+          _this.callbackTimers.push(setTimeout(function() {
+            return _this.changeSlide({
+              message: "index",
+              index: slide,
+              currentSlide: _this.state.currentSlide
+            }, dontAnimate);
+          }, 0));
+        });
+        _defineProperty(_assertThisInitialized(_this), "play", function() {
+          var nextIndex;
+          if (_this.props.rtl) {
+            nextIndex = _this.state.currentSlide - _this.props.slidesToScroll;
+          } else {
+            if ((0, _innerSliderUtils.canGoNext)(_objectSpread(_objectSpread({}, _this.props), _this.state))) {
+              nextIndex = _this.state.currentSlide + _this.props.slidesToScroll;
+            } else {
+              return false;
+            }
+          }
+          _this.slideHandler(nextIndex);
+        });
+        _defineProperty(_assertThisInitialized(_this), "autoPlay", function(playType) {
+          if (_this.autoplayTimer) {
+            clearInterval(_this.autoplayTimer);
+          }
+          var autoplaying = _this.state.autoplaying;
+          if (playType === "update") {
+            if (autoplaying === "hovered" || autoplaying === "focused" || autoplaying === "paused") {
+              return;
+            }
+          } else if (playType === "leave") {
+            if (autoplaying === "paused" || autoplaying === "focused") {
+              return;
+            }
+          } else if (playType === "blur") {
+            if (autoplaying === "paused" || autoplaying === "hovered") {
+              return;
+            }
+          }
+          _this.autoplayTimer = setInterval(_this.play, _this.props.autoplaySpeed + 50);
+          _this.setState({
+            autoplaying: "playing"
+          });
+        });
+        _defineProperty(_assertThisInitialized(_this), "pause", function(pauseType) {
+          if (_this.autoplayTimer) {
+            clearInterval(_this.autoplayTimer);
+            _this.autoplayTimer = null;
+          }
+          var autoplaying = _this.state.autoplaying;
+          if (pauseType === "paused") {
+            _this.setState({
+              autoplaying: "paused"
+            });
+          } else if (pauseType === "focused") {
+            if (autoplaying === "hovered" || autoplaying === "playing") {
+              _this.setState({
+                autoplaying: "focused"
+              });
+            }
+          } else {
+            if (autoplaying === "playing") {
+              _this.setState({
+                autoplaying: "hovered"
+              });
+            }
+          }
+        });
+        _defineProperty(_assertThisInitialized(_this), "onDotsOver", function() {
+          return _this.props.autoplay && _this.pause("hovered");
+        });
+        _defineProperty(_assertThisInitialized(_this), "onDotsLeave", function() {
+          return _this.props.autoplay && _this.state.autoplaying === "hovered" && _this.autoPlay("leave");
+        });
+        _defineProperty(_assertThisInitialized(_this), "onTrackOver", function() {
+          return _this.props.autoplay && _this.pause("hovered");
+        });
+        _defineProperty(_assertThisInitialized(_this), "onTrackLeave", function() {
+          return _this.props.autoplay && _this.state.autoplaying === "hovered" && _this.autoPlay("leave");
+        });
+        _defineProperty(_assertThisInitialized(_this), "onSlideFocus", function() {
+          return _this.props.autoplay && _this.pause("focused");
+        });
+        _defineProperty(_assertThisInitialized(_this), "onSlideBlur", function() {
+          return _this.props.autoplay && _this.state.autoplaying === "focused" && _this.autoPlay("blur");
+        });
+        _defineProperty(_assertThisInitialized(_this), "render", function() {
+          var className = (0, _classnames["default"])("slick-slider", _this.props.className, {
+            "slick-vertical": _this.props.vertical,
+            "slick-initialized": true
+          });
+          var spec = _objectSpread(_objectSpread({}, _this.props), _this.state);
+          var trackProps = (0, _innerSliderUtils.extractObject)(spec, ["fade", "cssEase", "speed", "infinite", "centerMode", "focusOnSelect", "currentSlide", "lazyLoad", "lazyLoadedList", "rtl", "slideWidth", "slideHeight", "listHeight", "vertical", "slidesToShow", "slidesToScroll", "slideCount", "trackStyle", "variableWidth", "unslick", "centerPadding", "targetSlide", "useCSS"]);
+          var pauseOnHover = _this.props.pauseOnHover;
+          trackProps = _objectSpread(_objectSpread({}, trackProps), {}, {
+            onMouseEnter: pauseOnHover ? _this.onTrackOver : null,
+            onMouseLeave: pauseOnHover ? _this.onTrackLeave : null,
+            onMouseOver: pauseOnHover ? _this.onTrackOver : null,
+            focusOnSelect: _this.props.focusOnSelect && _this.clickable ? _this.selectHandler : null
+          });
+          var dots;
+          if (_this.props.dots === true && _this.state.slideCount >= _this.props.slidesToShow) {
+            var dotProps = (0, _innerSliderUtils.extractObject)(spec, ["dotsClass", "slideCount", "slidesToShow", "currentSlide", "slidesToScroll", "clickHandler", "children", "customPaging", "infinite", "appendDots"]);
+            var pauseOnDotsHover = _this.props.pauseOnDotsHover;
+            dotProps = _objectSpread(_objectSpread({}, dotProps), {}, {
+              clickHandler: _this.changeSlide,
+              onMouseEnter: pauseOnDotsHover ? _this.onDotsLeave : null,
+              onMouseOver: pauseOnDotsHover ? _this.onDotsOver : null,
+              onMouseLeave: pauseOnDotsHover ? _this.onDotsLeave : null
+            });
+            dots = /* @__PURE__ */ _react["default"].createElement(_dots.Dots, dotProps);
+          }
+          var prevArrow, nextArrow;
+          var arrowProps = (0, _innerSliderUtils.extractObject)(spec, ["infinite", "centerMode", "currentSlide", "slideCount", "slidesToShow", "prevArrow", "nextArrow"]);
+          arrowProps.clickHandler = _this.changeSlide;
+          if (_this.props.arrows) {
+            prevArrow = /* @__PURE__ */ _react["default"].createElement(_arrows.PrevArrow, arrowProps);
+            nextArrow = /* @__PURE__ */ _react["default"].createElement(_arrows.NextArrow, arrowProps);
+          }
+          var verticalHeightStyle = null;
+          if (_this.props.vertical) {
+            verticalHeightStyle = {
+              height: _this.state.listHeight
+            };
+          }
+          var centerPaddingStyle = null;
+          if (_this.props.vertical === false) {
+            if (_this.props.centerMode === true) {
+              centerPaddingStyle = {
+                padding: "0px " + _this.props.centerPadding
+              };
+            }
+          } else {
+            if (_this.props.centerMode === true) {
+              centerPaddingStyle = {
+                padding: _this.props.centerPadding + " 0px"
+              };
+            }
+          }
+          var listStyle = _objectSpread(_objectSpread({}, verticalHeightStyle), centerPaddingStyle);
+          var touchMove = _this.props.touchMove;
+          var listProps = {
+            className: "slick-list",
+            style: listStyle,
+            onClick: _this.clickHandler,
+            onMouseDown: touchMove ? _this.swipeStart : null,
+            onMouseMove: _this.state.dragging && touchMove ? _this.swipeMove : null,
+            onMouseUp: touchMove ? _this.swipeEnd : null,
+            onMouseLeave: _this.state.dragging && touchMove ? _this.swipeEnd : null,
+            onTouchStart: touchMove ? _this.swipeStart : null,
+            onTouchMove: _this.state.dragging && touchMove ? _this.swipeMove : null,
+            onTouchEnd: touchMove ? _this.touchEnd : null,
+            onTouchCancel: _this.state.dragging && touchMove ? _this.swipeEnd : null,
+            onKeyDown: _this.props.accessibility ? _this.keyHandler : null
+          };
+          var innerSliderProps = {
+            className,
+            dir: "ltr",
+            style: _this.props.style
+          };
+          if (_this.props.unslick) {
+            listProps = {
+              className: "slick-list"
+            };
+            innerSliderProps = {
+              className
+            };
+          }
+          return /* @__PURE__ */ _react["default"].createElement("div", innerSliderProps, !_this.props.unslick ? prevArrow : "", /* @__PURE__ */ _react["default"].createElement("div", _extends4({
+            ref: _this.listRefHandler
+          }, listProps), /* @__PURE__ */ _react["default"].createElement(_track.Track, _extends4({
+            ref: _this.trackRefHandler
+          }, trackProps), _this.props.children)), !_this.props.unslick ? nextArrow : "", !_this.props.unslick ? dots : "");
+        });
+        _this.list = null;
+        _this.track = null;
+        _this.state = _objectSpread(_objectSpread({}, _initialState["default"]), {}, {
+          currentSlide: _this.props.initialSlide,
+          targetSlide: _this.props.initialSlide ? _this.props.initialSlide : 0,
+          slideCount: _react["default"].Children.count(_this.props.children)
+        });
+        _this.callbackTimers = [];
+        _this.clickable = true;
+        _this.debouncedResize = null;
+        var ssrState = _this.ssrInit();
+        _this.state = _objectSpread(_objectSpread({}, _this.state), ssrState);
+        return _this;
+      }
+      _createClass(InnerSlider2, [{
+        key: "didPropsChange",
+        value: function didPropsChange(prevProps) {
+          var setTrackStyle = false;
+          for (var _i3 = 0, _Object$keys = Object.keys(this.props); _i3 < _Object$keys.length; _i3++) {
+            var key = _Object$keys[_i3];
+            if (!prevProps.hasOwnProperty(key)) {
+              setTrackStyle = true;
+              break;
+            }
+            if (_typeof(prevProps[key]) === "object" || typeof prevProps[key] === "function" || isNaN(prevProps[key])) {
+              continue;
+            }
+            if (prevProps[key] !== this.props[key]) {
+              setTrackStyle = true;
+              break;
+            }
+          }
+          return setTrackStyle || _react["default"].Children.count(this.props.children) !== _react["default"].Children.count(prevProps.children);
+        }
+      }]);
+      return InnerSlider2;
+    }(_react["default"].Component);
+  }
+});
+
+// node_modules/string-convert/camel2hyphen.js
+var require_camel2hyphen = __commonJS({
+  "node_modules/string-convert/camel2hyphen.js"(exports, module) {
+    var camel2hyphen = function(str) {
+      return str.replace(/[A-Z]/g, function(match) {
+        return "-" + match.toLowerCase();
+      }).toLowerCase();
+    };
+    module.exports = camel2hyphen;
+  }
+});
+
+// node_modules/json2mq/index.js
+var require_json2mq = __commonJS({
+  "node_modules/json2mq/index.js"(exports, module) {
+    var camel2hyphen = require_camel2hyphen();
+    var isDimension = function(feature) {
+      var re = /[height|width]$/;
+      return re.test(feature);
+    };
+    var obj2mq = function(obj) {
+      var mq = "";
+      var features = Object.keys(obj);
+      features.forEach(function(feature, index) {
+        var value = obj[feature];
+        feature = camel2hyphen(feature);
+        if (isDimension(feature) && typeof value === "number") {
+          value = value + "px";
+        }
+        if (value === true) {
+          mq += feature;
+        } else if (value === false) {
+          mq += "not " + feature;
+        } else {
+          mq += "(" + feature + ": " + value + ")";
+        }
+        if (index < features.length - 1) {
+          mq += " and ";
+        }
+      });
+      return mq;
+    };
+    var json2mq = function(query) {
+      var mq = "";
+      if (typeof query === "string") {
+        return query;
+      }
+      if (query instanceof Array) {
+        query.forEach(function(q, index) {
+          mq += obj2mq(q);
+          if (index < query.length - 1) {
+            mq += ", ";
+          }
+        });
+        return mq;
+      }
+      return obj2mq(query);
+    };
+    module.exports = json2mq;
+  }
+});
+
+// node_modules/enquire.js/src/QueryHandler.js
+var require_QueryHandler = __commonJS({
+  "node_modules/enquire.js/src/QueryHandler.js"(exports, module) {
+    function QueryHandler(options) {
+      this.options = options;
+      !options.deferSetup && this.setup();
+    }
+    QueryHandler.prototype = {
+      constructor: QueryHandler,
+      /**
+       * coordinates setup of the handler
+       *
+       * @function
+       */
+      setup: function() {
+        if (this.options.setup) {
+          this.options.setup();
+        }
+        this.initialised = true;
+      },
+      /**
+       * coordinates setup and triggering of the handler
+       *
+       * @function
+       */
+      on: function() {
+        !this.initialised && this.setup();
+        this.options.match && this.options.match();
+      },
+      /**
+       * coordinates the unmatch event for the handler
+       *
+       * @function
+       */
+      off: function() {
+        this.options.unmatch && this.options.unmatch();
+      },
+      /**
+       * called when a handler is to be destroyed.
+       * delegates to the destroy or unmatch callbacks, depending on availability.
+       *
+       * @function
+       */
+      destroy: function() {
+        this.options.destroy ? this.options.destroy() : this.off();
+      },
+      /**
+       * determines equality by reference.
+       * if object is supplied compare options, if function, compare match callback
+       *
+       * @function
+       * @param {object || function} [target] the target for comparison
+       */
+      equals: function(target) {
+        return this.options === target || this.options.match === target;
+      }
+    };
+    module.exports = QueryHandler;
+  }
+});
+
+// node_modules/enquire.js/src/Util.js
+var require_Util = __commonJS({
+  "node_modules/enquire.js/src/Util.js"(exports, module) {
+    function each(collection, fn) {
+      var i = 0, length = collection.length, cont;
+      for (i; i < length; i++) {
+        cont = fn(collection[i], i);
+        if (cont === false) {
+          break;
+        }
+      }
+    }
+    function isArray(target) {
+      return Object.prototype.toString.apply(target) === "[object Array]";
+    }
+    function isFunction(target) {
+      return typeof target === "function";
+    }
+    module.exports = {
+      isFunction,
+      isArray,
+      each
+    };
+  }
+});
+
+// node_modules/enquire.js/src/MediaQuery.js
+var require_MediaQuery = __commonJS({
+  "node_modules/enquire.js/src/MediaQuery.js"(exports, module) {
+    var QueryHandler = require_QueryHandler();
+    var each = require_Util().each;
+    function MediaQuery(query, isUnconditional) {
+      this.query = query;
+      this.isUnconditional = isUnconditional;
+      this.handlers = [];
+      this.mql = window.matchMedia(query);
+      var self2 = this;
+      this.listener = function(mql) {
+        self2.mql = mql.currentTarget || mql;
+        self2.assess();
+      };
+      this.mql.addListener(this.listener);
+    }
+    MediaQuery.prototype = {
+      constuctor: MediaQuery,
+      /**
+       * add a handler for this query, triggering if already active
+       *
+       * @param {object} handler
+       * @param {function} handler.match callback for when query is activated
+       * @param {function} [handler.unmatch] callback for when query is deactivated
+       * @param {function} [handler.setup] callback for immediate execution when a query handler is registered
+       * @param {boolean} [handler.deferSetup=false] should the setup callback be deferred until the first time the handler is matched?
+       */
+      addHandler: function(handler) {
+        var qh = new QueryHandler(handler);
+        this.handlers.push(qh);
+        this.matches() && qh.on();
+      },
+      /**
+       * removes the given handler from the collection, and calls it's destroy methods
+       *
+       * @param {object || function} handler the handler to remove
+       */
+      removeHandler: function(handler) {
+        var handlers = this.handlers;
+        each(handlers, function(h, i) {
+          if (h.equals(handler)) {
+            h.destroy();
+            return !handlers.splice(i, 1);
+          }
+        });
+      },
+      /**
+       * Determine whether the media query should be considered a match
+       *
+       * @return {Boolean} true if media query can be considered a match, false otherwise
+       */
+      matches: function() {
+        return this.mql.matches || this.isUnconditional;
+      },
+      /**
+       * Clears all handlers and unbinds events
+       */
+      clear: function() {
+        each(this.handlers, function(handler) {
+          handler.destroy();
+        });
+        this.mql.removeListener(this.listener);
+        this.handlers.length = 0;
+      },
+      /*
+          * Assesses the query, turning on all handlers if it matches, turning them off if it doesn't match
+          */
+      assess: function() {
+        var action = this.matches() ? "on" : "off";
+        each(this.handlers, function(handler) {
+          handler[action]();
+        });
+      }
+    };
+    module.exports = MediaQuery;
+  }
+});
+
+// node_modules/enquire.js/src/MediaQueryDispatch.js
+var require_MediaQueryDispatch = __commonJS({
+  "node_modules/enquire.js/src/MediaQueryDispatch.js"(exports, module) {
+    var MediaQuery = require_MediaQuery();
+    var Util = require_Util();
+    var each = Util.each;
+    var isFunction = Util.isFunction;
+    var isArray = Util.isArray;
+    function MediaQueryDispatch() {
+      if (!window.matchMedia) {
+        throw new Error("matchMedia not present, legacy browsers require a polyfill");
+      }
+      this.queries = {};
+      this.browserIsIncapable = !window.matchMedia("only all").matches;
+    }
+    MediaQueryDispatch.prototype = {
+      constructor: MediaQueryDispatch,
+      /**
+       * Registers a handler for the given media query
+       *
+       * @param {string} q the media query
+       * @param {object || Array || Function} options either a single query handler object, a function, or an array of query handlers
+       * @param {function} options.match fired when query matched
+       * @param {function} [options.unmatch] fired when a query is no longer matched
+       * @param {function} [options.setup] fired when handler first triggered
+       * @param {boolean} [options.deferSetup=false] whether setup should be run immediately or deferred until query is first matched
+       * @param {boolean} [shouldDegrade=false] whether this particular media query should always run on incapable browsers
+       */
+      register: function(q, options, shouldDegrade) {
+        var queries = this.queries, isUnconditional = shouldDegrade && this.browserIsIncapable;
+        if (!queries[q]) {
+          queries[q] = new MediaQuery(q, isUnconditional);
+        }
+        if (isFunction(options)) {
+          options = { match: options };
+        }
+        if (!isArray(options)) {
+          options = [options];
+        }
+        each(options, function(handler) {
+          if (isFunction(handler)) {
+            handler = { match: handler };
+          }
+          queries[q].addHandler(handler);
+        });
+        return this;
+      },
+      /**
+       * unregisters a query and all it's handlers, or a specific handler for a query
+       *
+       * @param {string} q the media query to target
+       * @param {object || function} [handler] specific handler to unregister
+       */
+      unregister: function(q, handler) {
+        var query = this.queries[q];
+        if (query) {
+          if (handler) {
+            query.removeHandler(handler);
+          } else {
+            query.clear();
+            delete this.queries[q];
+          }
+        }
+        return this;
+      }
+    };
+    module.exports = MediaQueryDispatch;
+  }
+});
+
+// node_modules/enquire.js/src/index.js
+var require_src = __commonJS({
+  "node_modules/enquire.js/src/index.js"(exports, module) {
+    var MediaQueryDispatch = require_MediaQueryDispatch();
+    module.exports = new MediaQueryDispatch();
+  }
+});
+
+// node_modules/react-slick/lib/slider.js
+var require_slider = __commonJS({
+  "node_modules/react-slick/lib/slider.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports["default"] = void 0;
+    var _react = _interopRequireDefault(require_react());
+    var _innerSlider = require_inner_slider();
+    var _json2mq = _interopRequireDefault(require_json2mq());
+    var _defaultProps = _interopRequireDefault(require_default_props());
+    var _innerSliderUtils = require_innerSliderUtils();
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    function _typeof(o) {
+      "@babel/helpers - typeof";
+      return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+        return typeof o2;
+      } : function(o2) {
+        return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
+      }, _typeof(o);
+    }
+    function _extends4() {
+      _extends4 = Object.assign ? Object.assign.bind() : function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      };
+      return _extends4.apply(this, arguments);
+    }
+    function ownKeys(e, r) {
+      var t = Object.keys(e);
+      if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter(function(r2) {
+          return Object.getOwnPropertyDescriptor(e, r2).enumerable;
+        })), t.push.apply(t, o);
+      }
+      return t;
+    }
+    function _objectSpread(e) {
+      for (var r = 1; r < arguments.length; r++) {
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+          _defineProperty(e, r2, t[r2]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+          Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
+        });
+      }
+      return e;
+    }
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+      }
+    }
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+      }
+    }
+    function _createClass(Constructor, protoProps, staticProps) {
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) _defineProperties(Constructor, staticProps);
+      Object.defineProperty(Constructor, "prototype", { writable: false });
+      return Constructor;
+    }
+    function _inherits(subClass, superClass) {
+      if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function");
+      }
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
+      Object.defineProperty(subClass, "prototype", { writable: false });
+      if (superClass) _setPrototypeOf(subClass, superClass);
+    }
+    function _setPrototypeOf(o, p) {
+      _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf2(o2, p2) {
+        o2.__proto__ = p2;
+        return o2;
+      };
+      return _setPrototypeOf(o, p);
+    }
+    function _createSuper(Derived) {
+      var hasNativeReflectConstruct = _isNativeReflectConstruct();
+      return function _createSuperInternal() {
+        var Super = _getPrototypeOf(Derived), result;
+        if (hasNativeReflectConstruct) {
+          var NewTarget = _getPrototypeOf(this).constructor;
+          result = Reflect.construct(Super, arguments, NewTarget);
+        } else {
+          result = Super.apply(this, arguments);
+        }
+        return _possibleConstructorReturn(this, result);
+      };
+    }
+    function _possibleConstructorReturn(self2, call) {
+      if (call && (_typeof(call) === "object" || typeof call === "function")) {
+        return call;
+      } else if (call !== void 0) {
+        throw new TypeError("Derived constructors may only return object or undefined");
+      }
+      return _assertThisInitialized(self2);
+    }
+    function _assertThisInitialized(self2) {
+      if (self2 === void 0) {
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      }
+      return self2;
+    }
+    function _isNativeReflectConstruct() {
+      try {
+        var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+        }));
+      } catch (t2) {
+      }
+      return (_isNativeReflectConstruct = function _isNativeReflectConstruct2() {
+        return !!t;
+      })();
+    }
+    function _getPrototypeOf(o) {
+      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf2(o2) {
+        return o2.__proto__ || Object.getPrototypeOf(o2);
+      };
+      return _getPrototypeOf(o);
+    }
+    function _defineProperty(obj, key, value) {
+      key = _toPropertyKey(key);
+      if (key in obj) {
+        Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+      } else {
+        obj[key] = value;
+      }
+      return obj;
+    }
+    function _toPropertyKey(t) {
+      var i = _toPrimitive(t, "string");
+      return "symbol" == _typeof(i) ? i : String(i);
+    }
+    function _toPrimitive(t, r) {
+      if ("object" != _typeof(t) || !t) return t;
+      var e = t[Symbol.toPrimitive];
+      if (void 0 !== e) {
+        var i = e.call(t, r || "default");
+        if ("object" != _typeof(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === r ? String : Number)(t);
+    }
+    var enquire = (0, _innerSliderUtils.canUseDOM)() && require_src();
+    var Slider2 = exports["default"] = /* @__PURE__ */ function(_React$Component) {
+      _inherits(Slider3, _React$Component);
+      var _super = _createSuper(Slider3);
+      function Slider3(props) {
+        var _this;
+        _classCallCheck(this, Slider3);
+        _this = _super.call(this, props);
+        _defineProperty(_assertThisInitialized(_this), "innerSliderRefHandler", function(ref) {
+          return _this.innerSlider = ref;
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickPrev", function() {
+          return _this.innerSlider.slickPrev();
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickNext", function() {
+          return _this.innerSlider.slickNext();
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickGoTo", function(slide) {
+          var dontAnimate = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
+          return _this.innerSlider.slickGoTo(slide, dontAnimate);
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickPause", function() {
+          return _this.innerSlider.pause("paused");
+        });
+        _defineProperty(_assertThisInitialized(_this), "slickPlay", function() {
+          return _this.innerSlider.autoPlay("play");
+        });
+        _this.state = {
+          breakpoint: null
+        };
+        _this._responsiveMediaHandlers = [];
+        return _this;
+      }
+      _createClass(Slider3, [{
+        key: "media",
+        value: function media(query, handler) {
+          enquire.register(query, handler);
+          this._responsiveMediaHandlers.push({
+            query,
+            handler
+          });
+        }
+        // handles responsive breakpoints
+      }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+          var _this2 = this;
+          if (this.props.responsive) {
+            var breakpoints = this.props.responsive.map(function(breakpt) {
+              return breakpt.breakpoint;
+            });
+            breakpoints.sort(function(x, y) {
+              return x - y;
+            });
+            breakpoints.forEach(function(breakpoint, index) {
+              var bQuery;
+              if (index === 0) {
+                bQuery = (0, _json2mq["default"])({
+                  minWidth: 0,
+                  maxWidth: breakpoint
+                });
+              } else {
+                bQuery = (0, _json2mq["default"])({
+                  minWidth: breakpoints[index - 1] + 1,
+                  maxWidth: breakpoint
+                });
+              }
+              (0, _innerSliderUtils.canUseDOM)() && _this2.media(bQuery, function() {
+                _this2.setState({
+                  breakpoint
+                });
+              });
+            });
+            var query = (0, _json2mq["default"])({
+              minWidth: breakpoints.slice(-1)[0]
+            });
+            (0, _innerSliderUtils.canUseDOM)() && this.media(query, function() {
+              _this2.setState({
+                breakpoint: null
+              });
+            });
+          }
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+          this._responsiveMediaHandlers.forEach(function(obj) {
+            enquire.unregister(obj.query, obj.handler);
+          });
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var _this3 = this;
+          var settings;
+          var newProps;
+          if (this.state.breakpoint) {
+            newProps = this.props.responsive.filter(function(resp) {
+              return resp.breakpoint === _this3.state.breakpoint;
+            });
+            settings = newProps[0].settings === "unslick" ? "unslick" : _objectSpread(_objectSpread(_objectSpread({}, _defaultProps["default"]), this.props), newProps[0].settings);
+          } else {
+            settings = _objectSpread(_objectSpread({}, _defaultProps["default"]), this.props);
+          }
+          if (settings.centerMode) {
+            if (settings.slidesToScroll > 1 && true) {
+              console.warn("slidesToScroll should be equal to 1 in centerMode, you are using ".concat(settings.slidesToScroll));
+            }
+            settings.slidesToScroll = 1;
+          }
+          if (settings.fade) {
+            if (settings.slidesToShow > 1 && true) {
+              console.warn("slidesToShow should be equal to 1 when fade is true, you're using ".concat(settings.slidesToShow));
+            }
+            if (settings.slidesToScroll > 1 && true) {
+              console.warn("slidesToScroll should be equal to 1 when fade is true, you're using ".concat(settings.slidesToScroll));
+            }
+            settings.slidesToShow = 1;
+            settings.slidesToScroll = 1;
+          }
+          var children = _react["default"].Children.toArray(this.props.children);
+          children = children.filter(function(child) {
+            if (typeof child === "string") {
+              return !!child.trim();
+            }
+            return !!child;
+          });
+          if (settings.variableWidth && (settings.rows > 1 || settings.slidesPerRow > 1)) {
+            console.warn("variableWidth is not supported in case of rows > 1 or slidesPerRow > 1");
+            settings.variableWidth = false;
+          }
+          var newChildren = [];
+          var currentWidth = null;
+          for (var i = 0; i < children.length; i += settings.rows * settings.slidesPerRow) {
+            var newSlide = [];
+            for (var j = i; j < i + settings.rows * settings.slidesPerRow; j += settings.slidesPerRow) {
+              var row = [];
+              for (var k = j; k < j + settings.slidesPerRow; k += 1) {
+                if (settings.variableWidth && children[k].props.style) {
+                  currentWidth = children[k].props.style.width;
+                }
+                if (k >= children.length) break;
+                row.push(/* @__PURE__ */ _react["default"].cloneElement(children[k], {
+                  key: 100 * i + 10 * j + k,
+                  tabIndex: -1,
+                  style: {
+                    width: "".concat(100 / settings.slidesPerRow, "%"),
+                    display: "inline-block"
+                  }
+                }));
+              }
+              newSlide.push(/* @__PURE__ */ _react["default"].createElement("div", {
+                key: 10 * i + j
+              }, row));
+            }
+            if (settings.variableWidth) {
+              newChildren.push(/* @__PURE__ */ _react["default"].createElement("div", {
+                key: i,
+                style: {
+                  width: currentWidth
+                }
+              }, newSlide));
+            } else {
+              newChildren.push(/* @__PURE__ */ _react["default"].createElement("div", {
+                key: i
+              }, newSlide));
+            }
+          }
+          if (settings === "unslick") {
+            var className = "regular slider " + (this.props.className || "");
+            return /* @__PURE__ */ _react["default"].createElement("div", {
+              className
+            }, children);
+          } else if (newChildren.length <= settings.slidesToShow && !settings.infinite) {
+            settings.unslick = true;
+          }
+          return /* @__PURE__ */ _react["default"].createElement(_innerSlider.InnerSlider, _extends4({
+            style: this.props.style,
+            ref: this.innerSliderRefHandler
+          }, (0, _innerSliderUtils.filterSettings)(settings)), newChildren);
+        }
+      }]);
+      return Slider3;
+    }(_react["default"].Component);
+  }
+});
+
+// node_modules/react-slick/lib/index.js
+var require_lib = __commonJS({
+  "node_modules/react-slick/lib/index.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports["default"] = void 0;
+    var _slider = _interopRequireDefault(require_slider());
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { "default": obj };
+    }
+    var _default = exports["default"] = _slider["default"];
+  }
+});
+
 // node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js
 var turbo_es2017_esm_exports = {};
 __export(turbo_es2017_esm_exports, {
@@ -29312,14 +33199,14 @@ window.Turbo = turbo_es2017_esm_exports;
 addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
 // app/javascript/components/index.jsx
-var import_react7 = __toESM(require_react());
+var import_react8 = __toESM(require_react());
 var import_client = __toESM(require_client());
 
 // app/javascript/components/App.jsx
-var import_react6 = __toESM(require_react());
+var import_react7 = __toESM(require_react());
 
 // app/javascript/routes/index.jsx
-var import_react5 = __toESM(require_react());
+var import_react6 = __toESM(require_react());
 
 // node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react());
@@ -31317,7 +35204,7 @@ function getRandomElement(arr) {
   return arr[randomIndex];
 }
 var GridItem = (props) => {
-  return /* @__PURE__ */ React5.createElement("div", { className: "gridItem" }, /* @__PURE__ */ React5.createElement("div", { className: "innerGridItem" }, /* @__PURE__ */ React5.createElement("div", { className: "gridTopRow" }, /* @__PURE__ */ React5.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React5.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React5.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React5.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" })), /* @__PURE__ */ React5.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React5.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), class: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail - Lannock" }))), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo" }, /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Avatar" }, /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-ImageWrap" }, props.avatar && /* @__PURE__ */ React5.createElement("img", { src: props.avatar }), !props.avatar && /* @__PURE__ */ React5.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/user/115/8e476f199493.65f3771b78f7d.png" }))), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Data" }, /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Name" }, props.name), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Location" }, /* @__PURE__ */ React5.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "-4808 -20688 14.286 20", className: "UserSummaryInfo-locationIcon" }, /* @__PURE__ */ React5.createElement("g", null, /* @__PURE__ */ React5.createElement("path", { d: "M-4800.857-20688a7.143 7.143 0 0 0-7.143 7.143c0 5.714 7.143 12.857 7.143 12.857s7.143-7.143 7.143-12.857a7.142 7.142 0 0 0-7.143-7.143zm0 10a2.857 2.857 0 1 1 2.857-2.859 2.858 2.858 0 0 1-2.857 2.859z" }))), /* @__PURE__ */ React5.createElement("span", null, props.location)), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Available" }, /* @__PURE__ */ React5.createElement("button", null, /* @__PURE__ */ React5.createElement("span", null, "Featured"))), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-CollabButton" }, /* @__PURE__ */ React5.createElement("button", null, `Collab with ${props.name} \u{1F918}`))))));
+  return /* @__PURE__ */ React5.createElement("div", { className: "gridItem" }, /* @__PURE__ */ React5.createElement("div", { className: "innerGridItem" }, /* @__PURE__ */ React5.createElement("div", { className: "gridTopRow" }, /* @__PURE__ */ React5.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React5.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), className: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail" })), /* @__PURE__ */ React5.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React5.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), className: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail" })), /* @__PURE__ */ React5.createElement("div", { className: "thumbnail" }, /* @__PURE__ */ React5.createElement("img", { src: getRandomElement(IMAGE_OPTIONS), className: "e2e-UserSummary-coverImage UserSummary-ownerWorkThumbnailImage-JTU", loading: "lazy", alt: "Project thumbnail" }))), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo" }, /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Avatar" }, /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-ImageWrap" }, props.avatar && /* @__PURE__ */ React5.createElement("img", { src: props.avatar, alt: "avatar" }), !props.avatar && /* @__PURE__ */ React5.createElement("img", { src: "https://mir-s3-cdn-cf.behance.net/user/115/8e476f199493.65f3771b78f7d.png", alt: "default avatar" }))), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Data" }, /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Name" }, props.name), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Location" }, /* @__PURE__ */ React5.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "-4808 -20688 14.286 20", className: "UserSummaryInfo-locationIcon" }, /* @__PURE__ */ React5.createElement("g", null, /* @__PURE__ */ React5.createElement("path", { d: "M-4800.857-20688a7.143 7.143 0 0 0-7.143 7.143c0 5.714 7.143 12.857 7.143 12.857s7.143-7.143 7.143-12.857a7.142 7.142 0 0 0-7.143-7.143zm0 10a2.857 2.857 0 1 1 2.857-2.859 2.858 2.858 0 0 1-2.857 2.859z" }))), /* @__PURE__ */ React5.createElement("span", null, props.location)), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-Tags" }, props.tags && props.tags.length > 0 && /* @__PURE__ */ React5.createElement("div", { className: "tag-container" }, props.tags.map((tag, index) => /* @__PURE__ */ React5.createElement("span", { key: index, className: "tag" }, tag)))), /* @__PURE__ */ React5.createElement("div", { className: "UserInfo-CollabButton" }, /* @__PURE__ */ React5.createElement("button", null, `Collab with ${props.name} \u{1F918}`))))));
 };
 var GridItem_default = GridItem;
 
@@ -31329,61 +35216,70 @@ var Collaborate = ({ arg }) => {
       name: "Aurora James",
       location: "Cleveland, OH",
       brand: "Brother Vellies",
-      avatar: "/designers/aurora.jpeg"
+      avatar: "/designers/aurora.jpeg",
+      tags: ["Designer", "Creative Director"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "Romeo Hunte",
       location: "Houston, TX",
-      avatar: "/designers/romeo.jpg"
+      avatar: "/designers/romeo.jpg",
+      tags: ["Designer", "Streetwear Specialist"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "Carly Cushnie",
       location: "New York City, NY",
-      avatar: "/designers/carly.jpeg"
+      avatar: "/designers/carly.jpeg",
+      tags: ["Designer", "Fashion Consultant"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "LaQuan Smith",
       location: "New Orleans, LA",
-      avatar: "/designers/laquan.jpeg"
+      avatar: "/designers/laquan.jpeg",
+      tags: ["Model", "Fashion Icon"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "Rihanna",
       location: "Los Angeles, CA",
-      avatar: "/designers/rihanna.jpeg"
+      avatar: "/designers/rihanna.jpeg",
+      tags: ["Designer", "Musician", "Fashion Entrepreneur"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "Chris Rogers",
       location: "New York City, NY",
-      avatar: "/designers/chris.jpeg"
+      avatar: "/designers/chris.jpeg",
+      tags: ["Photographer", "Fashion Stylist"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "Dapper Dan",
       location: "Harlem, NY",
-      avatar: "/designers/dan.jpeg"
+      avatar: "/designers/dan.jpeg",
+      tags: ["Designer", "Tailor", "Fashion Consultant"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "Albert",
-      location: "New York, NY"
+      location: "New York, NY",
+      tags: ["Photographer"]
     }
   ), /* @__PURE__ */ import_react3.default.createElement(
     GridItem_default,
     {
       name: "Albert",
-      location: "Buffalo, NY"
+      location: "Buffalo, NY",
+      tags: ["Model", "Runway Specialist"]
     }
   ));
 };
@@ -31392,19 +35288,208 @@ var Collaborate_default = Collaborate;
 // app/javascript/components/Events/index.jsx
 var import_react4 = __toESM(require_react());
 var Events = () => {
-  return /* @__PURE__ */ import_react4.default.createElement("div", { class: "container mx-auto p-8" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "mb-6" }, /* @__PURE__ */ import_react4.default.createElement("h1", { class: "text-3xl font-bold mb-2" }, "Coming soon"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-gray-600" }, "Be among the first to know when new products launch")), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex flex-col lg:flex-row lg:space-x-16" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex-1" }, /* @__PURE__ */ import_react4.default.createElement("h2", { class: "text-sm font-semibold text-gray-600 mb-4" }, "NEXT 7 DAYS"), /* @__PURE__ */ import_react4.default.createElement("div", { class: "space-y-6" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/965324/pexels-photo-965324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "ralify", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Ali\xE9tte Drop Shop"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "188 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/1154861/pexels-photo-1154861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Comtrax", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Pyer Moss Runway"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "26 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/994234/pexels-photo-994234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "ToonTalk", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Aurora James Runs the Show!"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "16 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/1144834/pexels-photo-1144834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "Eaziquote", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Telfar Elegant Suare"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "6 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/1081685/pexels-photo-1081685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "HappyLab", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "HappyLab Design Showcase"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "+16 \u2022 Productivity, Newsletters"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "w-full lg:w-1/3 mt-10 lg:mt-0" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "p-6 bg-gray-100 rounded-lg shadow-sm" }, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "text-sm font-semibold text-gray-600 mb-4" }, "ABOUT THIS PAGE"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-700 mb-4" }, "This page shows designer launches, events and drops that are coming soon. Click 'Notify me' to be the first to find out when events go live."), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-700 mb-4" }, "If you would like your launch to be listed here, schedule it in advance, and create a teaser - it's free!"), /* @__PURE__ */ import_react4.default.createElement("a", { href: "#", class: "text-blue-600 font-semibold" }, "Learn more")))));
+  return /* @__PURE__ */ import_react4.default.createElement("div", { class: "container mx-auto p-8" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "mb-6 flex justify-between items-center" }, /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h1", { className: "text-3xl font-bold mb-2" }, "Coming soon"), /* @__PURE__ */ import_react4.default.createElement("p", { className: "text-gray-600" }, "Be among the first to know when new products launch")), /* @__PURE__ */ import_react4.default.createElement(
+    "a",
+    {
+      href: "/event/create",
+      className: "px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 text-sm font-semibold"
+    },
+    "Create Event"
+  )), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex flex-col lg:flex-row lg:space-x-16" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex-1" }, /* @__PURE__ */ import_react4.default.createElement("h2", { class: "text-sm font-semibold text-gray-600 mb-4" }, "NEXT 7 DAYS"), /* @__PURE__ */ import_react4.default.createElement("div", { class: "space-y-6" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/965324/pexels-photo-965324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "ralify", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Ali\xE9tte Drop Shop"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "188 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/1154861/pexels-photo-1154861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Comtrax", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Pyer Moss Runway"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "26 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/994234/pexels-photo-994234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "ToonTalk", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Aurora James Runs the Show!"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "16 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/1144834/pexels-photo-1144834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "Eaziquote", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "Telfar Elegant Suare"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "6 Attending"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center justify-between p-4 bg-white shadow-sm rounded-lg" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex items-center" }, /* @__PURE__ */ import_react4.default.createElement("img", { src: "https://images.pexels.com/photos/1081685/pexels-photo-1081685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "HappyLab", class: "w-12 h-12 rounded-full mr-4" }), /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "font-bold" }, "HappyLab Design Showcase"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-500" }, "+16 \u2022 Productivity, Newsletters"))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "flex space-x-2" }, /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300" }, "Share"), /* @__PURE__ */ import_react4.default.createElement("button", { class: "px-4 py-2 text-sm text-white bg-blue-600 rounded hover:bg-blue-700" }, "Notify me"))))), /* @__PURE__ */ import_react4.default.createElement("div", { class: "w-full lg:w-1/3 mt-10 lg:mt-0" }, /* @__PURE__ */ import_react4.default.createElement("div", { class: "p-6 bg-gray-100 rounded-lg shadow-sm" }, /* @__PURE__ */ import_react4.default.createElement("h3", { class: "text-sm font-semibold text-gray-600 mb-4" }, "ABOUT THIS PAGE"), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-700 mb-4" }, "This page shows designer launches, events and drops that are coming soon. Click 'Notify me' to be the first to find out when events go live."), /* @__PURE__ */ import_react4.default.createElement("p", { class: "text-sm text-gray-700 mb-4" }, "If you would like your launch to be listed here, schedule it in advance, and create a teaser - it's free!"), /* @__PURE__ */ import_react4.default.createElement("a", { href: "#", class: "text-blue-600 font-semibold" }, "Learn more")))));
 };
 var Events_default = Events;
 
+// app/javascript/components/EventForm/index.jsx
+var import_react5 = __toESM(require_react());
+var import_react_slick = __toESM(require_lib());
+
+// app/javascript/components/EventForm/tags.js
+var fashionTags = [
+  { label: "Streetwear", emoji: "\u{1F45F}" },
+  { label: "Casual", emoji: "\u{1F455}" },
+  { label: "Luxury", emoji: "\u{1F48E}" },
+  { label: "Vintage", emoji: "\u{1F457}" },
+  { label: "Minimalist", emoji: "\u26AA" },
+  { label: "Bohemian", emoji: "\u{1F338}" },
+  { label: "Formal", emoji: "\u{1F935}" },
+  { label: "Eco-Friendly", emoji: "\u{1F331}" },
+  { label: "Athleisure", emoji: "\u{1F9D8}" },
+  { label: "Avant-Garde", emoji: "\u{1F3A8}" }
+];
+
+// app/javascript/components/EventForm/index.jsx
+function EventForm() {
+  const [formData, setFormData] = (0, import_react5.useState)({
+    eventName: "",
+    eventDate: "",
+    eventDescription: "",
+    eventImages: Array(5).fill(null),
+    fashionTags: []
+    // New field for selected tags
+  });
+  const [isSubmitted, setIsSubmitted] = (0, import_react5.useState)(false);
+  const sliderRef = (0, import_react5.useRef)(null);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+  const handleTagChange = (tagLabel) => {
+    let updatedTags = [...formData.fashionTags];
+    if (updatedTags.includes(tagLabel)) {
+      updatedTags = updatedTags.filter((t) => t !== tagLabel);
+    } else {
+      updatedTags.push(tagLabel);
+    }
+    setFormData({
+      ...formData,
+      fashionTags: updatedTags
+    });
+  };
+  const handleImageChange = (e, index) => {
+    const files = Array.from(e.target.files);
+    const newImages = [...formData.eventImages];
+    if (files[0]) {
+      newImages[index] = files[0];
+      setFormData({ ...formData, eventImages: newImages });
+    }
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Handling Submit....");
+    setIsSubmitted(true);
+    sliderRef.current.slickNext();
+  };
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    beforeChange: (current, next) => setCurrentSlide(next)
+  };
+  const [currentSlide, setCurrentSlide] = (0, import_react5.useState)(0);
+  return /* @__PURE__ */ import_react5.default.createElement("div", { className: "event-form-container max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "progress-indicator flex justify-between items-center mb-6" }, ["Launch Name", "Launch Date", "Launch Description", "Fashion Tags", "Upload Images", "Review"].map((label, index) => /* @__PURE__ */ import_react5.default.createElement("div", { key: index, className: `step ${currentSlide >= index ? "active" : ""}` }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "step-indicator" }), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-xs text-gray-500" }, label)))), /* @__PURE__ */ import_react5.default.createElement(import_react_slick.default, { ...settings, ref: sliderRef }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4" }, /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-xl font-bold mb-2" }, "Launch Name"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-gray-500 mb-4" }, "Get creative! Think of a name that stands out and captures the vibe of your launch."), /* @__PURE__ */ import_react5.default.createElement(
+    "input",
+    {
+      type: "text",
+      name: "eventName",
+      value: formData.eventName,
+      onChange: handleChange,
+      className: "border border-gray-300 p-2 w-full rounded",
+      placeholder: "Enter event name"
+    }
+  ), /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      className: "mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded hover:opacity-90 transition-opacity duration-200",
+      onClick: () => sliderRef.current.slickNext()
+    },
+    "Next"
+  )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4" }, /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-xl font-bold mb-2" }, "Launch Date"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-gray-500 mb-4" }, "Pick a date that aligns with the stars (or your perfect launch day)."), /* @__PURE__ */ import_react5.default.createElement(
+    "input",
+    {
+      type: "date",
+      name: "eventDate",
+      value: formData.eventDate,
+      onChange: handleChange,
+      className: "border border-gray-300 p-2 w-full rounded"
+    }
+  ), /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      className: "mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded hover:opacity-90 transition-opacity duration-200",
+      onClick: () => sliderRef.current.slickNext()
+    },
+    "Next"
+  )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4" }, /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-xl font-bold mb-2" }, "Launch Description"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-gray-500 mb-4" }, "Let\u2019s get descriptive! Share the magic behind your designs. Keep it fun and fabulous."), /* @__PURE__ */ import_react5.default.createElement(
+    "textarea",
+    {
+      name: "eventDescription",
+      value: formData.eventDescription,
+      onChange: handleChange,
+      className: "border border-gray-300 p-2 w-full rounded",
+      placeholder: "Tell us about your event"
+    }
+  ), /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      className: "mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded hover:opacity-90 transition-opacity duration-200",
+      onClick: () => sliderRef.current.slickNext()
+    },
+    "Next"
+  )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4" }, /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-xl font-bold mb-2" }, "Select Fashion Tags"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-gray-500 mb-4" }, "Choose tags that best describe your designs. You can select multiple tags."), /* @__PURE__ */ import_react5.default.createElement("div", { className: "grid grid-cols-2 gap-4" }, fashionTags.map((tag) => /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      key: tag.label,
+      onClick: () => handleTagChange(tag.label),
+      className: `border border-gray-300 p-2 rounded flex items-center justify-center ${formData.fashionTags.includes(tag.label) ? "bg-blue-500 text-white" : "bg-white text-gray-700"}`
+    },
+    /* @__PURE__ */ import_react5.default.createElement("span", { className: "mr-2" }, tag.emoji),
+    tag.label
+  ))), /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      className: "mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded hover:opacity-90 transition-opacity duration-200",
+      onClick: () => sliderRef.current.slickNext()
+    },
+    "Next"
+  )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4" }, /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-xl font-bold mb-2" }, "Upload Your Designs"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-gray-500 mb-4" }, "Show off your work! You can upload up to 5 images of your designs. Make them shine!"), /* @__PURE__ */ import_react5.default.createElement("div", { className: "image-upload-grid grid grid-cols-3 gap-4" }, formData.eventImages.map((image, index) => /* @__PURE__ */ import_react5.default.createElement("div", { key: index, className: "image-upload-box relative border-2 border-dashed border-gray-300 rounded-lg h-24 w-24 flex items-center justify-center cursor-pointer" }, /* @__PURE__ */ import_react5.default.createElement(
+    "input",
+    {
+      type: "file",
+      onChange: (e) => handleImageChange(e, index),
+      accept: "image/*",
+      className: "absolute inset-0 opacity-0 cursor-pointer"
+    }
+  ), image ? /* @__PURE__ */ import_react5.default.createElement(
+    "img",
+    {
+      src: URL.createObjectURL(image),
+      alt: `Uploaded ${index + 1}`,
+      className: "object-cover w-full h-full rounded-lg"
+    }
+  ) : /* @__PURE__ */ import_react5.default.createElement("span", { className: "text-2xl text-gray-400" }, "+")))), /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      className: "mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded hover:opacity-90 transition-opacity duration-200",
+      onClick: () => sliderRef.current.slickNext()
+    },
+    "Next"
+  )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4 flex flex-col items-center text-center" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "celebration-icon text-5xl mb-4" }, "\u{1F389}"), /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-2xl font-bold mb-4" }, "You're Ready to Submit!"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-gray-500 mb-4" }, "Review the details of your launch and make sure everything is correct."), /* @__PURE__ */ import_react5.default.createElement("div", { className: "review-details text-left mb-6" }, /* @__PURE__ */ import_react5.default.createElement("p", null, /* @__PURE__ */ import_react5.default.createElement("strong", null, "Name:"), " ", formData.eventName), /* @__PURE__ */ import_react5.default.createElement("p", null, /* @__PURE__ */ import_react5.default.createElement("strong", null, "Date:"), " ", formData.eventDate), /* @__PURE__ */ import_react5.default.createElement("p", null, /* @__PURE__ */ import_react5.default.createElement("strong", null, "Description:"), " ", formData.eventDescription), /* @__PURE__ */ import_react5.default.createElement("p", null, /* @__PURE__ */ import_react5.default.createElement("strong", null, "Tags:"), " ", formData.fashionTags.join(", "))), formData.eventImages.length > 0 && /* @__PURE__ */ import_react5.default.createElement("div", { className: "image-preview grid grid-cols-3 gap-2 mb-6" }, formData.eventImages.filter((img) => img).map((image, index) => /* @__PURE__ */ import_react5.default.createElement("div", { key: index, className: "image-thumbnail" }, /* @__PURE__ */ import_react5.default.createElement(
+    "img",
+    {
+      src: URL.createObjectURL(image),
+      alt: `Preview ${index + 1}`,
+      className: "w-full h-auto object-cover rounded"
+    }
+  )))), /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      onClick: handleSubmit,
+      className: "mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded hover:opacity-90 transition-opacity duration-200"
+    },
+    "Submit"
+  )), isSubmitted && /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4 flex flex-col items-center text-center" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "celebration-icon text-5xl mb-4" }, "\u{1F680}"), /* @__PURE__ */ import_react5.default.createElement("h3", { className: "text-2xl font-bold mb-4" }, "Your Event Has Launched!"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-gray-500 mb-4" }, "Congratulations! Your fashion launch event has been successfully created."), /* @__PURE__ */ import_react5.default.createElement(
+    "button",
+    {
+      className: "mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded hover:opacity-90 transition-opacity duration-200",
+      onClick: () => window.location.reload()
+    },
+    "Back to Dashboard"
+  ))));
+}
+
 // app/javascript/routes/index.jsx
 var AppRoutes = () => {
-  return /* @__PURE__ */ import_react5.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react5.default.createElement(Routes, null, /* @__PURE__ */ import_react5.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react5.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react5.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react5.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react5.default.createElement(Route, { path: "/events", element: /* @__PURE__ */ import_react5.default.createElement(Events_default, null) })));
+  return /* @__PURE__ */ import_react6.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react6.default.createElement(Routes, null, /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react6.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react6.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/events", element: /* @__PURE__ */ import_react6.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/event/create", element: /* @__PURE__ */ import_react6.default.createElement(EventForm, null) })));
 };
 var routes_default = AppRoutes;
 
 // app/javascript/components/App.jsx
 var App = () => {
-  return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react6.default.createElement(routes_default, null));
+  return /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, /* @__PURE__ */ import_react7.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react7.default.createElement(routes_default, null));
 };
 var App_default = App;
 
@@ -31413,7 +35498,7 @@ document.addEventListener("turbo:load", () => {
   const root = (0, import_client.createRoot)(
     document.body.appendChild(document.createElement("div"))
   );
-  root.render(/* @__PURE__ */ import_react7.default.createElement(App_default, null));
+  root.render(/* @__PURE__ */ import_react8.default.createElement(App_default, null));
 });
 /*! Bundled license information:
 
@@ -31462,6 +35547,13 @@ react-dom/cjs/react-dom.development.js:
    * @internal
    * @license Modernizr 3.0.0pre (Custom Build) | MIT
    *)
+
+classnames/index.js:
+  (*!
+  	Copyright (c) 2018 Jed Watson.
+  	Licensed under the MIT License (MIT), see
+  	http://jedwatson.github.io/classnames
+  *)
 
 @hotwired/turbo/dist/turbo.es2017-esm.js:
   (*!
