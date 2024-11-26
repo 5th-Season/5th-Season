@@ -10,7 +10,7 @@ const Navigation = () => {
       <nav className="flex space-x-4">
           <a href="#" className="text-gray-600 hover:text-black">Discover</a>
           <a href="/collaborate" className="text-gray-600 hover:text-black">Collaborate</a>
-          <a href="/events" className="text-gray-600 hover:text-black">Events</a>
+          <a href="/launches" className="text-gray-600 hover:text-black">Launches</a>
       </nav>
       
       <div className="flex space-x-4">

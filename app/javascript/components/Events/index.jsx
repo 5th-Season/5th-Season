@@ -9,10 +9,10 @@ const Events = () => {
           <p className="text-gray-600">Be among the first to know when new products launch</p>
         </div>
         <a
-          href="/event/create"
+          href="/launch/create"
           className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700 text-sm font-semibold"
         >
-          Create Event
+          Create Launch
         </a>
       </div>
 

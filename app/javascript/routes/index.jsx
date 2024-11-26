@@ -12,8 +12,8 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collaborate" element={<Collaborate />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/event/create" element={<EventForm />} />
+          <Route path="/launches" element={<Events />} />
+          <Route path="/launch/create" element={<EventForm />} />
         </Routes>
       </Router>
   )
