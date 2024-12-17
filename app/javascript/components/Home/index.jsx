@@ -9,7 +9,7 @@ const Home = () => {
       if (scrollRef.current) {
         scrollRef.current.scrollLeft += 1; // Adjust the value to control the scroll speed
       }
-    }, 30); // Adjust the interval time to control the smoothness of the scroll
+    }, 40); // Adjust the interval time to control the smoothness of the scroll
 
     return () => clearInterval(scrollInterval); // Cleanup the interval on component unmount
   }, []);
@@ -26,35 +26,35 @@ const Home = () => {
       <div className="fashionista-designers bg-white mt-8">
         <div ref={scrollRef} className="designer-lineup flex overflow-x-auto space-x-4 px-4 scrollbar-hide">
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer1} alt="Designer 1" />
+              <img src="https://images.pexels.com/photos/29811587/pexels-photo-29811587/free-photo-of-elegant-woman-with-curly-hair-posing-indoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Designer 1" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer2} alt="Designer 2" />
+              <img src={`https://www.essence.com/wp-content/uploads/2022/07/GettyImages-1205845584-scaled.jpg`} alt="Designer 2" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer3} alt="Designer 3" />
+              <img src={`https://www.essence.com/wp-content/uploads/2022/07/hEk5Kvec-8.png`} alt="Designer 3" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer4} alt="Designer 4" />
+              <img src={`https://images.pexels.com/photos/3205989/pexels-photo-3205989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 4" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer5} alt="Designer 5" />
+              <img src={`https://images.pexels.com/photos/8715778/pexels-photo-8715778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 5" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer6} alt="Designer 5" />
+              <img src={`https://images.pexels.com/photos/26221665/pexels-photo-26221665/free-photo-of-portrait-of-man-wearing-suit.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 5" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer3} alt="Designer 3" />
+              <img src={`https://images.pexels.com/photos/28579193/pexels-photo-28579193/free-photo-of-stylish-man-in-urban-setting-with-sunglasses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 3" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer4} alt="Designer 4" />
+              <img src={`https://images.pexels.com/photos/18192898/pexels-photo-18192898/free-photo-of-a-boy-s-portrait-in-white-attire.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 4" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
@@ -79,7 +79,7 @@ const Home = () => {
           <div class="lg:w-1/2 p-4">
             <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">Turn Your Vision Into Reality</h2>
             <p class="text-gray-700 leading-relaxed">
-              Unleash your creative potential with our fashion tech platform designed exclusively for fashion designers. Whether you're launching your first collection or an established brand, we provide the tools to create, showcase, and grow your fashion empire. Simplify the process, from ideation to launch, and bring your designs to life with our intuitive tools and industry-leading resources. It’s time to transform your vision into the next big trend.
+              Unleash your creative potential with our fashion tech platform designed exclusively for fashion designers. Whether you're launching your first collection or an established brand, we provide the tools to create, showcase, and grow your fashion empire.  It’s time to transform your vision into the next big trend.
             </p>
           </div>
 
