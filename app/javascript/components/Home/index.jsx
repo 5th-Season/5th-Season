@@ -9,7 +9,7 @@ const Home = () => {
       if (scrollRef.current) {
         scrollRef.current.scrollLeft += 1; // Adjust the value to control the scroll speed
       }
-    }, 40); // Adjust the interval time to control the smoothness of the scroll
+    }, 60); // Adjust the interval time to control the smoothness of the scroll
 
     return () => clearInterval(scrollInterval); // Cleanup the interval on component unmount
   }, []);
@@ -58,7 +58,7 @@ const Home = () => {
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={designer5} alt="Designer 5" />
+              <img src={`https://images.unsplash.com/photo-1545291730-faff8ca1d4b0`} alt="Designer 5" />
             </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ const Home = () => {
         </p>
 
         <div class="w-full">
-          <img src="/path/to/your/image.png" alt="" class="rounded-lg shadow-lg max-w-full h-auto" />
+          <img src="https://images.pexels.com/photos/9850074/pexels-photo-9850074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="rounded-lg shadow-lg max-w-full h-auto" />
         </div>
       </section>
 
