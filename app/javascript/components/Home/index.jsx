@@ -18,8 +18,8 @@ const Home = () => {
     <div>
       <div className="about-fashionista">
         <div className="asc-container">
-          <h2><strong>Your fashion is worth more than pennies.</strong></h2>
-          <p>The new way to collaborate and support your<br /> favorite fashion icons.</p>
+          <h2><strong>The Future of Fashion Starts Here</strong></h2>
+          <p>Welcome to the season where<br /> designers shine, new trends begin, and <br />all will discover their place in fashion.</p>
         </div>
       </div>
 
@@ -77,9 +77,9 @@ const Home = () => {
       <div className="fashionista-feature bg-white mt-8">
         <section class="flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10">
           <div class="lg:w-1/2 p-4">
-            <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">Turn Your Vision Into Reality</h2>
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">What is Fifth Season?</h2>
             <p class="text-gray-700 leading-relaxed">
-              Unleash your creative potential with our fashion tech platform designed exclusively for fashion designers. Whether you're launching your first collection or an established brand, we provide the tools to create, showcase, and grow your fashion empire.  It’s time to transform your vision into the next big trend.
+            Fashion has always been defined by four seasons—spring, summer, fall, and winter—but we’re here to introduce something new. Fifth Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we’re here to help you showcase your work, grow your presence, and turn your vision into the next big trend.
             </p>
           </div>
 
