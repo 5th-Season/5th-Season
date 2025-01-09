@@ -9,7 +9,15 @@ const buildOptions = {
   bundle: true,
   sourcemap: true,
   allowOverwrite: true,
-  loader: { '.woff': 'copy', '.ttf': 'copy', '.eot': 'copy' },
+  loader: { 
+    '.woff': 'copy',
+    '.ttf': 'copy',
+    '.eot': 'copy',
+    '.jpg': 'file',
+    '.png': 'file',
+    '.svg': 'file',
+    '.gif': 'file' 
+  },
   plugins: [
     sassPlugin({
       loadPaths: ['./node_modules']

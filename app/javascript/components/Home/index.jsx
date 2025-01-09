@@ -102,7 +102,22 @@ const Home = () => {
           </div>
         </section>
       </div>
+
+      <div className="fashionista-feature bg-white mt-8">
+        <section class="flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10">
+          <div class="lg:w-1/3 p-4 flex justify-center">
+            <img src="/Create.png" />
+          </div>
+          <div class="lg:w-1/3 p-4 flex justify-center">
+            <img src="/Launch.png" />
+          </div>
+          <div class="lg:w-1/3 p-4 flex justify-center">
+            <img src="/Collab.png" />
+          </div>
+       </section>
+      </div>
     </div>
+    
   )
 }
 
