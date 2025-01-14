@@ -104,17 +104,23 @@ const Home = () => {
       </div>
 
       <div className="fashionista-feature bg-white mt-8">
-        <section class="flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10">
-          <div class="lg:w-1/3 p-4 flex justify-center">
-            <img src="/Create.png" />
-          </div>
-          <div class="lg:w-1/3 p-4 flex justify-center">
-            <img src="/Launch.png" />
-          </div>
-          <div class="lg:w-1/3 p-4 flex justify-center">
-            <img src="/Collab.png" />
-          </div>
-       </section>
+      <section class="flex flex-col items-center bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10">  
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 text-center w-full">The Next Season is Yours</h1>  
+        <div class="flex flex-row justify-center w-full">  
+          <div class="lg:w-1/3 p-4 flex flex-col items-center">  
+            <img src="/Create.png" alt="Create" />  
+            <p class="mt-4 text-center text-gray-700">Create</p>  
+          </div>  
+          <div class="lg:w-1/3 p-4 flex flex-col items-center">  
+            <img src="/Launch.png" alt="Launch" />  
+            <p class="mt-4 text-center text-gray-700">Showcase your collections for the world to discover, purchase, and share. Build credibility and connect with fashion enthusiasts through exclusive drops and unique pieces</p>  
+          </div>  
+          <div class="lg:w-1/3 p-4 flex flex-col items-center">  
+            <img src="/Collab.png" alt="Collaborate" />  
+            <p class="mt-4 text-center text-gray-700">Find like-minded creatives and unlock new opportunities. Team up on new collections, recruit talent or connect with brands to bring innovative projects to life</p>  
+          </div>  
+        </div>  
+      </section>
       </div>
     </div>
     
