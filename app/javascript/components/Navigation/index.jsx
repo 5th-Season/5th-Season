@@ -4,10 +4,10 @@ const Navigation = () => {
   return (
     <header className="flex items-center justify-between p-4 bg-white border-b">
       <div className="flex items-center space-x-2">
-          {/* <span className="font-bold text-lg">FIFTH SEASON</span> */}
+          {/* <span className="font-bold text-lg">5th SEASON</span> */}
       </div>
       <nav className="flex space-x-4">
-        <span className="font-bold text-lg">FIFTH SEASON</span>
+        <span className="font-bold text-lg">5th SEASON</span>
       </nav>
 
       <nav className="flex space-x-4">
