@@ -77,9 +77,9 @@ const Home = () => {
       <div className="fashionista-feature bg-white mt-8">
         <section class="flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10">
           <div class="lg:w-1/2 p-4">
-            <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">What is Fifth Season?</h2>
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">What is 5th Season?</h2>
             <p class="text-gray-700 leading-relaxed">
-            Fashion has always been defined by four seasons—spring, summer, fall, and winter—but we’re here to introduce something new. Fifth Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we’re here to help you showcase your work, grow your presence, and turn your vision into the next big trend.
+            Fashion has always been defined by four seasons—spring, summer, fall, and winter—but we’re here to introduce something new. 5th Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we’re here to help you showcase your work, grow your presence, and turn your vision into the next big trend.
             </p>
           </div>
 
