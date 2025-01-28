@@ -1,8 +1,11 @@
-import React, { useEffect, useRef } from 'react'
-import { designer1, designer2, designer3, designer4, designer5, designer6 } from '../../assets'
+import React, { useEffect, useRef } from 'react';
+import { designer1, designer2, designer3, designer4, designer5, designer6 } from '../../assets';
+import { Mixpanel } from '../../utils/Mixpanel';
+import { useSearchParams } from 'react-router-dom';
 
 const Home = () => {
   const scrollRef = useRef(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const scrollInterval = setInterval(() => {
@@ -13,6 +16,26 @@ const Home = () => {
 
     return () => clearInterval(scrollInterval); // Cleanup the interval on component unmount
   }, []);
+
+  useEffect(() => {
+    let props = {};
+
+    // TODO: Add more UTM parameters as needed
+    if (searchParams.get('utm_source')) {
+      props = { ...props, source: searchParams.get('utm_source') };
+    }
+
+    if (searchParams.get('utm_medium')) {
+      props = { ...props, medium: searchParams.get('utm_medium') };
+    }
+
+    if (searchParams.get('utm_campaign')) {
+      props = { ...props, campaign: searchParams.get('utm_campaign') };
+    }
+
+    Mixpanel.track('Landing Page', props);
+
+  }, [searchParams]);
 
   return (
     <div>
