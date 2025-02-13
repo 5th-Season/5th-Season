@@ -21,6 +21,7 @@ const Home = () => {
     let props = {};
 
     // TODO: Add more UTM parameters as needed
+    // TODO: https://5thseason.club/?utm_source=instagram
     if (searchParams.get('utm_source')) {
       props = { ...props, source: searchParams.get('utm_source') };
     }
