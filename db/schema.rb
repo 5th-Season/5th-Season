@@ -10,8 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_23_211112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "collections", force: :cascade do |t|
+    t.bigint "designer_id", null: false
+    t.string "title", null: false
+    t.string "season", null: false
+    t.integer "year", null: false
+    t.text "description"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["designer_id"], name: "index_collections_on_designer_id"
+  end
+
+  create_table "designers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "brand_name", null: false
+    t.text "brand_description", null: false
+    t.string "location", null: false
+    t.string "website"
+    t.integer "established_year"
+    t.string "verification_status", default: "pending"
+    t.string "slug", null: false
+    t.decimal "average_rating", precision: 3, scale: 2, default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_designers_on_slug", unique: true
+    t.index ["user_id"], name: "index_designers_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.boolean "is_admin", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "collections", "designers"
+  add_foreign_key "designers", "users"
 end
