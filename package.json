@@ -7,6 +7,7 @@
     "esbuild": "^0.23.0",
     "esbuild-plugin-inline-image": "^0.0.9",
     "esbuild-rails": "^1.0.7",
+    "mixpanel-browser": "^2.59.0",
     "postcss": "^8.4.41",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^16.1.0",
