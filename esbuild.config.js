@@ -1,7 +1,8 @@
 const { sassPlugin } = require('esbuild-sass-plugin');
 const inlineImage = require("esbuild-plugin-inline-image");
 const args = process.argv.slice(2);
-const isHeroku = true;//process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
+const watchMode = args.includes('--watch');
 
 const buildOptions = {
   entryPoints: ["./app/javascript/application.js"],
@@ -32,26 +33,22 @@ const buildOptions = {
   ],
   format: "esm",
   publicPath: 'assets',
+  minify: isProduction
 };
 
-// For production build (e.g., on Heroku)
-if (isHeroku) {
-  require("esbuild").build(buildOptions)
-    .then(() => {
-      console.log("⚡ Production build complete");
+if (watchMode) {
+  // Development with watch mode
+  require("esbuild").context(buildOptions)
+    .then(context => {
+      context.watch();
+      console.log('⚡ Watching for changes...');
     })
     .catch(() => process.exit(1));
 } else {
-  // For development, with watch mode
-  require("esbuild").context(buildOptions)
-    .then((context) => {
-      if (args.includes('--watch')) {
-        context.watch();
-        console.log('⚡ Watching for changes...');
-      } else {
-        context.rebuild();
-        console.log('⚡ Development build complete');
-      }
+  // One-time build (production or development)
+  require("esbuild").build(buildOptions)
+    .then(() => {
+      console.log(isProduction ? "⚡ Production build complete" : "⚡ Development build complete");
     })
     .catch(() => process.exit(1));
 }

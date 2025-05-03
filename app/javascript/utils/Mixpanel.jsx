@@ -1,22 +1,34 @@
 import mixpanel from 'mixpanel-browser';
 
-mixpanel.init(process.env.REACT_APP_MIXPANEL_TOKEN);
-console.log(`Mixpanel: ${process.env.REACT_APP_MIXPANEL_TOKEN}`);
+// Use window.__ENV__ which we'll define in our application layout
+const ENV = window.__ENV__ || {};
+const MIXPANEL_TOKEN = ENV.MIXPANEL_TOKEN || '';
+const isProduction = ENV.NODE_ENV === 'production';
 
-let env_check = process.env.NODE_ENV === 'production';
-console.log(`Mixpanel ENV: ${env_check}`);
+console.log(`Mixpanel Token: ${MIXPANEL_TOKEN}`);
+console.log(`Environment: ${isProduction ? 'production' : 'development'}`);
 
-export let Mixpanel = {
+// Only initialize if token is available
+if (MIXPANEL_TOKEN) {
+  mixpanel.init(MIXPANEL_TOKEN);
+}
+
+export const Mixpanel = {
   identify: (id) => {
-    if (env_check) 
+    if (isProduction && MIXPANEL_TOKEN) {
       mixpanel.identify(id);
+    }
   },
   alias: (id) => {
-    if (env_check) 
+    if (isProduction && MIXPANEL_TOKEN) {
       mixpanel.alias(id);
+    }
   },
   track: (name, props) => {
-    if (env_check) 
+    if (isProduction && MIXPANEL_TOKEN) {
       mixpanel.track(name, props);
+    } else {
+      console.log(`[Mixpanel - DEV] ${name}`, props);
+    }
   }
 };
