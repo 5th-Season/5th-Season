@@ -1102,7 +1102,7 @@ var require_react_development = __commonJS({
           }
           return element;
         };
-        function createElement4(type, config, children) {
+        function createElement6(type, config, children) {
           var propName;
           var props = {};
           var key = null;
@@ -1563,7 +1563,7 @@ var require_react_development = __commonJS({
           }
           return lazyType;
         }
-        function forwardRef2(render) {
+        function forwardRef4(render) {
           {
             if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
               error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
@@ -2201,7 +2201,7 @@ var require_react_development = __commonJS({
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement4.apply(this, arguments);
+          var element = createElement6.apply(this, arguments);
           if (element == null) {
             return element;
           }
@@ -2461,7 +2461,7 @@ var require_react_development = __commonJS({
         exports.createElement = createElement$1;
         exports.createFactory = createFactory;
         exports.createRef = createRef;
-        exports.forwardRef = forwardRef2;
+        exports.forwardRef = forwardRef4;
         exports.isValidElement = isValidElement2;
         exports.lazy = lazy;
         exports.memo = memo2;
@@ -2975,9 +2975,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React12 = require_react();
+        var React13 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React12.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4582,7 +4582,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React12.Children.forEach(props.children, function(child) {
+                React13.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -9976,7 +9976,7 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function createElement4(type, props, rootContainerElement, parentNamespace) {
+        function createElement6(type, props, rootContainerElement, parentNamespace) {
           var isCustomComponentTag;
           var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
           var domElement;
@@ -10831,7 +10831,7 @@ var require_react_dom_development = __commonJS({
             }
             parentNamespace = hostContextDev.namespace;
           }
-          var domElement = createElement4(type, props, rootContainerInstance, parentNamespace);
+          var domElement = createElement6(type, props, rootContainerInstance, parentNamespace);
           precacheFiberNode(internalInstanceHandle, domElement);
           updateFiberProps(domElement, props);
           return domElement;
@@ -33199,14 +33199,14 @@ window.Turbo = turbo_es2017_esm_exports;
 addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
 // app/javascript/components/index.jsx
-var import_react8 = __toESM(require_react());
+var import_react11 = __toESM(require_react());
 var import_client = __toESM(require_client());
 
 // app/javascript/components/App.jsx
-var import_react7 = __toESM(require_react());
+var import_react10 = __toESM(require_react());
 
 // app/javascript/routes/index.jsx
-var import_react6 = __toESM(require_react());
+var import_react9 = __toESM(require_react());
 
 // node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react());
@@ -44887,15 +44887,167 @@ function EventForm() {
   ))));
 }
 
+// app/javascript/components/ProfileView.jsx
+var import_react8 = __toESM(require_react());
+
+// node_modules/lucide-react/dist/esm/createLucideIcon.js
+var import_react7 = __toESM(require_react());
+
+// node_modules/lucide-react/dist/esm/shared/src/utils.js
+var toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+var toCamelCase = (string) => string.replace(
+  /^([A-Z])|[\s-_]+(\w)/g,
+  (match, p1, p2) => p2 ? p2.toUpperCase() : p1.toLowerCase()
+);
+var toPascalCase = (string) => {
+  const camelCase = toCamelCase(string);
+  return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
+};
+var mergeClasses = (...classes) => classes.filter((className, index, array) => {
+  return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index;
+}).join(" ").trim();
+var hasA11yProp = (props) => {
+  for (const prop in props) {
+    if (prop.startsWith("aria-") || prop === "role" || prop === "title") {
+      return true;
+    }
+  }
+};
+
+// node_modules/lucide-react/dist/esm/Icon.js
+var import_react6 = __toESM(require_react());
+
+// node_modules/lucide-react/dist/esm/defaultAttributes.js
+var defaultAttributes = {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+};
+
+// node_modules/lucide-react/dist/esm/Icon.js
+var Icon = (0, import_react6.forwardRef)(
+  ({
+    color = "currentColor",
+    size = 24,
+    strokeWidth = 2,
+    absoluteStrokeWidth,
+    className = "",
+    children,
+    iconNode,
+    ...rest
+  }, ref) => (0, import_react6.createElement)(
+    "svg",
+    {
+      ref,
+      ...defaultAttributes,
+      width: size,
+      height: size,
+      stroke: color,
+      strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
+      className: mergeClasses("lucide", className),
+      ...!children && !hasA11yProp(rest) && { "aria-hidden": "true" },
+      ...rest
+    },
+    [
+      ...iconNode.map(([tag, attrs]) => (0, import_react6.createElement)(tag, attrs)),
+      ...Array.isArray(children) ? children : [children]
+    ]
+  )
+);
+
+// node_modules/lucide-react/dist/esm/createLucideIcon.js
+var createLucideIcon = (iconName, iconNode) => {
+  const Component2 = (0, import_react7.forwardRef)(
+    ({ className, ...props }, ref) => (0, import_react7.createElement)(Icon, {
+      ref,
+      iconNode,
+      className: mergeClasses(
+        `lucide-${toKebabCase(toPascalCase(iconName))}`,
+        `lucide-${iconName}`,
+        className
+      ),
+      ...props
+    })
+  );
+  Component2.displayName = toPascalCase(iconName);
+  return Component2;
+};
+
+// node_modules/lucide-react/dist/esm/icons/archive.js
+var __iconNode = [
+  ["rect", { width: "20", height: "5", x: "2", y: "3", rx: "1", key: "1wp1u1" }],
+  ["path", { d: "M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8", key: "1s80jp" }],
+  ["path", { d: "M10 12h4", key: "a56b0p" }]
+];
+var Archive = createLucideIcon("archive", __iconNode);
+
+// node_modules/lucide-react/dist/esm/icons/ellipsis.js
+var __iconNode2 = [
+  ["circle", { cx: "12", cy: "12", r: "1", key: "41hilf" }],
+  ["circle", { cx: "19", cy: "12", r: "1", key: "1wjl8i" }],
+  ["circle", { cx: "5", cy: "12", r: "1", key: "1pcz8c" }]
+];
+var Ellipsis = createLucideIcon("ellipsis", __iconNode2);
+
+// app/javascript/components/ProfileView.jsx
+function ProfileView() {
+  return /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white min-h-screen" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "max-w-4xl mx-auto pt-8 px-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col md:flex-row items-center md:items-start gap-8" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "relative" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-blue-500 p-1" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/7295645/pexels-photo-7295645.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Profile",
+      className: "w-full h-full rounded-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react8.default.createElement("div", { className: "absolute bottom-0 right-0 bg-gray-100 rounded-full p-1" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white rounded-full p-0.5" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("path", { d: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" }), /* @__PURE__ */ import_react8.default.createElement("circle", { cx: "12", cy: "13", r: "4" }))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-1 text-center md:text-left" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col md:flex-row md:items-center gap-2 mb-3" }, /* @__PURE__ */ import_react8.default.createElement("h1", { className: "text-xl font-semibold" }, "Aria Chen \u2728"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex gap-2 justify-center md:justify-start items-center ml-0 md:ml-auto" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "bg-blue-100 text-blue-600 font-medium px-4 py-1.5 rounded-md text-sm" }, "Unfollow"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-4 py-1.5 rounded-md text-sm" }, "Message"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "p-1.5 rounded-md hover:bg-gray-100" }, /* @__PURE__ */ import_react8.default.createElement(Ellipsis, { size: 20 })))), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-gray-500 text-sm mb-2" }, "@AriaDesigns \u{1F457}"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm mb-4 max-w-md" }, "\u{1F9F5} Sustainable fashion designer based in NYC. \u{1F331} Blending modern silhouettes with traditional techniques. \u{1F45A} Fall '25 collection coming soon! \u{1F3A8} Former @ParsonsFashion graduate. \u{1F30D} Creating clothes that tell stories. \u2702\uFE0F DM for collab inquiries."), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-center md:justify-start gap-8 mb-6" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "162"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Designs")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "892"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Following")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "12,467"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Followers"))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "border-t mt-6" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-center gap-8" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1.5 py-3 border-t-2 border-black font-medium text-sm" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("rect", { x: "3", y: "3", width: "18", height: "18", rx: "2", ry: "2" }), /* @__PURE__ */ import_react8.default.createElement("line", { x1: "3", y1: "9", x2: "21", y2: "9" }), /* @__PURE__ */ import_react8.default.createElement("line", { x1: "9", y1: "21", x2: "9", y2: "9" })), "Designs"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1.5 py-3 text-gray-500 text-sm" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("polygon", { points: "23 7 16 12 23 17 23 7" }), /* @__PURE__ */ import_react8.default.createElement("rect", { x: "1", y: "5", width: "15", height: "14", rx: "2", ry: "2" })), "Runway \u{1F460}"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1.5 py-3 text-gray-500 text-sm" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("path", { d: "M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" }), /* @__PURE__ */ import_react8.default.createElement("line", { x1: "7", y1: "7", x2: "7.01", y2: "7" })), "Features \u{1F4F0}")))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "max-w-4xl mx-auto py-4 px-4" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium text-sm mb-4" }, "Collections \u{1F457}"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex gap-3 overflow-x-auto pb-4 hide-scrollbar" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/31982191/pexels-photo-31982191/free-photo-of-moody-portrait-of-a-woman-by-a-column.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Summer Collection",
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Summer")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/31977310/pexels-photo-31977310/free-photo-of-stylish-woman-in-white-shirt-outdoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Spring Collection",
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Spring")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/2010922/pexels-photo-2010922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Winter Collection",
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Winter")), [4, 5].map((item) => /* @__PURE__ */ import_react8.default.createElement("div", { key: item, className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
+    "div",
+    {
+      className: "w-full h-full bg-gray-200"
+    }
+  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Coming Soon"))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "max-w-4xl mx-auto py-4 px-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium text-sm" }, "Latest Designs \u{1F9F5}"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1 text-sm text-gray-500" }, /* @__PURE__ */ import_react8.default.createElement(Archive, { size: 16 }), /* @__PURE__ */ import_react8.default.createElement("span", null, "Show archived"))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-3 gap-1" }, Array.from({ length: 12 }).map((_2, index) => /* @__PURE__ */ import_react8.default.createElement("div", { key: index, className: "aspect-square overflow-hidden" }, /* @__PURE__ */ import_react8.default.createElement(
+    "div",
+    {
+      className: "w-full h-full bg-gray-200",
+      alt: `Post ${index + 1}`
+    }
+  )))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "text-sm text-gray-500" }, "Load more..."))));
+}
+
 // app/javascript/routes/index.jsx
 var AppRoutes = () => {
-  return /* @__PURE__ */ import_react6.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react6.default.createElement(Routes, null, /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react6.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react6.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react6.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react6.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react6.default.createElement(EventForm, null) })));
+  return /* @__PURE__ */ import_react9.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react9.default.createElement(Routes, null, /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react9.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react9.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react9.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react9.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react9.default.createElement(ProfileView, null) })));
 };
 var routes_default = AppRoutes;
 
 // app/javascript/components/App.jsx
 var App = () => {
-  return /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, /* @__PURE__ */ import_react7.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react7.default.createElement(routes_default, null));
+  return /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, /* @__PURE__ */ import_react10.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react10.default.createElement(routes_default, null));
 };
 var App_default = App;
 
@@ -44904,7 +45056,7 @@ document.addEventListener("turbo:load", () => {
   const root = (0, import_client.createRoot)(
     document.body.appendChild(document.createElement("div"))
   );
-  root.render(/* @__PURE__ */ import_react8.default.createElement(App_default, null));
+  root.render(/* @__PURE__ */ import_react11.default.createElement(App_default, null));
 });
 /*! Bundled license information:
 
@@ -45032,5 +45184,61 @@ mixpanel-browser/dist/mixpanel.module.js:
       OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
       PERFORMANCE OF THIS SOFTWARE.
       ***************************************************************************** *)
+
+lucide-react/dist/esm/shared/src/utils.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/defaultAttributes.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/Icon.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/createLucideIcon.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/archive.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/ellipsis.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/lucide-react.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
 */
 //# sourceMappingURL=assets/application.js.map

@@ -5,6 +5,7 @@ import Home from '../components/Home';
 import Collaborate from '../components/Collaborate';
 import Events from '../components/Events';
 import EventForm from '../components/EventForm';
+import ProfileView from '../components/ProfileView';
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
           <Route path="/collaborate" element={<Collaborate />} />
           <Route path="/launches" element={<Events />} />
           <Route path="/launch/create" element={<EventForm />} />
+          <Route path="/sample-profile" element={<ProfileView />} />
         </Routes>
       </Router>
   )
