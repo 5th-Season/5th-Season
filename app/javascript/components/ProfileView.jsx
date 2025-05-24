@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import { MoreHorizontal, Archive, MapPin, MessageCircle, UserPlus, Camera, Scissors, ExternalLink, Award, Heart, Palette, Info, Users, Briefcase, Star } from "lucide-react";
 
 export default function ProfileView() {
@@ -178,7 +179,7 @@ export default function ProfileView() {
               <p className="text-xs text-gray-600 mb-2">Lightweight linen pieces for warm days</p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-500">15 pieces</span>
-                <a href="#" className="text-blue-600 text-xs">Browse Collection →</a>
+                <Link to="/collection/1" className="text-blue-600 text-xs">Browse Collection →</Link>
               </div>
             </div>
           </div>
@@ -201,7 +202,7 @@ export default function ProfileView() {
               <p className="text-xs text-gray-600 mb-2">Street styles with floral accents</p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-500">12 pieces</span>
-                <a href="#" className="text-blue-600 text-xs">Browse Collection →</a>
+                <Link to="/collection/2" className="text-blue-600 text-xs">Browse Collection →</Link>
               </div>
             </div>
           </div>
@@ -224,7 +225,7 @@ export default function ProfileView() {
               <p className="text-xs text-gray-600 mb-2">Architectural inspired wool garments</p>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-gray-500">8 pieces</span>
-                <a href="#" className="text-blue-600 text-xs">Browse Collection →</a>
+                <Link to="/collection/3" className="text-blue-600 text-xs">Browse Collection →</Link>
               </div>
             </div>
           </div>
