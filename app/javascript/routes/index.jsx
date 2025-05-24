@@ -17,6 +17,7 @@ const AppRoutes = () => {
           <Route path="/launches" element={<Events />} />
           <Route path="/launch/create" element={<EventForm />} />
           <Route path="/profile" element={<ProfileView />} />
+          <Route path="/sample-profile" element={<ProfileView />} />
           <Route path="/collection/:collectionId" element={<CollectionView />} />
         </Routes>
       </Router>
