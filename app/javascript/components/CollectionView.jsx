@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeft, Heart, MessageCircle, Share2, BookmarkSimple, Grid, Filter, Calendar, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, Heart, MessageCircle, Share2, Bookmark, Grid, Filter, Calendar, MoreHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function CollectionView() {
