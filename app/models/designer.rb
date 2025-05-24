@@ -1,6 +1,9 @@
 class Designer < ApplicationRecord
   belongs_to :user
   has_many :collections, dependent: :destroy
+  has_many :collaboration_preferences, dependent: :destroy
+  has_many :testimonials, dependent: :destroy
+  has_many :designs, through: :collections
   
   validates :brand_name, :brand_description, :location, :slug, presence: true
   validates :slug, uniqueness: true
@@ -13,6 +16,18 @@ class Designer < ApplicationRecord
     verified: 'verified',
     rejected: 'rejected'
   }
+  
+  def active_collaboration_preferences
+    collaboration_preferences.active
+  end
+  
+  def featured_designs
+    designs.featured.published
+  end
+  
+  def verified_testimonials
+    testimonials.verified
+  end
   
   private
   

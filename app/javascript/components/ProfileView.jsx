@@ -1,7 +1,21 @@
-import React from "react";
-import { MoreHorizontal, Archive, MapPin, MessageCircle, UserPlus, Camera, Scissors, ExternalLink, Award, Heart } from "lucide-react";
+import React, { useRef } from "react";
+import { MoreHorizontal, Archive, MapPin, MessageCircle, UserPlus, Camera, Scissors, ExternalLink, Award, Heart, Palette, Info, Users, Briefcase, Star } from "lucide-react";
 
 export default function ProfileView() {
+  // Add smooth scrolling behavior to the document
+  React.useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
+  }, []);
+  
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView();
+    }
+  };
   return (
     <div className="bg-white min-h-screen">
       {/* Profile header section */}
@@ -9,16 +23,16 @@ export default function ProfileView() {
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           {/* Profile image */}
           <div className="relative">
-            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-blue-500 p-1">
+            <div className="w-32 h-40 md:w-48 md:h-64 rounded-xl border-4 border-blue-500 p-1 overflow-hidden">
               <img
                 src="https://images.pexels.com/photos/7295645/pexels-photo-7295645.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Profile"
-                className="w-full h-full rounded-full object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute bottom-0 right-0 bg-gray-100 rounded-full p-1">
+            <div className="absolute bottom-3 right-3 bg-gray-100 rounded-full p-1.5 shadow-md">
               <div className="bg-white rounded-full p-0.5">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
                   <circle cx="12" cy="13" r="4"></circle>
                 </svg>
@@ -89,37 +103,57 @@ export default function ProfileView() {
           </div>
         </div>
 
-        {/* Tabs */}
+        {/* Section Navigation */}
         <div className="border-t mt-6">
-          <div className="flex justify-center gap-8">
-            <button className="flex items-center gap-1.5 py-3 border-t-2 border-black font-medium text-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="3" y1="9" x2="21" y2="9"></line>
-                <line x1="9" y1="21" x2="9" y2="9"></line>
-              </svg>
-              Designs
+          <div className="flex justify-center flex-wrap gap-6 py-2 px-2">
+            <button 
+              onClick={() => scrollToSection('collections')} 
+              className="flex items-center gap-1.5 py-2 px-3 hover:bg-blue-50 rounded-md text-sm transition-colors"
+            >
+              <Briefcase size={16} className="text-blue-600" />
+              Collections 👗
             </button>
-            <button className="flex items-center gap-1.5 py-3 text-gray-500 text-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-              </svg>
-              Runway 👠
+            <button 
+              onClick={() => scrollToSection('behind-the-brand')} 
+              className="flex items-center gap-1.5 py-2 px-3 hover:bg-purple-50 rounded-md text-sm transition-colors"
+            >
+              <Info size={16} className="text-purple-600" />
+              Behind the Brand ✨
             </button>
-            <button className="flex items-center gap-1.5 py-3 text-gray-500 text-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                <line x1="7" y1="7" x2="7.01" y2="7"></line>
-              </svg>
-              Features 📰
+            <button 
+              onClick={() => scrollToSection('open-to')} 
+              className="flex items-center gap-1.5 py-2 px-3 hover:bg-green-50 rounded-md text-sm transition-colors"
+            >
+              <Scissors size={16} className="text-green-600" />
+              Open To 🤝
+            </button>
+            <button 
+              onClick={() => scrollToSection('featured-by')} 
+              className="flex items-center gap-1.5 py-2 px-3 hover:bg-amber-50 rounded-md text-sm transition-colors"
+            >
+              <Award size={16} className="text-amber-600" />
+              Featured By 🏆
+            </button>
+            <button 
+              onClick={() => scrollToSection('testimonials')} 
+              className="flex items-center gap-1.5 py-2 px-3 hover:bg-rose-50 rounded-md text-sm transition-colors"
+            >
+              <Star size={16} className="text-rose-600" />
+              Testimonials 💬
+            </button>
+            <button 
+              onClick={() => scrollToSection('latest-designs')} 
+              className="flex items-center gap-1.5 py-2 px-3 hover:bg-indigo-50 rounded-md text-sm transition-colors"
+            >
+              <Palette size={16} className="text-indigo-600" />
+              Designs 🧵
             </button>
           </div>
         </div>
       </div>
 
       {/* Collections Section - Business-first format */}
-      <div className="max-w-4xl mx-auto py-6 px-4 border-t">
+      <div id="collections" className="max-w-4xl mx-auto py-6 px-4 border-t">
         <div className="flex justify-between items-center mb-4">
           <h2 className="font-medium">Collections</h2>
           <a href="#" className="text-blue-600 text-sm">View All</a>
@@ -198,7 +232,7 @@ export default function ProfileView() {
       </div>
 
       {/* Behind the Brand Section */}
-      <div className="max-w-4xl mx-auto py-6 px-4 border-t">
+      <div id="behind-the-brand" className="max-w-4xl mx-auto py-6 px-4 border-t">
         <h2 className="font-medium mb-4">Behind the Brand</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="relative overflow-hidden rounded-lg aspect-square">
@@ -245,7 +279,7 @@ export default function ProfileView() {
       </div>
 
       {/* Open To Section */}
-      <div className="max-w-4xl mx-auto py-6 px-4 border-t">
+      <div id="open-to" className="max-w-4xl mx-auto py-6 px-4 border-t">
         <h2 className="font-medium mb-4">Open To</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
@@ -273,7 +307,7 @@ export default function ProfileView() {
       </div>
 
       {/* Featured By Section */}
-      <div className="max-w-4xl mx-auto py-6 px-4 border-t">
+      <div id="featured-by" className="max-w-4xl mx-auto py-6 px-4 border-t">
         <h2 className="font-medium mb-4">Featured By</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex flex-col items-center p-3 border rounded-lg">
@@ -300,7 +334,7 @@ export default function ProfileView() {
       </div>
 
       {/* Testimonials Section */}
-      <div className="max-w-4xl mx-auto py-6 px-4 border-t">
+      <div id="testimonials" className="max-w-4xl mx-auto py-6 px-4 border-t">
         <h2 className="font-medium mb-4">Testimonials</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-gray-50 p-4 rounded-lg border">
@@ -357,7 +391,7 @@ export default function ProfileView() {
       </div>
 
       {/* Latest Designs section */}
-      <div className="max-w-4xl mx-auto py-6 px-4 border-t">
+      <div id="latest-designs" className="max-w-4xl mx-auto py-6 px-4 border-t">
         <div className="flex justify-between items-center mb-4">
           <h2 className="font-medium">Latest Designs 🧵</h2>
           <button className="flex items-center gap-1 text-sm text-gray-500">
