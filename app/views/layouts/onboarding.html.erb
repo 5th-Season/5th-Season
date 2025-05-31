@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>5th Season - Designer Onboarding</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(to right, #8a2be2, #4169e1);
+        font-family: 'Inter', sans-serif;
+        color: #333;
+      }
+      
+      .onboarding-container {
+        background-color: white;
+        max-width: 900px;
+        margin: 40px auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      
+      .onboarding-header {
+        padding: 20px 30px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .onboarding-logo {
+        display: flex;
+        align-items: center;
+      }
+      
+      .onboarding-logo svg {
+        width: 30px;
+        height: 30px;
+      }
+      
+      .help-button {
+        background: transparent;
+        border: 1px solid #6b7280;
+        color: #6b7280;
+        padding: 5px 15px;
+        border-radius: 9999px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      
+      .back-button {
+        display: flex;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+        margin: 20px 0;
+      }
+      
+      .back-button svg {
+        margin-right: 5px;
+      }
+      
+      .onboarding-content {
+        padding: 20px 30px 40px;
+      }
+      
+      h1 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 30px;
+      }
+      
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+      }
+      
+      .product-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      
+      .product-option:hover, .product-option.selected {
+        border-color: #8a2be2;
+        background-color: rgba(138, 43, 226, 0.05);
+      }
+      
+      .product-option.selected {
+        box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.5);
+      }
+      
+      .product-icon {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+      
+      .product-label {
+        font-size: 14px;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #8a2be2;
+        box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+      }
+      
+      .next-button {
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 20px;
+      }
+      
+      .next-button:hover {
+        background-color: #4f46e5;
+      }
+      
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        border-top: 1px solid #eee;
+        font-size: 12px;
+        color: #6b7280;
+      }
+      
+      .footer a {
+        color: #6b7280;
+        text-decoration: none;
+        margin-left: 15px;
+      }
+      
+      .flash-error {
+        background-color: #fee2e2;
+        color: #b91c1c;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="onboarding-container">
+      <div class="onboarding-header">
+        <div class="onboarding-logo">
+          <!-- Logo SVG -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="10" height="10" x="2" y="2" fill="#4F46E5" rx="2" />
+            <rect width="10" height="10" x="12" y="2" fill="#8B5CF6" rx="2" />
+            <rect width="10" height="10" x="2" y="12" fill="#EC4899" rx="2" />
+            <rect width="10" height="10" x="12" y="12" fill="#F59E0B" rx="2" />
+          </svg>
+        </div>
+        <button class="help-button">Help</button>
+      </div>
+      
+      <div class="onboarding-content">
+        <% if flash[:error] %>
+          <div class="flash-error">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+        
+        <%= yield %>
+      </div>
+      
+      <div class="footer">
+        <div>&copy; <%= Time.current.year %> 5th Season</div>
+        <div>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -50,39 +50,39 @@ const Home = () => {
       <div className="fashionista-designers bg-white mt-8">
         <div ref={scrollRef} className="designer-lineup flex overflow-x-auto space-x-4 px-4 scrollbar-hide">
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src="https://images.pexels.com/photos/29811587/pexels-photo-29811587/free-photo-of-elegant-woman-with-curly-hair-posing-indoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Designer 1" />
+              <img src="https://images.pexels.com/photos/29811587/pexels-photo-29811587/free-photo-of-elegant-woman-with-curly-hair-posing-indoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Designer 1" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://www.essence.com/wp-content/uploads/2022/07/GettyImages-1205845584-scaled.jpg`} alt="Designer 2" />
+              <img src={`https://www.essence.com/wp-content/uploads/2022/07/GettyImages-1205845584-scaled.jpg`} alt="Designer 2" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://www.essence.com/wp-content/uploads/2022/07/hEk5Kvec-8.png`} alt="Designer 3" />
+              <img src={`https://www.essence.com/wp-content/uploads/2022/07/hEk5Kvec-8.png`} alt="Designer 3" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://images.pexels.com/photos/3205989/pexels-photo-3205989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 4" />
+              <img src={`https://images.pexels.com/photos/3205989/pexels-photo-3205989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 4" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://images.pexels.com/photos/8715778/pexels-photo-8715778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 5" />
+              <img src={`https://images.pexels.com/photos/8715778/pexels-photo-8715778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 5" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://images.pexels.com/photos/26221665/pexels-photo-26221665/free-photo-of-portrait-of-man-wearing-suit.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 5" />
+              <img src={`https://images.pexels.com/photos/26221665/pexels-photo-26221665/free-photo-of-portrait-of-man-wearing-suit.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 5" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://images.pexels.com/photos/28579193/pexels-photo-28579193/free-photo-of-stylish-man-in-urban-setting-with-sunglasses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 3" />
+              <img src={`https://images.pexels.com/photos/28579193/pexels-photo-28579193/free-photo-of-stylish-man-in-urban-setting-with-sunglasses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 3" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://images.pexels.com/photos/18192898/pexels-photo-18192898/free-photo-of-a-boy-s-portrait-in-white-attire.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 4" />
+              <img src={`https://images.pexels.com/photos/18192898/pexels-photo-18192898/free-photo-of-a-boy-s-portrait-in-white-attire.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`} alt="Designer 4" className="w-full h-full object-cover" />
             </div>
 
             <div className="flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={`https://images.unsplash.com/photo-1545291730-faff8ca1d4b0`} alt="Designer 5" />
+              <img src={`https://images.unsplash.com/photo-1545291730-faff8ca1d4b0`} alt="Designer 5" className="w-full h-full object-cover" />
             </div>
         </div>
       </div>
@@ -103,7 +103,7 @@ const Home = () => {
           <div class="lg:w-1/2 p-4">
             <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">What is 5th Season?</h2>
             <p class="text-gray-700 leading-relaxed">
-            Fashion has always been defined by four seasons—spring, summer, fall, and winter—but we’re here to introduce something new. 5th Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we’re here to help you showcase your work, grow your presence, and turn your vision into the next big trend.
+            Fashion has always been defined by four seasons—spring, summer, fall, and winter—but we're here to introduce something new. 5th Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we're here to help you showcase your work, grow your presence, and turn your vision into the next big trend.
             </p>
           </div>
 
@@ -121,7 +121,7 @@ const Home = () => {
           <div class="lg:w-1/2 p-4">
             <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900">Connect, Collaborate, and Elevate</h2>
             <p class="text-gray-700 leading-relaxed">
-            Success in fashion isn’t just about the designs—it’s about the connections. Our platform is the ultimate hub for collaboration, where designers, brands, and industry experts come together to innovate and inspire. Share ideas, co-create collections, and network with top talent in the industry. From partnerships to professional growth, we’re here to help you thrive in the fast-paced world of fashion. Together, we can shape the future of style.
+            Success in fashion isn't just about the designs—it's about the connections. Our platform is the ultimate hub for collaboration, where designers, brands, and industry experts come together to innovate and inspire. Share ideas, co-create collections, and network with top talent in the industry. From partnerships to professional growth, we're here to help you thrive in the fast-paced world of fashion. Together, we can shape the future of style.
             </p>
           </div>
         </section>

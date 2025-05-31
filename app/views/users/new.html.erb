@@ -1,0 +1,264 @@
+<div class="season-header">
+  <a href="<%= root_path %>">
+    <h1>5th SEASON</h1>
+  </a>
+</div>
+
+<div class="auth-container">
+  <div class="auth-form-container">
+    <div class="auth-logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="10" height="10" x="2" y="2" fill="#4F46E5" rx="2" />
+        <rect width="10" height="10" x="12" y="2" fill="#8B5CF6" rx="2" />
+        <rect width="10" height="10" x="2" y="12" fill="#EC4899" rx="2" />
+        <rect width="10" height="10" x="12" y="12" fill="#F59E0B" rx="2" />
+      </svg>
+    </div>
+    
+    <h2>Create your account</h2>
+    
+    <% if @user.errors.any? %>
+      <div class="auth-flash-error">
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <%= form_for @user, url: signup_path, html: { class: "auth-form" } do |f| %>
+      <div class="form-row">
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, required: true, autofocus: true %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, required: true %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, required: true %>
+      </div>
+      
+      <div class="form-group terms">
+        <label class="terms-label">
+          <input type="checkbox" name="terms" required class="terms-checkbox">
+          <span class="terms-text">I agree to the <a href="/terms" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a></span>
+        </label>
+      </div>
+      
+      <%= f.submit "Sign Up", class: "auth-button" %>
+    <% end %>
+    
+    <div class="auth-footer">
+      <p>Already have an account? <a href="<%= login_path %>">Sign in</a></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background: linear-gradient(to right, #8a2be2, #4169e1);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    height: 100vh;
+    overflow: auto;
+  }
+  
+  .season-header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .season-header a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+  }
+  
+  .season-header a:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .season-header h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .auth-form-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .auth-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .auth-logo svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .auth-logo h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  
+  .auth-flash-error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .auth-flash-error ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  .auth-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+  }
+  
+  .auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .auth-form input[type="email"],
+  .auth-form input[type="password"],
+  .auth-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .auth-form input:focus {
+    outline: none;
+    border-color: #8a2be2;
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+  }
+  
+  .terms {
+    font-size: 14px;
+  }
+  
+  .terms-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: normal;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  
+  .terms-checkbox {
+    flex-shrink: 0;
+    margin: 3px 0 0 0;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .terms-text {
+    flex: 1;
+  }
+  
+  .terms a {
+    color: #6366f1;
+    text-decoration: none;
+  }
+  
+  .auth-button {
+    width: 100%;
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .auth-button:hover {
+    background-color: #4f46e5;
+  }
+  
+  .auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    color: #6b7280;
+    font-size: 14px;
+  }
+  
+  .auth-footer a {
+    color: #6366f1;
+    text-decoration: none;
+  }
+</style>

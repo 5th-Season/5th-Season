@@ -1,0 +1,219 @@
+<div class="season-header">
+  <a href="<%= root_path %>">
+    <h1>5th SEASON</h1>
+  </a>
+</div>
+
+<div class="auth-container">
+  <div class="auth-form-container">
+    <div class="auth-logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="10" height="10" x="2" y="2" fill="#4F46E5" rx="2" />
+        <rect width="10" height="10" x="12" y="2" fill="#8B5CF6" rx="2" />
+        <rect width="10" height="10" x="2" y="12" fill="#EC4899" rx="2" />
+        <rect width="10" height="10" x="12" y="12" fill="#F59E0B" rx="2" />
+      </svg>
+    </div>
+    
+    <h2>Sign in to your account</h2>
+    
+    <% if flash[:error] %>
+      <div class="auth-flash-error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    
+    <%= form_tag login_path, class: "auth-form" do %>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autofocus>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      
+      <div class="form-group remember-me">
+        <label>
+          <input type="checkbox" name="remember_me"> Remember me
+        </label>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="auth-button">Sign In</button>
+    <% end %>
+    
+    <div class="auth-footer">
+      <p>Don't have an account? <a href="<%= signup_path %>">Sign up</a></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background: linear-gradient(to right, #8a2be2, #4169e1);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    height: 100vh;
+    overflow: auto;
+  }
+  
+  .season-header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .season-header a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+  }
+  
+  .season-header a:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .season-header h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .auth-form-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .auth-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .auth-logo svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .auth-logo h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  
+  .auth-flash-error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .auth-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .auth-form input[type="email"],
+  .auth-form input[type="password"],
+  .auth-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .auth-form input:focus {
+    outline: none;
+    border-color: #8a2be2;
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+  }
+  
+  .remember-me {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .remember-me label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+  }
+  
+  .forgot-password {
+    color: #6366f1;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .auth-button {
+    width: 100%;
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .auth-button:hover {
+    background-color: #4f46e5;
+  }
+  
+  .auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    color: #6b7280;
+    font-size: 14px;
+  }
+  
+  .auth-footer a {
+    color: #6366f1;
+    text-decoration: none;
+  }
+</style>

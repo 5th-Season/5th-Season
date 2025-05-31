@@ -1,0 +1,462 @@
+<div class="designer-profile">
+  <div class="profile-header">
+    <div class="header-content">
+      <div class="profile-avatar">
+        <% if @designer.user.first_name.present? && @designer.user.last_name.present? %>
+          <div class="avatar-initials">
+            <%= @designer.user.first_name[0].upcase %><%= @designer.user.last_name[0].upcase %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="profile-info">
+        <h1 class="brand-name"><%= @designer.brand_name %></h1>
+        <div class="location">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <%= @designer.location %>
+        </div>
+        
+        <% if @designer.verification_status == "verified" %>
+          <div class="verification-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            Verified Designer
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="profile-actions">
+      <% if current_user && current_user.id == @designer.user_id %>
+        <%= link_to "Edit Profile", "#", class: "btn-secondary" %>
+      <% else %>
+        <%= link_to "Contact Designer", "#", class: "btn-primary" %>
+        <%= link_to "Follow", "#", class: "btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="profile-tabs">
+    <button class="tab active" data-tab="about">About</button>
+    <button class="tab" data-tab="collections">Collections</button>
+    <button class="tab" data-tab="designs">Designs</button>
+    <button class="tab" data-tab="testimonials">Testimonials</button>
+  </div>
+  
+  <div class="tab-content" id="about">
+    <div class="section">
+      <h2>About <%= @designer.brand_name %></h2>
+      <p><%= @designer.brand_description %></p>
+    </div>
+    
+    <div class="section">
+      <h2>Collaboration Preferences</h2>
+      <div class="collab-preferences">
+        <% @designer.active_collaboration_preferences.each do |preference| %>
+          <div class="collab-badge">
+            <% icon = case preference.preference_type 
+                 when "manufacturing" then "🏭" 
+                 when "retail" then "🛍️" 
+                 when "consultation" then "💼" 
+                 when "custom" then "✂️" 
+                 when "mentorship" then "🎓" 
+                 else "👥" 
+                 end %>
+            <span class="collab-icon"><%= icon %></span>
+            <span><%= preference.preference_type.titleize %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab-content hidden" id="collections">
+    <div class="section">
+      <h2>Collections</h2>
+      <% if @designer.collections.any? %>
+        <div class="collections-grid">
+          <% @designer.collections.each do |collection| %>
+            <div class="collection-card">
+              <div class="collection-image">
+                <!-- Placeholder for collection image -->
+                <div class="placeholder-image"></div>
+              </div>
+              <div class="collection-info">
+                <h3><%= collection.title %></h3>
+                <p class="collection-season"><%= collection.season %> <%= collection.year %></p>
+                <p class="collection-description"><%= collection.description.truncate(100) if collection.description %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="empty-state">No collections yet</p>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="tab-content hidden" id="designs">
+    <div class="section">
+      <h2>Featured Designs</h2>
+      <% if @designer.featured_designs.any? %>
+        <div class="designs-grid">
+          <% @designer.featured_designs.each do |design| %>
+            <div class="design-card">
+              <div class="design-image">
+                <% if design.image_url.present? %>
+                  <img src="<%= design.image_url %>" alt="<%= design.title %>">
+                <% else %>
+                  <!-- Placeholder for design image -->
+                  <div class="placeholder-image"></div>
+                <% end %>
+              </div>
+              <div class="design-info">
+                <h3><%= design.title %></h3>
+                <p class="design-collection"><%= design.collection.title %></p>
+                <p class="design-materials"><%= design.materials %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="empty-state">No featured designs yet</p>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="tab-content hidden" id="testimonials">
+    <div class="section">
+      <h2>Testimonials</h2>
+      <% if @designer.verified_testimonials.any? %>
+        <div class="testimonials-list">
+          <% @designer.verified_testimonials.each do |testimonial| %>
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <div class="testimonial-rating">
+                  <% testimonial.rating.to_i.times do %>
+                    <span class="star">★</span>
+                  <% end %>
+                  <% (5 - testimonial.rating.to_i).times do %>
+                    <span class="star empty">☆</span>
+                  <% end %>
+                </div>
+                <p class="testimonial-text">"<%= testimonial.content %>"</p>
+                <p class="testimonial-author">— <%= testimonial.author_name %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="empty-state">No testimonials yet</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+  .designer-profile {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #6366f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+  }
+  
+  .avatar-initials {
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .brand-name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  
+  .location {
+    display: flex;
+    align-items: center;
+    color: #6b7280;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .location svg {
+    margin-right: 6px;
+  }
+  
+  .verification-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #ecfdf5;
+    color: #065f46;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .verification-badge svg {
+    margin-right: 6px;
+    stroke: #065f46;
+  }
+  
+  .profile-actions {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .btn-primary {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #4f46e5;
+  }
+  
+  .btn-secondary {
+    background-color: white;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .btn-secondary:hover {
+    border-color: #6366f1;
+    color: #6366f1;
+  }
+  
+  .profile-tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 30px;
+  }
+  
+  .tab {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #6b7280;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .tab.active {
+    color: #6366f1;
+    border-bottom-color: #6366f1;
+  }
+  
+  .tab-content {
+    display: block;
+  }
+  
+  .tab-content.hidden {
+    display: none;
+  }
+  
+  .section {
+    margin-bottom: 40px;
+  }
+  
+  .section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #111827;
+  }
+  
+  .collab-preferences {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .collab-badge {
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .collab-icon {
+    margin-right: 8px;
+    font-size: 18px;
+  }
+  
+  .collections-grid, .designs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  
+  .collection-card, .design-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  
+  .collection-card:hover, .design-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .collection-image, .design-image {
+    height: 200px;
+    background-color: #f9fafb;
+    position: relative;
+  }
+  
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #f3f4f6 25%, #e5e7eb 25%, #e5e7eb 50%, #f3f4f6 50%, #f3f4f6 75%, #e5e7eb 75%, #e5e7eb 100%);
+    background-size: 20px 20px;
+  }
+  
+  .collection-info, .design-info {
+    padding: 16px;
+  }
+  
+  .collection-info h3, .design-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  
+  .collection-season, .design-collection, .design-materials {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .collection-description {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .testimonials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .testimonial-card {
+    background-color: #f9fafb;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  
+  .testimonial-rating {
+    margin-bottom: 12px;
+  }
+  
+  .star {
+    color: #f59e0b;
+    font-size: 18px;
+  }
+  
+  .star.empty {
+    color: #d1d5db;
+  }
+  
+  .testimonial-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4b5563;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  
+  .testimonial-author {
+    font-weight: 600;
+    color: #111827;
+    text-align: right;
+    margin: 0;
+  }
+  
+  .empty-state {
+    color: #6b7280;
+    font-style: italic;
+    text-align: center;
+    padding: 40px 0;
+    background-color: #f9fafb;
+    border-radius: 8px;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      // Remove active class from all tabs
+      tabs.forEach(function(t) {
+        t.classList.remove('active');
+      });
+      
+      // Add active class to clicked tab
+      this.classList.add('active');
+      
+      // Hide all tab contents
+      tabContents.forEach(function(content) {
+        content.classList.add('hidden');
+      });
+      
+      // Show the corresponding tab content
+      const tabId = this.getAttribute('data-tab');
+      document.getElementById(tabId).classList.remove('hidden');
+    });
+  });
+});
+</script>

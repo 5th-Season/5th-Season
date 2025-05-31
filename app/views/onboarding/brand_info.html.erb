@@ -1,0 +1,22 @@
+<%= link_to onboarding_personal_info_path, class: "back-button" do %>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  Back
+<% end %>
+
+<h1>Tell us about your brand</h1>
+
+<%= form_tag onboarding_brand_info_path, method: :post do %>
+  <div class="form-group">
+    <label for="brand_name">Brand Name</label>
+    <input type="text" id="brand_name" name="brand_name" placeholder="Your brand name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="brand_description">Brand Description</label>
+    <textarea id="brand_description" name="brand_description" rows="4" placeholder="Tell us about your brand, design philosophy, and style" required></textarea>
+  </div>
+  
+  <button type="submit" class="next-button">Next</button>
+<% end %>

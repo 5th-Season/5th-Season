@@ -1,0 +1,170 @@
+<%= link_to onboarding_location_path, class: "back-button" do %>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  Back
+<% end %>
+
+<h1>How would you like to collaborate?</h1>
+
+<p style="margin-bottom: 20px; color: #4b5563;">Select all that apply</p>
+
+<%= form_tag onboarding_collaboration_path, method: :post do %>
+  <div class="collaboration-options">
+    <label class="collab-option">
+      <input type="checkbox" name="collaboration_preferences[]" value="manufacturing">
+      <span class="checkmark"></span>
+      <div class="option-content">
+        <div class="option-icon">🏭</div>
+        <div>
+          <h3>Manufacturing</h3>
+          <p>Partner with manufacturers to bring your designs to life</p>
+        </div>
+      </div>
+    </label>
+    
+    <label class="collab-option">
+      <input type="checkbox" name="collaboration_preferences[]" value="retail">
+      <span class="checkmark"></span>
+      <div class="option-content">
+        <div class="option-icon">🛍️</div>
+        <div>
+          <h3>Retail Partnerships</h3>
+          <p>Connect with retailers to showcase and sell your designs</p>
+        </div>
+      </div>
+    </label>
+    
+    <label class="collab-option">
+      <input type="checkbox" name="collaboration_preferences[]" value="consultation">
+      <span class="checkmark"></span>
+      <div class="option-content">
+        <div class="option-icon">💼</div>
+        <div>
+          <h3>Design Consultation</h3>
+          <p>Offer your expertise to brands seeking design input</p>
+        </div>
+      </div>
+    </label>
+    
+    <label class="collab-option">
+      <input type="checkbox" name="collaboration_preferences[]" value="custom">
+      <span class="checkmark"></span>
+      <div class="option-content">
+        <div class="option-icon">✂️</div>
+        <div>
+          <h3>Custom Orders</h3>
+          <p>Create bespoke designs for individual clients</p>
+        </div>
+      </div>
+    </label>
+    
+    <label class="collab-option">
+      <input type="checkbox" name="collaboration_preferences[]" value="mentorship">
+      <span class="checkmark"></span>
+      <div class="option-content">
+        <div class="option-icon">🎓</div>
+        <div>
+          <h3>Mentorship</h3>
+          <p>Guide emerging designers and share your knowledge</p>
+        </div>
+      </div>
+    </label>
+  </div>
+  
+  <button type="submit" class="next-button">Complete Profile</button>
+<% end %>
+
+<style>
+  .collaboration-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  
+  .collab-option {
+    display: block;
+    position: relative;
+    padding: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .collab-option:hover {
+    border-color: #8a2be2;
+    background-color: rgba(138, 43, 226, 0.05);
+  }
+  
+  .collab-option input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 24px;
+    width: 24px;
+    border: 2px solid #e5e7eb;
+    border-radius: 4px;
+  }
+  
+  .collab-option:hover .checkmark {
+    border-color: #8a2be2;
+  }
+  
+  .collab-option input:checked ~ .checkmark {
+    background-color: #8a2be2;
+    border-color: #8a2be2;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .collab-option input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .collab-option .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .option-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-right: 40px;
+  }
+  
+  .option-icon {
+    font-size: 24px;
+    min-width: 40px;
+    text-align: center;
+  }
+  
+  .option-content h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .option-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+  }
+</style>

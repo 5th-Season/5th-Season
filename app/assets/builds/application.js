@@ -1676,7 +1676,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context);
         }
-        function useState5(initialState) {
+        function useState12(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -1684,11 +1684,11 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useReducer(reducer, initialArg, init);
         }
-        function useRef6(initialValue) {
+        function useRef8(initialValue) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
-        function useEffect5(create, deps) {
+        function useEffect8(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useEffect(create, deps);
         }
@@ -2471,15 +2471,15 @@ var require_react_development = __commonJS({
         exports.useContext = useContext3;
         exports.useDebugValue = useDebugValue;
         exports.useDeferredValue = useDeferredValue;
-        exports.useEffect = useEffect5;
+        exports.useEffect = useEffect8;
         exports.useId = useId;
         exports.useImperativeHandle = useImperativeHandle;
         exports.useInsertionEffect = useInsertionEffect;
         exports.useLayoutEffect = useLayoutEffect3;
         exports.useMemo = useMemo3;
         exports.useReducer = useReducer;
-        exports.useRef = useRef6;
-        exports.useState = useState5;
+        exports.useRef = useRef8;
+        exports.useState = useState12;
         exports.useSyncExternalStore = useSyncExternalStore;
         exports.useTransition = useTransition;
         exports.version = ReactVersion;
@@ -2975,9 +2975,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React13 = require_react();
+        var React23 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React23.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4582,7 +4582,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React13.Children.forEach(props.children, function(child) {
+                React23.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -33199,14 +33199,14 @@ window.Turbo = turbo_es2017_esm_exports;
 addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
 // app/javascript/components/index.jsx
-var import_react11 = __toESM(require_react());
+var import_react21 = __toESM(require_react());
 var import_client = __toESM(require_client());
 
 // app/javascript/components/App.jsx
-var import_react10 = __toESM(require_react());
+var import_react20 = __toESM(require_react());
 
 // app/javascript/routes/index.jsx
-var import_react9 = __toESM(require_react());
+var import_react19 = __toESM(require_react());
 
 // node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react());
@@ -33971,6 +33971,13 @@ function useNavigateUnstable() {
   }, [basename, navigator3, routePathnamesJson, locationPathname, dataRouterContext]);
   return navigate;
 }
+function useParams() {
+  let {
+    matches
+  } = React.useContext(RouteContext);
+  let routeMatch = matches[matches.length - 1];
+  return routeMatch ? routeMatch.params : {};
+}
 function useResolvedPath(to, _temp2) {
   let {
     relative
@@ -34367,6 +34374,40 @@ function warningOnce(key, cond, message) {
 }
 var START_TRANSITION = "startTransition";
 var startTransitionImpl = React[START_TRANSITION];
+function Navigate(_ref4) {
+  let {
+    to,
+    replace: replace2,
+    state,
+    relative
+  } = _ref4;
+  !useInRouterContext() ? true ? invariant(
+    false,
+    // TODO: This error is probably because they somehow have 2 versions of
+    // the router loaded. We can help them understand how to avoid that.
+    "<Navigate> may be used only in the context of a <Router> component."
+  ) : invariant(false) : void 0;
+  let {
+    future,
+    static: isStatic
+  } = React.useContext(NavigationContext);
+  true ? warning(!isStatic, "<Navigate> must not be used on the initial render in a <StaticRouter>. This is a no-op, but you should modify your code so the <Navigate> is only ever rendered in response to some user interaction or state change.") : void 0;
+  let {
+    matches
+  } = React.useContext(RouteContext);
+  let {
+    pathname: locationPathname
+  } = useLocation();
+  let navigate = useNavigate();
+  let path = resolveTo(to, getResolveToMatches(matches, future.v7_relativeSplatPath), locationPathname, relative === "path");
+  let jsonPath = JSON.stringify(path);
+  React.useEffect(() => navigate(JSON.parse(jsonPath), {
+    replace: replace2,
+    state,
+    relative
+  }), [navigate, jsonPath, relative, replace2, state]);
+  return null;
+}
 function Route(_props) {
   true ? invariant(false, "A <Route> is only ever to be used as the child of <Routes> element, never rendered directly. Please wrap your <Route> in a <Routes>.") : invariant(false);
 }
@@ -35179,7 +35220,53 @@ function useViewTransitionState(to, opts) {
 // app/javascript/components/Navigation/index.jsx
 var import_react = __toESM(require_react());
 var Navigation = () => {
-  return /* @__PURE__ */ import_react.default.createElement("header", { className: "flex items-center justify-between p-4 bg-white border-b" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "flex items-center space-x-2" }), /* @__PURE__ */ import_react.default.createElement("nav", { className: "flex space-x-4" }, /* @__PURE__ */ import_react.default.createElement("span", { className: "font-bold text-lg" }, "5th SEASON")), /* @__PURE__ */ import_react.default.createElement("nav", { className: "flex space-x-4" }));
+  const [isScrolled, setIsScrolled] = (0, import_react.useState)(false);
+  const [headerHeight, setHeaderHeight] = (0, import_react.useState)(0);
+  const headerRef = (0, import_react.useRef)(null);
+  (0, import_react.useEffect)(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > headerHeight);
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [headerHeight]);
+  return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement(
+    "header",
+    {
+      ref: headerRef,
+      className: "flex items-center justify-between p-4 bg-white border-b"
+    },
+    /* @__PURE__ */ import_react.default.createElement("div", { className: "flex items-center space-x-2" }),
+    /* @__PURE__ */ import_react.default.createElement("nav", { className: "flex space-x-4" }, /* @__PURE__ */ import_react.default.createElement("span", { className: "font-bold text-lg" }, "5th SEASON")),
+    /* @__PURE__ */ import_react.default.createElement("nav", { className: "flex space-x-4" })
+  ), /* @__PURE__ */ import_react.default.createElement(
+    "header",
+    {
+      className: `fixed top-0 left-0 right-0 z-50 transition-transform duration-300 bg-white border-b shadow-md ${isScrolled ? "translate-y-0" : "-translate-y-full"}`
+    },
+    /* @__PURE__ */ import_react.default.createElement("div", { className: "flex items-center justify-between p-4 max-w-7xl mx-auto" }, /* @__PURE__ */ import_react.default.createElement("div", { className: "flex items-center space-x-2" }, /* @__PURE__ */ import_react.default.createElement("span", { className: "font-bold text-lg" }, "5th SEASON")), /* @__PURE__ */ import_react.default.createElement("div", { className: "flex space-x-4" }, /* @__PURE__ */ import_react.default.createElement(
+      "a",
+      {
+        href: "/login",
+        className: "px-4 py-2 text-gray-600 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
+      },
+      "Log In"
+    ), /* @__PURE__ */ import_react.default.createElement(
+      "a",
+      {
+        href: "/signup",
+        className: "px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition-colors"
+      },
+      "Sign Up"
+    )))
+  ));
 };
 var Navigation_default = Navigation;
 
@@ -44580,7 +44667,7 @@ var Home = () => {
     }
     Mixpanel.track("Landing Page", props);
   }, [searchParams]);
-  return /* @__PURE__ */ import_react2.default.createElement("div", null, /* @__PURE__ */ import_react2.default.createElement("div", { className: "about-fashionista" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "asc-container" }, /* @__PURE__ */ import_react2.default.createElement("h2", null, /* @__PURE__ */ import_react2.default.createElement("strong", null, "The Future of Fashion Starts Here")), /* @__PURE__ */ import_react2.default.createElement("p", null, "Welcome to the season where", /* @__PURE__ */ import_react2.default.createElement("br", null), " designers shine, new trends begin, and ", /* @__PURE__ */ import_react2.default.createElement("br", null), "all will discover their place in fashion."))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-designers bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("div", { ref: scrollRef, className: "designer-lineup flex overflow-x-auto space-x-4 px-4 scrollbar-hide" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/29811587/pexels-photo-29811587/free-photo-of-elegant-woman-with-curly-hair-posing-indoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Designer 1" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://www.essence.com/wp-content/uploads/2022/07/GettyImages-1205845584-scaled.jpg`, alt: "Designer 2" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://www.essence.com/wp-content/uploads/2022/07/hEk5Kvec-8.png`, alt: "Designer 3" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/3205989/pexels-photo-3205989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 4" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/8715778/pexels-photo-8715778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 5" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/26221665/pexels-photo-26221665/free-photo-of-portrait-of-man-wearing-suit.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 5" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/28579193/pexels-photo-28579193/free-photo-of-stylish-man-in-urban-setting-with-sunglasses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 3" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/18192898/pexels-photo-18192898/free-photo-of-a-boy-s-portrait-in-white-attire.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 4" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.unsplash.com/photo-1545291730-faff8ca1d4b0`, alt: "Designer 5" })))), /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col items-center text-center py-12 px-4 max-w-5xl mx-auto" }, /* @__PURE__ */ import_react2.default.createElement("h1", { class: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4" }, "Empowering Designers, Defining the Future of Fashion"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-lg text-gray-600 mb-8" }, "Our mission is to transform how designers launch, grow, and thrive in the fashion industry."), /* @__PURE__ */ import_react2.default.createElement("div", { class: "w-full" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/9850074/pexels-photo-9850074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "", class: "rounded-lg shadow-lg max-w-full h-auto" }))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4" }, /* @__PURE__ */ import_react2.default.createElement("h2", { class: "text-3xl lg:text-4xl font-bold mb-4 text-gray-900" }, "What is 5th Season?"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-gray-700 leading-relaxed" }, "Fashion has always been defined by four seasons\u2014spring, summer, fall, and winter\u2014but we\u2019re here to introduce something new. 5th Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we\u2019re here to help you showcase your work, grow your presence, and turn your vision into the next big trend.")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4 flex justify-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/1478477/pexels-photo-1478477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Diverse team meeting", class: "rounded-md shadow-lg max-w-full h-auto" })))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4 flex justify-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/965324/pexels-photo-965324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Diverse team meeting", class: "rounded-md shadow-lg max-w-1/2 h-auto feature-image" })), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4" }, /* @__PURE__ */ import_react2.default.createElement("h2", { class: "text-3xl lg:text-4xl font-bold mb-4 text-gray-900" }, "Connect, Collaborate, and Elevate"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-gray-700 leading-relaxed" }, "Success in fashion isn\u2019t just about the designs\u2014it\u2019s about the connections. Our platform is the ultimate hub for collaboration, where designers, brands, and industry experts come together to innovate and inspire. Share ideas, co-create collections, and network with top talent in the industry. From partnerships to professional growth, we\u2019re here to help you thrive in the fast-paced world of fashion. Together, we can shape the future of style.")))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "flex flex-col lg:flex-row justify-center w-full" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Create.png", alt: "Create" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Kick off your launch! Upload your designs, select tags that best represent your brand or style, and set the stage for your journey with us. This is your first step toward showcasing your creativity and connecting with the fashion community")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Launch.png", alt: "Launch" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Showcase your collections for the world to discover, purchase, and share. Build credibility and connect with fashion enthusiasts through exclusive drops and unique pieces")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Collab.png", alt: "Collaborate" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Find like-minded creatives and unlock new opportunities. Team up on new collections, recruit talent or connect with brands to bring innovative projects to life")))));
+  return /* @__PURE__ */ import_react2.default.createElement("div", null, /* @__PURE__ */ import_react2.default.createElement("div", { className: "about-fashionista" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "asc-container" }, /* @__PURE__ */ import_react2.default.createElement("h2", null, /* @__PURE__ */ import_react2.default.createElement("strong", null, "The Future of Fashion Starts Here")), /* @__PURE__ */ import_react2.default.createElement("p", null, "Welcome to the season where", /* @__PURE__ */ import_react2.default.createElement("br", null), " designers shine, new trends begin, and ", /* @__PURE__ */ import_react2.default.createElement("br", null), "all will discover their place in fashion."))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-designers bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("div", { ref: scrollRef, className: "designer-lineup flex overflow-x-auto space-x-4 px-4 scrollbar-hide" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/29811587/pexels-photo-29811587/free-photo-of-elegant-woman-with-curly-hair-posing-indoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Designer 1", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://www.essence.com/wp-content/uploads/2022/07/GettyImages-1205845584-scaled.jpg`, alt: "Designer 2", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://www.essence.com/wp-content/uploads/2022/07/hEk5Kvec-8.png`, alt: "Designer 3", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/3205989/pexels-photo-3205989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 4", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/8715778/pexels-photo-8715778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 5", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/26221665/pexels-photo-26221665/free-photo-of-portrait-of-man-wearing-suit.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 5", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/28579193/pexels-photo-28579193/free-photo-of-stylish-man-in-urban-setting-with-sunglasses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 3", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/18192898/pexels-photo-18192898/free-photo-of-a-boy-s-portrait-in-white-attire.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 4", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.unsplash.com/photo-1545291730-faff8ca1d4b0`, alt: "Designer 5", className: "w-full h-full object-cover" })))), /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col items-center text-center py-12 px-4 max-w-5xl mx-auto" }, /* @__PURE__ */ import_react2.default.createElement("h1", { class: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4" }, "Empowering Designers, Defining the Future of Fashion"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-lg text-gray-600 mb-8" }, "Our mission is to transform how designers launch, grow, and thrive in the fashion industry."), /* @__PURE__ */ import_react2.default.createElement("div", { class: "w-full" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/9850074/pexels-photo-9850074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "", class: "rounded-lg shadow-lg max-w-full h-auto" }))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4" }, /* @__PURE__ */ import_react2.default.createElement("h2", { class: "text-3xl lg:text-4xl font-bold mb-4 text-gray-900" }, "What is 5th Season?"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-gray-700 leading-relaxed" }, "Fashion has always been defined by four seasons\u2014spring, summer, fall, and winter\u2014but we're here to introduce something new. 5th Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we're here to help you showcase your work, grow your presence, and turn your vision into the next big trend.")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4 flex justify-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/1478477/pexels-photo-1478477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Diverse team meeting", class: "rounded-md shadow-lg max-w-full h-auto" })))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4 flex justify-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/965324/pexels-photo-965324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Diverse team meeting", class: "rounded-md shadow-lg max-w-1/2 h-auto feature-image" })), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4" }, /* @__PURE__ */ import_react2.default.createElement("h2", { class: "text-3xl lg:text-4xl font-bold mb-4 text-gray-900" }, "Connect, Collaborate, and Elevate"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-gray-700 leading-relaxed" }, "Success in fashion isn't just about the designs\u2014it's about the connections. Our platform is the ultimate hub for collaboration, where designers, brands, and industry experts come together to innovate and inspire. Share ideas, co-create collections, and network with top talent in the industry. From partnerships to professional growth, we're here to help you thrive in the fast-paced world of fashion. Together, we can shape the future of style.")))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "flex flex-col lg:flex-row justify-center w-full" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Create.png", alt: "Create" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Kick off your launch! Upload your designs, select tags that best represent your brand or style, and set the stage for your journey with us. This is your first step toward showcasing your creativity and connecting with the fashion community")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Launch.png", alt: "Launch" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Showcase your collections for the world to discover, purchase, and share. Build credibility and connect with fashion enthusiasts through exclusive drops and unique pieces")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Collab.png", alt: "Collaborate" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Find like-minded creatives and unlock new opportunities. Team up on new collections, recruit talent or connect with brands to bring innovative projects to life")))));
 };
 var Home_default = Home;
 
@@ -44987,67 +45074,1290 @@ var __iconNode = [
 ];
 var Archive = createLucideIcon("archive", __iconNode);
 
-// node_modules/lucide-react/dist/esm/icons/ellipsis.js
+// node_modules/lucide-react/dist/esm/icons/arrow-left.js
 var __iconNode2 = [
+  ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
+  ["path", { d: "M19 12H5", key: "x3x0zl" }]
+];
+var ArrowLeft = createLucideIcon("arrow-left", __iconNode2);
+
+// node_modules/lucide-react/dist/esm/icons/award.js
+var __iconNode3 = [
+  [
+    "path",
+    {
+      d: "m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526",
+      key: "1yiouv"
+    }
+  ],
+  ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
+];
+var Award = createLucideIcon("award", __iconNode3);
+
+// node_modules/lucide-react/dist/esm/icons/briefcase.js
+var __iconNode4 = [
+  ["path", { d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", key: "jecpp" }],
+  ["rect", { width: "20", height: "14", x: "2", y: "6", rx: "2", key: "i6l2r4" }]
+];
+var Briefcase = createLucideIcon("briefcase", __iconNode4);
+
+// node_modules/lucide-react/dist/esm/icons/calendar.js
+var __iconNode5 = [
+  ["path", { d: "M8 2v4", key: "1cmpym" }],
+  ["path", { d: "M16 2v4", key: "4m81vk" }],
+  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
+  ["path", { d: "M3 10h18", key: "8toen8" }]
+];
+var Calendar = createLucideIcon("calendar", __iconNode5);
+
+// node_modules/lucide-react/dist/esm/icons/camera.js
+var __iconNode6 = [
+  [
+    "path",
+    {
+      d: "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z",
+      key: "1tc9qg"
+    }
+  ],
+  ["circle", { cx: "12", cy: "13", r: "3", key: "1vg3eu" }]
+];
+var Camera = createLucideIcon("camera", __iconNode6);
+
+// node_modules/lucide-react/dist/esm/icons/ellipsis.js
+var __iconNode7 = [
   ["circle", { cx: "12", cy: "12", r: "1", key: "41hilf" }],
   ["circle", { cx: "19", cy: "12", r: "1", key: "1wjl8i" }],
   ["circle", { cx: "5", cy: "12", r: "1", key: "1pcz8c" }]
 ];
-var Ellipsis = createLucideIcon("ellipsis", __iconNode2);
+var Ellipsis = createLucideIcon("ellipsis", __iconNode7);
+
+// node_modules/lucide-react/dist/esm/icons/external-link.js
+var __iconNode8 = [
+  ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
+  ["path", { d: "M10 14 21 3", key: "gplh6r" }],
+  ["path", { d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6", key: "a6xqqp" }]
+];
+var ExternalLink = createLucideIcon("external-link", __iconNode8);
+
+// node_modules/lucide-react/dist/esm/icons/funnel.js
+var __iconNode9 = [
+  [
+    "path",
+    {
+      d: "M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z",
+      key: "sc7q7i"
+    }
+  ]
+];
+var Funnel = createLucideIcon("funnel", __iconNode9);
+
+// node_modules/lucide-react/dist/esm/icons/grid-3x3.js
+var __iconNode10 = [
+  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
+  ["path", { d: "M3 9h18", key: "1pudct" }],
+  ["path", { d: "M3 15h18", key: "5xshup" }],
+  ["path", { d: "M9 3v18", key: "fh3hqa" }],
+  ["path", { d: "M15 3v18", key: "14nvp0" }]
+];
+var Grid3x3 = createLucideIcon("grid-3x3", __iconNode10);
+
+// node_modules/lucide-react/dist/esm/icons/heart.js
+var __iconNode11 = [
+  [
+    "path",
+    {
+      d: "M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z",
+      key: "c3ymky"
+    }
+  ]
+];
+var Heart = createLucideIcon("heart", __iconNode11);
+
+// node_modules/lucide-react/dist/esm/icons/info.js
+var __iconNode12 = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M12 16v-4", key: "1dtifu" }],
+  ["path", { d: "M12 8h.01", key: "e9boi3" }]
+];
+var Info = createLucideIcon("info", __iconNode12);
+
+// node_modules/lucide-react/dist/esm/icons/log-out.js
+var __iconNode13 = [
+  ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }],
+  ["polyline", { points: "16 17 21 12 16 7", key: "1gabdz" }],
+  ["line", { x1: "21", x2: "9", y1: "12", y2: "12", key: "1uyos4" }]
+];
+var LogOut = createLucideIcon("log-out", __iconNode13);
+
+// node_modules/lucide-react/dist/esm/icons/map-pin.js
+var __iconNode14 = [
+  [
+    "path",
+    {
+      d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
+      key: "1r0f0z"
+    }
+  ],
+  ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
+];
+var MapPin = createLucideIcon("map-pin", __iconNode14);
+
+// node_modules/lucide-react/dist/esm/icons/message-circle.js
+var __iconNode15 = [
+  ["path", { d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z", key: "vv11sd" }]
+];
+var MessageCircle = createLucideIcon("message-circle", __iconNode15);
+
+// node_modules/lucide-react/dist/esm/icons/palette.js
+var __iconNode16 = [
+  [
+    "path",
+    {
+      d: "M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z",
+      key: "e79jfc"
+    }
+  ],
+  ["circle", { cx: "13.5", cy: "6.5", r: ".5", fill: "currentColor", key: "1okk4w" }],
+  ["circle", { cx: "17.5", cy: "10.5", r: ".5", fill: "currentColor", key: "f64h9f" }],
+  ["circle", { cx: "6.5", cy: "12.5", r: ".5", fill: "currentColor", key: "qy21gx" }],
+  ["circle", { cx: "8.5", cy: "7.5", r: ".5", fill: "currentColor", key: "fotxhn" }]
+];
+var Palette = createLucideIcon("palette", __iconNode16);
+
+// node_modules/lucide-react/dist/esm/icons/plus.js
+var __iconNode17 = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "M12 5v14", key: "s699le" }]
+];
+var Plus = createLucideIcon("plus", __iconNode17);
+
+// node_modules/lucide-react/dist/esm/icons/scissors.js
+var __iconNode18 = [
+  ["circle", { cx: "6", cy: "6", r: "3", key: "1lh9wr" }],
+  ["path", { d: "M8.12 8.12 12 12", key: "1alkpv" }],
+  ["path", { d: "M20 4 8.12 15.88", key: "xgtan2" }],
+  ["circle", { cx: "6", cy: "18", r: "3", key: "fqmcym" }],
+  ["path", { d: "M14.8 14.8 20 20", key: "ptml3r" }]
+];
+var Scissors = createLucideIcon("scissors", __iconNode18);
+
+// node_modules/lucide-react/dist/esm/icons/share-2.js
+var __iconNode19 = [
+  ["circle", { cx: "18", cy: "5", r: "3", key: "gq8acd" }],
+  ["circle", { cx: "6", cy: "12", r: "3", key: "w7nqdw" }],
+  ["circle", { cx: "18", cy: "19", r: "3", key: "1xt0gg" }],
+  ["line", { x1: "8.59", x2: "15.42", y1: "13.51", y2: "17.49", key: "47mynk" }],
+  ["line", { x1: "15.41", x2: "8.59", y1: "6.51", y2: "10.49", key: "1n3mei" }]
+];
+var Share2 = createLucideIcon("share-2", __iconNode19);
+
+// node_modules/lucide-react/dist/esm/icons/star.js
+var __iconNode20 = [
+  [
+    "path",
+    {
+      d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z",
+      key: "r04s7s"
+    }
+  ]
+];
+var Star = createLucideIcon("star", __iconNode20);
+
+// node_modules/lucide-react/dist/esm/icons/user-plus.js
+var __iconNode21 = [
+  ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
+  ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }],
+  ["line", { x1: "19", x2: "19", y1: "8", y2: "14", key: "1bvyxn" }],
+  ["line", { x1: "22", x2: "16", y1: "11", y2: "11", key: "1shjgl" }]
+];
+var UserPlus = createLucideIcon("user-plus", __iconNode21);
+
+// node_modules/lucide-react/dist/esm/icons/users.js
+var __iconNode22 = [
+  ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
+  ["path", { d: "M16 3.128a4 4 0 0 1 0 7.744", key: "16gr8j" }],
+  ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
+  ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }]
+];
+var Users = createLucideIcon("users", __iconNode22);
 
 // app/javascript/components/ProfileView.jsx
 function ProfileView() {
-  return /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white min-h-screen" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "max-w-4xl mx-auto pt-8 px-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col md:flex-row items-center md:items-start gap-8" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "relative" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-blue-500 p-1" }, /* @__PURE__ */ import_react8.default.createElement(
+  import_react8.default.useEffect(() => {
+    document.documentElement.style.scrollBehavior = "smooth";
+    return () => {
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, []);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView();
+    }
+  };
+  return /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white min-h-screen" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "max-w-4xl mx-auto pt-8 px-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col md:flex-row items-center md:items-start gap-8" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "relative" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "w-32 h-40 md:w-48 md:h-64 rounded-xl border-4 border-blue-500 p-1 overflow-hidden" }, /* @__PURE__ */ import_react8.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/7295645/pexels-photo-7295645.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Profile",
-      className: "w-full h-full rounded-full object-cover"
+      className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react8.default.createElement("div", { className: "absolute bottom-0 right-0 bg-gray-100 rounded-full p-1" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white rounded-full p-0.5" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("path", { d: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" }), /* @__PURE__ */ import_react8.default.createElement("circle", { cx: "12", cy: "13", r: "4" }))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-1 text-center md:text-left" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col md:flex-row md:items-center gap-2 mb-3" }, /* @__PURE__ */ import_react8.default.createElement("h1", { className: "text-xl font-semibold" }, "Aria Chen \u2728"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex gap-2 justify-center md:justify-start items-center ml-0 md:ml-auto" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "bg-blue-100 text-blue-600 font-medium px-4 py-1.5 rounded-md text-sm" }, "Unfollow"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-4 py-1.5 rounded-md text-sm" }, "Message"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "p-1.5 rounded-md hover:bg-gray-100" }, /* @__PURE__ */ import_react8.default.createElement(Ellipsis, { size: 20 })))), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-gray-500 text-sm mb-2" }, "@AriaDesigns \u{1F457}"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm mb-4 max-w-md" }, "\u{1F9F5} Sustainable fashion designer based in NYC. \u{1F331} Blending modern silhouettes with traditional techniques. \u{1F45A} Fall '25 collection coming soon! \u{1F3A8} Former @ParsonsFashion graduate. \u{1F30D} Creating clothes that tell stories. \u2702\uFE0F DM for collab inquiries."), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-center md:justify-start gap-8 mb-6" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "162"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Designs")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "892"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Following")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "12,467"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Followers"))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "border-t mt-6" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-center gap-8" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1.5 py-3 border-t-2 border-black font-medium text-sm" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("rect", { x: "3", y: "3", width: "18", height: "18", rx: "2", ry: "2" }), /* @__PURE__ */ import_react8.default.createElement("line", { x1: "3", y1: "9", x2: "21", y2: "9" }), /* @__PURE__ */ import_react8.default.createElement("line", { x1: "9", y1: "21", x2: "9", y2: "9" })), "Designs"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1.5 py-3 text-gray-500 text-sm" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("polygon", { points: "23 7 16 12 23 17 23 7" }), /* @__PURE__ */ import_react8.default.createElement("rect", { x: "1", y: "5", width: "15", height: "14", rx: "2", ry: "2" })), "Runway \u{1F460}"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1.5 py-3 text-gray-500 text-sm" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("path", { d: "M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" }), /* @__PURE__ */ import_react8.default.createElement("line", { x1: "7", y1: "7", x2: "7.01", y2: "7" })), "Features \u{1F4F0}")))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "max-w-4xl mx-auto py-4 px-4" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium text-sm mb-4" }, "Collections \u{1F457}"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex gap-3 overflow-x-auto pb-4 hide-scrollbar" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
+  )), /* @__PURE__ */ import_react8.default.createElement("div", { className: "absolute bottom-3 right-3 bg-gray-100 rounded-full p-1.5 shadow-md" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white rounded-full p-0.5" }, /* @__PURE__ */ import_react8.default.createElement("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react8.default.createElement("path", { d: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" }), /* @__PURE__ */ import_react8.default.createElement("circle", { cx: "12", cy: "13", r: "4" }))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-1 text-center md:text-left" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "mb-3" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col md:flex-row md:items-center gap-1 mb-1" }, /* @__PURE__ */ import_react8.default.createElement("h1", { className: "text-xl font-semibold" }, "Aria Chen \u2728"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-center text-gray-600 gap-1" }, /* @__PURE__ */ import_react8.default.createElement(MapPin, { size: 14 }), /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-sm" }, "New York, NY"))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-2" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full" }, "Luxury Streetwear"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full" }, "Boutique Ready"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full" }, "Sustainable"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full" }, "Slow Fashion"))), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-gray-500 text-sm mb-2" }, "@AriaDesigns \u{1F457}"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm mb-4 max-w-md" }, "Sustainable fashion designer with a focus on modern silhouettes and traditional techniques. Former @ParsonsFashion graduate creating clothes that tell stories."), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-4" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react8.default.createElement(MessageCircle, { size: 16 }), "Message"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "bg-purple-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react8.default.createElement(UserPlus, { size: 16 }), "Collaborate"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, "Follow"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "p-1.5 rounded-md hover:bg-gray-100" }, /* @__PURE__ */ import_react8.default.createElement(Ellipsis, { size: 20 }))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-center md:justify-start gap-8 mb-6" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "162"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Designs")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "892"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Following")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react8.default.createElement("p", { className: "font-semibold" }, "12,467"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500" }, "Followers"))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "border-t mt-6" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-center flex-wrap gap-6 py-2 px-2" }, /* @__PURE__ */ import_react8.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("collections"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-blue-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react8.default.createElement(Briefcase, { size: 16, className: "text-blue-600" }),
+    "Collections \u{1F457}"
+  ), /* @__PURE__ */ import_react8.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("behind-the-brand"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-purple-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react8.default.createElement(Info, { size: 16, className: "text-purple-600" }),
+    "Behind the Brand \u2728"
+  ), /* @__PURE__ */ import_react8.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("open-to"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-green-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react8.default.createElement(Scissors, { size: 16, className: "text-green-600" }),
+    "Open To \u{1F91D}"
+  ), /* @__PURE__ */ import_react8.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("featured-by"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-amber-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react8.default.createElement(Award, { size: 16, className: "text-amber-600" }),
+    "Featured By \u{1F3C6}"
+  ), /* @__PURE__ */ import_react8.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("testimonials"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-rose-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react8.default.createElement(Star, { size: 16, className: "text-rose-600" }),
+    "Testimonials \u{1F4AC}"
+  ), /* @__PURE__ */ import_react8.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("latest-designs"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-indigo-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react8.default.createElement(Palette, { size: 16, className: "text-indigo-600" }),
+    "Designs \u{1F9F5}"
+  )))), /* @__PURE__ */ import_react8.default.createElement("div", { id: "collections", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium" }, "Collections"), /* @__PURE__ */ import_react8.default.createElement("a", { href: "#", className: "text-blue-600 text-sm" }, "View All")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-5" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react8.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/31982191/pexels-photo-31982191/free-photo-of-moody-portrait-of-a-woman-by-a-column.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Summer Collection",
       className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Summer")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
+  ), /* @__PURE__ */ import_react8.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Summer '25")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium" }, "Airy Essentials"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, "Ready to Ship")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Lightweight linen pieces for warm days"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-xs text-gray-500" }, "15 pieces"), /* @__PURE__ */ import_react8.default.createElement(Link, { to: "/collection/1", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react8.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/31977310/pexels-photo-31977310/free-photo-of-stylish-woman-in-white-shirt-outdoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Spring Collection",
       className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Spring")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
+  ), /* @__PURE__ */ import_react8.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Spring '25")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium" }, "Urban Bloom"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded-full" }, "Wholesale - In Production")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Street styles with floral accents"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-xs text-gray-500" }, "12 pieces"), /* @__PURE__ */ import_react8.default.createElement(Link, { to: "/collection/2", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react8.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/2010922/pexels-photo-2010922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Winter Collection",
       className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Winter")), [4, 5].map((item) => /* @__PURE__ */ import_react8.default.createElement("div", { key: item, className: "flex-shrink-0 w-20" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "aspect-square rounded-md overflow-hidden mb-1" }, /* @__PURE__ */ import_react8.default.createElement(
-    "div",
+  ), /* @__PURE__ */ import_react8.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Winter '24")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium" }, "Cozy Structures"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full" }, "Boutique - Pre-Order")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Architectural inspired wool garments"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-xs text-gray-500" }, "8 pieces"), /* @__PURE__ */ import_react8.default.createElement(Link, { to: "/collection/3", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))))), /* @__PURE__ */ import_react8.default.createElement("div", { id: "behind-the-brand", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium mb-4" }, "Behind the Brand"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
     {
-      className: "w-full h-full bg-gray-200"
+      src: "https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Design Process",
+      className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-center" }, "Coming Soon"))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "max-w-4xl mx-auto py-4 px-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium text-sm" }, "Latest Designs \u{1F9F5}"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1 text-sm text-gray-500" }, /* @__PURE__ */ import_react8.default.createElement(Archive, { size: 16 }), /* @__PURE__ */ import_react8.default.createElement("span", null, "Show archived"))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-3 gap-1" }, Array.from({ length: 12 }).map((_2, index) => /* @__PURE__ */ import_react8.default.createElement("div", { key: index, className: "aspect-square overflow-hidden" }, /* @__PURE__ */ import_react8.default.createElement(
+  ), /* @__PURE__ */ import_react8.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-white text-xs font-medium" }, "Design Process"))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/6069765/pexels-photo-6069765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Fabric Selection",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react8.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-white text-xs font-medium" }, "Fabric Selection"))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/5699516/pexels-photo-5699516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Stylist Collaborations",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react8.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-white text-xs font-medium" }, "Stylist Collaborations"))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/5778899/pexels-photo-5778899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Pop-Up Events",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react8.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-white text-xs font-medium" }, "Pop-Up Events"))))), /* @__PURE__ */ import_react8.default.createElement("div", { id: "open-to", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium mb-4" }, "Open To"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-blue-50 p-4 rounded-lg border border-blue-100" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react8.default.createElement(Camera, { className: "text-blue-600", size: 20 }), /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium" }, "Photographer Partnerships")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm text-gray-700" }, "Looking for editorial and lookbook photographers with experience in fashion storytelling.")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-purple-50 p-4 rounded-lg border border-purple-100" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react8.default.createElement(Scissors, { className: "text-purple-600", size: 20 }), /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium" }, "Stylist Collaborations")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm text-gray-700" }, "Interested in working with stylists for editorial features and special campaigns.")), /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-green-50 p-4 rounded-lg border border-green-100" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react8.default.createElement(ExternalLink, { className: "text-green-600", size: 20 }), /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium" }, "Retail Partnerships")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm text-gray-700" }, "Seeking boutiques and concept stores interested in stocking our latest collections.")))), /* @__PURE__ */ import_react8.default.createElement("div", { id: "featured-by", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium mb-4" }, "Featured By"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react8.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Vogue.com"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Emerging Designers to Watch"')), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react8.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Metropolitan Fashion Week"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Rising Star Award 2024"')), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react8.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Elle Magazine"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Sustainable Fashion Feature"')), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react8.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "New York Fashion Council"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Grant Recipient 2023"')))), /* @__PURE__ */ import_react8.default.createElement("div", { id: "testimonials", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium mb-4" }, "Testimonials"), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-gray-50 p-4 rounded-lg border" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "w-10 h-10 rounded-full overflow-hidden flex-shrink-0" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Elena Ross",
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react8.default.createElement("div", null, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-center gap-1 mb-1" }, /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium text-sm" }, "Elena Ross"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-xs text-gray-500" }, "Stylist")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm text-gray-700 mb-2" }, `"Aria's pieces are truly unique - they photograph beautifully and always draw attention on set. The quality and attention to detail make them perfect for editorial work."`), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex text-amber-500" }, /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }))))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "bg-gray-50 p-4 rounded-lg border" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "w-10 h-10 rounded-full overflow-hidden flex-shrink-0" }, /* @__PURE__ */ import_react8.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Marcus Chen",
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react8.default.createElement("div", null, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex items-center gap-1 mb-1" }, /* @__PURE__ */ import_react8.default.createElement("h3", { className: "font-medium text-sm" }, "Marcus Chen"), /* @__PURE__ */ import_react8.default.createElement("span", { className: "text-xs text-gray-500" }, "Boutique Owner")), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm text-gray-700 mb-2" }, `"Our customers love Aria's sustainable approach and distinctive aesthetic. Her collections consistently sell out within weeks of arriving at our store."`), /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex text-amber-500" }, /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react8.default.createElement(Heart, { size: 14, fill: "currentColor" }))))))), /* @__PURE__ */ import_react8.default.createElement("div", { id: "latest-designs", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react8.default.createElement("h2", { className: "font-medium" }, "Latest Designs \u{1F9F5}"), /* @__PURE__ */ import_react8.default.createElement("button", { className: "flex items-center gap-1 text-sm text-gray-500" }, /* @__PURE__ */ import_react8.default.createElement(Archive, { size: 16 }), /* @__PURE__ */ import_react8.default.createElement("span", null, "Show archived"))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, Array.from({ length: 8 }).map((_2, index) => /* @__PURE__ */ import_react8.default.createElement("div", { key: index, className: "aspect-square overflow-hidden rounded-md border" }, /* @__PURE__ */ import_react8.default.createElement(
     "div",
     {
       className: "w-full h-full bg-gray-200",
-      alt: `Post ${index + 1}`
+      alt: `Design ${index + 1}`
     }
-  )))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "text-sm text-gray-500" }, "Load more..."))));
+  )))), /* @__PURE__ */ import_react8.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react8.default.createElement("button", { className: "text-sm text-blue-600 font-medium" }, "View All Designs"))));
+}
+
+// app/javascript/components/DynamicProfileView.jsx
+var import_react9 = __toESM(require_react());
+function DynamicProfileView() {
+  const { username } = useParams();
+  const [designer, setDesigner] = (0, import_react9.useState)(null);
+  const [loading, setLoading] = (0, import_react9.useState)(true);
+  const [error, setError] = (0, import_react9.useState)(null);
+  import_react9.default.useEffect(() => {
+    document.documentElement.style.scrollBehavior = "smooth";
+    return () => {
+      document.documentElement.style.scrollBehavior = "auto";
+    };
+  }, []);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView();
+    }
+  };
+  const handleLogout = () => {
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/logout";
+    const methodInput = document.createElement("input");
+    methodInput.type = "hidden";
+    methodInput.name = "_method";
+    methodInput.value = "DELETE";
+    form.appendChild(methodInput);
+    const csrfToken = document.querySelector('[name="csrf-token"]')?.content;
+    if (csrfToken) {
+      const csrfInput = document.createElement("input");
+      csrfInput.type = "hidden";
+      csrfInput.name = "authenticity_token";
+      csrfInput.value = csrfToken;
+      form.appendChild(csrfInput);
+    }
+    document.body.appendChild(form);
+    form.submit();
+  };
+  (0, import_react9.useEffect)(() => {
+    const fetchDesignerData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        console.log("Fetching designer data for username:", username);
+        const response = await fetch(`/api/designers/${username}`);
+        console.log("API Response status:", response.status);
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Designer data received:", data);
+        setDesigner(data);
+      } catch (err) {
+        console.error("Error fetching designer data:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (username) {
+      fetchDesignerData();
+    }
+  }, [username]);
+  if (loading) {
+    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500" }), /* @__PURE__ */ import_react9.default.createElement("p", { className: "ml-2" }, "Loading designer profile..."));
+  }
+  if (error) {
+    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-red-500 text-xl mb-4" }, "\u26A0\uFE0F Error loading profile"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "mb-4" }, error), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/", className: "bg-blue-600 text-white px-4 py-2 rounded-md" }, "Return to Home"));
+  }
+  if (!designer) {
+    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-xl mb-4" }, "\u{1F454} Designer Not Found"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "mb-4" }, "We couldn't find a designer with that username."), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/", className: "bg-blue-600 text-white px-4 py-2 rounded-md" }, "Return to Home"));
+  }
+  const isOwnProfile = designer.user && designer.user.is_current_user;
+  return /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white min-h-screen" }, isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute top-4 right-4 z-10" }, /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: handleLogout,
+      className: "bg-red-600 text-white font-medium px-4 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-red-700 transition-colors"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(LogOut, { size: 16 }),
+    "Log Out"
+  )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "max-w-4xl mx-auto pt-8 px-4" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col md:flex-row items-center md:items-start gap-8" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "w-32 h-40 md:w-48 md:h-64 rounded-xl border-4 border-blue-500 p-1 overflow-hidden" }, designer.profile_image_url ? /* @__PURE__ */ import_react9.default.createElement(
+    "img",
+    {
+      src: designer.profile_image_url,
+      alt: "Profile",
+      className: "w-full h-full object-cover"
+    }
+  ) : /* @__PURE__ */ import_react9.default.createElement("div", { className: "w-full h-full bg-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-4xl md:text-6xl font-bold" }, designer.brand_name ? designer.brand_name.substring(0, 2).toUpperCase() : designer.user?.first_name && designer.user?.last_name ? (designer.user.first_name[0] + designer.user.last_name[0]).toUpperCase() : "??"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-3 right-3 bg-gray-100 rounded-full p-1.5 shadow-md" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-full p-0.5" }, /* @__PURE__ */ import_react9.default.createElement("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react9.default.createElement("path", { d: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" }), /* @__PURE__ */ import_react9.default.createElement("circle", { cx: "12", cy: "13", r: "4" }))))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex-1 text-center md:text-left" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "mb-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col md:flex-row md:items-center gap-1 mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h1", { className: "text-xl font-semibold" }, designer.brand_name || "Aria Chen", " \u2728"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center text-gray-600 gap-1" }, /* @__PURE__ */ import_react9.default.createElement(MapPin, { size: 14 }), /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-sm" }, designer.location || "New York, NY"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-2" }, designer.collaboration_preferences && designer.collaboration_preferences.length > 0 ? designer.collaboration_preferences.map((pref, index) => /* @__PURE__ */ import_react9.default.createElement("span", { key: index, className: "bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full" }, typeof pref === "string" ? pref : pref.preference_type || pref.name || "Collaboration")) : /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, null, /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full" }, "Luxury Streetwear"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full" }, "Boutique Ready"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full" }, "Sustainable"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full" }, "Slow Fashion")))), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-gray-500 text-sm mb-2" }, "@", designer.slug || username || "AriaDesigns", " \u{1F457}"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm mb-4 max-w-md" }, designer.brand_description || "Sustainable fashion designer with a focus on modern silhouettes and traditional techniques. Former @ParsonsFashion graduate creating clothes that tell stories."), !isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-4" }, /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react9.default.createElement(MessageCircle, { size: 16 }), "Message"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-purple-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react9.default.createElement(UserPlus, { size: 16 }), "Collaborate"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, "Follow"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "p-1.5 rounded-md hover:bg-gray-100" }, /* @__PURE__ */ import_react9.default.createElement(Ellipsis, { size: 20 }))), isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-4" }, /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, "Edit Profile")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-center md:justify-start gap-8 mb-6" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "font-semibold" }, designer.designs ? designer.designs.length : 0), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500" }, "Designs")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "font-semibold" }, designer.following_count || 0), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500" }, "Following")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "font-semibold" }, designer.followers_count || 0), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500" }, "Followers"))))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "border-t mt-6" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-center flex-wrap gap-6 py-2 px-2" }, /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("collections"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-blue-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(Briefcase, { size: 16, className: "text-blue-600" }),
+    "Collections \u{1F457}"
+  ), /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("behind-the-brand"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-purple-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(Info, { size: 16, className: "text-purple-600" }),
+    "Behind the Brand \u2728"
+  ), /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("open-to"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-green-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(Scissors, { size: 16, className: "text-green-600" }),
+    "Open To \u{1F91D}"
+  ), /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("featured-by"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-amber-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(Award, { size: 16, className: "text-amber-600" }),
+    "Featured By \u{1F3C6}"
+  ), designer.testimonials && designer.testimonials.length > 0 && /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("testimonials"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-rose-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(Star, { size: 16, className: "text-rose-600" }),
+    "Testimonials \u{1F4AC}"
+  ), /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: () => scrollToSection("latest-designs"),
+      className: "flex items-center gap-1.5 py-2 px-3 hover:bg-indigo-50 rounded-md text-sm transition-colors"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(Palette, { size: 16, className: "text-indigo-600" }),
+    "Designs \u{1F9F5}"
+  )))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "collections", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium" }, "Collections"), !isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("a", { href: "#", className: "text-blue-600 text-sm" }, "View All"), isOwnProfile && designer.collections && designer.collections.length > 0 && /* @__PURE__ */ import_react9.default.createElement("button", { className: "text-blue-600 text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react9.default.createElement(Plus, { size: 16 }), "Create Collection")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-5" }, designer.collections && designer.collections.length > 0 ? designer.collections.slice(0, 3).map((collection, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+    "img",
+    {
+      src: collection.image_url || "https://images.pexels.com/photos/31982191/pexels-photo-31982191/free-photo-of-moody-portrait-of-a-woman-by-a-column.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: collection.title || "Collection",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, collection.season, " '", collection.year ? collection.year.toString().substring(2) : "25")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, collection.title || "Collection"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, collection.status === "published" ? "Ready to Ship" : collection.status || "Ready to Ship")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, collection.description || "Beautiful collection pieces"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, collection.pieces_count || "0", " pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: `/collection/${collection.id || "1"}`, className: "text-blue-600 text-xs" }, "Browse Collection \u2192"))))) : isOwnProfile ? (
+    // Show create collection prompt for own profile with no collections
+    /* @__PURE__ */ import_react9.default.createElement("div", { className: "col-span-3 text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4" }, /* @__PURE__ */ import_react9.default.createElement(Plus, { className: "text-blue-600", size: 24 })), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "text-lg font-medium text-gray-900 mb-2" }, "Create your first collection"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-gray-500 mb-4" }, "Start showcasing your designs by organizing them into collections"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-6 py-2 rounded-md text-sm flex items-center gap-2 mx-auto" }, /* @__PURE__ */ import_react9.default.createElement(Plus, { size: 16 }), "Create Collection"))
+  ) : (
+    // Show sample collections for other people's profiles with no collections
+    /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, null, /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+      "img",
+      {
+        src: "https://images.pexels.com/photos/31982191/pexels-photo-31982191/free-photo-of-moody-portrait-of-a-woman-by-a-column.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        alt: "Summer Collection",
+        className: "w-full h-full object-cover"
+      }
+    ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Summer '25")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "Airy Essentials"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, "Ready to Ship")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Lightweight linen pieces for warm days"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, "15 pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/collection/1", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+      "img",
+      {
+        src: "https://images.pexels.com/photos/31977310/pexels-photo-31977310/free-photo-of-stylish-woman-in-white-shirt-outdoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        alt: "Spring Collection",
+        className: "w-full h-full object-cover"
+      }
+    ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Spring '25")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "Urban Bloom"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded-full" }, "Wholesale - In Production")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Street styles with floral accents"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, "12 pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/collection/2", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+      "img",
+      {
+        src: "https://images.pexels.com/photos/2010922/pexels-photo-2010922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        alt: "Winter Collection",
+        className: "w-full h-full object-cover"
+      }
+    ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Winter '24")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "Cozy Structures"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full" }, "Boutique - Pre-Order")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Architectural inspired wool garments"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, "8 pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/collection/3", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))))
+  ))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "behind-the-brand", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Behind the Brand"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Design Process",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Design Process"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/6069765/pexels-photo-6069765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Fabric Selection",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Fabric Selection"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/5699516/pexels-photo-5699516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Stylist Collaborations",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Stylist Collaborations"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+    "img",
+    {
+      src: "https://images.pexels.com/photos/5778899/pexels-photo-5778899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: "Pop-Up Events",
+      className: "w-full h-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Pop-Up Events"))))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "open-to", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Open To"), designer.collaboration_preferences && designer.collaboration_preferences.length > 0 ? /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4" }, designer.collaboration_preferences.map((pref, index) => {
+    const collabInfo = {
+      manufacturing: {
+        icon: /* @__PURE__ */ import_react9.default.createElement(Users, { className: "text-blue-600", size: 20 }),
+        title: "Manufacturing Partnerships",
+        description: "Open to working with manufacturers for production and scaling.",
+        bgColor: "bg-blue-50",
+        borderColor: "border-blue-100"
+      },
+      retail: {
+        icon: /* @__PURE__ */ import_react9.default.createElement(ExternalLink, { className: "text-green-600", size: 20 }),
+        title: "Retail Partnerships",
+        description: "Seeking boutiques and concept stores interested in stocking collections.",
+        bgColor: "bg-green-50",
+        borderColor: "border-green-100"
+      },
+      consultation: {
+        icon: /* @__PURE__ */ import_react9.default.createElement(Info, { className: "text-purple-600", size: 20 }),
+        title: "Design Consultation",
+        description: "Available for design consultation and creative direction projects.",
+        bgColor: "bg-purple-50",
+        borderColor: "border-purple-100"
+      },
+      custom: {
+        icon: /* @__PURE__ */ import_react9.default.createElement(Scissors, { className: "text-amber-600", size: 20 }),
+        title: "Custom Design Work",
+        description: "Accepting commissions for bespoke and custom design projects.",
+        bgColor: "bg-amber-50",
+        borderColor: "border-amber-100"
+      },
+      mentorship: {
+        icon: /* @__PURE__ */ import_react9.default.createElement(Star, { className: "text-rose-600", size: 20 }),
+        title: "Mentorship",
+        description: "Open to mentoring emerging designers and sharing industry knowledge.",
+        bgColor: "bg-rose-50",
+        borderColor: "border-rose-100"
+      }
+    };
+    const info = collabInfo[pref.preference_type] || {
+      icon: /* @__PURE__ */ import_react9.default.createElement(Users, { className: "text-gray-600", size: 20 }),
+      title: `${pref.preference_type.charAt(0).toUpperCase() + pref.preference_type.slice(1)} Collaborations`,
+      description: "Open to partnerships and collaborations.",
+      bgColor: "bg-gray-50",
+      borderColor: "border-gray-100"
+    };
+    return /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: `${info.bgColor} p-4 rounded-lg border ${info.borderColor}` }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, info.icon, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, info.title)), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm text-gray-700" }, info.description));
+  })) : /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-gray-50 p-4 rounded-lg border border-gray-100" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react9.default.createElement(Info, { className: "text-gray-600", size: 20 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "No Collaboration Preferences Set")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm text-gray-700" }, "This designer hasn't specified what types of collaborations they're open to yet."))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "featured-by", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Featured By"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Vogue.com"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Emerging Designers to Watch"')), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Metropolitan Fashion Week"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Rising Star Award 2024"')), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Elle Magazine"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Sustainable Fashion Feature"')), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "New York Fashion Council"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Grant Recipient 2023"')))), designer.testimonials && designer.testimonials.length > 0 && /* @__PURE__ */ import_react9.default.createElement("div", { id: "testimonials", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Testimonials"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4" }, designer.testimonials.slice(0, 2).map((testimonial, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: "bg-gray-50 p-4 rounded-lg border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "w-10 h-10 rounded-full overflow-hidden flex-shrink-0" }, /* @__PURE__ */ import_react9.default.createElement(
+    "img",
+    {
+      src: testimonial.author_image_url || "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      alt: testimonial.author,
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center gap-1 mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm" }, testimonial.author), /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, testimonial.role)), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm text-gray-700 mb-2" }, '"', testimonial.content, '"'), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex text-amber-500" }, /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" })))))))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "latest-designs", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium" }, "Latest Designs \u{1F9F5}"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "flex items-center gap-1 text-sm text-gray-500" }, /* @__PURE__ */ import_react9.default.createElement(Archive, { size: 16 }), /* @__PURE__ */ import_react9.default.createElement("span", null, "Show archived"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, Array.from({ length: 8 }).map((_2, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: "aspect-square overflow-hidden rounded-md border" }, /* @__PURE__ */ import_react9.default.createElement(
+    "div",
+    {
+      className: "w-full h-full bg-gray-200",
+      alt: `Design ${index + 1}`
+    }
+  )))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react9.default.createElement("button", { className: "text-sm text-blue-600 font-medium" }, "View All Designs"))));
+}
+
+// app/javascript/components/CollectionView.jsx
+var import_react10 = __toESM(require_react());
+function CollectionView() {
+  const collection = {
+    id: 1,
+    title: "Airy Essentials",
+    season: "Summer",
+    year: 2025,
+    description: "Lightweight linen pieces for warm days",
+    designer: {
+      name: "Aria Chen",
+      image: "https://images.pexels.com/photos/7295645/pexels-photo-7295645.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      username: "@AriaDesigns"
+    },
+    pieceCount: 15,
+    status: "Ready to Ship"
+  };
+  const designs = [
+    {
+      id: 1,
+      image: "https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Linen Wrap Top",
+      likes: 245,
+      comments: 32
+    },
+    {
+      id: 2,
+      image: "https://images.pexels.com/photos/6069765/pexels-photo-6069765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Summer Palazzo Pants",
+      likes: 189,
+      comments: 24
+    },
+    {
+      id: 3,
+      image: "https://images.pexels.com/photos/5699516/pexels-photo-5699516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Airy Linen Dress",
+      likes: 312,
+      comments: 47
+    },
+    {
+      id: 4,
+      image: "https://images.pexels.com/photos/5778899/pexels-photo-5778899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Breathable Cotton Shirt",
+      likes: 178,
+      comments: 18
+    },
+    {
+      id: 5,
+      image: "https://images.pexels.com/photos/5699516/pexels-photo-5699516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Relaxed Summer Shorts",
+      likes: 201,
+      comments: 29
+    },
+    {
+      id: 6,
+      image: "https://images.pexels.com/photos/5778899/pexels-photo-5778899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Organic Cotton Vest",
+      likes: 166,
+      comments: 21
+    },
+    {
+      id: 7,
+      image: "https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Linen Beach Cover",
+      likes: 227,
+      comments: 34
+    },
+    {
+      id: 8,
+      image: "https://images.pexels.com/photos/6069765/pexels-photo-6069765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Summer Scarf",
+      likes: 152,
+      comments: 17
+    }
+  ];
+  const featuredDesigns = designs.slice(0, 5);
+  return /* @__PURE__ */ import_react10.default.createElement("div", { className: "bg-white min-h-screen" }, /* @__PURE__ */ import_react10.default.createElement("header", { className: "border-b sticky top-0 bg-white z-10" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto px-4 py-3 flex items-center justify-between" }, /* @__PURE__ */ import_react10.default.createElement(Link, { to: "/profile", className: "flex items-center gap-2 text-gray-800" }, /* @__PURE__ */ import_react10.default.createElement(ArrowLeft, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "font-medium" }, "Back to Profile")), /* @__PURE__ */ import_react10.default.createElement("h1", { className: "font-semibold text-lg" }, collection.title), /* @__PURE__ */ import_react10.default.createElement("div", { className: "w-8" }), " ")), /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto pt-6 px-4" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-4 mb-4" }, /* @__PURE__ */ import_react10.default.createElement(
+    "img",
+    {
+      src: collection.designer.image,
+      alt: collection.designer.name,
+      className: "w-12 h-12 rounded-full object-cover"
+    }
+  ), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("h2", { className: "font-semibold" }, collection.designer.name), /* @__PURE__ */ import_react10.default.createElement("p", { className: "text-gray-500 text-sm" }, collection.designer.username))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react10.default.createElement("h1", { className: "text-xl font-bold" }, collection.title), /* @__PURE__ */ import_react10.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, collection.status)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-3 text-sm text-gray-600" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react10.default.createElement(Calendar, { size: 16 }), /* @__PURE__ */ import_react10.default.createElement("span", null, collection.season, " '", collection.year.toString().substring(2))), /* @__PURE__ */ import_react10.default.createElement("span", null, "\u2022"), /* @__PURE__ */ import_react10.default.createElement("span", null, collection.pieceCount, " pieces")), /* @__PURE__ */ import_react10.default.createElement("p", { className: "mt-2 text-gray-700" }, collection.description)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex border-y py-2 mb-6" }, /* @__PURE__ */ import_react10.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react10.default.createElement(Heart, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm" }, "Save")), /* @__PURE__ */ import_react10.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react10.default.createElement(MessageCircle, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm" }, "Comment")), /* @__PURE__ */ import_react10.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react10.default.createElement(Share2, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm" }, "Share")))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto px-4 mb-8" }, /* @__PURE__ */ import_react10.default.createElement("h3", { className: "font-semibold mb-3" }, "Highlights"), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex gap-3 overflow-x-auto pb-4 hide-scrollbar" }, featuredDesigns.map((design) => /* @__PURE__ */ import_react10.default.createElement("div", { key: design.id, className: "flex-none w-28 md:w-32" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "aspect-square rounded-lg overflow-hidden mb-1" }, /* @__PURE__ */ import_react10.default.createElement(
+    "img",
+    {
+      src: design.image,
+      alt: design.title,
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react10.default.createElement("p", { className: "text-xs truncate" }, design.title))))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto px-4 mb-8" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react10.default.createElement("h3", { className: "font-semibold" }, "Designs"), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react10.default.createElement("button", { className: "p-2 rounded-full hover:bg-gray-100" }, /* @__PURE__ */ import_react10.default.createElement(Grid3x3, { size: 20 })), /* @__PURE__ */ import_react10.default.createElement("button", { className: "p-2 rounded-full hover:bg-gray-100" }, /* @__PURE__ */ import_react10.default.createElement(Funnel, { size: 20 })))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-3 gap-3" }, designs.map((design) => /* @__PURE__ */ import_react10.default.createElement("div", { key: design.id, className: "overflow-hidden mb-4" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "aspect-square rounded-lg overflow-hidden mb-2" }, /* @__PURE__ */ import_react10.default.createElement(
+    "img",
+    {
+      src: design.image,
+      alt: design.title,
+      className: "w-full h-full object-cover"
+    }
+  )), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react10.default.createElement("p", { className: "text-sm font-medium" }, design.title), /* @__PURE__ */ import_react10.default.createElement("button", { className: "text-gray-500" }, /* @__PURE__ */ import_react10.default.createElement(Ellipsis, { size: 16 }))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-3 text-gray-500 text-xs" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react10.default.createElement(Heart, { size: 14 }), /* @__PURE__ */ import_react10.default.createElement("span", null, design.likes)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react10.default.createElement(MessageCircle, { size: 14 }), /* @__PURE__ */ import_react10.default.createElement("span", null, design.comments)))))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "text-center mt-4" }, /* @__PURE__ */ import_react10.default.createElement("button", { className: "text-blue-600 font-medium text-sm py-2 px-4 rounded-md hover:bg-blue-50" }, "Load more..."))), /* @__PURE__ */ import_react10.default.createElement("style", { jsx: true }, `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `));
+}
+
+// app/javascript/components/onboarding/OnboardingFlow.jsx
+var import_react18 = __toESM(require_react());
+
+// app/javascript/components/onboarding/ProductTypeStep.jsx
+var import_react12 = __toESM(require_react());
+
+// app/javascript/components/onboarding/OnboardingLayout.jsx
+var import_react11 = __toESM(require_react());
+function OnboardingLayout({ children, title, backUrl }) {
+  return /* @__PURE__ */ import_react11.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center justify-between p-5 border-b" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ import_react11.default.createElement(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "w-8 h-8"
+    },
+    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "2", y: "2", fill: "#4F46E5", rx: "2" }),
+    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "12", y: "2", fill: "#8B5CF6", rx: "2" }),
+    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "2", y: "12", fill: "#EC4899", rx: "2" }),
+    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "12", y: "12", fill: "#F59E0B", rx: "2" })
+  )), /* @__PURE__ */ import_react11.default.createElement("button", { className: "text-gray-500 border border-gray-300 rounded-full px-4 py-1 text-sm hover:text-gray-700 hover:border-gray-400 transition-colors" }, "Help")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-6" }, backUrl && /* @__PURE__ */ import_react11.default.createElement(
+    Link,
+    {
+      to: backUrl,
+      className: "inline-flex items-center text-gray-700 mb-6"
+    },
+    /* @__PURE__ */ import_react11.default.createElement(
+      "svg",
+      {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "h-4 w-4 mr-1",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      },
+      /* @__PURE__ */ import_react11.default.createElement("path", { d: "M19 12H5M12 19l-7-7 7-7" })
+    ),
+    "Back"
+  ), /* @__PURE__ */ import_react11.default.createElement("h1", { className: "text-2xl font-semibold mb-8" }, title), children), /* @__PURE__ */ import_react11.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react11.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
+}
+
+// app/javascript/components/onboarding/ProductTypeStep.jsx
+var productTypes = [
+  { id: "apparel", icon: "\u{1F455}", label: "Apparel" },
+  { id: "jewelry", icon: "\u{1F48E}", label: "Jewelry" },
+  { id: "medical", icon: "\u{1F48A}", label: "Medical & Rx" },
+  { id: "electronics", icon: "\u{1F4BB}", label: "Electronics" },
+  { id: "auto", icon: "\u{1F697}", label: "Auto" },
+  { id: "baby", icon: "\u{1F476}", label: "Baby Products" },
+  { id: "games", icon: "\u{1F3AE}", label: "Games & Media" },
+  { id: "sports", icon: "\u{1F3C0}", label: "Sports Outdoor" },
+  { id: "pets", icon: "\u{1F43E}", label: "Product for Pets" },
+  { id: "arts", icon: "\u{1F3A8}", label: "Arts & Crafts" },
+  { id: "beauty", icon: "\u{1F484}", label: "Beauty & Skincare" },
+  { id: "health", icon: "\u2764\uFE0F", label: "Health & Wellness" },
+  { id: "home", icon: "\u{1F3E0}", label: "Home & Garden" },
+  { id: "toys", icon: "\u{1F9F8}", label: "Toys" },
+  { id: "food", icon: "\u{1F354}", label: "Food & Grocery" },
+  { id: "books", icon: "\u{1F4DA}", label: "Books" }
+];
+function ProductTypeStep() {
+  const [selectedType, setSelectedType] = (0, import_react12.useState)(null);
+  const navigate = useNavigate();
+  const handleNextClick = async () => {
+    if (!selectedType) return;
+    try {
+      const response = await fetch("/api/onboarding/product_type", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ product_type: selectedType })
+      });
+      if (response.ok) {
+        navigate("/onboarding/personal-info");
+      } else {
+        console.error("Failed to save product type");
+      }
+    } catch (error) {
+      console.error("Error saving product type:", error);
+    }
+  };
+  return /* @__PURE__ */ import_react12.default.createElement(
+    OnboardingLayout,
+    {
+      backUrl: "/",
+      title: "What kind of products do you sell?"
+    },
+    /* @__PURE__ */ import_react12.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, productTypes.map((type) => /* @__PURE__ */ import_react12.default.createElement(
+      "div",
+      {
+        key: type.id,
+        className: `flex flex-col items-center border rounded-lg p-4 cursor-pointer transition-all ${selectedType === type.id ? "border-purple-500 bg-purple-50 shadow-sm" : "border-gray-200 hover:border-purple-300 hover:bg-purple-50"}`,
+        onClick: () => setSelectedType(type.id)
+      },
+      /* @__PURE__ */ import_react12.default.createElement("div", { className: "text-2xl mb-2" }, type.icon),
+      /* @__PURE__ */ import_react12.default.createElement("div", { className: "text-sm text-center" }, type.label)
+    ))),
+    /* @__PURE__ */ import_react12.default.createElement(
+      "button",
+      {
+        onClick: handleNextClick,
+        disabled: !selectedType,
+        className: `mt-8 px-6 py-2 rounded-full font-medium text-white ${selectedType ? "bg-indigo-500 hover:bg-indigo-600" : "bg-gray-300 cursor-not-allowed"}`
+      },
+      "Next"
+    )
+  );
+}
+
+// app/javascript/components/onboarding/PersonalInfoStep.jsx
+var import_react13 = __toESM(require_react());
+function PersonalInfoStep() {
+  const [firstName, setFirstName] = (0, import_react13.useState)("");
+  const [lastName, setLastName] = (0, import_react13.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react13.useState)(false);
+  const [error, setError] = (0, import_react13.useState)("");
+  const navigate = useNavigate();
+  (0, import_react13.useEffect)(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("/api/current_user");
+        if (response.ok) {
+          const data = await response.json();
+          setFirstName(data.first_name || "");
+          setLastName(data.last_name || "");
+        }
+      } catch (error2) {
+        console.error("Error fetching user data:", error2);
+      }
+    };
+    fetchUserData();
+  }, []);
+  const handleNextClick = async (e) => {
+    e.preventDefault();
+    if (!firstName || !lastName) {
+      setError("Please provide both first and last name");
+      return;
+    }
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/onboarding/personal_info", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ first_name: firstName, last_name: lastName })
+      });
+      if (response.ok) {
+        navigate("/onboarding/brand-info");
+      } else {
+        const data = await response.json();
+        setError(data.error || "Failed to save personal information");
+      }
+    } catch (error2) {
+      setError("An error occurred. Please try again.");
+      console.error("Error saving personal info:", error2);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  return /* @__PURE__ */ import_react13.default.createElement(
+    OnboardingLayout,
+    {
+      backUrl: "/onboarding/product-type",
+      title: "Your Full Name"
+    },
+    error && /* @__PURE__ */ import_react13.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react13.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react13.default.createElement("label", { htmlFor: "firstName", className: "block mb-2 font-medium text-gray-700" }, "First Name"), /* @__PURE__ */ import_react13.default.createElement(
+      "input",
+      {
+        id: "firstName",
+        type: "text",
+        value: firstName,
+        onChange: (e) => setFirstName(e.target.value),
+        className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition",
+        placeholder: "Your first name",
+        required: true
+      }
+    )), /* @__PURE__ */ import_react13.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react13.default.createElement("label", { htmlFor: "lastName", className: "block mb-2 font-medium text-gray-700" }, "Last Name"), /* @__PURE__ */ import_react13.default.createElement(
+      "input",
+      {
+        id: "lastName",
+        type: "text",
+        value: lastName,
+        onChange: (e) => setLastName(e.target.value),
+        className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition",
+        placeholder: "Your last name",
+        required: true
+      }
+    )), /* @__PURE__ */ import_react13.default.createElement(
+      "button",
+      {
+        type: "submit",
+        disabled: isLoading,
+        className: `px-6 py-2 rounded-full font-medium text-white ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600"}`
+      },
+      isLoading ? "Saving..." : "Next"
+    ))
+  );
+}
+
+// app/javascript/components/onboarding/BrandInfoStep.jsx
+var import_react14 = __toESM(require_react());
+function BrandInfoStep() {
+  const [brandName, setBrandName] = (0, import_react14.useState)("");
+  const [brandDescription, setBrandDescription] = (0, import_react14.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react14.useState)(false);
+  const [error, setError] = (0, import_react14.useState)("");
+  const navigate = useNavigate();
+  const handleNextClick = async (e) => {
+    e.preventDefault();
+    if (!brandName || !brandDescription) {
+      setError("Please provide both brand name and description");
+      return;
+    }
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/onboarding/brand_info", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({
+          brand_name: brandName,
+          brand_description: brandDescription
+        })
+      });
+      if (response.ok) {
+        navigate("/onboarding/location");
+      } else {
+        const data = await response.json();
+        setError(data.error || "Failed to save brand information");
+      }
+    } catch (error2) {
+      setError("An error occurred. Please try again.");
+      console.error("Error saving brand info:", error2);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  return /* @__PURE__ */ import_react14.default.createElement(
+    OnboardingLayout,
+    {
+      backUrl: "/onboarding/personal-info",
+      title: "Tell us about your brand"
+    },
+    error && /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react14.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "brandName", className: "block mb-2 font-medium text-gray-700" }, "Brand Name"), /* @__PURE__ */ import_react14.default.createElement(
+      "input",
+      {
+        id: "brandName",
+        type: "text",
+        value: brandName,
+        onChange: (e) => setBrandName(e.target.value),
+        className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition",
+        placeholder: "Your brand name",
+        required: true
+      }
+    )), /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "brandDescription", className: "block mb-2 font-medium text-gray-700" }, "Brand Description"), /* @__PURE__ */ import_react14.default.createElement(
+      "textarea",
+      {
+        id: "brandDescription",
+        value: brandDescription,
+        onChange: (e) => setBrandDescription(e.target.value),
+        className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition",
+        placeholder: "Tell us about your brand, design philosophy, and style",
+        rows: "4",
+        required: true
+      }
+    )), /* @__PURE__ */ import_react14.default.createElement(
+      "button",
+      {
+        type: "submit",
+        disabled: isLoading,
+        className: `px-6 py-2 rounded-full font-medium text-white ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600"}`
+      },
+      isLoading ? "Saving..." : "Next"
+    ))
+  );
+}
+
+// app/javascript/components/onboarding/LocationStep.jsx
+var import_react15 = __toESM(require_react());
+function LocationStep() {
+  const [location2, setLocation] = (0, import_react15.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react15.useState)(false);
+  const [error, setError] = (0, import_react15.useState)("");
+  const navigate = useNavigate();
+  const handleNextClick = async (e) => {
+    e.preventDefault();
+    if (!location2) {
+      setError("Please provide your location");
+      return;
+    }
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/onboarding/location", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ location: location2 })
+      });
+      if (response.ok) {
+        navigate("/onboarding/collaboration");
+      } else {
+        const data = await response.json();
+        setError(data.error || "Failed to save location");
+      }
+    } catch (error2) {
+      setError("An error occurred. Please try again.");
+      console.error("Error saving location:", error2);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  return /* @__PURE__ */ import_react15.default.createElement(
+    OnboardingLayout,
+    {
+      backUrl: "/onboarding/brand-info",
+      title: "Where are you based?"
+    },
+    error && /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react15.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react15.default.createElement("label", { htmlFor: "location", className: "block mb-2 font-medium text-gray-700" }, "Location"), /* @__PURE__ */ import_react15.default.createElement(
+      "input",
+      {
+        id: "location",
+        type: "text",
+        value: location2,
+        onChange: (e) => setLocation(e.target.value),
+        className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition",
+        placeholder: "City, Country",
+        required: true
+      }
+    ), /* @__PURE__ */ import_react15.default.createElement("p", { className: "mt-2 text-gray-500 text-sm" }, "This helps us connect you with local manufacturing opportunities and showcase your regional design influence.")), /* @__PURE__ */ import_react15.default.createElement(
+      "button",
+      {
+        type: "submit",
+        disabled: isLoading,
+        className: `px-6 py-2 rounded-full font-medium text-white ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600"}`
+      },
+      isLoading ? "Saving..." : "Next"
+    ))
+  );
+}
+
+// app/javascript/components/onboarding/CollaborationStep.jsx
+var import_react16 = __toESM(require_react());
+var collaborationOptions = [
+  {
+    id: "manufacturing",
+    icon: "\u{1F3ED}",
+    title: "Manufacturing",
+    description: "Partner with manufacturers to bring your designs to life"
+  },
+  {
+    id: "retail",
+    icon: "\u{1F6CD}\uFE0F",
+    title: "Retail Partnerships",
+    description: "Connect with retailers to showcase and sell your designs"
+  },
+  {
+    id: "consultation",
+    icon: "\u{1F4BC}",
+    title: "Design Consultation",
+    description: "Offer your expertise to brands seeking design input"
+  },
+  {
+    id: "custom",
+    icon: "\u2702\uFE0F",
+    title: "Custom Orders",
+    description: "Create bespoke designs for individual clients"
+  },
+  {
+    id: "mentorship",
+    icon: "\u{1F393}",
+    title: "Mentorship",
+    description: "Guide emerging designers and share your knowledge"
+  }
+];
+function CollaborationStep() {
+  const [selectedOptions, setSelectedOptions] = (0, import_react16.useState)([]);
+  const [isLoading, setIsLoading] = (0, import_react16.useState)(false);
+  const [error, setError] = (0, import_react16.useState)("");
+  const navigate = useNavigate();
+  const toggleOption = (optionId) => {
+    setSelectedOptions(
+      (prev) => prev.includes(optionId) ? prev.filter((id) => id !== optionId) : [...prev, optionId]
+    );
+  };
+  const handleNextClick = async () => {
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/onboarding/collaboration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ collaboration_preferences: selectedOptions })
+      });
+      if (response.ok) {
+        navigate("/onboarding/complete");
+      } else {
+        const data = await response.json();
+        setError(data.error || "Failed to save collaboration preferences");
+      }
+    } catch (error2) {
+      setError("An error occurred. Please try again.");
+      console.error("Error saving collaboration preferences:", error2);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  return /* @__PURE__ */ import_react16.default.createElement(
+    OnboardingLayout,
+    {
+      backUrl: "/onboarding/location",
+      title: "How would you like to collaborate?"
+    },
+    /* @__PURE__ */ import_react16.default.createElement("p", { className: "text-gray-600 mb-6" }, "Select all that apply"),
+    error && /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react16.default.createElement("div", { className: "space-y-3" }, collaborationOptions.map((option) => /* @__PURE__ */ import_react16.default.createElement(
+      "div",
+      {
+        key: option.id,
+        className: `flex items-center border rounded-lg p-4 cursor-pointer transition-all ${selectedOptions.includes(option.id) ? "border-purple-500 bg-purple-50" : "border-gray-200 hover:border-purple-300 hover:bg-purple-50"}`,
+        onClick: () => toggleOption(option.id)
+      },
+      /* @__PURE__ */ import_react16.default.createElement("div", { className: "text-2xl mr-4" }, option.icon),
+      /* @__PURE__ */ import_react16.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react16.default.createElement("h3", { className: "font-medium" }, option.title), /* @__PURE__ */ import_react16.default.createElement("p", { className: "text-sm text-gray-600" }, option.description)),
+      /* @__PURE__ */ import_react16.default.createElement("div", { className: "ml-4" }, /* @__PURE__ */ import_react16.default.createElement(
+        "div",
+        {
+          className: `w-5 h-5 rounded border ${selectedOptions.includes(option.id) ? "bg-purple-500 border-purple-500 flex items-center justify-center" : "border-gray-300"}`
+        },
+        selectedOptions.includes(option.id) && /* @__PURE__ */ import_react16.default.createElement(
+          "svg",
+          {
+            xmlns: "http://www.w3.org/2000/svg",
+            className: "h-4 w-4 text-white",
+            viewBox: "0 0 20 20",
+            fill: "currentColor"
+          },
+          /* @__PURE__ */ import_react16.default.createElement(
+            "path",
+            {
+              fillRule: "evenodd",
+              d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z",
+              clipRule: "evenodd"
+            }
+          )
+        )
+      ))
+    ))),
+    /* @__PURE__ */ import_react16.default.createElement(
+      "button",
+      {
+        onClick: handleNextClick,
+        disabled: isLoading,
+        className: `mt-8 px-6 py-2 rounded-full font-medium text-white ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600"}`
+      },
+      isLoading ? "Creating Profile..." : "Complete Profile"
+    )
+  );
+}
+
+// app/javascript/components/onboarding/CompletionStep.jsx
+var import_react17 = __toESM(require_react());
+function CompletionStep() {
+  const [designer, setDesigner] = (0, import_react17.useState)(null);
+  const [isLoading, setIsLoading] = (0, import_react17.useState)(true);
+  const [error, setError] = (0, import_react17.useState)("");
+  (0, import_react17.useEffect)(() => {
+    const fetchDesignerData = async () => {
+      try {
+        const response = await fetch("/api/designer/profile");
+        if (response.ok) {
+          const data = await response.json();
+          setDesigner(data);
+        } else {
+          setError("Failed to load designer profile");
+        }
+      } catch (error2) {
+        setError("An error occurred while loading your profile");
+        console.error("Error fetching designer profile:", error2);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchDesignerData();
+  }, []);
+  if (isLoading) {
+    return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500 mx-auto mb-4" }), /* @__PURE__ */ import_react17.default.createElement("p", null, "Loading your profile...")));
+  }
+  if (error) {
+    return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react17.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-6" }, error), /* @__PURE__ */ import_react17.default.createElement(
+      Link,
+      {
+        to: "/",
+        className: "px-6 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block"
+      },
+      "Go to Homepage"
+    )));
+  }
+  return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" }, /* @__PURE__ */ import_react17.default.createElement(
+    "svg",
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      className: "h-10 w-10 text-green-600",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2",
+      strokeLinecap: "round",
+      strokeLinejoin: "round"
+    },
+    /* @__PURE__ */ import_react17.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
+    /* @__PURE__ */ import_react17.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
+  )), /* @__PURE__ */ import_react17.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community."), designer && /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react17.default.createElement("h2", { className: "font-semibold text-lg" }, designer.brand_name), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-500 text-sm" }, designer.location)), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-700" }, designer.brand_description)), designer && /* @__PURE__ */ import_react17.default.createElement(
+    Link,
+    {
+      to: `/${designer.slug}`,
+      className: "px-6 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block font-medium"
+    },
+    "View Your Profile"
+  )), /* @__PURE__ */ import_react17.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react17.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react17.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react17.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
+}
+
+// app/javascript/components/onboarding/OnboardingFlow.jsx
+function OnboardingFlow() {
+  return /* @__PURE__ */ import_react18.default.createElement(Routes, null, /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react18.default.createElement(Navigate, { to: "/onboarding/product-type", replace: true }) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/product-type", element: /* @__PURE__ */ import_react18.default.createElement(ProductTypeStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/personal-info", element: /* @__PURE__ */ import_react18.default.createElement(PersonalInfoStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/brand-info", element: /* @__PURE__ */ import_react18.default.createElement(BrandInfoStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/location", element: /* @__PURE__ */ import_react18.default.createElement(LocationStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/collaboration", element: /* @__PURE__ */ import_react18.default.createElement(CollaborationStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/complete", element: /* @__PURE__ */ import_react18.default.createElement(CompletionStep, null) }));
 }
 
 // app/javascript/routes/index.jsx
+var RAILS_ROUTES = [
+  "/login",
+  "/signup",
+  "/logout"
+];
 var AppRoutes = () => {
-  return /* @__PURE__ */ import_react9.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react9.default.createElement(Routes, null, /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react9.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react9.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react9.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react9.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react9.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react9.default.createElement(ProfileView, null) })));
+  const isRailsRoute = RAILS_ROUTES.some(
+    (route) => window.location.pathname.startsWith(route)
+  );
+  if (isRailsRoute) {
+    return null;
+  }
+  return /* @__PURE__ */ import_react19.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react19.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react19.default.createElement(Routes, null, /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react19.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react19.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react19.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react19.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/profile", element: /* @__PURE__ */ import_react19.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react19.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/collection/:collectionId", element: /* @__PURE__ */ import_react19.default.createElement(CollectionView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/onboarding/*", element: /* @__PURE__ */ import_react19.default.createElement(OnboardingFlow, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/sample/profile", element: /* @__PURE__ */ import_react19.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/:username", element: /* @__PURE__ */ import_react19.default.createElement(DynamicProfileView, null) })));
 };
 var routes_default = AppRoutes;
 
 // app/javascript/components/App.jsx
 var App = () => {
-  return /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, /* @__PURE__ */ import_react10.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react10.default.createElement(routes_default, null));
+  return /* @__PURE__ */ import_react20.default.createElement(import_react20.default.Fragment, null, /* @__PURE__ */ import_react20.default.createElement(routes_default, null));
 };
 var App_default = App;
 
@@ -45056,7 +46366,7 @@ document.addEventListener("turbo:load", () => {
   const root = (0, import_client.createRoot)(
     document.body.appendChild(document.createElement("div"))
   );
-  root.render(/* @__PURE__ */ import_react11.default.createElement(App_default, null));
+  root.render(/* @__PURE__ */ import_react21.default.createElement(App_default, null));
 });
 /*! Bundled license information:
 
@@ -45225,7 +46535,167 @@ lucide-react/dist/esm/icons/archive.js:
    * See the LICENSE file in the root directory of this source tree.
    *)
 
+lucide-react/dist/esm/icons/arrow-left.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/award.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/briefcase.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/calendar.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/camera.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
 lucide-react/dist/esm/icons/ellipsis.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/external-link.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/funnel.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/grid-3x3.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/heart.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/info.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/log-out.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/map-pin.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/message-circle.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/palette.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/plus.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/scissors.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/share-2.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/star.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/user-plus.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/users.js:
   (**
    * @license lucide-react v0.510.0 - ISC
    *
