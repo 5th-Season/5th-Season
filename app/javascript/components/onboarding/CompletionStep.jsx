@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CompletionStep() {
   const [designer, setDesigner] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchDesignerData = async () => {
       try {
-        const response = await fetch("/api/designer/profile");
+        const response = await fetch("/api/onboarding/designer_profile");
         if (response.ok) {
           const data = await response.json();
           setDesigner(data);
+          // Automatically redirect to the profile after a short delay
+          setTimeout(() => {
+            navigate(`/${data.slug}`);
+          }, 2000);
         } else {
           setError("Failed to load designer profile");
         }
@@ -25,7 +30,7 @@ export default function CompletionStep() {
     };
     
     fetchDesignerData();
-  }, []);
+  }, [navigate]);
   
   if (isLoading) {
     return (
@@ -81,6 +86,8 @@ export default function CompletionStep() {
           <p className="text-gray-600 mb-8 max-w-lg mx-auto">
             Your designer profile has been created successfully. You're now ready to showcase your 
             designs and collaborate with others in the 5th Season community.
+            <br /><br />
+            <span className="text-indigo-600 font-medium">You'll be automatically redirected to your profile in a moment...</span>
           </p>
           
           {designer && (

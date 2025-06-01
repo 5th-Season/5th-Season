@@ -46277,13 +46277,17 @@ function CompletionStep() {
   const [designer, setDesigner] = (0, import_react17.useState)(null);
   const [isLoading, setIsLoading] = (0, import_react17.useState)(true);
   const [error, setError] = (0, import_react17.useState)("");
+  const navigate = useNavigate();
   (0, import_react17.useEffect)(() => {
     const fetchDesignerData = async () => {
       try {
-        const response = await fetch("/api/designer/profile");
+        const response = await fetch("/api/onboarding/designer_profile");
         if (response.ok) {
           const data = await response.json();
           setDesigner(data);
+          setTimeout(() => {
+            navigate(`/${data.slug}`);
+          }, 2e3);
         } else {
           setError("Failed to load designer profile");
         }
@@ -46295,7 +46299,7 @@ function CompletionStep() {
       }
     };
     fetchDesignerData();
-  }, []);
+  }, [navigate]);
   if (isLoading) {
     return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500 mx-auto mb-4" }), /* @__PURE__ */ import_react17.default.createElement("p", null, "Loading your profile...")));
   }
@@ -46323,7 +46327,7 @@ function CompletionStep() {
     },
     /* @__PURE__ */ import_react17.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
     /* @__PURE__ */ import_react17.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
-  )), /* @__PURE__ */ import_react17.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community."), designer && /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react17.default.createElement("h2", { className: "font-semibold text-lg" }, designer.brand_name), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-500 text-sm" }, designer.location)), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-700" }, designer.brand_description)), designer && /* @__PURE__ */ import_react17.default.createElement(
+  )), /* @__PURE__ */ import_react17.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community.", /* @__PURE__ */ import_react17.default.createElement("br", null), /* @__PURE__ */ import_react17.default.createElement("br", null), /* @__PURE__ */ import_react17.default.createElement("span", { className: "text-indigo-600 font-medium" }, "You'll be automatically redirected to your profile in a moment...")), designer && /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react17.default.createElement("h2", { className: "font-semibold text-lg" }, designer.brand_name), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-500 text-sm" }, designer.location)), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-700" }, designer.brand_description)), designer && /* @__PURE__ */ import_react17.default.createElement(
     Link,
     {
       to: `/${designer.slug}`,
