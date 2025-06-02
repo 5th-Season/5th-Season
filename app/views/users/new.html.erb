@@ -57,7 +57,7 @@
       
       <div class="form-group terms">
         <label class="terms-label">
-          <input type="checkbox" name="terms" required class="terms-checkbox">
+          <input type="checkbox" name="terms" class="terms-checkbox" id="terms-checkbox">
           <span class="terms-text">I agree to the <a href="/terms" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a></span>
         </label>
       </div>
@@ -262,3 +262,20 @@
     text-decoration: none;
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.auth-form');
+    const termsCheckbox = document.getElementById('terms-checkbox');
+    const submitButton = document.querySelector('.auth-button');
+    
+    form.addEventListener('submit', function(e) {
+      if (!termsCheckbox.checked) {
+        e.preventDefault();
+        alert('Please agree to the Terms of Service and Privacy Policy to continue.');
+        termsCheckbox.focus();
+        return false;
+      }
+    });
+  });
+</script>
