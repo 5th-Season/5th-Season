@@ -51,6 +51,10 @@ Rails.application.configure do
   # Configure for Heroku SSL termination
   config.action_controller.forgery_protection_origin_check = false
 
+  # Force HTTPS for redirects and URL generation
+  config.action_controller.default_url_options = { protocol: 'https' }
+  config.action_mailer.default_url_options = { protocol: 'https' }
+
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
   config.log_level = :info
