@@ -20,7 +20,13 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       Rails.logger.info "Session user_id set to: #{session[:user_id]}"
       Rails.logger.info "Redirecting to onboarding..."
-      redirect_to onboarding_start_path
+      
+      # Force HTTPS redirect for Heroku
+      onboarding_url = Rails.env.production? ? 
+        "https://#{request.host}/onboarding" : 
+        onboarding_start_path
+      
+      redirect_to onboarding_url
     else
       Rails.logger.error "User save failed: #{@user.errors.full_messages.join(', ')}"
       flash.now[:error] = "Please correct the following errors: #{@user.errors.full_messages.join(', ')}"
