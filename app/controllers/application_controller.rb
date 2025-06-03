@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # Handle CSRF for Heroku SSL termination
+  protect_from_forgery with: :exception, prepend: true
+  
   helper_method :current_user, :logged_in?
   
   private
