@@ -13,9 +13,6 @@ module FashionApp
 
     config.assets.css_compressor = nil
 
-    # Trust Heroku's load balancer for SSL termination
-    config.force_ssl = true if Rails.env.production?
-
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
