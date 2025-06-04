@@ -1676,7 +1676,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context);
         }
-        function useState12(initialState) {
+        function useState13(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -2479,7 +2479,7 @@ var require_react_development = __commonJS({
         exports.useMemo = useMemo3;
         exports.useReducer = useReducer;
         exports.useRef = useRef8;
-        exports.useState = useState12;
+        exports.useState = useState13;
         exports.useSyncExternalStore = useSyncExternalStore;
         exports.useTransition = useTransition;
         exports.version = ReactVersion;
@@ -2975,9 +2975,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React23 = require_react();
+        var React24 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React23.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React24.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4582,7 +4582,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React23.Children.forEach(props.children, function(child) {
+                React24.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -33199,14 +33199,14 @@ window.Turbo = turbo_es2017_esm_exports;
 addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
 // app/javascript/components/index.jsx
-var import_react21 = __toESM(require_react());
+var import_react22 = __toESM(require_react());
 var import_client = __toESM(require_client());
 
 // app/javascript/components/App.jsx
-var import_react20 = __toESM(require_react());
+var import_react21 = __toESM(require_react());
 
 // app/javascript/routes/index.jsx
-var import_react19 = __toESM(require_react());
+var import_react20 = __toESM(require_react());
 
 // node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react());
@@ -45809,9 +45809,9 @@ function CollectionView() {
 }
 
 // app/javascript/components/onboarding/OnboardingFlow.jsx
-var import_react18 = __toESM(require_react());
+var import_react19 = __toESM(require_react());
 
-// app/javascript/components/onboarding/ProductTypeStep.jsx
+// app/javascript/components/onboarding/UsernameStep.jsx
 var import_react12 = __toESM(require_react());
 
 // app/javascript/components/onboarding/OnboardingLayout.jsx
@@ -45853,7 +45853,77 @@ function OnboardingLayout({ children, title, backUrl }) {
   ), /* @__PURE__ */ import_react11.default.createElement("h1", { className: "text-2xl font-semibold mb-8" }, title), children), /* @__PURE__ */ import_react11.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react11.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
 }
 
+// app/javascript/components/onboarding/UsernameStep.jsx
+function UsernameStep() {
+  const [username, setUsername] = (0, import_react12.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react12.useState)(false);
+  const [error, setError] = (0, import_react12.useState)("");
+  const navigate = useNavigate();
+  const handleNextClick = async () => {
+    if (!username.trim()) {
+      setError("Please enter a username");
+      return;
+    }
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/onboarding/username", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ username: username.trim() })
+      });
+      const result = await response.json();
+      if (response.ok) {
+        navigate("/onboarding/product-type");
+      } else {
+        setError(result.error || "Failed to save username");
+      }
+    } catch (error2) {
+      console.error("Error saving username:", error2);
+      setError("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const handleUsernameChange = (e) => {
+    const value = e.target.value.toLowerCase().replace(/[^a-z0-9_-]/g, "");
+    setUsername(value);
+    setError("");
+  };
+  return /* @__PURE__ */ import_react12.default.createElement(
+    OnboardingLayout,
+    {
+      backUrl: "/",
+      title: "Choose Your Username"
+    },
+    /* @__PURE__ */ import_react12.default.createElement("div", { className: "max-w-md mx-auto" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react12.default.createElement("label", { htmlFor: "username", className: "block text-sm font-medium text-gray-700 mb-2" }, "Username"), /* @__PURE__ */ import_react12.default.createElement(
+      "input",
+      {
+        type: "text",
+        id: "username",
+        value: username,
+        onChange: handleUsernameChange,
+        placeholder: "your-unique-username",
+        className: `w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent ${error ? "border-red-500" : "border-gray-300"}`,
+        disabled: isLoading
+      }
+    ), /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm text-gray-500 mt-2" }, "This will be your unique identifier and will appear in your profile URL"), error && /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm text-red-600 mt-2" }, error)), /* @__PURE__ */ import_react12.default.createElement(
+      "button",
+      {
+        onClick: handleNextClick,
+        disabled: !username.trim() || isLoading,
+        className: `w-full px-6 py-3 rounded-lg font-medium text-white ${username.trim() && !isLoading ? "bg-indigo-500 hover:bg-indigo-600" : "bg-gray-300 cursor-not-allowed"}`
+      },
+      isLoading ? "Checking..." : "Next"
+    ))
+  );
+}
+
 // app/javascript/components/onboarding/ProductTypeStep.jsx
+var import_react13 = __toESM(require_react());
 var productTypes = [
   { id: "apparel", icon: "\u{1F455}", label: "Apparel" },
   { id: "jewelry", icon: "\u{1F48E}", label: "Jewelry" },
@@ -45873,7 +45943,7 @@ var productTypes = [
   { id: "books", icon: "\u{1F4DA}", label: "Books" }
 ];
 function ProductTypeStep() {
-  const [selectedType, setSelectedType] = (0, import_react12.useState)(null);
+  const [selectedType, setSelectedType] = (0, import_react13.useState)(null);
   const navigate = useNavigate();
   const handleNextClick = async () => {
     if (!selectedType) return;
@@ -45895,23 +45965,23 @@ function ProductTypeStep() {
       console.error("Error saving product type:", error);
     }
   };
-  return /* @__PURE__ */ import_react12.default.createElement(
+  return /* @__PURE__ */ import_react13.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/",
       title: "What kind of products do you sell?"
     },
-    /* @__PURE__ */ import_react12.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, productTypes.map((type) => /* @__PURE__ */ import_react12.default.createElement(
+    /* @__PURE__ */ import_react13.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, productTypes.map((type) => /* @__PURE__ */ import_react13.default.createElement(
       "div",
       {
         key: type.id,
         className: `flex flex-col items-center border rounded-lg p-4 cursor-pointer transition-all ${selectedType === type.id ? "border-purple-500 bg-purple-50 shadow-sm" : "border-gray-200 hover:border-purple-300 hover:bg-purple-50"}`,
         onClick: () => setSelectedType(type.id)
       },
-      /* @__PURE__ */ import_react12.default.createElement("div", { className: "text-2xl mb-2" }, type.icon),
-      /* @__PURE__ */ import_react12.default.createElement("div", { className: "text-sm text-center" }, type.label)
+      /* @__PURE__ */ import_react13.default.createElement("div", { className: "text-2xl mb-2" }, type.icon),
+      /* @__PURE__ */ import_react13.default.createElement("div", { className: "text-sm text-center" }, type.label)
     ))),
-    /* @__PURE__ */ import_react12.default.createElement(
+    /* @__PURE__ */ import_react13.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -45924,14 +45994,14 @@ function ProductTypeStep() {
 }
 
 // app/javascript/components/onboarding/PersonalInfoStep.jsx
-var import_react13 = __toESM(require_react());
+var import_react14 = __toESM(require_react());
 function PersonalInfoStep() {
-  const [firstName, setFirstName] = (0, import_react13.useState)("");
-  const [lastName, setLastName] = (0, import_react13.useState)("");
-  const [isLoading, setIsLoading] = (0, import_react13.useState)(false);
-  const [error, setError] = (0, import_react13.useState)("");
+  const [firstName, setFirstName] = (0, import_react14.useState)("");
+  const [lastName, setLastName] = (0, import_react14.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react14.useState)(false);
+  const [error, setError] = (0, import_react14.useState)("");
   const navigate = useNavigate();
-  (0, import_react13.useEffect)(() => {
+  (0, import_react14.useEffect)(() => {
     const fetchUserData = async () => {
       try {
         const response = await fetch("/api/current_user");
@@ -45976,14 +46046,14 @@ function PersonalInfoStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/product-type",
       title: "Your Full Name"
     },
-    error && /* @__PURE__ */ import_react13.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react13.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react13.default.createElement("label", { htmlFor: "firstName", className: "block mb-2 font-medium text-gray-700" }, "First Name"), /* @__PURE__ */ import_react13.default.createElement(
+    error && /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react14.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "firstName", className: "block mb-2 font-medium text-gray-700" }, "First Name"), /* @__PURE__ */ import_react14.default.createElement(
       "input",
       {
         id: "firstName",
@@ -45994,7 +46064,7 @@ function PersonalInfoStep() {
         placeholder: "Your first name",
         required: true
       }
-    )), /* @__PURE__ */ import_react13.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react13.default.createElement("label", { htmlFor: "lastName", className: "block mb-2 font-medium text-gray-700" }, "Last Name"), /* @__PURE__ */ import_react13.default.createElement(
+    )), /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "lastName", className: "block mb-2 font-medium text-gray-700" }, "Last Name"), /* @__PURE__ */ import_react14.default.createElement(
       "input",
       {
         id: "lastName",
@@ -46005,7 +46075,7 @@ function PersonalInfoStep() {
         placeholder: "Your last name",
         required: true
       }
-    )), /* @__PURE__ */ import_react13.default.createElement(
+    )), /* @__PURE__ */ import_react14.default.createElement(
       "button",
       {
         type: "submit",
@@ -46018,12 +46088,12 @@ function PersonalInfoStep() {
 }
 
 // app/javascript/components/onboarding/BrandInfoStep.jsx
-var import_react14 = __toESM(require_react());
+var import_react15 = __toESM(require_react());
 function BrandInfoStep() {
-  const [brandName, setBrandName] = (0, import_react14.useState)("");
-  const [brandDescription, setBrandDescription] = (0, import_react14.useState)("");
-  const [isLoading, setIsLoading] = (0, import_react14.useState)(false);
-  const [error, setError] = (0, import_react14.useState)("");
+  const [brandName, setBrandName] = (0, import_react15.useState)("");
+  const [brandDescription, setBrandDescription] = (0, import_react15.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react15.useState)(false);
+  const [error, setError] = (0, import_react15.useState)("");
   const navigate = useNavigate();
   const handleNextClick = async (e) => {
     e.preventDefault();
@@ -46058,14 +46128,14 @@ function BrandInfoStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react14.default.createElement(
+  return /* @__PURE__ */ import_react15.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/personal-info",
       title: "Tell us about your brand"
     },
-    error && /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react14.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "brandName", className: "block mb-2 font-medium text-gray-700" }, "Brand Name"), /* @__PURE__ */ import_react14.default.createElement(
+    error && /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react15.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react15.default.createElement("label", { htmlFor: "brandName", className: "block mb-2 font-medium text-gray-700" }, "Brand Name"), /* @__PURE__ */ import_react15.default.createElement(
       "input",
       {
         id: "brandName",
@@ -46076,7 +46146,7 @@ function BrandInfoStep() {
         placeholder: "Your brand name",
         required: true
       }
-    )), /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "brandDescription", className: "block mb-2 font-medium text-gray-700" }, "Brand Description"), /* @__PURE__ */ import_react14.default.createElement(
+    )), /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react15.default.createElement("label", { htmlFor: "brandDescription", className: "block mb-2 font-medium text-gray-700" }, "Brand Description"), /* @__PURE__ */ import_react15.default.createElement(
       "textarea",
       {
         id: "brandDescription",
@@ -46087,7 +46157,7 @@ function BrandInfoStep() {
         rows: "4",
         required: true
       }
-    )), /* @__PURE__ */ import_react14.default.createElement(
+    )), /* @__PURE__ */ import_react15.default.createElement(
       "button",
       {
         type: "submit",
@@ -46100,11 +46170,11 @@ function BrandInfoStep() {
 }
 
 // app/javascript/components/onboarding/LocationStep.jsx
-var import_react15 = __toESM(require_react());
+var import_react16 = __toESM(require_react());
 function LocationStep() {
-  const [location2, setLocation] = (0, import_react15.useState)("");
-  const [isLoading, setIsLoading] = (0, import_react15.useState)(false);
-  const [error, setError] = (0, import_react15.useState)("");
+  const [location2, setLocation] = (0, import_react16.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react16.useState)(false);
+  const [error, setError] = (0, import_react16.useState)("");
   const navigate = useNavigate();
   const handleNextClick = async (e) => {
     e.preventDefault();
@@ -46136,14 +46206,14 @@ function LocationStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react15.default.createElement(
+  return /* @__PURE__ */ import_react16.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/brand-info",
       title: "Where are you based?"
     },
-    error && /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react15.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react15.default.createElement("label", { htmlFor: "location", className: "block mb-2 font-medium text-gray-700" }, "Location"), /* @__PURE__ */ import_react15.default.createElement(
+    error && /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react16.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react16.default.createElement("label", { htmlFor: "location", className: "block mb-2 font-medium text-gray-700" }, "Location"), /* @__PURE__ */ import_react16.default.createElement(
       "input",
       {
         id: "location",
@@ -46154,7 +46224,7 @@ function LocationStep() {
         placeholder: "City, Country",
         required: true
       }
-    ), /* @__PURE__ */ import_react15.default.createElement("p", { className: "mt-2 text-gray-500 text-sm" }, "This helps us connect you with local manufacturing opportunities and showcase your regional design influence.")), /* @__PURE__ */ import_react15.default.createElement(
+    ), /* @__PURE__ */ import_react16.default.createElement("p", { className: "mt-2 text-gray-500 text-sm" }, "This helps us connect you with local manufacturing opportunities and showcase your regional design influence.")), /* @__PURE__ */ import_react16.default.createElement(
       "button",
       {
         type: "submit",
@@ -46167,7 +46237,7 @@ function LocationStep() {
 }
 
 // app/javascript/components/onboarding/CollaborationStep.jsx
-var import_react16 = __toESM(require_react());
+var import_react17 = __toESM(require_react());
 var collaborationOptions = [
   {
     id: "manufacturing",
@@ -46201,9 +46271,9 @@ var collaborationOptions = [
   }
 ];
 function CollaborationStep() {
-  const [selectedOptions, setSelectedOptions] = (0, import_react16.useState)([]);
-  const [isLoading, setIsLoading] = (0, import_react16.useState)(false);
-  const [error, setError] = (0, import_react16.useState)("");
+  const [selectedOptions, setSelectedOptions] = (0, import_react17.useState)([]);
+  const [isLoading, setIsLoading] = (0, import_react17.useState)(false);
+  const [error, setError] = (0, import_react17.useState)("");
   const navigate = useNavigate();
   const toggleOption = (optionId) => {
     setSelectedOptions(
@@ -46222,10 +46292,17 @@ function CollaborationStep() {
         },
         body: JSON.stringify({ collaboration_preferences: selectedOptions })
       });
+      const data = await response.json();
       if (response.ok) {
-        navigate("/onboarding/complete");
+        navigate("/onboarding/complete", {
+          state: {
+            designer: {
+              username: data.username,
+              designer_id: data.designer_id
+            }
+          }
+        });
       } else {
-        const data = await response.json();
         setError(data.error || "Failed to save collaboration preferences");
       }
     } catch (error2) {
@@ -46235,29 +46312,29 @@ function CollaborationStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react16.default.createElement(
+  return /* @__PURE__ */ import_react17.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/location",
       title: "How would you like to collaborate?"
     },
-    /* @__PURE__ */ import_react16.default.createElement("p", { className: "text-gray-600 mb-6" }, "Select all that apply"),
-    error && /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react16.default.createElement("div", { className: "space-y-3" }, collaborationOptions.map((option) => /* @__PURE__ */ import_react16.default.createElement(
+    /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-6" }, "Select all that apply"),
+    error && /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react17.default.createElement("div", { className: "space-y-3" }, collaborationOptions.map((option) => /* @__PURE__ */ import_react17.default.createElement(
       "div",
       {
         key: option.id,
         className: `flex items-center border rounded-lg p-4 cursor-pointer transition-all ${selectedOptions.includes(option.id) ? "border-purple-500 bg-purple-50" : "border-gray-200 hover:border-purple-300 hover:bg-purple-50"}`,
         onClick: () => toggleOption(option.id)
       },
-      /* @__PURE__ */ import_react16.default.createElement("div", { className: "text-2xl mr-4" }, option.icon),
-      /* @__PURE__ */ import_react16.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react16.default.createElement("h3", { className: "font-medium" }, option.title), /* @__PURE__ */ import_react16.default.createElement("p", { className: "text-sm text-gray-600" }, option.description)),
-      /* @__PURE__ */ import_react16.default.createElement("div", { className: "ml-4" }, /* @__PURE__ */ import_react16.default.createElement(
+      /* @__PURE__ */ import_react17.default.createElement("div", { className: "text-2xl mr-4" }, option.icon),
+      /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react17.default.createElement("h3", { className: "font-medium" }, option.title), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-sm text-gray-600" }, option.description)),
+      /* @__PURE__ */ import_react17.default.createElement("div", { className: "ml-4" }, /* @__PURE__ */ import_react17.default.createElement(
         "div",
         {
           className: `w-5 h-5 rounded border ${selectedOptions.includes(option.id) ? "bg-purple-500 border-purple-500 flex items-center justify-center" : "border-gray-300"}`
         },
-        selectedOptions.includes(option.id) && /* @__PURE__ */ import_react16.default.createElement(
+        selectedOptions.includes(option.id) && /* @__PURE__ */ import_react17.default.createElement(
           "svg",
           {
             xmlns: "http://www.w3.org/2000/svg",
@@ -46265,7 +46342,7 @@ function CollaborationStep() {
             viewBox: "0 0 20 20",
             fill: "currentColor"
           },
-          /* @__PURE__ */ import_react16.default.createElement(
+          /* @__PURE__ */ import_react17.default.createElement(
             "path",
             {
               fillRule: "evenodd",
@@ -46276,7 +46353,7 @@ function CollaborationStep() {
         )
       ))
     ))),
-    /* @__PURE__ */ import_react16.default.createElement(
+    /* @__PURE__ */ import_react17.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -46289,39 +46366,24 @@ function CollaborationStep() {
 }
 
 // app/javascript/components/onboarding/CompletionStep.jsx
-var import_react17 = __toESM(require_react());
+var import_react18 = __toESM(require_react());
 function CompletionStep() {
-  const [designer, setDesigner] = (0, import_react17.useState)(null);
-  const [isLoading, setIsLoading] = (0, import_react17.useState)(true);
-  const [error, setError] = (0, import_react17.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react18.useState)(false);
+  const [error, setError] = (0, import_react18.useState)("");
   const navigate = useNavigate();
-  (0, import_react17.useEffect)(() => {
-    const fetchDesignerData = async () => {
-      try {
-        const response = await fetch("/api/onboarding/designer_profile");
-        if (response.ok) {
-          const data = await response.json();
-          setDesigner(data);
-          setTimeout(() => {
-            navigate(`/${data.slug}`);
-          }, 2e3);
-        } else {
-          setError("Failed to load designer profile");
-        }
-      } catch (error2) {
-        setError("An error occurred while loading your profile");
-        console.error("Error fetching designer profile:", error2);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchDesignerData();
-  }, [navigate]);
-  if (isLoading) {
-    return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500 mx-auto mb-4" }), /* @__PURE__ */ import_react17.default.createElement("p", null, "Loading your profile...")));
-  }
-  if (error) {
-    return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react17.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-6" }, error), /* @__PURE__ */ import_react17.default.createElement(
+  const location2 = useLocation();
+  const designer = location2.state?.designer;
+  (0, import_react18.useEffect)(() => {
+    if (!designer) {
+      setError("Designer information not found");
+      return;
+    }
+    setTimeout(() => {
+      navigate(`/${designer.username}`);
+    }, 2e3);
+  }, [designer, navigate]);
+  if (!designer) {
+    return /* @__PURE__ */ import_react18.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react18.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-600 mb-6" }, "Designer information not found. Please try again."), /* @__PURE__ */ import_react18.default.createElement(
       Link,
       {
         to: "/",
@@ -46330,7 +46392,17 @@ function CompletionStep() {
       "Go to Homepage"
     )));
   }
-  return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" }, /* @__PURE__ */ import_react17.default.createElement(
+  if (error) {
+    return /* @__PURE__ */ import_react18.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react18.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-600 mb-6" }, error), /* @__PURE__ */ import_react18.default.createElement(
+      Link,
+      {
+        to: "/",
+        className: "px-6 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block"
+      },
+      "Go to Homepage"
+    )));
+  }
+  return /* @__PURE__ */ import_react18.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" }, /* @__PURE__ */ import_react18.default.createElement(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
@@ -46342,21 +46414,21 @@ function CompletionStep() {
       strokeLinecap: "round",
       strokeLinejoin: "round"
     },
-    /* @__PURE__ */ import_react17.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
-    /* @__PURE__ */ import_react17.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
-  )), /* @__PURE__ */ import_react17.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community.", /* @__PURE__ */ import_react17.default.createElement("br", null), /* @__PURE__ */ import_react17.default.createElement("br", null), /* @__PURE__ */ import_react17.default.createElement("span", { className: "text-indigo-600 font-medium" }, "You'll be automatically redirected to your profile in a moment...")), designer && /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react17.default.createElement("h2", { className: "font-semibold text-lg" }, designer.brand_name), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-500 text-sm" }, designer.location)), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-700" }, designer.brand_description)), designer && /* @__PURE__ */ import_react17.default.createElement(
+    /* @__PURE__ */ import_react18.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
+    /* @__PURE__ */ import_react18.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
+  )), /* @__PURE__ */ import_react18.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community.", /* @__PURE__ */ import_react18.default.createElement("br", null), /* @__PURE__ */ import_react18.default.createElement("br", null), /* @__PURE__ */ import_react18.default.createElement("span", { className: "text-indigo-600 font-medium" }, "You'll be automatically redirected to your profile in a moment...")), /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react18.default.createElement("h2", { className: "font-semibold text-lg" }, "@", designer.username), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-500 text-sm" }, "Your profile is ready!")), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-700" }, "Your designer profile has been successfully created and is now live.")), /* @__PURE__ */ import_react18.default.createElement(
     Link,
     {
-      to: `/${designer.slug}`,
+      to: `/${designer.username}`,
       className: "px-6 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block font-medium"
     },
     "View Your Profile"
-  )), /* @__PURE__ */ import_react17.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react17.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react17.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react17.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
+  )), /* @__PURE__ */ import_react18.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react18.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react18.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react18.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
 }
 
 // app/javascript/components/onboarding/OnboardingFlow.jsx
 function OnboardingFlow() {
-  return /* @__PURE__ */ import_react18.default.createElement(Routes, null, /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react18.default.createElement(Navigate, { to: "/onboarding/product-type", replace: true }) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/product-type", element: /* @__PURE__ */ import_react18.default.createElement(ProductTypeStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/personal-info", element: /* @__PURE__ */ import_react18.default.createElement(PersonalInfoStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/brand-info", element: /* @__PURE__ */ import_react18.default.createElement(BrandInfoStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/location", element: /* @__PURE__ */ import_react18.default.createElement(LocationStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/collaboration", element: /* @__PURE__ */ import_react18.default.createElement(CollaborationStep, null) }), /* @__PURE__ */ import_react18.default.createElement(Route, { path: "/complete", element: /* @__PURE__ */ import_react18.default.createElement(CompletionStep, null) }));
+  return /* @__PURE__ */ import_react19.default.createElement(Routes, null, /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react19.default.createElement(Navigate, { to: "/onboarding/username", replace: true }) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/username", element: /* @__PURE__ */ import_react19.default.createElement(UsernameStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/product-type", element: /* @__PURE__ */ import_react19.default.createElement(ProductTypeStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/personal-info", element: /* @__PURE__ */ import_react19.default.createElement(PersonalInfoStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/brand-info", element: /* @__PURE__ */ import_react19.default.createElement(BrandInfoStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/location", element: /* @__PURE__ */ import_react19.default.createElement(LocationStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/collaboration", element: /* @__PURE__ */ import_react19.default.createElement(CollaborationStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/complete", element: /* @__PURE__ */ import_react19.default.createElement(CompletionStep, null) }));
 }
 
 // app/javascript/routes/index.jsx
@@ -46372,13 +46444,13 @@ var AppRoutes = () => {
   if (isRailsRoute) {
     return null;
   }
-  return /* @__PURE__ */ import_react19.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react19.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react19.default.createElement(Routes, null, /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react19.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react19.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react19.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react19.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/profile", element: /* @__PURE__ */ import_react19.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react19.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/collection/:collectionId", element: /* @__PURE__ */ import_react19.default.createElement(CollectionView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/onboarding/*", element: /* @__PURE__ */ import_react19.default.createElement(OnboardingFlow, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/sample/profile", element: /* @__PURE__ */ import_react19.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/:username", element: /* @__PURE__ */ import_react19.default.createElement(DynamicProfileView, null) })));
+  return /* @__PURE__ */ import_react20.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react20.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react20.default.createElement(Routes, null, /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react20.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react20.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react20.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react20.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/profile", element: /* @__PURE__ */ import_react20.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react20.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/collection/:collectionId", element: /* @__PURE__ */ import_react20.default.createElement(CollectionView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/onboarding/*", element: /* @__PURE__ */ import_react20.default.createElement(OnboardingFlow, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/sample/profile", element: /* @__PURE__ */ import_react20.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/:username", element: /* @__PURE__ */ import_react20.default.createElement(DynamicProfileView, null) })));
 };
 var routes_default = AppRoutes;
 
 // app/javascript/components/App.jsx
 var App = () => {
-  return /* @__PURE__ */ import_react20.default.createElement(import_react20.default.Fragment, null, /* @__PURE__ */ import_react20.default.createElement(routes_default, null));
+  return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement(routes_default, null));
 };
 var App_default = App;
 
@@ -46387,7 +46459,7 @@ document.addEventListener("turbo:load", () => {
   const root = (0, import_client.createRoot)(
     document.body.appendChild(document.createElement("div"))
   );
-  root.render(/* @__PURE__ */ import_react21.default.createElement(App_default, null));
+  root.render(/* @__PURE__ */ import_react22.default.createElement(App_default, null));
 });
 /*! Bundled license information:
 

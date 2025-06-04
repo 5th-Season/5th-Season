@@ -63,10 +63,19 @@ export default function CollaborationStep() {
         body: JSON.stringify({ collaboration_preferences: selectedOptions })
       });
       
+      const data = await response.json();
+      
       if (response.ok) {
-        navigate("/onboarding/complete");
+        // Pass the designer data to the completion step
+        navigate("/onboarding/complete", { 
+          state: { 
+            designer: {
+              username: data.username,
+              designer_id: data.designer_id
+            }
+          }
+        });
       } else {
-        const data = await response.json();
         setError(data.error || "Failed to save collaboration preferences");
       }
     } catch (error) {

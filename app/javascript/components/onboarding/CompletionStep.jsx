@@ -1,43 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function CompletionStep() {
-  const [designer, setDesigner] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Get designer data from navigation state
+  const designer = location.state?.designer;
   
   useEffect(() => {
-    const fetchDesignerData = async () => {
-      try {
-        const response = await fetch("/api/onboarding/designer_profile");
-        if (response.ok) {
-          const data = await response.json();
-          setDesigner(data);
-          // Automatically redirect to the profile after a short delay
-          setTimeout(() => {
-            navigate(`/${data.slug}`);
-          }, 2000);
-        } else {
-          setError("Failed to load designer profile");
-        }
-      } catch (error) {
-        setError("An error occurred while loading your profile");
-        console.error("Error fetching designer profile:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    if (!designer) {
+      setError("Designer information not found");
+      return;
+    }
     
-    fetchDesignerData();
-  }, [navigate]);
+    // Automatically redirect to the profile after a short delay
+    setTimeout(() => {
+      navigate(`/${designer.username}`);
+    }, 2000);
+  }, [designer, navigate]);
   
-  if (isLoading) {
+  if (!designer) {
     return (
       <div className="min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center">
         <div className="bg-white rounded-xl shadow-xl p-8 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500 mx-auto mb-4"></div>
-          <p>Loading your profile...</p>
+          <div className="text-red-500 text-5xl mb-4">⚠️</div>
+          <h2 className="text-xl font-semibold mb-4">Something went wrong</h2>
+          <p className="text-gray-600 mb-6">Designer information not found. Please try again.</p>
+          <Link 
+            to="/"
+            className="px-6 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block"
+          >
+            Go to Homepage
+          </Link>
         </div>
       </div>
     );
@@ -90,24 +87,20 @@ export default function CompletionStep() {
             <span className="text-indigo-600 font-medium">You'll be automatically redirected to your profile in a moment...</span>
           </p>
           
-          {designer && (
-            <div className="bg-gray-50 rounded-lg p-6 mb-8 text-left">
-              <div className="mb-4">
-                <h2 className="font-semibold text-lg">{designer.brand_name}</h2>
-                <p className="text-gray-500 text-sm">{designer.location}</p>
-              </div>
-              <p className="text-gray-700">{designer.brand_description}</p>
+          <div className="bg-gray-50 rounded-lg p-6 mb-8 text-left">
+            <div className="mb-4">
+              <h2 className="font-semibold text-lg">@{designer.username}</h2>
+              <p className="text-gray-500 text-sm">Your profile is ready!</p>
             </div>
-          )}
+            <p className="text-gray-700">Your designer profile has been successfully created and is now live.</p>
+          </div>
           
-          {designer && (
-            <Link 
-              to={`/${designer.slug}`}
-              className="px-6 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block font-medium"
-            >
-              View Your Profile
-            </Link>
-          )}
+          <Link 
+            to={`/${designer.username}`}
+            className="px-6 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block font-medium"
+          >
+            View Your Profile
+          </Link>
         </div>
         
         <div className="border-t p-5 flex justify-between text-sm text-gray-500">

@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // Import all the step components
+import UsernameStep from "./UsernameStep";
 import ProductTypeStep from "./ProductTypeStep";
 import PersonalInfoStep from "./PersonalInfoStep";
 import BrandInfoStep from "./BrandInfoStep";
@@ -12,7 +13,8 @@ import CompletionStep from "./CompletionStep";
 export default function OnboardingFlow() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/onboarding/product-type" replace />} />
+      <Route path="/" element={<Navigate to="/onboarding/username" replace />} />
+      <Route path="/username" element={<UsernameStep />} />
       <Route path="/product-type" element={<ProductTypeStep />} />
       <Route path="/personal-info" element={<PersonalInfoStep />} />
       <Route path="/brand-info" element={<BrandInfoStep />} />

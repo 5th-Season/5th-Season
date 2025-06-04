@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   # API routes for React onboarding flow
   namespace :api do
+    post 'onboarding/username', to: 'onboarding#username'
     post 'onboarding/product_type', to: 'onboarding#product_type'
     post 'onboarding/personal_info', to: 'onboarding#personal_info'
     post 'onboarding/brand_info', to: 'onboarding#brand_info'
