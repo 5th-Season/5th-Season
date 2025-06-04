@@ -1,12 +1,12 @@
 class Designer < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true  # Make user optional for direct designer creation
   has_many :collections, dependent: :destroy
   has_many :collaboration_preferences, dependent: :destroy
   has_many :testimonials, dependent: :destroy
   has_many :designs, through: :collections
   
-  validates :brand_name, :brand_description, :location, :slug, presence: true
-  validates :slug, uniqueness: true
+  validates :brand_name, :brand_description, :location, :slug, :username, presence: true
+  validates :slug, :username, uniqueness: true
   validates :average_rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5.0 }
   
   before_validation :generate_slug, if: -> { slug.blank? && brand_name.present? }

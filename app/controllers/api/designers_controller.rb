@@ -1,8 +1,8 @@
 module Api
   class DesignersController < ApplicationController
     def show
-      # Find designer by slug (username from the URL)
-      designer = Designer.find_by(slug: params[:id])
+      # Find designer by username from the URL
+      designer = Designer.find_by(username: params[:id])
       
       # If not found, return 404
       unless designer
@@ -11,15 +11,26 @@ module Api
       end
       
       # Add a flag to indicate if the current user is viewing their own profile
-      is_current_user = current_user && current_user.id == designer.user_id
+      # Since user association is optional, handle cases where there's no user
+      is_current_user = current_user && designer.user && current_user.id == designer.user_id
       
-      # Prepare user data for the response - use available fields
-      user_data = {
-        first_name: designer.user.first_name,
-        last_name: designer.user.last_name,
-        email: designer.user.email,
-        is_current_user: is_current_user
-      }
+      # Prepare user data for the response - handle optional user association
+      user_data = if designer.user
+        {
+          first_name: designer.user.first_name,
+          last_name: designer.user.last_name,
+          email: designer.user.email,
+          is_current_user: is_current_user
+        }
+      else
+        # For designers created without user accounts, create minimal user data
+        {
+          first_name: nil,
+          last_name: nil,
+          email: nil,
+          is_current_user: false
+        }
+      end
       
       # Prepare collaboration preferences
       collaboration_preferences = designer.collaboration_preferences.map do |pref|
@@ -54,6 +65,7 @@ module Api
         verification_status: designer.verification_status,
         average_rating: designer.average_rating,
         slug: designer.slug,
+        username: designer.username,  # Include username in response
         user: user_data,
         collaboration_preferences: collaboration_preferences,
         collections: collections,

@@ -13,7 +13,7 @@ const Navigation = () => {
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      // Show login/signup buttons when scrolled past the header height
+      // Show sticky header when scrolled past the header height
       setIsScrolled(scrollY > headerHeight);
     };
 
@@ -57,6 +57,8 @@ const Navigation = () => {
           </div>
 
           <div className="flex space-x-4">
+            {/* Hidden login/signup buttons since we're using direct designer profile creation */}
+            {/* 
             <a 
               href="/login" 
               className="px-4 py-2 text-gray-600 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
@@ -69,6 +71,7 @@ const Navigation = () => {
             >
               Sign Up
             </a>
+            */}
           </div>
         </div>
       </header>

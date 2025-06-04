@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   # Legacy onboarding routes (can be removed once React flow is fully implemented)
   get 'onboarding', to: 'onboarding#start', as: 'onboarding_start'
+  get 'onboarding/username', to: 'onboarding#username', as: 'onboarding_username'
+  post 'onboarding/username', to: 'onboarding#username'
   get 'onboarding/product_type', to: 'onboarding#product_type', as: 'onboarding_product_type'
   post 'onboarding/product_type', to: 'onboarding#product_type'
   get 'onboarding/personal_info', to: 'onboarding#personal_info', as: 'onboarding_personal_info'

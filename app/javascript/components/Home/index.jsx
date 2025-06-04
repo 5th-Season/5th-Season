@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { designer1, designer2, designer3, designer4, designer5, designer6 } from '../../assets';
 import { Mixpanel } from '../../utils/Mixpanel';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const scrollRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const scrollInterval = setInterval(() => {
@@ -38,12 +39,25 @@ const Home = () => {
 
   }, [searchParams]);
 
+  const handleCreateProfile = () => {
+    navigate('/onboarding');
+  };
+
   return (
     <div>
       <div className="about-fashionista">
         <div className="asc-container">
           <h2><strong>The Future of Fashion Starts Here</strong></h2>
           <p>Welcome to the season where<br /> designers shine, new trends begin, and <br />all will discover their place in fashion.</p>
+          
+          <div className="mt-8">
+            <button 
+              onClick={handleCreateProfile}
+              className="bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors duration-200 shadow-lg"
+            >
+              Create a Designer Profile
+            </button>
+          </div>
         </div>
       </div>
 

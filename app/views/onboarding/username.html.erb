@@ -1,0 +1,11 @@
+<h1>Choose Your Username</h1>
+
+<%= form_tag onboarding_username_path, method: :post do %>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" value="<%= session[:onboarding_data]&.dig(:username) %>" placeholder="Your unique username" required>
+    <small class="form-help">This will be your unique identifier and will appear in your profile URL</small>
+  </div>
+  
+  <button type="submit" class="next-button">Next</button>
+<% end %> 
