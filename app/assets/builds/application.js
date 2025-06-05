@@ -1676,7 +1676,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context);
         }
-        function useState13(initialState) {
+        function useState15(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -1688,7 +1688,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
-        function useEffect8(create, deps) {
+        function useEffect9(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useEffect(create, deps);
         }
@@ -2471,7 +2471,7 @@ var require_react_development = __commonJS({
         exports.useContext = useContext3;
         exports.useDebugValue = useDebugValue;
         exports.useDeferredValue = useDeferredValue;
-        exports.useEffect = useEffect8;
+        exports.useEffect = useEffect9;
         exports.useId = useId;
         exports.useImperativeHandle = useImperativeHandle;
         exports.useInsertionEffect = useInsertionEffect;
@@ -2479,7 +2479,7 @@ var require_react_development = __commonJS({
         exports.useMemo = useMemo3;
         exports.useReducer = useReducer;
         exports.useRef = useRef8;
-        exports.useState = useState13;
+        exports.useState = useState15;
         exports.useSyncExternalStore = useSyncExternalStore;
         exports.useTransition = useTransition;
         exports.version = ReactVersion;
@@ -2975,9 +2975,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React24 = require_react();
+        var React26 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React24.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React26.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4582,7 +4582,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React24.Children.forEach(props.children, function(child) {
+                React26.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -33199,14 +33199,14 @@ window.Turbo = turbo_es2017_esm_exports;
 addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
 // app/javascript/components/index.jsx
-var import_react22 = __toESM(require_react());
+var import_react24 = __toESM(require_react());
 var import_client = __toESM(require_client());
 
 // app/javascript/components/App.jsx
-var import_react21 = __toESM(require_react());
+var import_react23 = __toESM(require_react());
 
 // app/javascript/routes/index.jsx
-var import_react20 = __toESM(require_react());
+var import_react22 = __toESM(require_react());
 
 // node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react());
@@ -45156,8 +45156,18 @@ var __iconNode8 = [
 ];
 var ExternalLink = createLucideIcon("external-link", __iconNode8);
 
-// node_modules/lucide-react/dist/esm/icons/funnel.js
+// node_modules/lucide-react/dist/esm/icons/file-text.js
 var __iconNode9 = [
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+];
+var FileText = createLucideIcon("file-text", __iconNode9);
+
+// node_modules/lucide-react/dist/esm/icons/funnel.js
+var __iconNode10 = [
   [
     "path",
     {
@@ -45166,20 +45176,20 @@ var __iconNode9 = [
     }
   ]
 ];
-var Funnel = createLucideIcon("funnel", __iconNode9);
+var Funnel = createLucideIcon("funnel", __iconNode10);
 
 // node_modules/lucide-react/dist/esm/icons/grid-3x3.js
-var __iconNode10 = [
+var __iconNode11 = [
   ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
   ["path", { d: "M3 9h18", key: "1pudct" }],
   ["path", { d: "M3 15h18", key: "5xshup" }],
   ["path", { d: "M9 3v18", key: "fh3hqa" }],
   ["path", { d: "M15 3v18", key: "14nvp0" }]
 ];
-var Grid3x3 = createLucideIcon("grid-3x3", __iconNode10);
+var Grid3x3 = createLucideIcon("grid-3x3", __iconNode11);
 
 // node_modules/lucide-react/dist/esm/icons/heart.js
-var __iconNode11 = [
+var __iconNode12 = [
   [
     "path",
     {
@@ -45188,26 +45198,34 @@ var __iconNode11 = [
     }
   ]
 ];
-var Heart = createLucideIcon("heart", __iconNode11);
+var Heart = createLucideIcon("heart", __iconNode12);
+
+// node_modules/lucide-react/dist/esm/icons/image.js
+var __iconNode13 = [
+  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", ry: "2", key: "1m3agn" }],
+  ["circle", { cx: "9", cy: "9", r: "2", key: "af1f0g" }],
+  ["path", { d: "m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21", key: "1xmnt7" }]
+];
+var Image = createLucideIcon("image", __iconNode13);
 
 // node_modules/lucide-react/dist/esm/icons/info.js
-var __iconNode12 = [
+var __iconNode14 = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "M12 16v-4", key: "1dtifu" }],
   ["path", { d: "M12 8h.01", key: "e9boi3" }]
 ];
-var Info = createLucideIcon("info", __iconNode12);
+var Info = createLucideIcon("info", __iconNode14);
 
 // node_modules/lucide-react/dist/esm/icons/log-out.js
-var __iconNode13 = [
+var __iconNode15 = [
   ["path", { d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4", key: "1uf3rs" }],
   ["polyline", { points: "16 17 21 12 16 7", key: "1gabdz" }],
   ["line", { x1: "21", x2: "9", y1: "12", y2: "12", key: "1uyos4" }]
 ];
-var LogOut = createLucideIcon("log-out", __iconNode13);
+var LogOut = createLucideIcon("log-out", __iconNode15);
 
 // node_modules/lucide-react/dist/esm/icons/map-pin.js
-var __iconNode14 = [
+var __iconNode16 = [
   [
     "path",
     {
@@ -45217,16 +45235,16 @@ var __iconNode14 = [
   ],
   ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
 ];
-var MapPin = createLucideIcon("map-pin", __iconNode14);
+var MapPin = createLucideIcon("map-pin", __iconNode16);
 
 // node_modules/lucide-react/dist/esm/icons/message-circle.js
-var __iconNode15 = [
+var __iconNode17 = [
   ["path", { d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z", key: "vv11sd" }]
 ];
-var MessageCircle = createLucideIcon("message-circle", __iconNode15);
+var MessageCircle = createLucideIcon("message-circle", __iconNode17);
 
 // node_modules/lucide-react/dist/esm/icons/palette.js
-var __iconNode16 = [
+var __iconNode18 = [
   [
     "path",
     {
@@ -45239,37 +45257,37 @@ var __iconNode16 = [
   ["circle", { cx: "6.5", cy: "12.5", r: ".5", fill: "currentColor", key: "qy21gx" }],
   ["circle", { cx: "8.5", cy: "7.5", r: ".5", fill: "currentColor", key: "fotxhn" }]
 ];
-var Palette = createLucideIcon("palette", __iconNode16);
+var Palette = createLucideIcon("palette", __iconNode18);
 
 // node_modules/lucide-react/dist/esm/icons/plus.js
-var __iconNode17 = [
+var __iconNode19 = [
   ["path", { d: "M5 12h14", key: "1ays0h" }],
   ["path", { d: "M12 5v14", key: "s699le" }]
 ];
-var Plus = createLucideIcon("plus", __iconNode17);
+var Plus = createLucideIcon("plus", __iconNode19);
 
 // node_modules/lucide-react/dist/esm/icons/scissors.js
-var __iconNode18 = [
+var __iconNode20 = [
   ["circle", { cx: "6", cy: "6", r: "3", key: "1lh9wr" }],
   ["path", { d: "M8.12 8.12 12 12", key: "1alkpv" }],
   ["path", { d: "M20 4 8.12 15.88", key: "xgtan2" }],
   ["circle", { cx: "6", cy: "18", r: "3", key: "fqmcym" }],
   ["path", { d: "M14.8 14.8 20 20", key: "ptml3r" }]
 ];
-var Scissors = createLucideIcon("scissors", __iconNode18);
+var Scissors = createLucideIcon("scissors", __iconNode20);
 
 // node_modules/lucide-react/dist/esm/icons/share-2.js
-var __iconNode19 = [
+var __iconNode21 = [
   ["circle", { cx: "18", cy: "5", r: "3", key: "gq8acd" }],
   ["circle", { cx: "6", cy: "12", r: "3", key: "w7nqdw" }],
   ["circle", { cx: "18", cy: "19", r: "3", key: "1xt0gg" }],
   ["line", { x1: "8.59", x2: "15.42", y1: "13.51", y2: "17.49", key: "47mynk" }],
   ["line", { x1: "15.41", x2: "8.59", y1: "6.51", y2: "10.49", key: "1n3mei" }]
 ];
-var Share2 = createLucideIcon("share-2", __iconNode19);
+var Share2 = createLucideIcon("share-2", __iconNode21);
 
 // node_modules/lucide-react/dist/esm/icons/star.js
-var __iconNode20 = [
+var __iconNode22 = [
   [
     "path",
     {
@@ -45278,25 +45296,53 @@ var __iconNode20 = [
     }
   ]
 ];
-var Star = createLucideIcon("star", __iconNode20);
+var Star = createLucideIcon("star", __iconNode22);
+
+// node_modules/lucide-react/dist/esm/icons/tag.js
+var __iconNode23 = [
+  [
+    "path",
+    {
+      d: "M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z",
+      key: "vktsd0"
+    }
+  ],
+  ["circle", { cx: "7.5", cy: "7.5", r: ".5", fill: "currentColor", key: "kqv944" }]
+];
+var Tag = createLucideIcon("tag", __iconNode23);
+
+// node_modules/lucide-react/dist/esm/icons/upload.js
+var __iconNode24 = [
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
+  ["polyline", { points: "17 8 12 3 7 8", key: "t8dd8p" }],
+  ["line", { x1: "12", x2: "12", y1: "3", y2: "15", key: "widbto" }]
+];
+var Upload = createLucideIcon("upload", __iconNode24);
 
 // node_modules/lucide-react/dist/esm/icons/user-plus.js
-var __iconNode21 = [
+var __iconNode25 = [
   ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
   ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }],
   ["line", { x1: "19", x2: "19", y1: "8", y2: "14", key: "1bvyxn" }],
   ["line", { x1: "22", x2: "16", y1: "11", y2: "11", key: "1shjgl" }]
 ];
-var UserPlus = createLucideIcon("user-plus", __iconNode21);
+var UserPlus = createLucideIcon("user-plus", __iconNode25);
 
 // node_modules/lucide-react/dist/esm/icons/users.js
-var __iconNode22 = [
+var __iconNode26 = [
   ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
   ["path", { d: "M16 3.128a4 4 0 0 1 0 7.744", key: "16gr8j" }],
   ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
   ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }]
 ];
-var Users = createLucideIcon("users", __iconNode22);
+var Users = createLucideIcon("users", __iconNode26);
+
+// node_modules/lucide-react/dist/esm/icons/x.js
+var __iconNode27 = [
+  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
+  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
+];
+var X = createLucideIcon("x", __iconNode27);
 
 // app/javascript/components/ProfileView.jsx
 function ProfileView() {
@@ -45440,13 +45486,369 @@ function ProfileView() {
 }
 
 // app/javascript/components/DynamicProfileView.jsx
+var import_react11 = __toESM(require_react());
+
+// app/javascript/components/CollectionForm.jsx
 var import_react9 = __toESM(require_react());
+function CollectionForm({ isOpen, onClose, onSubmit, designerUsername }) {
+  const [formData, setFormData] = (0, import_react9.useState)({
+    title: "",
+    season: "",
+    year: (/* @__PURE__ */ new Date()).getFullYear(),
+    description: "",
+    status: "draft"
+  });
+  const [isLoading, setIsLoading] = (0, import_react9.useState)(false);
+  const [error, setError] = (0, import_react9.useState)("");
+  const seasons = ["Spring", "Summer", "Fall", "Winter"];
+  const currentYear = (/* @__PURE__ */ new Date()).getFullYear();
+  const years = Array.from({ length: 10 }, (_2, i) => currentYear + i - 5);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/collections", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({
+          collection: formData,
+          designer_username: designerUsername
+        })
+      });
+      const result = await response.json();
+      if (response.ok) {
+        onSubmit(result);
+        handleClose();
+      } else {
+        setError(result.error || "Failed to create collection");
+      }
+    } catch (error2) {
+      setError("An error occurred. Please try again.");
+      console.error("Error creating collection:", error2);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const handleClose = () => {
+    setFormData({
+      title: "",
+      season: "",
+      year: (/* @__PURE__ */ new Date()).getFullYear(),
+      description: "",
+      status: "draft"
+    });
+    setError("");
+    onClose();
+  };
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+  if (!isOpen) return null;
+  return /* @__PURE__ */ import_react9.default.createElement("div", { className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-lg shadow-xl w-full max-w-md" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center justify-between p-6 border-b" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "text-xl font-semibold" }, "Create New Collection"), /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      onClick: handleClose,
+      className: "p-1 hover:bg-gray-100 rounded-full"
+    },
+    /* @__PURE__ */ import_react9.default.createElement(X, { size: 20 })
+  )), /* @__PURE__ */ import_react9.default.createElement("form", { onSubmit: handleSubmit, className: "p-6 space-y-4" }, error && /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm" }, error), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, /* @__PURE__ */ import_react9.default.createElement(FileText, { size: 16, className: "inline mr-1" }), "Collection Title"), /* @__PURE__ */ import_react9.default.createElement(
+    "input",
+    {
+      type: "text",
+      value: formData.title,
+      onChange: (e) => handleChange("title", e.target.value),
+      placeholder: "e.g., Urban Minimalism",
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+      required: true
+    }
+  )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-2 gap-4" }, /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, /* @__PURE__ */ import_react9.default.createElement(Tag, { size: 16, className: "inline mr-1" }), "Season"), /* @__PURE__ */ import_react9.default.createElement(
+    "select",
+    {
+      value: formData.season,
+      onChange: (e) => handleChange("season", e.target.value),
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+      required: true
+    },
+    /* @__PURE__ */ import_react9.default.createElement("option", { value: "" }, "Select Season"),
+    seasons.map((season) => /* @__PURE__ */ import_react9.default.createElement("option", { key: season, value: season }, season))
+  )), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, /* @__PURE__ */ import_react9.default.createElement(Calendar, { size: 16, className: "inline mr-1" }), "Year"), /* @__PURE__ */ import_react9.default.createElement(
+    "select",
+    {
+      value: formData.year,
+      onChange: (e) => handleChange("year", parseInt(e.target.value)),
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+      required: true
+    },
+    years.map((year) => /* @__PURE__ */ import_react9.default.createElement("option", { key: year, value: year }, year))
+  ))), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Description"), /* @__PURE__ */ import_react9.default.createElement(
+    "textarea",
+    {
+      value: formData.description,
+      onChange: (e) => handleChange("description", e.target.value),
+      placeholder: "Describe your collection concept, inspiration, or style...",
+      rows: 3,
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    }
+  )), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Status"), /* @__PURE__ */ import_react9.default.createElement(
+    "select",
+    {
+      value: formData.status,
+      onChange: (e) => handleChange("status", e.target.value),
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    },
+    /* @__PURE__ */ import_react9.default.createElement("option", { value: "draft" }, "Draft"),
+    /* @__PURE__ */ import_react9.default.createElement("option", { value: "published" }, "Published")
+  )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex gap-3 pt-4" }, /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      type: "button",
+      onClick: handleClose,
+      className: "flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50",
+      disabled: isLoading
+    },
+    "Cancel"
+  ), /* @__PURE__ */ import_react9.default.createElement(
+    "button",
+    {
+      type: "submit",
+      disabled: isLoading || !formData.title || !formData.season,
+      className: `flex-1 px-4 py-2 rounded-lg text-white font-medium ${isLoading || !formData.title || !formData.season ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}`
+    },
+    isLoading ? "Creating..." : "Create Collection"
+  )))));
+}
+
+// app/javascript/components/DesignForm.jsx
+var import_react10 = __toESM(require_react());
+function DesignForm({ isOpen, onClose, onSubmit, designerUsername, selectedCollectionId = null }) {
+  const [formData, setFormData] = (0, import_react10.useState)({
+    title: "",
+    description: "",
+    collection_id: selectedCollectionId || "",
+    materials: "",
+    dimensions: "",
+    status: "draft",
+    featured: false
+  });
+  const [collections, setCollections] = (0, import_react10.useState)([]);
+  const [isLoading, setIsLoading] = (0, import_react10.useState)(false);
+  const [isLoadingCollections, setIsLoadingCollections] = (0, import_react10.useState)(false);
+  const [error, setError] = (0, import_react10.useState)("");
+  const [imagePreview, setImagePreview] = (0, import_react10.useState)(null);
+  const [imageFile, setImageFile] = (0, import_react10.useState)(null);
+  (0, import_react10.useEffect)(() => {
+    if (isOpen && designerUsername) {
+      loadCollections();
+    }
+  }, [isOpen, designerUsername]);
+  const loadCollections = async () => {
+    setIsLoadingCollections(true);
+    try {
+      const response = await fetch(`/api/designers/${designerUsername}/collections`);
+      if (response.ok) {
+        const data = await response.json();
+        setCollections(data);
+      }
+    } catch (error2) {
+      console.error("Error loading collections:", error2);
+    } finally {
+      setIsLoadingCollections(false);
+    }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+    try {
+      const formDataToSend = new FormData();
+      Object.keys(formData).forEach((key) => {
+        formDataToSend.append(`design[${key}]`, formData[key]);
+      });
+      if (imageFile) {
+        formDataToSend.append("design[image]", imageFile);
+      }
+      formDataToSend.append("designer_username", designerUsername);
+      const response = await fetch("/api/designs", {
+        method: "POST",
+        headers: {
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: formDataToSend
+      });
+      const result = await response.json();
+      if (response.ok) {
+        onSubmit(result);
+        handleClose();
+      } else {
+        setError(result.error || "Failed to create design");
+      }
+    } catch (error2) {
+      setError("An error occurred. Please try again.");
+      console.error("Error creating design:", error2);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const handleClose = () => {
+    setFormData({
+      title: "",
+      description: "",
+      collection_id: selectedCollectionId || "",
+      materials: "",
+      dimensions: "",
+      status: "draft",
+      featured: false
+    });
+    setError("");
+    setImagePreview(null);
+    setImageFile(null);
+    onClose();
+  };
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (e2) => {
+        setImagePreview(e2.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  if (!isOpen) return null;
+  return /* @__PURE__ */ import_react10.default.createElement("div", { className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "bg-white rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center justify-between p-6 border-b sticky top-0 bg-white" }, /* @__PURE__ */ import_react10.default.createElement("h2", { className: "text-xl font-semibold" }, "Add New Design"), /* @__PURE__ */ import_react10.default.createElement(
+    "button",
+    {
+      onClick: handleClose,
+      className: "p-1 hover:bg-gray-100 rounded-full"
+    },
+    /* @__PURE__ */ import_react10.default.createElement(X, { size: 20 })
+  )), /* @__PURE__ */ import_react10.default.createElement("form", { onSubmit: handleSubmit, className: "p-6 space-y-4" }, error && /* @__PURE__ */ import_react10.default.createElement("div", { className: "bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm" }, error), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, /* @__PURE__ */ import_react10.default.createElement(Image, { size: 16, className: "inline mr-1" }), "Design Image"), /* @__PURE__ */ import_react10.default.createElement("div", { className: "border-2 border-dashed border-gray-300 rounded-lg p-4" }, imagePreview ? /* @__PURE__ */ import_react10.default.createElement("div", { className: "relative" }, /* @__PURE__ */ import_react10.default.createElement(
+    "img",
+    {
+      src: imagePreview,
+      alt: "Preview",
+      className: "w-full h-48 object-cover rounded-lg"
+    }
+  ), /* @__PURE__ */ import_react10.default.createElement(
+    "button",
+    {
+      type: "button",
+      onClick: () => {
+        setImagePreview(null);
+        setImageFile(null);
+      },
+      className: "absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+    },
+    /* @__PURE__ */ import_react10.default.createElement(X, { size: 16 })
+  )) : /* @__PURE__ */ import_react10.default.createElement("label", { className: "cursor-pointer block text-center" }, /* @__PURE__ */ import_react10.default.createElement(Upload, { size: 32, className: "mx-auto text-gray-400 mb-2" }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm text-gray-500" }, "Click to upload design image"), /* @__PURE__ */ import_react10.default.createElement(
+    "input",
+    {
+      type: "file",
+      accept: "image/*",
+      onChange: handleImageUpload,
+      className: "hidden"
+    }
+  )))), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, /* @__PURE__ */ import_react10.default.createElement(FileText, { size: 16, className: "inline mr-1" }), "Design Title"), /* @__PURE__ */ import_react10.default.createElement(
+    "input",
+    {
+      type: "text",
+      value: formData.title,
+      onChange: (e) => handleChange("title", e.target.value),
+      placeholder: "e.g., Midnight Blazer",
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+      required: true
+    }
+  )), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, /* @__PURE__ */ import_react10.default.createElement(Tag, { size: 16, className: "inline mr-1" }), "Collection"), isLoadingCollections ? /* @__PURE__ */ import_react10.default.createElement("div", { className: "text-sm text-gray-500" }, "Loading collections...") : /* @__PURE__ */ import_react10.default.createElement(
+    "select",
+    {
+      value: formData.collection_id,
+      onChange: (e) => handleChange("collection_id", e.target.value),
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+      required: true
+    },
+    /* @__PURE__ */ import_react10.default.createElement("option", { value: "" }, "Select Collection"),
+    collections.map((collection) => /* @__PURE__ */ import_react10.default.createElement("option", { key: collection.id, value: collection.id }, collection.title, " (", collection.season, " ", collection.year, ")"))
+  ), collections.length === 0 && !isLoadingCollections && /* @__PURE__ */ import_react10.default.createElement("p", { className: "text-sm text-gray-500 mt-1" }, "No collections found. Create a collection first.")), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Description"), /* @__PURE__ */ import_react10.default.createElement(
+    "textarea",
+    {
+      value: formData.description,
+      onChange: (e) => handleChange("description", e.target.value),
+      placeholder: "Describe the design, inspiration, or details...",
+      rows: 3,
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    }
+  )), /* @__PURE__ */ import_react10.default.createElement("div", { className: "grid grid-cols-2 gap-4" }, /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, /* @__PURE__ */ import_react10.default.createElement(Palette, { size: 16, className: "inline mr-1" }), "Materials"), /* @__PURE__ */ import_react10.default.createElement(
+    "input",
+    {
+      type: "text",
+      value: formData.materials,
+      onChange: (e) => handleChange("materials", e.target.value),
+      placeholder: "e.g., Wool, Cotton, Silk",
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    }
+  )), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Dimensions/Size"), /* @__PURE__ */ import_react10.default.createElement(
+    "input",
+    {
+      type: "text",
+      value: formData.dimensions,
+      onChange: (e) => handleChange("dimensions", e.target.value),
+      placeholder: "e.g., S, M, L or Custom",
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    }
+  ))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "grid grid-cols-2 gap-4" }, /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Status"), /* @__PURE__ */ import_react10.default.createElement(
+    "select",
+    {
+      value: formData.status,
+      onChange: (e) => handleChange("status", e.target.value),
+      className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    },
+    /* @__PURE__ */ import_react10.default.createElement("option", { value: "draft" }, "Draft"),
+    /* @__PURE__ */ import_react10.default.createElement("option", { value: "published" }, "Published")
+  )), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ import_react10.default.createElement("label", { className: "flex items-center" }, /* @__PURE__ */ import_react10.default.createElement(
+    "input",
+    {
+      type: "checkbox",
+      checked: formData.featured,
+      onChange: (e) => handleChange("featured", e.target.checked),
+      className: "mr-2"
+    }
+  ), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm font-medium text-gray-700" }, "Featured Design")))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex gap-3 pt-4" }, /* @__PURE__ */ import_react10.default.createElement(
+    "button",
+    {
+      type: "button",
+      onClick: handleClose,
+      className: "flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50",
+      disabled: isLoading
+    },
+    "Cancel"
+  ), /* @__PURE__ */ import_react10.default.createElement(
+    "button",
+    {
+      type: "submit",
+      disabled: isLoading || !formData.title || !formData.collection_id,
+      className: `flex-1 px-4 py-2 rounded-lg text-white font-medium ${isLoading || !formData.title || !formData.collection_id ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}`
+    },
+    isLoading ? "Adding..." : "Add Design"
+  )))));
+}
+
+// app/javascript/components/DynamicProfileView.jsx
 function DynamicProfileView() {
   const { username } = useParams();
-  const [designer, setDesigner] = (0, import_react9.useState)(null);
-  const [loading, setLoading] = (0, import_react9.useState)(true);
-  const [error, setError] = (0, import_react9.useState)(null);
-  import_react9.default.useEffect(() => {
+  const [designer, setDesigner] = (0, import_react11.useState)(null);
+  const [loading, setLoading] = (0, import_react11.useState)(true);
+  const [error, setError] = (0, import_react11.useState)(null);
+  const [showCollectionForm, setShowCollectionForm] = (0, import_react11.useState)(false);
+  const [showDesignForm, setShowDesignForm] = (0, import_react11.useState)(false);
+  import_react11.default.useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
     return () => {
       document.documentElement.style.scrollBehavior = "auto";
@@ -45478,198 +45880,248 @@ function DynamicProfileView() {
     document.body.appendChild(form);
     form.submit();
   };
-  (0, import_react9.useEffect)(() => {
-    const fetchDesignerData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        console.log("Fetching designer data for username:", username);
-        const response = await fetch(`/api/designers/${username}`);
-        console.log("API Response status:", response.status);
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log("Designer data received:", data);
-        setDesigner(data);
-      } catch (err) {
-        console.error("Error fetching designer data:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+  const handleCollectionSubmit = (newCollection) => {
+    setDesigner((prev) => ({
+      ...prev,
+      collections: [newCollection, ...prev.collections || []]
+    }));
+  };
+  const handleDesignSubmit = (newDesign) => {
+    console.log("New design created:", newDesign);
+    fetchDesignerData();
+  };
+  const fetchDesignerData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      console.log("Fetching designer data for username:", username);
+      const response = await fetch(`/api/designers/${username}`);
+      console.log("API Response status:", response.status);
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
       }
-    };
+      const data = await response.json();
+      console.log("Designer data received:", data);
+      setDesigner(data);
+    } catch (err) {
+      console.error("Error fetching designer data:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  (0, import_react11.useEffect)(() => {
     if (username) {
       fetchDesignerData();
     }
   }, [username]);
   if (loading) {
-    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500" }), /* @__PURE__ */ import_react9.default.createElement("p", { className: "ml-2" }, "Loading designer profile..."));
+    return /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500" }), /* @__PURE__ */ import_react11.default.createElement("p", { className: "ml-2" }, "Loading designer profile..."));
   }
   if (error) {
-    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-red-500 text-xl mb-4" }, "\u26A0\uFE0F Error loading profile"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "mb-4" }, error), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/", className: "bg-blue-600 text-white px-4 py-2 rounded-md" }, "Return to Home"));
+    return /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-red-500 text-xl mb-4" }, "\u26A0\uFE0F Error loading profile"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "mb-4" }, error), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/", className: "bg-blue-600 text-white px-4 py-2 rounded-md" }, "Return to Home"));
   }
   if (!designer) {
-    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-xl mb-4" }, "\u{1F454} Designer Not Found"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "mb-4" }, "We couldn't find a designer with that username."), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/", className: "bg-blue-600 text-white px-4 py-2 rounded-md" }, "Return to Home"));
+    return /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col justify-center items-center min-h-screen" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-xl mb-4" }, "\u{1F454} Designer Not Found"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "mb-4" }, "We couldn't find a designer with that username."), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/", className: "bg-blue-600 text-white px-4 py-2 rounded-md" }, "Return to Home"));
   }
   const isOwnProfile = designer.user && designer.user.is_current_user;
-  return /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white min-h-screen" }, isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute top-4 right-4 z-10" }, /* @__PURE__ */ import_react9.default.createElement(
+  return /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-white min-h-screen" }, /* @__PURE__ */ import_react11.default.createElement(
+    CollectionForm,
+    {
+      isOpen: showCollectionForm,
+      onClose: () => setShowCollectionForm(false),
+      onSubmit: handleCollectionSubmit,
+      designerUsername: designer.username
+    }
+  ), /* @__PURE__ */ import_react11.default.createElement(
+    DesignForm,
+    {
+      isOpen: showDesignForm,
+      onClose: () => setShowDesignForm(false),
+      onSubmit: handleDesignSubmit,
+      designerUsername: designer.username
+    }
+  ), isOwnProfile && /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute top-4 right-4 z-10" }, /* @__PURE__ */ import_react11.default.createElement(
     "button",
     {
       onClick: handleLogout,
       className: "bg-red-600 text-white font-medium px-4 py-2 rounded-md text-sm flex items-center gap-2 hover:bg-red-700 transition-colors"
     },
-    /* @__PURE__ */ import_react9.default.createElement(LogOut, { size: 16 }),
+    /* @__PURE__ */ import_react11.default.createElement(LogOut, { size: 16 }),
     "Log Out"
-  )), /* @__PURE__ */ import_react9.default.createElement("div", { className: "max-w-4xl mx-auto pt-8 px-4" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col md:flex-row items-center md:items-start gap-8" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "w-32 h-40 md:w-48 md:h-64 rounded-xl border-4 border-blue-500 p-1 overflow-hidden" }, designer.profile_image_url ? /* @__PURE__ */ import_react9.default.createElement(
+  )), /* @__PURE__ */ import_react11.default.createElement("div", { className: "max-w-4xl mx-auto pt-8 px-4" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col md:flex-row items-center md:items-start gap-8" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "relative" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "w-32 h-40 md:w-48 md:h-64 rounded-xl border-4 border-blue-500 p-1 overflow-hidden" }, designer.profile_image_url ? /* @__PURE__ */ import_react11.default.createElement(
     "img",
     {
       src: designer.profile_image_url,
       alt: "Profile",
       className: "w-full h-full object-cover"
     }
-  ) : /* @__PURE__ */ import_react9.default.createElement("div", { className: "w-full h-full bg-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-4xl md:text-6xl font-bold" }, designer.brand_name ? designer.brand_name.substring(0, 2).toUpperCase() : designer.user?.first_name && designer.user?.last_name ? (designer.user.first_name[0] + designer.user.last_name[0]).toUpperCase() : "??"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-3 right-3 bg-gray-100 rounded-full p-1.5 shadow-md" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-full p-0.5" }, /* @__PURE__ */ import_react9.default.createElement("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react9.default.createElement("path", { d: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" }), /* @__PURE__ */ import_react9.default.createElement("circle", { cx: "12", cy: "13", r: "4" }))))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex-1 text-center md:text-left" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "mb-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col md:flex-row md:items-center gap-1 mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h1", { className: "text-xl font-semibold" }, designer.brand_name || "Aria Chen", " \u2728"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center text-gray-600 gap-1" }, /* @__PURE__ */ import_react9.default.createElement(MapPin, { size: 14 }), /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-sm" }, designer.location || "New York, NY"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-2" }, designer.collaboration_preferences && designer.collaboration_preferences.length > 0 ? designer.collaboration_preferences.map((pref, index) => /* @__PURE__ */ import_react9.default.createElement("span", { key: index, className: "bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full" }, typeof pref === "string" ? pref : pref.preference_type || pref.name || "Collaboration")) : /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, null, /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full" }, "Luxury Streetwear"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full" }, "Boutique Ready"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full" }, "Sustainable"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full" }, "Slow Fashion")))), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-gray-500 text-sm mb-2" }, "@", designer.slug || username || "AriaDesigns", " \u{1F457}"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm mb-4 max-w-md" }, designer.brand_description || "Sustainable fashion designer with a focus on modern silhouettes and traditional techniques. Former @ParsonsFashion graduate creating clothes that tell stories."), !isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-4" }, /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react9.default.createElement(MessageCircle, { size: 16 }), "Message"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-purple-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react9.default.createElement(UserPlus, { size: 16 }), "Collaborate"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, "Follow"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "p-1.5 rounded-md hover:bg-gray-100" }, /* @__PURE__ */ import_react9.default.createElement(Ellipsis, { size: 20 }))), isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-4" }, /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, "Edit Profile")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-center md:justify-start gap-8 mb-6" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "font-semibold" }, designer.designs ? designer.designs.length : 0), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500" }, "Designs")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "font-semibold" }, designer.following_count || 0), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500" }, "Following")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react9.default.createElement("p", { className: "font-semibold" }, designer.followers_count || 0), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500" }, "Followers"))))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "border-t mt-6" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-center flex-wrap gap-6 py-2 px-2" }, /* @__PURE__ */ import_react9.default.createElement(
+  ) : /* @__PURE__ */ import_react11.default.createElement("div", { className: "w-full h-full bg-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-white text-4xl md:text-6xl font-bold" }, designer.brand_name ? designer.brand_name.substring(0, 2).toUpperCase() : designer.user?.first_name && designer.user?.last_name ? (designer.user.first_name[0] + designer.user.last_name[0]).toUpperCase() : "??"))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute bottom-3 right-3 bg-gray-100 rounded-full p-1.5 shadow-md" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-white rounded-full p-0.5" }, /* @__PURE__ */ import_react11.default.createElement("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ import_react11.default.createElement("path", { d: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" }), /* @__PURE__ */ import_react11.default.createElement("circle", { cx: "12", cy: "13", r: "4" }))))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex-1 text-center md:text-left" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "mb-3" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col md:flex-row md:items-center gap-1 mb-1" }, /* @__PURE__ */ import_react11.default.createElement("h1", { className: "text-xl font-semibold" }, designer.brand_name || "Aria Chen", " \u2728"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center text-gray-600 gap-1" }, /* @__PURE__ */ import_react11.default.createElement(MapPin, { size: 14 }), /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-sm" }, designer.location || "New York, NY"))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-2" }, designer.collaboration_preferences && designer.collaboration_preferences.length > 0 ? designer.collaboration_preferences.map((pref, index) => /* @__PURE__ */ import_react11.default.createElement("span", { key: index, className: "bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full" }, typeof pref === "string" ? pref : pref.preference_type || pref.name || "Collaboration")) : /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full" }, "Luxury Streetwear"), /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full" }, "Boutique Ready"), /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full" }, "Sustainable"), /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full" }, "Slow Fashion")))), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-gray-500 text-sm mb-2" }, "@", designer.slug || username || "AriaDesigns", " \u{1F457}"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-sm mb-4 max-w-md" }, designer.brand_description || "Sustainable fashion designer with a focus on modern silhouettes and traditional techniques. Former @ParsonsFashion graduate creating clothes that tell stories."), !isOwnProfile && /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-4" }, /* @__PURE__ */ import_react11.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react11.default.createElement(MessageCircle, { size: 16 }), "Message"), /* @__PURE__ */ import_react11.default.createElement("button", { className: "bg-purple-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react11.default.createElement(UserPlus, { size: 16 }), "Collaborate"), /* @__PURE__ */ import_react11.default.createElement("button", { className: "bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, "Follow"), /* @__PURE__ */ import_react11.default.createElement("button", { className: "p-1.5 rounded-md hover:bg-gray-100" }, /* @__PURE__ */ import_react11.default.createElement(Ellipsis, { size: 20 }))), isOwnProfile && /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-wrap gap-2 justify-center md:justify-start mb-4" }, /* @__PURE__ */ import_react11.default.createElement("button", { className: "bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1" }, "Edit Profile"), /* @__PURE__ */ import_react11.default.createElement(
+    "button",
+    {
+      onClick: () => setShowDesignForm(true),
+      className: "bg-green-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1"
+    },
+    /* @__PURE__ */ import_react11.default.createElement(Plus, { size: 16 }),
+    "Add Design"
+  )), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-center md:justify-start gap-8 mb-6" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react11.default.createElement("p", { className: "font-semibold" }, designer.designs ? designer.designs.length : 0), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-500" }, "Designs")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react11.default.createElement("p", { className: "font-semibold" }, designer.following_count || 0), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-500" }, "Following")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-center" }, /* @__PURE__ */ import_react11.default.createElement("p", { className: "font-semibold" }, designer.followers_count || 0), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-500" }, "Followers"))))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "border-t mt-6" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-center flex-wrap gap-6 py-2 px-2" }, /* @__PURE__ */ import_react11.default.createElement(
     "button",
     {
       onClick: () => scrollToSection("collections"),
       className: "flex items-center gap-1.5 py-2 px-3 hover:bg-blue-50 rounded-md text-sm transition-colors"
     },
-    /* @__PURE__ */ import_react9.default.createElement(Briefcase, { size: 16, className: "text-blue-600" }),
+    /* @__PURE__ */ import_react11.default.createElement(Briefcase, { size: 16, className: "text-blue-600" }),
     "Collections \u{1F457}"
-  ), /* @__PURE__ */ import_react9.default.createElement(
+  ), /* @__PURE__ */ import_react11.default.createElement(
     "button",
     {
       onClick: () => scrollToSection("behind-the-brand"),
       className: "flex items-center gap-1.5 py-2 px-3 hover:bg-purple-50 rounded-md text-sm transition-colors"
     },
-    /* @__PURE__ */ import_react9.default.createElement(Info, { size: 16, className: "text-purple-600" }),
+    /* @__PURE__ */ import_react11.default.createElement(Info, { size: 16, className: "text-purple-600" }),
     "Behind the Brand \u2728"
-  ), /* @__PURE__ */ import_react9.default.createElement(
+  ), /* @__PURE__ */ import_react11.default.createElement(
     "button",
     {
       onClick: () => scrollToSection("open-to"),
       className: "flex items-center gap-1.5 py-2 px-3 hover:bg-green-50 rounded-md text-sm transition-colors"
     },
-    /* @__PURE__ */ import_react9.default.createElement(Scissors, { size: 16, className: "text-green-600" }),
+    /* @__PURE__ */ import_react11.default.createElement(Scissors, { size: 16, className: "text-green-600" }),
     "Open To \u{1F91D}"
-  ), /* @__PURE__ */ import_react9.default.createElement(
+  ), /* @__PURE__ */ import_react11.default.createElement(
     "button",
     {
       onClick: () => scrollToSection("featured-by"),
       className: "flex items-center gap-1.5 py-2 px-3 hover:bg-amber-50 rounded-md text-sm transition-colors"
     },
-    /* @__PURE__ */ import_react9.default.createElement(Award, { size: 16, className: "text-amber-600" }),
+    /* @__PURE__ */ import_react11.default.createElement(Award, { size: 16, className: "text-amber-600" }),
     "Featured By \u{1F3C6}"
-  ), designer.testimonials && designer.testimonials.length > 0 && /* @__PURE__ */ import_react9.default.createElement(
+  ), designer.testimonials && designer.testimonials.length > 0 && /* @__PURE__ */ import_react11.default.createElement(
     "button",
     {
       onClick: () => scrollToSection("testimonials"),
       className: "flex items-center gap-1.5 py-2 px-3 hover:bg-rose-50 rounded-md text-sm transition-colors"
     },
-    /* @__PURE__ */ import_react9.default.createElement(Star, { size: 16, className: "text-rose-600" }),
+    /* @__PURE__ */ import_react11.default.createElement(Star, { size: 16, className: "text-rose-600" }),
     "Testimonials \u{1F4AC}"
-  ), /* @__PURE__ */ import_react9.default.createElement(
+  ), /* @__PURE__ */ import_react11.default.createElement(
     "button",
     {
       onClick: () => scrollToSection("latest-designs"),
       className: "flex items-center gap-1.5 py-2 px-3 hover:bg-indigo-50 rounded-md text-sm transition-colors"
     },
-    /* @__PURE__ */ import_react9.default.createElement(Palette, { size: 16, className: "text-indigo-600" }),
+    /* @__PURE__ */ import_react11.default.createElement(Palette, { size: 16, className: "text-indigo-600" }),
     "Designs \u{1F9F5}"
-  )))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "collections", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium" }, "Collections"), !isOwnProfile && /* @__PURE__ */ import_react9.default.createElement("a", { href: "#", className: "text-blue-600 text-sm" }, "View All"), isOwnProfile && designer.collections && designer.collections.length > 0 && /* @__PURE__ */ import_react9.default.createElement("button", { className: "text-blue-600 text-sm flex items-center gap-1" }, /* @__PURE__ */ import_react9.default.createElement(Plus, { size: 16 }), "Create Collection")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-5" }, designer.collections && designer.collections.length > 0 ? designer.collections.slice(0, 3).map((collection, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+  )))), /* @__PURE__ */ import_react11.default.createElement("div", { id: "collections", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react11.default.createElement("h2", { className: "font-medium" }, "Collections"), !isOwnProfile && /* @__PURE__ */ import_react11.default.createElement("a", { href: "#", className: "text-blue-600 text-sm" }, "View All"), isOwnProfile && designer.collections && designer.collections.length > 0 && /* @__PURE__ */ import_react11.default.createElement(
+    "button",
+    {
+      onClick: () => setShowCollectionForm(true),
+      className: "text-blue-600 text-sm flex items-center gap-1 hover:text-blue-700"
+    },
+    /* @__PURE__ */ import_react11.default.createElement(Plus, { size: 16 }),
+    "Create Collection"
+  )), /* @__PURE__ */ import_react11.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-5" }, designer.collections && designer.collections.length > 0 ? designer.collections.slice(0, 3).map((collection, index) => /* @__PURE__ */ import_react11.default.createElement("div", { key: index, className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react11.default.createElement(
     "img",
     {
       src: collection.image_url || "https://images.pexels.com/photos/31982191/pexels-photo-31982191/free-photo-of-moody-portrait-of-a-woman-by-a-column.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: collection.title || "Collection",
       className: "w-full h-full object-cover"
     }
-  ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, collection.season, " '", collection.year ? collection.year.toString().substring(2) : "25")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, collection.title || "Collection"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, collection.status === "published" ? "Ready to Ship" : collection.status || "Ready to Ship")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, collection.description || "Beautiful collection pieces"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, collection.pieces_count || "0", " pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: `/collection/${collection.id || "1"}`, className: "text-blue-600 text-xs" }, "Browse Collection \u2192"))))) : isOwnProfile ? (
+  ), /* @__PURE__ */ import_react11.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, collection.season, " '", collection.year ? collection.year.toString().substring(2) : "25")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium" }, collection.title || "Collection"), /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, collection.status === "published" ? "Ready to Ship" : collection.status || "Ready to Ship")), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, collection.description || "Beautiful collection pieces"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-xs text-gray-500" }, collection.pieces_count || "0", " pieces"), /* @__PURE__ */ import_react11.default.createElement(Link, { to: `/collection/${collection.id || "1"}`, className: "text-blue-600 text-xs" }, "Browse Collection \u2192"))))) : isOwnProfile ? (
     // Show create collection prompt for own profile with no collections
-    /* @__PURE__ */ import_react9.default.createElement("div", { className: "col-span-3 text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4" }, /* @__PURE__ */ import_react9.default.createElement(Plus, { className: "text-blue-600", size: 24 })), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "text-lg font-medium text-gray-900 mb-2" }, "Create your first collection"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-gray-500 mb-4" }, "Start showcasing your designs by organizing them into collections"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "bg-blue-600 text-white font-medium px-6 py-2 rounded-md text-sm flex items-center gap-2 mx-auto" }, /* @__PURE__ */ import_react9.default.createElement(Plus, { size: 16 }), "Create Collection"))
+    /* @__PURE__ */ import_react11.default.createElement("div", { className: "col-span-3 text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4" }, /* @__PURE__ */ import_react11.default.createElement(Plus, { className: "text-blue-600", size: 24 })), /* @__PURE__ */ import_react11.default.createElement("h3", { className: "text-lg font-medium text-gray-900 mb-2" }, "Create your first collection"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-gray-500 mb-4" }, "Start showcasing your designs by organizing them into collections"), /* @__PURE__ */ import_react11.default.createElement(
+      "button",
+      {
+        onClick: () => setShowCollectionForm(true),
+        className: "bg-blue-600 text-white font-medium px-6 py-2 rounded-md text-sm flex items-center gap-2 mx-auto hover:bg-blue-700"
+      },
+      /* @__PURE__ */ import_react11.default.createElement(Plus, { size: 16 }),
+      "Create Collection"
+    ))
   ) : (
     // Show sample collections for other people's profiles with no collections
-    /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, null, /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+    /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react11.default.createElement(
       "img",
       {
         src: "https://images.pexels.com/photos/31982191/pexels-photo-31982191/free-photo-of-moody-portrait-of-a-woman-by-a-column.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         alt: "Summer Collection",
         className: "w-full h-full object-cover"
       }
-    ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Summer '25")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "Airy Essentials"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, "Ready to Ship")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Lightweight linen pieces for warm days"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, "15 pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/collection/1", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+    ), /* @__PURE__ */ import_react11.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Summer '25")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium" }, "Airy Essentials"), /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, "Ready to Ship")), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Lightweight linen pieces for warm days"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-xs text-gray-500" }, "15 pieces"), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/collection/1", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react11.default.createElement(
       "img",
       {
         src: "https://images.pexels.com/photos/31977310/pexels-photo-31977310/free-photo-of-stylish-woman-in-white-shirt-outdoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         alt: "Spring Collection",
         className: "w-full h-full object-cover"
       }
-    ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Spring '25")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "Urban Bloom"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded-full" }, "Wholesale - In Production")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Street styles with floral accents"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, "12 pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/collection/2", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react9.default.createElement(
+    ), /* @__PURE__ */ import_react11.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Spring '25")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium" }, "Urban Bloom"), /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded-full" }, "Wholesale - In Production")), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Street styles with floral accents"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-xs text-gray-500" }, "12 pieces"), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/collection/2", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-white rounded-lg overflow-hidden border" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "aspect-video overflow-hidden relative" }, /* @__PURE__ */ import_react11.default.createElement(
       "img",
       {
         src: "https://images.pexels.com/photos/2010922/pexels-photo-2010922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         alt: "Winter Collection",
         className: "w-full h-full object-cover"
       }
-    ), /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Winter '24")), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "Cozy Structures"), /* @__PURE__ */ import_react9.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full" }, "Boutique - Pre-Order")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Architectural inspired wool garments"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, "8 pieces"), /* @__PURE__ */ import_react9.default.createElement(Link, { to: "/collection/3", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))))
-  ))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "behind-the-brand", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Behind the Brand"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+    ), /* @__PURE__ */ import_react11.default.createElement("span", { className: "absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full font-medium" }, "Winter '24")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-3" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center mb-1" }, /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium" }, "Cozy Structures"), /* @__PURE__ */ import_react11.default.createElement("span", { className: "bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full" }, "Boutique - Pre-Order")), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-600 mb-2" }, "Architectural inspired wool garments"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-xs text-gray-500" }, "8 pieces"), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/collection/3", className: "text-blue-600 text-xs" }, "Browse Collection \u2192")))))
+  ))), /* @__PURE__ */ import_react11.default.createElement("div", { id: "behind-the-brand", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react11.default.createElement("h2", { className: "font-medium mb-4" }, "Behind the Brand"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react11.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/6069552/pexels-photo-6069552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Design Process",
       className: "w-full h-full object-cover"
     }
-  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Design Process"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+  ), /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-white text-xs font-medium" }, "Design Process"))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react11.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/6069765/pexels-photo-6069765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Fabric Selection",
       className: "w-full h-full object-cover"
     }
-  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Fabric Selection"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+  ), /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-white text-xs font-medium" }, "Fabric Selection"))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react11.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/5699516/pexels-photo-5699516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Stylist Collaborations",
       className: "w-full h-full object-cover"
     }
-  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Stylist Collaborations"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react9.default.createElement(
+  ), /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-white text-xs font-medium" }, "Stylist Collaborations"))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "relative overflow-hidden rounded-lg aspect-square" }, /* @__PURE__ */ import_react11.default.createElement(
     "img",
     {
       src: "https://images.pexels.com/photos/5778899/pexels-photo-5778899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: "Pop-Up Events",
       className: "w-full h-full object-cover"
     }
-  ), /* @__PURE__ */ import_react9.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-white text-xs font-medium" }, "Pop-Up Events"))))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "open-to", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Open To"), designer.collaboration_preferences && designer.collaboration_preferences.length > 0 ? /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4" }, designer.collaboration_preferences.map((pref, index) => {
+  ), /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2" }, /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-white text-xs font-medium" }, "Pop-Up Events"))))), /* @__PURE__ */ import_react11.default.createElement("div", { id: "open-to", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react11.default.createElement("h2", { className: "font-medium mb-4" }, "Open To"), designer.collaboration_preferences && designer.collaboration_preferences.length > 0 ? /* @__PURE__ */ import_react11.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4" }, designer.collaboration_preferences.map((pref, index) => {
     const collabInfo = {
       manufacturing: {
-        icon: /* @__PURE__ */ import_react9.default.createElement(Users, { className: "text-blue-600", size: 20 }),
+        icon: /* @__PURE__ */ import_react11.default.createElement(Users, { className: "text-blue-600", size: 20 }),
         title: "Manufacturing Partnerships",
         description: "Open to working with manufacturers for production and scaling.",
         bgColor: "bg-blue-50",
         borderColor: "border-blue-100"
       },
       retail: {
-        icon: /* @__PURE__ */ import_react9.default.createElement(ExternalLink, { className: "text-green-600", size: 20 }),
+        icon: /* @__PURE__ */ import_react11.default.createElement(ExternalLink, { className: "text-green-600", size: 20 }),
         title: "Retail Partnerships",
         description: "Seeking boutiques and concept stores interested in stocking collections.",
         bgColor: "bg-green-50",
         borderColor: "border-green-100"
       },
       consultation: {
-        icon: /* @__PURE__ */ import_react9.default.createElement(Info, { className: "text-purple-600", size: 20 }),
+        icon: /* @__PURE__ */ import_react11.default.createElement(Info, { className: "text-purple-600", size: 20 }),
         title: "Design Consultation",
         description: "Available for design consultation and creative direction projects.",
         bgColor: "bg-purple-50",
         borderColor: "border-purple-100"
       },
       custom: {
-        icon: /* @__PURE__ */ import_react9.default.createElement(Scissors, { className: "text-amber-600", size: 20 }),
+        icon: /* @__PURE__ */ import_react11.default.createElement(Scissors, { className: "text-amber-600", size: 20 }),
         title: "Custom Design Work",
         description: "Accepting commissions for bespoke and custom design projects.",
         bgColor: "bg-amber-50",
         borderColor: "border-amber-100"
       },
       mentorship: {
-        icon: /* @__PURE__ */ import_react9.default.createElement(Star, { className: "text-rose-600", size: 20 }),
+        icon: /* @__PURE__ */ import_react11.default.createElement(Star, { className: "text-rose-600", size: 20 }),
         title: "Mentorship",
         description: "Open to mentoring emerging designers and sharing industry knowledge.",
         bgColor: "bg-rose-50",
@@ -45677,31 +46129,31 @@ function DynamicProfileView() {
       }
     };
     const info = collabInfo[pref.preference_type] || {
-      icon: /* @__PURE__ */ import_react9.default.createElement(Users, { className: "text-gray-600", size: 20 }),
+      icon: /* @__PURE__ */ import_react11.default.createElement(Users, { className: "text-gray-600", size: 20 }),
       title: `${pref.preference_type.charAt(0).toUpperCase() + pref.preference_type.slice(1)} Collaborations`,
       description: "Open to partnerships and collaborations.",
       bgColor: "bg-gray-50",
       borderColor: "border-gray-100"
     };
-    return /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: `${info.bgColor} p-4 rounded-lg border ${info.borderColor}` }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, info.icon, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, info.title)), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm text-gray-700" }, info.description));
-  })) : /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-gray-50 p-4 rounded-lg border border-gray-100" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react9.default.createElement(Info, { className: "text-gray-600", size: 20 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium" }, "No Collaboration Preferences Set")), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm text-gray-700" }, "This designer hasn't specified what types of collaborations they're open to yet."))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "featured-by", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Featured By"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Vogue.com"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Emerging Designers to Watch"')), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Metropolitan Fashion Week"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Rising Star Award 2024"')), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Elle Magazine"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Sustainable Fashion Feature"')), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react9.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "New York Fashion Council"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Grant Recipient 2023"')))), designer.testimonials && designer.testimonials.length > 0 && /* @__PURE__ */ import_react9.default.createElement("div", { id: "testimonials", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium mb-4" }, "Testimonials"), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4" }, designer.testimonials.slice(0, 2).map((testimonial, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: "bg-gray-50 p-4 rounded-lg border" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "w-10 h-10 rounded-full overflow-hidden flex-shrink-0" }, /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react11.default.createElement("div", { key: index, className: `${info.bgColor} p-4 rounded-lg border ${info.borderColor}` }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, info.icon, /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium" }, info.title)), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-sm text-gray-700" }, info.description));
+  })) : /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-gray-50 p-4 rounded-lg border border-gray-100" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react11.default.createElement(Info, { className: "text-gray-600", size: 20 }), /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium" }, "No Collaboration Preferences Set")), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-sm text-gray-700" }, "This designer hasn't specified what types of collaborations they're open to yet."))), /* @__PURE__ */ import_react11.default.createElement("div", { id: "featured-by", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react11.default.createElement("h2", { className: "font-medium mb-4" }, "Featured By"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react11.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Vogue.com"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Emerging Designers to Watch"')), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react11.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Metropolitan Fashion Week"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Rising Star Award 2024"')), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react11.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "Elle Magazine"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Sustainable Fashion Feature"')), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-col items-center p-3 border rounded-lg" }, /* @__PURE__ */ import_react11.default.createElement(Award, { className: "text-amber-500 mb-2", size: 24 }), /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium text-sm mb-1" }, "New York Fashion Council"), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-xs text-gray-500 text-center" }, '"Grant Recipient 2023"')))), designer.testimonials && designer.testimonials.length > 0 && /* @__PURE__ */ import_react11.default.createElement("div", { id: "testimonials", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react11.default.createElement("h2", { className: "font-medium mb-4" }, "Testimonials"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4" }, designer.testimonials.slice(0, 2).map((testimonial, index) => /* @__PURE__ */ import_react11.default.createElement("div", { key: index, className: "bg-gray-50 p-4 rounded-lg border" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "w-10 h-10 rounded-full overflow-hidden flex-shrink-0" }, /* @__PURE__ */ import_react11.default.createElement(
     "img",
     {
       src: testimonial.author_image_url || "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       alt: testimonial.author,
       className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center gap-1 mb-1" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-medium text-sm" }, testimonial.author), /* @__PURE__ */ import_react9.default.createElement("span", { className: "text-xs text-gray-500" }, testimonial.role)), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm text-gray-700 mb-2" }, '"', testimonial.content, '"'), /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex text-amber-500" }, /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react9.default.createElement(Heart, { size: 14, fill: "currentColor" })))))))), /* @__PURE__ */ import_react9.default.createElement("div", { id: "latest-designs", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react9.default.createElement("h2", { className: "font-medium" }, "Latest Designs \u{1F9F5}"), /* @__PURE__ */ import_react9.default.createElement("button", { className: "flex items-center gap-1 text-sm text-gray-500" }, /* @__PURE__ */ import_react9.default.createElement(Archive, { size: 16 }), /* @__PURE__ */ import_react9.default.createElement("span", null, "Show archived"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, Array.from({ length: 8 }).map((_2, index) => /* @__PURE__ */ import_react9.default.createElement("div", { key: index, className: "aspect-square overflow-hidden rounded-md border" }, /* @__PURE__ */ import_react9.default.createElement(
+  )), /* @__PURE__ */ import_react11.default.createElement("div", null, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center gap-1 mb-1" }, /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-medium text-sm" }, testimonial.author), /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-xs text-gray-500" }, testimonial.role)), /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-sm text-gray-700 mb-2" }, '"', testimonial.content, '"'), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex text-amber-500" }, /* @__PURE__ */ import_react11.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react11.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react11.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react11.default.createElement(Heart, { size: 14, fill: "currentColor" }), /* @__PURE__ */ import_react11.default.createElement(Heart, { size: 14, fill: "currentColor" })))))))), /* @__PURE__ */ import_react11.default.createElement("div", { id: "latest-designs", className: "max-w-4xl mx-auto py-6 px-4 border-t" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react11.default.createElement("h2", { className: "font-medium" }, "Latest Designs \u{1F9F5}"), /* @__PURE__ */ import_react11.default.createElement("button", { className: "flex items-center gap-1 text-sm text-gray-500" }, /* @__PURE__ */ import_react11.default.createElement(Archive, { size: 16 }), /* @__PURE__ */ import_react11.default.createElement("span", null, "Show archived"))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, Array.from({ length: 8 }).map((_2, index) => /* @__PURE__ */ import_react11.default.createElement("div", { key: index, className: "aspect-square overflow-hidden rounded-md border" }, /* @__PURE__ */ import_react11.default.createElement(
     "div",
     {
       className: "w-full h-full bg-gray-200",
       alt: `Design ${index + 1}`
     }
-  )))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react9.default.createElement("button", { className: "text-sm text-blue-600 font-medium" }, "View All Designs"))));
+  )))), /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react11.default.createElement("button", { className: "text-sm text-blue-600 font-medium" }, "View All Designs"))));
 }
 
 // app/javascript/components/CollectionView.jsx
-var import_react10 = __toESM(require_react());
+var import_react12 = __toESM(require_react());
 function CollectionView() {
   const collection = {
     id: 1,
@@ -45776,28 +46228,28 @@ function CollectionView() {
     }
   ];
   const featuredDesigns = designs.slice(0, 5);
-  return /* @__PURE__ */ import_react10.default.createElement("div", { className: "bg-white min-h-screen" }, /* @__PURE__ */ import_react10.default.createElement("header", { className: "border-b sticky top-0 bg-white z-10" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto px-4 py-3 flex items-center justify-between" }, /* @__PURE__ */ import_react10.default.createElement(Link, { to: "/profile", className: "flex items-center gap-2 text-gray-800" }, /* @__PURE__ */ import_react10.default.createElement(ArrowLeft, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "font-medium" }, "Back to Profile")), /* @__PURE__ */ import_react10.default.createElement("h1", { className: "font-semibold text-lg" }, collection.title), /* @__PURE__ */ import_react10.default.createElement("div", { className: "w-8" }), " ")), /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto pt-6 px-4" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-4 mb-4" }, /* @__PURE__ */ import_react10.default.createElement(
+  return /* @__PURE__ */ import_react12.default.createElement("div", { className: "bg-white min-h-screen" }, /* @__PURE__ */ import_react12.default.createElement("header", { className: "border-b sticky top-0 bg-white z-10" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "max-w-4xl mx-auto px-4 py-3 flex items-center justify-between" }, /* @__PURE__ */ import_react12.default.createElement(Link, { to: "/profile", className: "flex items-center gap-2 text-gray-800" }, /* @__PURE__ */ import_react12.default.createElement(ArrowLeft, { size: 20 }), /* @__PURE__ */ import_react12.default.createElement("span", { className: "font-medium" }, "Back to Profile")), /* @__PURE__ */ import_react12.default.createElement("h1", { className: "font-semibold text-lg" }, collection.title), /* @__PURE__ */ import_react12.default.createElement("div", { className: "w-8" }), " ")), /* @__PURE__ */ import_react12.default.createElement("div", { className: "max-w-4xl mx-auto pt-6 px-4" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex items-center gap-4 mb-4" }, /* @__PURE__ */ import_react12.default.createElement(
     "img",
     {
       src: collection.designer.image,
       alt: collection.designer.name,
       className: "w-12 h-12 rounded-full object-cover"
     }
-  ), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("h2", { className: "font-semibold" }, collection.designer.name), /* @__PURE__ */ import_react10.default.createElement("p", { className: "text-gray-500 text-sm" }, collection.designer.username))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react10.default.createElement("h1", { className: "text-xl font-bold" }, collection.title), /* @__PURE__ */ import_react10.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, collection.status)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-3 text-sm text-gray-600" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react10.default.createElement(Calendar, { size: 16 }), /* @__PURE__ */ import_react10.default.createElement("span", null, collection.season, " '", collection.year.toString().substring(2))), /* @__PURE__ */ import_react10.default.createElement("span", null, "\u2022"), /* @__PURE__ */ import_react10.default.createElement("span", null, collection.pieceCount, " pieces")), /* @__PURE__ */ import_react10.default.createElement("p", { className: "mt-2 text-gray-700" }, collection.description)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex border-y py-2 mb-6" }, /* @__PURE__ */ import_react10.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react10.default.createElement(Heart, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm" }, "Save")), /* @__PURE__ */ import_react10.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react10.default.createElement(MessageCircle, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm" }, "Comment")), /* @__PURE__ */ import_react10.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react10.default.createElement(Share2, { size: 20 }), /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-sm" }, "Share")))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto px-4 mb-8" }, /* @__PURE__ */ import_react10.default.createElement("h3", { className: "font-semibold mb-3" }, "Highlights"), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex gap-3 overflow-x-auto pb-4 hide-scrollbar" }, featuredDesigns.map((design) => /* @__PURE__ */ import_react10.default.createElement("div", { key: design.id, className: "flex-none w-28 md:w-32" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "aspect-square rounded-lg overflow-hidden mb-1" }, /* @__PURE__ */ import_react10.default.createElement(
+  ), /* @__PURE__ */ import_react12.default.createElement("div", null, /* @__PURE__ */ import_react12.default.createElement("h2", { className: "font-semibold" }, collection.designer.name), /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-gray-500 text-sm" }, collection.designer.username))), /* @__PURE__ */ import_react12.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex items-center gap-2 mb-2" }, /* @__PURE__ */ import_react12.default.createElement("h1", { className: "text-xl font-bold" }, collection.title), /* @__PURE__ */ import_react12.default.createElement("span", { className: "bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full" }, collection.status)), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex items-center gap-3 text-sm text-gray-600" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react12.default.createElement(Calendar, { size: 16 }), /* @__PURE__ */ import_react12.default.createElement("span", null, collection.season, " '", collection.year.toString().substring(2))), /* @__PURE__ */ import_react12.default.createElement("span", null, "\u2022"), /* @__PURE__ */ import_react12.default.createElement("span", null, collection.pieceCount, " pieces")), /* @__PURE__ */ import_react12.default.createElement("p", { className: "mt-2 text-gray-700" }, collection.description)), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex border-y py-2 mb-6" }, /* @__PURE__ */ import_react12.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react12.default.createElement(Heart, { size: 20 }), /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-sm" }, "Save")), /* @__PURE__ */ import_react12.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react12.default.createElement(MessageCircle, { size: 20 }), /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-sm" }, "Comment")), /* @__PURE__ */ import_react12.default.createElement("button", { className: "flex-1 flex justify-center items-center gap-1 py-2 text-gray-700" }, /* @__PURE__ */ import_react12.default.createElement(Share2, { size: 20 }), /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-sm" }, "Share")))), /* @__PURE__ */ import_react12.default.createElement("div", { className: "max-w-4xl mx-auto px-4 mb-8" }, /* @__PURE__ */ import_react12.default.createElement("h3", { className: "font-semibold mb-3" }, "Highlights"), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex gap-3 overflow-x-auto pb-4 hide-scrollbar" }, featuredDesigns.map((design) => /* @__PURE__ */ import_react12.default.createElement("div", { key: design.id, className: "flex-none w-28 md:w-32" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "aspect-square rounded-lg overflow-hidden mb-1" }, /* @__PURE__ */ import_react12.default.createElement(
     "img",
     {
       src: design.image,
       alt: design.title,
       className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react10.default.createElement("p", { className: "text-xs truncate" }, design.title))))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "max-w-4xl mx-auto px-4 mb-8" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react10.default.createElement("h3", { className: "font-semibold" }, "Designs"), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react10.default.createElement("button", { className: "p-2 rounded-full hover:bg-gray-100" }, /* @__PURE__ */ import_react10.default.createElement(Grid3x3, { size: 20 })), /* @__PURE__ */ import_react10.default.createElement("button", { className: "p-2 rounded-full hover:bg-gray-100" }, /* @__PURE__ */ import_react10.default.createElement(Funnel, { size: 20 })))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-3 gap-3" }, designs.map((design) => /* @__PURE__ */ import_react10.default.createElement("div", { key: design.id, className: "overflow-hidden mb-4" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "aspect-square rounded-lg overflow-hidden mb-2" }, /* @__PURE__ */ import_react10.default.createElement(
+  )), /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-xs truncate" }, design.title))))), /* @__PURE__ */ import_react12.default.createElement("div", { className: "max-w-4xl mx-auto px-4 mb-8" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex justify-between items-center mb-4" }, /* @__PURE__ */ import_react12.default.createElement("h3", { className: "font-semibold" }, "Designs"), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react12.default.createElement("button", { className: "p-2 rounded-full hover:bg-gray-100" }, /* @__PURE__ */ import_react12.default.createElement(Grid3x3, { size: 20 })), /* @__PURE__ */ import_react12.default.createElement("button", { className: "p-2 rounded-full hover:bg-gray-100" }, /* @__PURE__ */ import_react12.default.createElement(Funnel, { size: 20 })))), /* @__PURE__ */ import_react12.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-3 gap-3" }, designs.map((design) => /* @__PURE__ */ import_react12.default.createElement("div", { key: design.id, className: "overflow-hidden mb-4" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "aspect-square rounded-lg overflow-hidden mb-2" }, /* @__PURE__ */ import_react12.default.createElement(
     "img",
     {
       src: design.image,
       alt: design.title,
       className: "w-full h-full object-cover"
     }
-  )), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react10.default.createElement("p", { className: "text-sm font-medium" }, design.title), /* @__PURE__ */ import_react10.default.createElement("button", { className: "text-gray-500" }, /* @__PURE__ */ import_react10.default.createElement(Ellipsis, { size: 16 }))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-3 text-gray-500 text-xs" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react10.default.createElement(Heart, { size: 14 }), /* @__PURE__ */ import_react10.default.createElement("span", null, design.likes)), /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react10.default.createElement(MessageCircle, { size: 14 }), /* @__PURE__ */ import_react10.default.createElement("span", null, design.comments)))))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "text-center mt-4" }, /* @__PURE__ */ import_react10.default.createElement("button", { className: "text-blue-600 font-medium text-sm py-2 px-4 rounded-md hover:bg-blue-50" }, "Load more..."))), /* @__PURE__ */ import_react10.default.createElement("style", { jsx: true }, `
+  )), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm font-medium" }, design.title), /* @__PURE__ */ import_react12.default.createElement("button", { className: "text-gray-500" }, /* @__PURE__ */ import_react12.default.createElement(Ellipsis, { size: 16 }))), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex items-center gap-3 text-gray-500 text-xs" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react12.default.createElement(Heart, { size: 14 }), /* @__PURE__ */ import_react12.default.createElement("span", null, design.likes)), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react12.default.createElement(MessageCircle, { size: 14 }), /* @__PURE__ */ import_react12.default.createElement("span", null, design.comments)))))), /* @__PURE__ */ import_react12.default.createElement("div", { className: "text-center mt-4" }, /* @__PURE__ */ import_react12.default.createElement("button", { className: "text-blue-600 font-medium text-sm py-2 px-4 rounded-md hover:bg-blue-50" }, "Load more..."))), /* @__PURE__ */ import_react12.default.createElement("style", { jsx: true }, `
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }
@@ -45809,15 +46261,15 @@ function CollectionView() {
 }
 
 // app/javascript/components/onboarding/OnboardingFlow.jsx
-var import_react19 = __toESM(require_react());
+var import_react21 = __toESM(require_react());
 
 // app/javascript/components/onboarding/UsernameStep.jsx
-var import_react12 = __toESM(require_react());
+var import_react14 = __toESM(require_react());
 
 // app/javascript/components/onboarding/OnboardingLayout.jsx
-var import_react11 = __toESM(require_react());
+var import_react13 = __toESM(require_react());
 function OnboardingLayout({ children, title, backUrl }) {
-  return /* @__PURE__ */ import_react11.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center justify-between p-5 border-b" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ import_react11.default.createElement(
+  return /* @__PURE__ */ import_react13.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex items-center justify-between p-5 border-b" }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ import_react13.default.createElement(
     "svg",
     {
       viewBox: "0 0 24 24",
@@ -45825,17 +46277,17 @@ function OnboardingLayout({ children, title, backUrl }) {
       xmlns: "http://www.w3.org/2000/svg",
       className: "w-8 h-8"
     },
-    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "2", y: "2", fill: "#4F46E5", rx: "2" }),
-    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "12", y: "2", fill: "#8B5CF6", rx: "2" }),
-    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "2", y: "12", fill: "#EC4899", rx: "2" }),
-    /* @__PURE__ */ import_react11.default.createElement("rect", { width: "10", height: "10", x: "12", y: "12", fill: "#F59E0B", rx: "2" })
-  )), /* @__PURE__ */ import_react11.default.createElement("button", { className: "text-gray-500 border border-gray-300 rounded-full px-4 py-1 text-sm hover:text-gray-700 hover:border-gray-400 transition-colors" }, "Help")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-6" }, backUrl && /* @__PURE__ */ import_react11.default.createElement(
+    /* @__PURE__ */ import_react13.default.createElement("rect", { width: "10", height: "10", x: "2", y: "2", fill: "#4F46E5", rx: "2" }),
+    /* @__PURE__ */ import_react13.default.createElement("rect", { width: "10", height: "10", x: "12", y: "2", fill: "#8B5CF6", rx: "2" }),
+    /* @__PURE__ */ import_react13.default.createElement("rect", { width: "10", height: "10", x: "2", y: "12", fill: "#EC4899", rx: "2" }),
+    /* @__PURE__ */ import_react13.default.createElement("rect", { width: "10", height: "10", x: "12", y: "12", fill: "#F59E0B", rx: "2" })
+  )), /* @__PURE__ */ import_react13.default.createElement("button", { className: "text-gray-500 border border-gray-300 rounded-full px-4 py-1 text-sm hover:text-gray-700 hover:border-gray-400 transition-colors" }, "Help")), /* @__PURE__ */ import_react13.default.createElement("div", { className: "p-6" }, backUrl && /* @__PURE__ */ import_react13.default.createElement(
     Link,
     {
       to: backUrl,
       className: "inline-flex items-center text-gray-700 mb-6"
     },
-    /* @__PURE__ */ import_react11.default.createElement(
+    /* @__PURE__ */ import_react13.default.createElement(
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
@@ -45847,17 +46299,17 @@ function OnboardingLayout({ children, title, backUrl }) {
         strokeLinecap: "round",
         strokeLinejoin: "round"
       },
-      /* @__PURE__ */ import_react11.default.createElement("path", { d: "M19 12H5M12 19l-7-7 7-7" })
+      /* @__PURE__ */ import_react13.default.createElement("path", { d: "M19 12H5M12 19l-7-7 7-7" })
     ),
     "Back"
-  ), /* @__PURE__ */ import_react11.default.createElement("h1", { className: "text-2xl font-semibold mb-8" }, title), children), /* @__PURE__ */ import_react11.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react11.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react11.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
+  ), /* @__PURE__ */ import_react13.default.createElement("h1", { className: "text-2xl font-semibold mb-8" }, title), children), /* @__PURE__ */ import_react13.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react13.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react13.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react13.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
 }
 
 // app/javascript/components/onboarding/UsernameStep.jsx
 function UsernameStep() {
-  const [username, setUsername] = (0, import_react12.useState)("");
-  const [isLoading, setIsLoading] = (0, import_react12.useState)(false);
-  const [error, setError] = (0, import_react12.useState)("");
+  const [username, setUsername] = (0, import_react14.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react14.useState)(false);
+  const [error, setError] = (0, import_react14.useState)("");
   const navigate = useNavigate();
   const handleNextClick = async () => {
     if (!username.trim()) {
@@ -45893,13 +46345,13 @@ function UsernameStep() {
     setUsername(value);
     setError("");
   };
-  return /* @__PURE__ */ import_react12.default.createElement(
+  return /* @__PURE__ */ import_react14.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/",
       title: "Choose Your Username"
     },
-    /* @__PURE__ */ import_react12.default.createElement("div", { className: "max-w-md mx-auto" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react12.default.createElement("label", { htmlFor: "username", className: "block text-sm font-medium text-gray-700 mb-2" }, "Username"), /* @__PURE__ */ import_react12.default.createElement(
+    /* @__PURE__ */ import_react14.default.createElement("div", { className: "max-w-md mx-auto" }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "username", className: "block text-sm font-medium text-gray-700 mb-2" }, "Username"), /* @__PURE__ */ import_react14.default.createElement(
       "input",
       {
         type: "text",
@@ -45910,7 +46362,7 @@ function UsernameStep() {
         className: `w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent ${error ? "border-red-500" : "border-gray-300"}`,
         disabled: isLoading
       }
-    ), /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm text-gray-500 mt-2" }, "This will be your unique identifier and will appear in your profile URL"), error && /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm text-red-600 mt-2" }, error)), /* @__PURE__ */ import_react12.default.createElement(
+    ), /* @__PURE__ */ import_react14.default.createElement("p", { className: "text-sm text-gray-500 mt-2" }, "This will be your unique identifier and will appear in your profile URL"), error && /* @__PURE__ */ import_react14.default.createElement("p", { className: "text-sm text-red-600 mt-2" }, error)), /* @__PURE__ */ import_react14.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -45923,7 +46375,7 @@ function UsernameStep() {
 }
 
 // app/javascript/components/onboarding/ProductTypeStep.jsx
-var import_react13 = __toESM(require_react());
+var import_react15 = __toESM(require_react());
 var productTypes = [
   { id: "apparel", icon: "\u{1F455}", label: "Apparel" },
   { id: "jewelry", icon: "\u{1F48E}", label: "Jewelry" },
@@ -45943,7 +46395,7 @@ var productTypes = [
   { id: "books", icon: "\u{1F4DA}", label: "Books" }
 ];
 function ProductTypeStep() {
-  const [selectedType, setSelectedType] = (0, import_react13.useState)(null);
+  const [selectedType, setSelectedType] = (0, import_react15.useState)(null);
   const navigate = useNavigate();
   const handleNextClick = async () => {
     if (!selectedType) return;
@@ -45965,23 +46417,23 @@ function ProductTypeStep() {
       console.error("Error saving product type:", error);
     }
   };
-  return /* @__PURE__ */ import_react13.default.createElement(
+  return /* @__PURE__ */ import_react15.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/",
       title: "What kind of products do you sell?"
     },
-    /* @__PURE__ */ import_react13.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, productTypes.map((type) => /* @__PURE__ */ import_react13.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-3" }, productTypes.map((type) => /* @__PURE__ */ import_react15.default.createElement(
       "div",
       {
         key: type.id,
         className: `flex flex-col items-center border rounded-lg p-4 cursor-pointer transition-all ${selectedType === type.id ? "border-purple-500 bg-purple-50 shadow-sm" : "border-gray-200 hover:border-purple-300 hover:bg-purple-50"}`,
         onClick: () => setSelectedType(type.id)
       },
-      /* @__PURE__ */ import_react13.default.createElement("div", { className: "text-2xl mb-2" }, type.icon),
-      /* @__PURE__ */ import_react13.default.createElement("div", { className: "text-sm text-center" }, type.label)
+      /* @__PURE__ */ import_react15.default.createElement("div", { className: "text-2xl mb-2" }, type.icon),
+      /* @__PURE__ */ import_react15.default.createElement("div", { className: "text-sm text-center" }, type.label)
     ))),
-    /* @__PURE__ */ import_react13.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -45994,14 +46446,14 @@ function ProductTypeStep() {
 }
 
 // app/javascript/components/onboarding/PersonalInfoStep.jsx
-var import_react14 = __toESM(require_react());
+var import_react16 = __toESM(require_react());
 function PersonalInfoStep() {
-  const [firstName, setFirstName] = (0, import_react14.useState)("");
-  const [lastName, setLastName] = (0, import_react14.useState)("");
-  const [isLoading, setIsLoading] = (0, import_react14.useState)(false);
-  const [error, setError] = (0, import_react14.useState)("");
+  const [firstName, setFirstName] = (0, import_react16.useState)("");
+  const [lastName, setLastName] = (0, import_react16.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react16.useState)(false);
+  const [error, setError] = (0, import_react16.useState)("");
   const navigate = useNavigate();
-  (0, import_react14.useEffect)(() => {
+  (0, import_react16.useEffect)(() => {
     const fetchUserData = async () => {
       try {
         const response = await fetch("/api/current_user");
@@ -46046,14 +46498,14 @@ function PersonalInfoStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react14.default.createElement(
+  return /* @__PURE__ */ import_react16.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/product-type",
       title: "Your Full Name"
     },
-    error && /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react14.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "firstName", className: "block mb-2 font-medium text-gray-700" }, "First Name"), /* @__PURE__ */ import_react14.default.createElement(
+    error && /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react16.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react16.default.createElement("label", { htmlFor: "firstName", className: "block mb-2 font-medium text-gray-700" }, "First Name"), /* @__PURE__ */ import_react16.default.createElement(
       "input",
       {
         id: "firstName",
@@ -46064,7 +46516,7 @@ function PersonalInfoStep() {
         placeholder: "Your first name",
         required: true
       }
-    )), /* @__PURE__ */ import_react14.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react14.default.createElement("label", { htmlFor: "lastName", className: "block mb-2 font-medium text-gray-700" }, "Last Name"), /* @__PURE__ */ import_react14.default.createElement(
+    )), /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react16.default.createElement("label", { htmlFor: "lastName", className: "block mb-2 font-medium text-gray-700" }, "Last Name"), /* @__PURE__ */ import_react16.default.createElement(
       "input",
       {
         id: "lastName",
@@ -46075,7 +46527,7 @@ function PersonalInfoStep() {
         placeholder: "Your last name",
         required: true
       }
-    )), /* @__PURE__ */ import_react14.default.createElement(
+    )), /* @__PURE__ */ import_react16.default.createElement(
       "button",
       {
         type: "submit",
@@ -46088,12 +46540,12 @@ function PersonalInfoStep() {
 }
 
 // app/javascript/components/onboarding/BrandInfoStep.jsx
-var import_react15 = __toESM(require_react());
+var import_react17 = __toESM(require_react());
 function BrandInfoStep() {
-  const [brandName, setBrandName] = (0, import_react15.useState)("");
-  const [brandDescription, setBrandDescription] = (0, import_react15.useState)("");
-  const [isLoading, setIsLoading] = (0, import_react15.useState)(false);
-  const [error, setError] = (0, import_react15.useState)("");
+  const [brandName, setBrandName] = (0, import_react17.useState)("");
+  const [brandDescription, setBrandDescription] = (0, import_react17.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react17.useState)(false);
+  const [error, setError] = (0, import_react17.useState)("");
   const navigate = useNavigate();
   const handleNextClick = async (e) => {
     e.preventDefault();
@@ -46128,14 +46580,14 @@ function BrandInfoStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react15.default.createElement(
+  return /* @__PURE__ */ import_react17.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/personal-info",
       title: "Tell us about your brand"
     },
-    error && /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react15.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react15.default.createElement("label", { htmlFor: "brandName", className: "block mb-2 font-medium text-gray-700" }, "Brand Name"), /* @__PURE__ */ import_react15.default.createElement(
+    error && /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react17.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react17.default.createElement("label", { htmlFor: "brandName", className: "block mb-2 font-medium text-gray-700" }, "Brand Name"), /* @__PURE__ */ import_react17.default.createElement(
       "input",
       {
         id: "brandName",
@@ -46146,7 +46598,7 @@ function BrandInfoStep() {
         placeholder: "Your brand name",
         required: true
       }
-    )), /* @__PURE__ */ import_react15.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react15.default.createElement("label", { htmlFor: "brandDescription", className: "block mb-2 font-medium text-gray-700" }, "Brand Description"), /* @__PURE__ */ import_react15.default.createElement(
+    )), /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react17.default.createElement("label", { htmlFor: "brandDescription", className: "block mb-2 font-medium text-gray-700" }, "Brand Description"), /* @__PURE__ */ import_react17.default.createElement(
       "textarea",
       {
         id: "brandDescription",
@@ -46157,7 +46609,7 @@ function BrandInfoStep() {
         rows: "4",
         required: true
       }
-    )), /* @__PURE__ */ import_react15.default.createElement(
+    )), /* @__PURE__ */ import_react17.default.createElement(
       "button",
       {
         type: "submit",
@@ -46170,11 +46622,11 @@ function BrandInfoStep() {
 }
 
 // app/javascript/components/onboarding/LocationStep.jsx
-var import_react16 = __toESM(require_react());
+var import_react18 = __toESM(require_react());
 function LocationStep() {
-  const [location2, setLocation] = (0, import_react16.useState)("");
-  const [isLoading, setIsLoading] = (0, import_react16.useState)(false);
-  const [error, setError] = (0, import_react16.useState)("");
+  const [location2, setLocation] = (0, import_react18.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react18.useState)(false);
+  const [error, setError] = (0, import_react18.useState)("");
   const navigate = useNavigate();
   const handleNextClick = async (e) => {
     e.preventDefault();
@@ -46206,14 +46658,14 @@ function LocationStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react16.default.createElement(
+  return /* @__PURE__ */ import_react18.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/brand-info",
       title: "Where are you based?"
     },
-    error && /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react16.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react16.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react16.default.createElement("label", { htmlFor: "location", className: "block mb-2 font-medium text-gray-700" }, "Location"), /* @__PURE__ */ import_react16.default.createElement(
+    error && /* @__PURE__ */ import_react18.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react18.default.createElement("form", { onSubmit: handleNextClick }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "mb-6" }, /* @__PURE__ */ import_react18.default.createElement("label", { htmlFor: "location", className: "block mb-2 font-medium text-gray-700" }, "Location"), /* @__PURE__ */ import_react18.default.createElement(
       "input",
       {
         id: "location",
@@ -46224,7 +46676,7 @@ function LocationStep() {
         placeholder: "City, Country",
         required: true
       }
-    ), /* @__PURE__ */ import_react16.default.createElement("p", { className: "mt-2 text-gray-500 text-sm" }, "This helps us connect you with local manufacturing opportunities and showcase your regional design influence.")), /* @__PURE__ */ import_react16.default.createElement(
+    ), /* @__PURE__ */ import_react18.default.createElement("p", { className: "mt-2 text-gray-500 text-sm" }, "This helps us connect you with local manufacturing opportunities and showcase your regional design influence.")), /* @__PURE__ */ import_react18.default.createElement(
       "button",
       {
         type: "submit",
@@ -46237,7 +46689,7 @@ function LocationStep() {
 }
 
 // app/javascript/components/onboarding/CollaborationStep.jsx
-var import_react17 = __toESM(require_react());
+var import_react19 = __toESM(require_react());
 var collaborationOptions = [
   {
     id: "manufacturing",
@@ -46271,9 +46723,9 @@ var collaborationOptions = [
   }
 ];
 function CollaborationStep() {
-  const [selectedOptions, setSelectedOptions] = (0, import_react17.useState)([]);
-  const [isLoading, setIsLoading] = (0, import_react17.useState)(false);
-  const [error, setError] = (0, import_react17.useState)("");
+  const [selectedOptions, setSelectedOptions] = (0, import_react19.useState)([]);
+  const [isLoading, setIsLoading] = (0, import_react19.useState)(false);
+  const [error, setError] = (0, import_react19.useState)("");
   const navigate = useNavigate();
   const toggleOption = (optionId) => {
     setSelectedOptions(
@@ -46312,29 +46764,29 @@ function CollaborationStep() {
       setIsLoading(false);
     }
   };
-  return /* @__PURE__ */ import_react17.default.createElement(
+  return /* @__PURE__ */ import_react19.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/location",
       title: "How would you like to collaborate?"
     },
-    /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-gray-600 mb-6" }, "Select all that apply"),
-    error && /* @__PURE__ */ import_react17.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
-    /* @__PURE__ */ import_react17.default.createElement("div", { className: "space-y-3" }, collaborationOptions.map((option) => /* @__PURE__ */ import_react17.default.createElement(
+    /* @__PURE__ */ import_react19.default.createElement("p", { className: "text-gray-600 mb-6" }, "Select all that apply"),
+    error && /* @__PURE__ */ import_react19.default.createElement("div", { className: "mb-6 bg-red-50 text-red-700 px-4 py-3 rounded-lg" }, error),
+    /* @__PURE__ */ import_react19.default.createElement("div", { className: "space-y-3" }, collaborationOptions.map((option) => /* @__PURE__ */ import_react19.default.createElement(
       "div",
       {
         key: option.id,
         className: `flex items-center border rounded-lg p-4 cursor-pointer transition-all ${selectedOptions.includes(option.id) ? "border-purple-500 bg-purple-50" : "border-gray-200 hover:border-purple-300 hover:bg-purple-50"}`,
         onClick: () => toggleOption(option.id)
       },
-      /* @__PURE__ */ import_react17.default.createElement("div", { className: "text-2xl mr-4" }, option.icon),
-      /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react17.default.createElement("h3", { className: "font-medium" }, option.title), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-sm text-gray-600" }, option.description)),
-      /* @__PURE__ */ import_react17.default.createElement("div", { className: "ml-4" }, /* @__PURE__ */ import_react17.default.createElement(
+      /* @__PURE__ */ import_react19.default.createElement("div", { className: "text-2xl mr-4" }, option.icon),
+      /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react19.default.createElement("h3", { className: "font-medium" }, option.title), /* @__PURE__ */ import_react19.default.createElement("p", { className: "text-sm text-gray-600" }, option.description)),
+      /* @__PURE__ */ import_react19.default.createElement("div", { className: "ml-4" }, /* @__PURE__ */ import_react19.default.createElement(
         "div",
         {
           className: `w-5 h-5 rounded border ${selectedOptions.includes(option.id) ? "bg-purple-500 border-purple-500 flex items-center justify-center" : "border-gray-300"}`
         },
-        selectedOptions.includes(option.id) && /* @__PURE__ */ import_react17.default.createElement(
+        selectedOptions.includes(option.id) && /* @__PURE__ */ import_react19.default.createElement(
           "svg",
           {
             xmlns: "http://www.w3.org/2000/svg",
@@ -46342,7 +46794,7 @@ function CollaborationStep() {
             viewBox: "0 0 20 20",
             fill: "currentColor"
           },
-          /* @__PURE__ */ import_react17.default.createElement(
+          /* @__PURE__ */ import_react19.default.createElement(
             "path",
             {
               fillRule: "evenodd",
@@ -46353,7 +46805,7 @@ function CollaborationStep() {
         )
       ))
     ))),
-    /* @__PURE__ */ import_react17.default.createElement(
+    /* @__PURE__ */ import_react19.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -46366,14 +46818,14 @@ function CollaborationStep() {
 }
 
 // app/javascript/components/onboarding/CompletionStep.jsx
-var import_react18 = __toESM(require_react());
+var import_react20 = __toESM(require_react());
 function CompletionStep() {
-  const [isLoading, setIsLoading] = (0, import_react18.useState)(false);
-  const [error, setError] = (0, import_react18.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react20.useState)(false);
+  const [error, setError] = (0, import_react20.useState)("");
   const navigate = useNavigate();
   const location2 = useLocation();
   const designer = location2.state?.designer;
-  (0, import_react18.useEffect)(() => {
+  (0, import_react20.useEffect)(() => {
     if (!designer) {
       setError("Designer information not found");
       return;
@@ -46383,7 +46835,7 @@ function CompletionStep() {
     }, 2e3);
   }, [designer, navigate]);
   if (!designer) {
-    return /* @__PURE__ */ import_react18.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react18.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-600 mb-6" }, "Designer information not found. Please try again."), /* @__PURE__ */ import_react18.default.createElement(
+    return /* @__PURE__ */ import_react20.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react20.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react20.default.createElement("p", { className: "text-gray-600 mb-6" }, "Designer information not found. Please try again."), /* @__PURE__ */ import_react20.default.createElement(
       Link,
       {
         to: "/",
@@ -46393,7 +46845,7 @@ function CompletionStep() {
     )));
   }
   if (error) {
-    return /* @__PURE__ */ import_react18.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react18.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-600 mb-6" }, error), /* @__PURE__ */ import_react18.default.createElement(
+    return /* @__PURE__ */ import_react20.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react20.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react20.default.createElement("p", { className: "text-gray-600 mb-6" }, error), /* @__PURE__ */ import_react20.default.createElement(
       Link,
       {
         to: "/",
@@ -46402,7 +46854,7 @@ function CompletionStep() {
       "Go to Homepage"
     )));
   }
-  return /* @__PURE__ */ import_react18.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" }, /* @__PURE__ */ import_react18.default.createElement(
+  return /* @__PURE__ */ import_react20.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" }, /* @__PURE__ */ import_react20.default.createElement(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
@@ -46414,21 +46866,21 @@ function CompletionStep() {
       strokeLinecap: "round",
       strokeLinejoin: "round"
     },
-    /* @__PURE__ */ import_react18.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
-    /* @__PURE__ */ import_react18.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
-  )), /* @__PURE__ */ import_react18.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community.", /* @__PURE__ */ import_react18.default.createElement("br", null), /* @__PURE__ */ import_react18.default.createElement("br", null), /* @__PURE__ */ import_react18.default.createElement("span", { className: "text-indigo-600 font-medium" }, "You'll be automatically redirected to your profile in a moment...")), /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react18.default.createElement("h2", { className: "font-semibold text-lg" }, "@", designer.username), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-500 text-sm" }, "Your profile is ready!")), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-gray-700" }, "Your designer profile has been successfully created and is now live.")), /* @__PURE__ */ import_react18.default.createElement(
+    /* @__PURE__ */ import_react20.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
+    /* @__PURE__ */ import_react20.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
+  )), /* @__PURE__ */ import_react20.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react20.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community.", /* @__PURE__ */ import_react20.default.createElement("br", null), /* @__PURE__ */ import_react20.default.createElement("br", null), /* @__PURE__ */ import_react20.default.createElement("span", { className: "text-indigo-600 font-medium" }, "You'll be automatically redirected to your profile in a moment...")), /* @__PURE__ */ import_react20.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react20.default.createElement("h2", { className: "font-semibold text-lg" }, "@", designer.username), /* @__PURE__ */ import_react20.default.createElement("p", { className: "text-gray-500 text-sm" }, "Your profile is ready!")), /* @__PURE__ */ import_react20.default.createElement("p", { className: "text-gray-700" }, "Your designer profile has been successfully created and is now live.")), /* @__PURE__ */ import_react20.default.createElement(
     Link,
     {
       to: `/${designer.username}`,
       className: "px-6 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block font-medium"
     },
     "View Your Profile"
-  )), /* @__PURE__ */ import_react18.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react18.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react18.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react18.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
+  )), /* @__PURE__ */ import_react20.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react20.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react20.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react20.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
 }
 
 // app/javascript/components/onboarding/OnboardingFlow.jsx
 function OnboardingFlow() {
-  return /* @__PURE__ */ import_react19.default.createElement(Routes, null, /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react19.default.createElement(Navigate, { to: "/onboarding/username", replace: true }) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/username", element: /* @__PURE__ */ import_react19.default.createElement(UsernameStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/product-type", element: /* @__PURE__ */ import_react19.default.createElement(ProductTypeStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/personal-info", element: /* @__PURE__ */ import_react19.default.createElement(PersonalInfoStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/brand-info", element: /* @__PURE__ */ import_react19.default.createElement(BrandInfoStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/location", element: /* @__PURE__ */ import_react19.default.createElement(LocationStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/collaboration", element: /* @__PURE__ */ import_react19.default.createElement(CollaborationStep, null) }), /* @__PURE__ */ import_react19.default.createElement(Route, { path: "/complete", element: /* @__PURE__ */ import_react19.default.createElement(CompletionStep, null) }));
+  return /* @__PURE__ */ import_react21.default.createElement(Routes, null, /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react21.default.createElement(Navigate, { to: "/onboarding/username", replace: true }) }), /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/username", element: /* @__PURE__ */ import_react21.default.createElement(UsernameStep, null) }), /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/product-type", element: /* @__PURE__ */ import_react21.default.createElement(ProductTypeStep, null) }), /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/personal-info", element: /* @__PURE__ */ import_react21.default.createElement(PersonalInfoStep, null) }), /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/brand-info", element: /* @__PURE__ */ import_react21.default.createElement(BrandInfoStep, null) }), /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/location", element: /* @__PURE__ */ import_react21.default.createElement(LocationStep, null) }), /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/collaboration", element: /* @__PURE__ */ import_react21.default.createElement(CollaborationStep, null) }), /* @__PURE__ */ import_react21.default.createElement(Route, { path: "/complete", element: /* @__PURE__ */ import_react21.default.createElement(CompletionStep, null) }));
 }
 
 // app/javascript/routes/index.jsx
@@ -46444,13 +46896,13 @@ var AppRoutes = () => {
   if (isRailsRoute) {
     return null;
   }
-  return /* @__PURE__ */ import_react20.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react20.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react20.default.createElement(Routes, null, /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react20.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react20.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react20.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react20.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/profile", element: /* @__PURE__ */ import_react20.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react20.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/collection/:collectionId", element: /* @__PURE__ */ import_react20.default.createElement(CollectionView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/onboarding/*", element: /* @__PURE__ */ import_react20.default.createElement(OnboardingFlow, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/sample/profile", element: /* @__PURE__ */ import_react20.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react20.default.createElement(Route, { path: "/:username", element: /* @__PURE__ */ import_react20.default.createElement(DynamicProfileView, null) })));
+  return /* @__PURE__ */ import_react22.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react22.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react22.default.createElement(Routes, null, /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react22.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react22.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react22.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react22.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/profile", element: /* @__PURE__ */ import_react22.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react22.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/collection/:collectionId", element: /* @__PURE__ */ import_react22.default.createElement(CollectionView, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/onboarding/*", element: /* @__PURE__ */ import_react22.default.createElement(OnboardingFlow, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/sample/profile", element: /* @__PURE__ */ import_react22.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react22.default.createElement(Route, { path: "/:username", element: /* @__PURE__ */ import_react22.default.createElement(DynamicProfileView, null) })));
 };
 var routes_default = AppRoutes;
 
 // app/javascript/components/App.jsx
 var App = () => {
-  return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement(routes_default, null));
+  return /* @__PURE__ */ import_react23.default.createElement(import_react23.default.Fragment, null, /* @__PURE__ */ import_react23.default.createElement(routes_default, null));
 };
 var App_default = App;
 
@@ -46459,7 +46911,7 @@ document.addEventListener("turbo:load", () => {
   const root = (0, import_client.createRoot)(
     document.body.appendChild(document.createElement("div"))
   );
-  root.render(/* @__PURE__ */ import_react22.default.createElement(App_default, null));
+  root.render(/* @__PURE__ */ import_react24.default.createElement(App_default, null));
 });
 /*! Bundled license information:
 
@@ -46684,6 +47136,14 @@ lucide-react/dist/esm/icons/external-link.js:
    * See the LICENSE file in the root directory of this source tree.
    *)
 
+lucide-react/dist/esm/icons/file-text.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
 lucide-react/dist/esm/icons/funnel.js:
   (**
    * @license lucide-react v0.510.0 - ISC
@@ -46701,6 +47161,14 @@ lucide-react/dist/esm/icons/grid-3x3.js:
    *)
 
 lucide-react/dist/esm/icons/heart.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/image.js:
   (**
    * @license lucide-react v0.510.0 - ISC
    *
@@ -46780,6 +47248,22 @@ lucide-react/dist/esm/icons/star.js:
    * See the LICENSE file in the root directory of this source tree.
    *)
 
+lucide-react/dist/esm/icons/tag.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/upload.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
 lucide-react/dist/esm/icons/user-plus.js:
   (**
    * @license lucide-react v0.510.0 - ISC
@@ -46789,6 +47273,14 @@ lucide-react/dist/esm/icons/user-plus.js:
    *)
 
 lucide-react/dist/esm/icons/users.js:
+  (**
+   * @license lucide-react v0.510.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   *)
+
+lucide-react/dist/esm/icons/x.js:
   (**
    * @license lucide-react v0.510.0 - ISC
    *

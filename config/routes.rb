@@ -27,6 +27,15 @@ Rails.application.routes.draw do
     
     # Designer profile API endpoint
     get 'designers/:id', to: 'designers#show'
+    
+    # Collections API
+    resources :collections, only: [:show, :create, :update, :destroy]
+    get 'designers/:designer_username/collections', to: 'collections#index'
+    
+    # Designs API
+    resources :designs, only: [:show, :create, :update, :destroy]
+    get 'collections/:collection_id/designs', to: 'designs#index'
+    get 'designers/:designer_username/designs', to: 'designs#index'
   end
 
   # Legacy onboarding routes (can be removed once React flow is fully implemented)

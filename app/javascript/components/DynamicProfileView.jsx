@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MoreHorizontal, Archive, MapPin, MessageCircle, UserPlus, Camera, Scissors, ExternalLink, Award, Heart, Palette, Info, Users, Briefcase, Star, Plus, LogOut } from "lucide-react";
+import CollectionForm from "./CollectionForm";
+import DesignForm from "./DesignForm";
 
 export default function DynamicProfileView() {
   const { username } = useParams();
   const [designer, setDesigner] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showCollectionForm, setShowCollectionForm] = useState(false);
+  const [showDesignForm, setShowDesignForm] = useState(false);
   
   // Add smooth scrolling behavior to the document
   React.useEffect(() => {
@@ -52,32 +56,49 @@ export default function DynamicProfileView() {
     form.submit();
   };
 
-  // Fetch designer data when component mounts
-  useEffect(() => {
-    const fetchDesignerData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        console.log('Fetching designer data for username:', username);
-        const response = await fetch(`/api/designers/${username}`);
-        console.log('API Response status:', response.status);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('Designer data received:', data);
-        setDesigner(data);
-      } catch (err) {
-        console.error("Error fetching designer data:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Handle collection creation
+  const handleCollectionSubmit = (newCollection) => {
+    // Refresh designer data or add the new collection to the current state
+    setDesigner(prev => ({
+      ...prev,
+      collections: [newCollection, ...(prev.collections || [])]
+    }));
+  };
 
+  // Handle design creation
+  const handleDesignSubmit = (newDesign) => {
+    // Refresh designer data or update the collections
+    console.log("New design created:", newDesign);
+    // You might want to refresh the designer data here
+    fetchDesignerData();
+  };
+
+  // Fetch designer data when component mounts
+  const fetchDesignerData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      console.log('Fetching designer data for username:', username);
+      const response = await fetch(`/api/designers/${username}`);
+      console.log('API Response status:', response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Designer data received:', data);
+      setDesigner(data);
+    } catch (err) {
+      console.error("Error fetching designer data:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     if (username) {
       fetchDesignerData();
     }
@@ -124,6 +145,22 @@ export default function DynamicProfileView() {
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Collection Form Modal */}
+      <CollectionForm
+        isOpen={showCollectionForm}
+        onClose={() => setShowCollectionForm(false)}
+        onSubmit={handleCollectionSubmit}
+        designerUsername={designer.username}
+      />
+
+      {/* Design Form Modal */}
+      <DesignForm
+        isOpen={showDesignForm}
+        onClose={() => setShowDesignForm(false)}
+        onSubmit={handleDesignSubmit}
+        designerUsername={designer.username}
+      />
+
       {/* Log Out button - only show for own profile */}
       {isOwnProfile && (
         <div className="absolute top-4 right-4 z-10">
@@ -235,6 +272,13 @@ export default function DynamicProfileView() {
                 <button className="bg-gray-200 text-gray-700 font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1">
                   Edit Profile
                 </button>
+                <button 
+                  onClick={() => setShowDesignForm(true)}
+                  className="bg-green-600 text-white font-medium px-4 py-1.5 rounded-md text-sm flex items-center gap-1"
+                >
+                  <Plus size={16} />
+                  Add Design
+                </button>
               </div>
             )}
 
@@ -314,7 +358,10 @@ export default function DynamicProfileView() {
           <h2 className="font-medium">Collections</h2>
           {!isOwnProfile && <a href="#" className="text-blue-600 text-sm">View All</a>}
           {isOwnProfile && designer.collections && designer.collections.length > 0 && (
-            <button className="text-blue-600 text-sm flex items-center gap-1">
+            <button 
+              onClick={() => setShowCollectionForm(true)}
+              className="text-blue-600 text-sm flex items-center gap-1 hover:text-blue-700"
+            >
               <Plus size={16} />
               Create Collection
             </button>
@@ -356,7 +403,10 @@ export default function DynamicProfileView() {
               </div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">Create your first collection</h3>
               <p className="text-gray-500 mb-4">Start showcasing your designs by organizing them into collections</p>
-              <button className="bg-blue-600 text-white font-medium px-6 py-2 rounded-md text-sm flex items-center gap-2 mx-auto">
+              <button 
+                onClick={() => setShowCollectionForm(true)}
+                className="bg-blue-600 text-white font-medium px-6 py-2 rounded-md text-sm flex items-center gap-2 mx-auto hover:bg-blue-700"
+              >
                 <Plus size={16} />
                 Create Collection
               </button>
