@@ -18,8 +18,8 @@ class SessionsController < ApplicationController
       else
         # Force HTTPS redirect for profile URLs in production
         profile_url = Rails.env.production? ? 
-          "https://#{request.host}/#{user.designer.slug}" : 
-          "/#{user.designer.slug}"
+          "https://#{request.host}/#{user.designer.username}" : 
+          "/#{user.designer.username}"
         redirect_to profile_url
       end
     else

@@ -239,7 +239,7 @@ export default function DynamicProfileView() {
             </div>
 
             {/* Username */}
-            <p className="text-gray-500 text-sm mb-2">@{designer.slug || username || "AriaDesigns"} 👗</p>
+            <p className="text-gray-500 text-sm mb-2">@{designer.username || username || "AriaDesigns"} 👗</p>
 
             {/* Bio */}
             <p className="text-sm mb-4 max-w-md">

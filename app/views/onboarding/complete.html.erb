@@ -24,7 +24,7 @@
     </div>
   </div>
   
-  <%= link_to "View Your Profile", "/#{@designer.slug}", class: "view-profile-button" %>
+  <%= link_to "View Your Profile", "/#{@designer.username}", class: "view-profile-button" %>
   <% else %>
   <div class="error-message">
     <p>There was an issue creating your designer profile. Please try again from the beginning.</p>
