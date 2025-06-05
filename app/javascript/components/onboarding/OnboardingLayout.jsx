@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function OnboardingLayout({ children, title, backUrl }) {
+export default function OnboardingLayout({ children, title, subtitle, backUrl }) {
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden">
@@ -46,9 +46,13 @@ export default function OnboardingLayout({ children, title, backUrl }) {
             </Link>
           )}
           
-          <h1 className="text-2xl font-semibold mb-8">{title}</h1>
-          
-          {children}
+          <h1 className="text-2xl font-semibold mb-2">{title}</h1>
+          {subtitle && (
+            <p className="text-gray-600 text-sm mb-6">{subtitle}</p>
+          )}
+          <div className={subtitle ? "mt-6" : "mt-8"}>
+            {children}
+          </div>
         </div>
         
         <div className="border-t p-5 flex justify-between text-sm text-gray-500">

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   namespace :api do
     post 'onboarding/username', to: 'onboarding#username'
     post 'onboarding/product_type', to: 'onboarding#product_type'
+    post 'onboarding/production_style', to: 'onboarding#production_style'
+    post 'onboarding/designer_role', to: 'onboarding#designer_role'
+    post 'onboarding/brand_attributes', to: 'onboarding#brand_attributes'
     post 'onboarding/personal_info', to: 'onboarding#personal_info'
     post 'onboarding/brand_info', to: 'onboarding#brand_info'
     post 'onboarding/location', to: 'onboarding#location'

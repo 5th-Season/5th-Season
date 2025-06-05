@@ -25,6 +25,30 @@ class Api::OnboardingController < ApplicationController
     render json: { success: true }
   end
   
+  def production_style
+    session[:onboarding_data] ||= {}
+    session[:onboarding_data]['production_styles'] = params[:production_styles] || []
+    
+    Rails.logger.info("[API] Production styles saved: #{params[:production_styles]}")
+    render json: { success: true }
+  end
+  
+  def designer_role
+    session[:onboarding_data] ||= {}
+    session[:onboarding_data]['designer_role'] = params[:designer_role]
+    
+    Rails.logger.info("[API] Designer role saved: '#{params[:designer_role]}'")
+    render json: { success: true }
+  end
+  
+  def brand_attributes
+    session[:onboarding_data] ||= {}
+    session[:onboarding_data]['brand_attributes'] = params[:brand_attributes] || []
+    
+    Rails.logger.info("[API] Brand attributes saved: #{params[:brand_attributes]}")
+    render json: { success: true }
+  end
+  
   def personal_info
     session[:onboarding_data] ||= {}
     session[:onboarding_data]['first_name'] = params[:first_name]
@@ -71,6 +95,9 @@ class Api::OnboardingController < ApplicationController
       average_rating: 0.0
     )
     
+    # Add new fields if we need to store them directly on designer
+    # For now, we'll store them as JSON in additional fields or create separate models
+    
     if designer.save
       Rails.logger.info("Designer profile saved successfully with ID: #{designer.id}")
       
@@ -83,6 +110,14 @@ class Api::OnboardingController < ApplicationController
           )
         end
       end
+      
+      # Store additional onboarding data in the session for now
+      # In a production app, you might want to create additional models or fields
+      Rails.logger.info("Additional data collected:")
+      Rails.logger.info("- Product type: #{session[:onboarding_data]['product_type']}")
+      Rails.logger.info("- Production styles: #{session[:onboarding_data]['production_styles']}")
+      Rails.logger.info("- Designer role: #{session[:onboarding_data]['designer_role']}")
+      Rails.logger.info("- Brand attributes: #{session[:onboarding_data]['brand_attributes']}")
       
       # Clear session data
       session.delete(:onboarding_data)
