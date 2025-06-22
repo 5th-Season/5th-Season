@@ -677,30 +677,75 @@ export default function DynamicProfileView() {
       <div id="latest-designs" className="max-w-4xl mx-auto py-6 px-4 border-t">
         <div className="flex justify-between items-center mb-4">
           <h2 className="font-medium">Latest Designs 🧵</h2>
-          <button className="flex items-center gap-1 text-sm text-gray-500">
-            <Archive size={16} />
-            <span>Show archived</span>
-          </button>
+          {designer.designs && designer.designs.length > 0 && (
+            <button className="flex items-center gap-1 text-sm text-gray-500">
+              <Archive size={16} />
+              <span>Show archived</span>
+            </button>
+          )}
         </div>
 
-        {/* Grid of posts */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <div key={index} className="aspect-square overflow-hidden rounded-md border">
-              <div
-                className="w-full h-full bg-gray-200"
-                alt={`Design ${index + 1}`}
-              ></div>
+        {designer.designs && designer.designs.length > 0 ? (
+          <>
+            {/* Grid of actual designs */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {designer.designs.slice(0, 8).map((design, index) => (
+                <div key={design.id || index} className="aspect-square overflow-hidden rounded-md border bg-gray-50 relative">
+                  {design.image_url ? (
+                    <img
+                      src={design.image_url}
+                      alt={design.title || `Design ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                      <Palette className="text-blue-500" size={24} />
+                    </div>
+                  )}
+                  {design.title && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
+                      <span className="text-white text-xs font-medium">{design.title}</span>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Load more button */}
-        <div className="text-center mt-6">
-          <button className="text-sm text-blue-600 font-medium">
-            View All Designs
-          </button>
-        </div>
+            {/* Load more button */}
+            {designer.designs.length > 8 && (
+              <div className="text-center mt-6">
+                <button className="text-sm text-blue-600 font-medium">
+                  View All Designs ({designer.designs.length})
+                </button>
+              </div>
+            )}
+          </>
+        ) : isOwnProfile ? (
+          // Show create design prompt for own profile with no designs
+          <div className="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+            <div className="mx-auto w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+              <Plus className="text-indigo-600" size={24} />
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Upload your first design</h3>
+            <p className="text-gray-500 mb-4">Start building your portfolio by showcasing your creative work</p>
+            <button 
+              onClick={() => setShowDesignForm(true)}
+              className="bg-indigo-600 text-white font-medium px-6 py-2 rounded-md text-sm flex items-center gap-2 mx-auto hover:bg-indigo-700"
+            >
+              <Plus size={16} />
+              Add Design
+            </button>
+          </div>
+        ) : (
+          // Show empty state for other people's profiles with no designs
+          <div className="text-center py-12 bg-gray-50 rounded-lg">
+            <div className="mx-auto w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+              <Palette className="text-gray-400" size={24} />
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No designs yet</h3>
+            <p className="text-gray-500">This designer hasn't uploaded any designs to showcase</p>
+          </div>
+        )}
       </div>
     </div>
   );

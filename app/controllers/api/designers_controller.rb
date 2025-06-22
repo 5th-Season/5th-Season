@@ -56,6 +56,26 @@ module Api
         }
       end
       
+      # Prepare designs data
+      designs = designer.designs.order(created_at: :desc).map do |design|
+        {
+          id: design.id,
+          title: design.title,
+          description: design.description,
+          image_url: design.image_url,
+          materials: design.materials,
+          dimensions: design.dimensions,
+          status: design.status,
+          featured: design.featured,
+          collection: {
+            id: design.collection.id,
+            title: design.collection.title
+          },
+          created_at: design.created_at,
+          updated_at: design.updated_at
+        }
+      end
+      
       # Build the response object
       response = {
         id: designer.id,
@@ -69,6 +89,7 @@ module Api
         user: user_data,
         collaboration_preferences: collaboration_preferences,
         collections: collections,
+        designs: designs,
         created_at: designer.created_at,
         updated_at: designer.updated_at
       }
