@@ -1,5 +1,5 @@
 class Designer < ApplicationRecord
-  belongs_to :user, optional: true  # Make user optional for direct designer creation
+  belongs_to :user  # User association is now required
   has_many :collections, dependent: :destroy
   has_many :collaboration_preferences, dependent: :destroy
   has_many :testimonials, dependent: :destroy

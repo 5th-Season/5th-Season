@@ -1,7 +1,6 @@
 class Api::OnboardingController < ApplicationController
-  # Remove authentication requirement for simplified flow
-  # before_action :require_login
-  # before_action :check_existing_designer, except: [:complete, :designer_profile, :current_user_info]
+  before_action :require_login
+  before_action :check_existing_designer, except: [:complete, :designer_profile, :current_user_info]
   
   def username
     session[:onboarding_data] = {}
@@ -85,8 +84,8 @@ class Api::OnboardingController < ApplicationController
     
     Rails.logger.info("Creating designer with data: #{session[:onboarding_data].inspect}")
     
-    # Create designer directly without user association
-    designer = Designer.new(
+    # Create designer associated with current user
+    designer = current_user.build_designer(
       username: session[:onboarding_data]['username'],
       brand_name: session[:onboarding_data]['brand_name'],
       brand_description: session[:onboarding_data]['brand_description'],
@@ -136,12 +135,20 @@ class Api::OnboardingController < ApplicationController
   end
   
   def current_user_info
-    # Return empty data since we're not using user accounts
-    render json: { 
-      first_name: nil,
-      last_name: nil,
-      email: nil
-    }
+    # Return current user data if logged in
+    if current_user
+      render json: { 
+        first_name: current_user.first_name,
+        last_name: current_user.last_name,
+        email: current_user.email
+      }
+    else
+      render json: { 
+        first_name: nil,
+        last_name: nil,
+        email: nil
+      }
+    end
   end
   
   def designer_profile
@@ -151,10 +158,15 @@ class Api::OnboardingController < ApplicationController
 
   private
   
-  # Remove authentication methods since we're not using them
-  # def check_existing_designer
-  #   if current_user.designer.present?
-  #     render json: { error: "You already have a designer profile" }, status: :unprocessable_entity
-  #   end
-  # end
+  def require_login
+    unless current_user
+      render json: { error: "You must be logged in to access this section" }, status: :unauthorized
+    end
+  end
+  
+  def check_existing_designer
+    if current_user.designer.present?
+      render json: { error: "You already have a designer profile" }, status: :unprocessable_entity
+    end
+  end
 end

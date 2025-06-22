@@ -1,7 +1,6 @@
 class OnboardingController < ApplicationController
-  # Remove authentication requirement
-  # before_action :require_login
-  # before_action :check_existing_designer, except: [:complete]
+  before_action :require_login
+  before_action :check_existing_designer, except: [:complete]
   
   def start
     session[:onboarding_data] = {}
@@ -75,8 +74,8 @@ class OnboardingController < ApplicationController
       
       Rails.logger.info("Creating designer with data: #{session[:onboarding_data].inspect}")
       
-      # Create designer directly without user association
-      designer = Designer.new(
+      # Create designer associated with current user
+      designer = current_user.build_designer(
         username: session[:onboarding_data][:username],
         brand_name: session[:onboarding_data][:brand_name],
         brand_description: session[:onboarding_data][:brand_description],
@@ -124,15 +123,14 @@ class OnboardingController < ApplicationController
 
   private
   
-  # Remove authentication methods since we're not using them
-  # def require_login
-  #   unless current_user
-  #     flash[:error] = "You must be logged in to access this section"
-  #     redirect_to login_path
-  #   end
-  # end
+  def require_login
+    unless current_user
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_path
+    end
+  end
   
-  # def check_existing_designer
-  #   redirect_to "/#{current_user.designer.slug}" if current_user.designer.present?
-  # end
+  def check_existing_designer
+    redirect_to "/#{current_user.designer.username}" if current_user.designer.present?
+  end
 end

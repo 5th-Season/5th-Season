@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    user = User.find_by_login(params[:username])
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
         redirect_to profile_url
       end
     else
-      flash.now[:error] = "Invalid email or password"
+      flash.now[:error] = "Invalid username or password"
       render :new
     end
   end
