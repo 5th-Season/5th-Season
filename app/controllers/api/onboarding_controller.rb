@@ -165,7 +165,7 @@ class Api::OnboardingController < ApplicationController
   end
   
   def check_existing_designer
-    if current_user.designer.present?
+    if current_user&.designer.present?
       render json: { error: "You already have a designer profile" }, status: :unprocessable_entity
     end
   end

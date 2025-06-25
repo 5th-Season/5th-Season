@@ -131,6 +131,8 @@ class OnboardingController < ApplicationController
   end
   
   def check_existing_designer
-    redirect_to "/#{current_user.designer.username}" if current_user.designer.present?
+    if current_user&.designer.present?
+      redirect_to "/#{current_user.designer.username}"
+    end
   end
 end
