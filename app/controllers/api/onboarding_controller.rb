@@ -48,18 +48,6 @@ class Api::OnboardingController < ApplicationController
     render json: { success: true }
   end
   
-  def personal_info
-    session[:onboarding_data] ||= {}
-    session[:onboarding_data]['first_name'] = params[:first_name]
-    session[:onboarding_data]['last_name'] = params[:last_name]
-    
-    if params[:first_name].present? && params[:last_name].present?
-      render json: { success: true }
-    else
-      render json: { error: "Please provide your first and last name" }, status: :unprocessable_entity
-    end
-  end
-  
   def brand_info
     session[:onboarding_data] ||= {}
     session[:onboarding_data]['brand_name'] = params[:brand_name]
@@ -140,13 +128,15 @@ class Api::OnboardingController < ApplicationController
       render json: { 
         first_name: current_user.first_name,
         last_name: current_user.last_name,
-        email: current_user.email
+        email: current_user.email,
+        username: current_user.username
       }
     else
       render json: { 
         first_name: nil,
         last_name: nil,
-        email: nil
+        email: nil,
+        username: nil
       }
     end
   end

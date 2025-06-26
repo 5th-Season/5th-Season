@@ -1688,7 +1688,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
-        function useEffect8(create, deps) {
+        function useEffect9(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useEffect(create, deps);
         }
@@ -2471,7 +2471,7 @@ var require_react_development = __commonJS({
         exports.useContext = useContext3;
         exports.useDebugValue = useDebugValue;
         exports.useDeferredValue = useDeferredValue;
-        exports.useEffect = useEffect8;
+        exports.useEffect = useEffect9;
         exports.useId = useId;
         exports.useImperativeHandle = useImperativeHandle;
         exports.useInsertionEffect = useInsertionEffect;
@@ -2975,9 +2975,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React29 = require_react();
+        var React28 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React29.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React28.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -4582,7 +4582,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React29.Children.forEach(props.children, function(child) {
+                React28.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -33199,14 +33199,14 @@ window.Turbo = turbo_es2017_esm_exports;
 addEventListener("turbo:before-fetch-request", encodeMethodIntoRequestBody);
 
 // app/javascript/components/index.jsx
-var import_react27 = __toESM(require_react());
+var import_react26 = __toESM(require_react());
 var import_client = __toESM(require_client());
 
 // app/javascript/components/App.jsx
-var import_react26 = __toESM(require_react());
+var import_react25 = __toESM(require_react());
 
 // app/javascript/routes/index.jsx
-var import_react25 = __toESM(require_react());
+var import_react24 = __toESM(require_react());
 
 // node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react());
@@ -44653,6 +44653,7 @@ var Home = () => {
   const scrollRef = (0, import_react2.useRef)(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [userStatus, setUserStatus] = (0, import_react2.useState)({ loading: true, user: null, designer: null });
   (0, import_react2.useEffect)(() => {
     const scrollInterval = setInterval(() => {
       if (scrollRef.current) {
@@ -44674,16 +44675,83 @@ var Home = () => {
     }
     Mixpanel.track("Landing Page", props);
   }, [searchParams]);
+  (0, import_react2.useEffect)(() => {
+    checkUserStatus();
+  }, []);
+  const checkUserStatus = async () => {
+    try {
+      const response = await fetch("/api/onboarding/current_user_info", {
+        credentials: "same-origin",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      });
+      if (response.ok) {
+        const userData = await response.json();
+        if (userData.first_name) {
+          try {
+            const designerResponse = await fetch("/api/designers/check_current_user", {
+              credentials: "same-origin",
+              headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+              }
+            });
+            if (designerResponse.ok) {
+              const designerData = await designerResponse.json();
+              setUserStatus({
+                loading: false,
+                user: userData,
+                designer: designerData.designer
+              });
+            } else {
+              setUserStatus({
+                loading: false,
+                user: userData,
+                designer: null
+              });
+            }
+          } catch (designerError) {
+            setUserStatus({
+              loading: false,
+              user: userData,
+              designer: null
+            });
+          }
+        } else {
+          setUserStatus({ loading: false, user: null, designer: null });
+        }
+      } else {
+        setUserStatus({ loading: false, user: null, designer: null });
+      }
+    } catch (error) {
+      console.error("Error checking user status:", error);
+      setUserStatus({ loading: false, user: null, designer: null });
+    }
+  };
   const handleCreateProfile = () => {
-    navigate("/onboarding");
+    if (userStatus.loading) return;
+    if (!userStatus.user) {
+      window.location.href = "/signup";
+    } else if (userStatus.designer) {
+      navigate(`/${userStatus.designer.username}`);
+    } else {
+      if (userStatus.user.username) {
+        navigate("/onboarding/product-type");
+      } else {
+        navigate("/onboarding/username");
+      }
+    }
   };
   return /* @__PURE__ */ import_react2.default.createElement("div", null, /* @__PURE__ */ import_react2.default.createElement("div", { className: "about-fashionista" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "asc-container" }, /* @__PURE__ */ import_react2.default.createElement("h2", null, /* @__PURE__ */ import_react2.default.createElement("strong", null, "The Future of Fashion Starts Here")), /* @__PURE__ */ import_react2.default.createElement("p", null, "Welcome to the season where", /* @__PURE__ */ import_react2.default.createElement("br", null), " designers shine, new trends begin, and ", /* @__PURE__ */ import_react2.default.createElement("br", null), "all will discover their place in fashion."), /* @__PURE__ */ import_react2.default.createElement("div", { className: "mt-8" }, /* @__PURE__ */ import_react2.default.createElement(
     "button",
     {
       onClick: handleCreateProfile,
-      className: "bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors duration-200 shadow-lg"
+      disabled: userStatus.loading,
+      className: "bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
     },
-    "Create a Designer Profile"
+    userStatus.loading ? "Loading..." : userStatus.designer ? "View My Profile" : userStatus.user ? "Complete Designer Profile" : "Create a Designer Profile"
   )))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-designers bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("div", { ref: scrollRef, className: "designer-lineup flex overflow-x-auto space-x-4 px-4 scrollbar-hide" }, /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/29811587/pexels-photo-29811587/free-photo-of-elegant-woman-with-curly-hair-posing-indoors.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Designer 1", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://www.essence.com/wp-content/uploads/2022/07/GettyImages-1205845584-scaled.jpg`, alt: "Designer 2", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://www.essence.com/wp-content/uploads/2022/07/hEk5Kvec-8.png`, alt: "Designer 3", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/3205989/pexels-photo-3205989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 4", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/8715778/pexels-photo-8715778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 5", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/26221665/pexels-photo-26221665/free-photo-of-portrait-of-man-wearing-suit.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 5", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/28579193/pexels-photo-28579193/free-photo-of-stylish-man-in-urban-setting-with-sunglasses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 3", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.pexels.com/photos/18192898/pexels-photo-18192898/free-photo-of-a-boy-s-portrait-in-white-attire.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`, alt: "Designer 4", className: "w-full h-full object-cover" })), /* @__PURE__ */ import_react2.default.createElement("div", { className: "flex-shrink-0 w-60 h-80 rounded-lg overflow-hidden shadow-md" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: `https://images.unsplash.com/photo-1545291730-faff8ca1d4b0`, alt: "Designer 5", className: "w-full h-full object-cover" })))), /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col items-center text-center py-12 px-4 max-w-5xl mx-auto" }, /* @__PURE__ */ import_react2.default.createElement("h1", { class: "text-4xl lg:text-5xl font-bold text-gray-900 mb-4" }, "Empowering Designers, Defining the Future of Fashion"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-lg text-gray-600 mb-8" }, "Our mission is to transform how designers launch, grow, and thrive in the fashion industry."), /* @__PURE__ */ import_react2.default.createElement("div", { class: "w-full" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/9850074/pexels-photo-9850074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "", class: "rounded-lg shadow-lg max-w-full h-auto" }))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4" }, /* @__PURE__ */ import_react2.default.createElement("h2", { class: "text-3xl lg:text-4xl font-bold mb-4 text-gray-900" }, "What is 5th Season?"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-gray-700 leading-relaxed" }, "Fashion has always been defined by four seasons\u2014spring, summer, fall, and winter\u2014but we're here to introduce something new. 5th Season is a fashion tech platform designed exclusively for designers ready to break the mold. Whether you're launching your first collection or growing an established brand, we're here to help you showcase your work, grow your presence, and turn your vision into the next big trend.")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4 flex justify-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/1478477/pexels-photo-1478477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Diverse team meeting", class: "rounded-md shadow-lg max-w-full h-auto" })))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("section", { class: "flex flex-col lg:flex-row items-center lg:items-start bg-white p-6 lg:p-12 rounded-md shadow-lg max-w-7xl mx-auto mt-10" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4 flex justify-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "https://images.pexels.com/photos/965324/pexels-photo-965324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt: "Diverse team meeting", class: "rounded-md shadow-lg max-w-1/2 h-auto feature-image" })), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/2 p-4" }, /* @__PURE__ */ import_react2.default.createElement("h2", { class: "text-3xl lg:text-4xl font-bold mb-4 text-gray-900" }, "Connect, Collaborate, and Elevate"), /* @__PURE__ */ import_react2.default.createElement("p", { class: "text-gray-700 leading-relaxed" }, "Success in fashion isn't just about the designs\u2014it's about the connections. Our platform is the ultimate hub for collaboration, where designers, brands, and industry experts come together to innovate and inspire. Share ideas, co-create collections, and network with top talent in the industry. From partnerships to professional growth, we're here to help you thrive in the fast-paced world of fashion. Together, we can shape the future of style.")))), /* @__PURE__ */ import_react2.default.createElement("div", { className: "fashionista-feature bg-white mt-8" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "flex flex-col lg:flex-row justify-center w-full" }, /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Create.png", alt: "Create" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Kick off your launch! Upload your designs, select tags that best represent your brand or style, and set the stage for your journey with us. This is your first step toward showcasing your creativity and connecting with the fashion community")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Launch.png", alt: "Launch" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Showcase your collections for the world to discover, purchase, and share. Build credibility and connect with fashion enthusiasts through exclusive drops and unique pieces")), /* @__PURE__ */ import_react2.default.createElement("div", { class: "lg:w-1/3 p-4 flex flex-col items-center" }, /* @__PURE__ */ import_react2.default.createElement("img", { src: "/Collab.png", alt: "Collaborate" }), /* @__PURE__ */ import_react2.default.createElement("p", { class: "mt-4 text-center text-gray-700" }, "Find like-minded creatives and unlock new opportunities. Team up on new collections, recruit talent or connect with brands to bring innovative projects to life")))));
 };
 var Home_default = Home;
@@ -46276,7 +46344,7 @@ function CollectionView() {
 }
 
 // app/javascript/components/onboarding/OnboardingFlow.jsx
-var import_react24 = __toESM(require_react());
+var import_react23 = __toESM(require_react());
 
 // app/javascript/components/onboarding/UsernameStep.jsx
 var import_react14 = __toESM(require_react());
@@ -46325,7 +46393,41 @@ function UsernameStep() {
   const [username, setUsername] = (0, import_react14.useState)("");
   const [isLoading, setIsLoading] = (0, import_react14.useState)(false);
   const [error, setError] = (0, import_react14.useState)("");
+  const [checkingExistingUser, setCheckingExistingUser] = (0, import_react14.useState)(true);
   const navigate = useNavigate();
+  (0, import_react14.useEffect)(() => {
+    const checkExistingUser = async () => {
+      try {
+        const response = await fetch("/api/onboarding/current_user_info", {
+          headers: {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+          }
+        });
+        if (response.ok) {
+          const userData = await response.json();
+          if (userData.username) {
+            const usernameResponse = await fetch("/api/onboarding/username", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+              },
+              body: JSON.stringify({ username: userData.username })
+            });
+            if (usernameResponse.ok) {
+              navigate("/onboarding/product-type");
+              return;
+            }
+          }
+        }
+      } catch (error2) {
+        console.error("Error checking existing user:", error2);
+      } finally {
+        setCheckingExistingUser(false);
+      }
+    };
+    checkExistingUser();
+  }, [navigate]);
   const handleNextClick = async () => {
     if (!username.trim()) {
       setError("Please enter a username");
@@ -46360,6 +46462,15 @@ function UsernameStep() {
     setUsername(value);
     setError("");
   };
+  if (checkingExistingUser) {
+    return /* @__PURE__ */ import_react14.default.createElement(
+      OnboardingLayout,
+      {
+        title: "Setting up your profile..."
+      },
+      /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex justify-center items-center py-12" }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500" }))
+    );
+  }
   return /* @__PURE__ */ import_react14.default.createElement(
     OnboardingLayout,
     {
@@ -46400,7 +46511,16 @@ var productTypes = [
   { id: "footwear", icon: "\u{1F460}", label: "Footwear", sublabel: "Shoes & boots" },
   { id: "intimates", icon: "\u{1FA71}", label: "Intimates / Loungewear", sublabel: "Underwear & comfort wear" },
   { id: "bridal", icon: "\u{1F470}", label: "Bridal / Occasionwear", sublabel: "Wedding & special events" },
-  { id: "kidswear", icon: "\u{1F476}", label: "Kidswear", sublabel: "Children's clothing" }
+  { id: "kidswear", icon: "\u{1F476}", label: "Kidswear", sublabel: "Children's clothing" },
+  { id: "activewear", icon: "\u{1F3C3}", label: "Activewear / Athleisure", sublabel: "Sportswear & gym wear" },
+  { id: "vintage", icon: "\u{1F570}\uFE0F", label: "Vintage / Upcycled", sublabel: "Reworked & vintage pieces" },
+  { id: "sustainable", icon: "\u{1F331}", label: "Sustainable Fashion", sublabel: "Eco-conscious design" },
+  { id: "plus_size", icon: "\u{1F4AA}", label: "Plus Size Fashion", sublabel: "Extended & inclusive sizing" },
+  { id: "maternity", icon: "\u{1F931}", label: "Maternity Wear", sublabel: "Expecting & nursing mothers" },
+  { id: "workwear", icon: "\u{1F4BC}", label: "Workwear / Professional", sublabel: "Business & office attire" },
+  { id: "costumes", icon: "\u{1F3AD}", label: "Costumes / Cosplay", sublabel: "Theatrical & character wear" },
+  { id: "tech_wear", icon: "\u26A1", label: "Tech Wear", sublabel: "Functional & tech-enhanced" },
+  { id: "home_lifestyle", icon: "\u{1F3E0}", label: "Home & Lifestyle", sublabel: "Home goods & living" }
 ];
 function ProductTypeStep() {
   const [selectedType, setSelectedType] = (0, import_react15.useState)(null);
@@ -46431,7 +46551,7 @@ function ProductTypeStep() {
       backUrl: "/onboarding/username",
       title: "What best describes your brand or creative focus?"
     },
-    /* @__PURE__ */ import_react15.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" }, productTypes.map((type) => /* @__PURE__ */ import_react15.default.createElement(
+    /* @__PURE__ */ import_react15.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" }, productTypes.map((type) => /* @__PURE__ */ import_react15.default.createElement(
       "div",
       {
         key: type.id,
@@ -46595,12 +46715,25 @@ var brandAttributes = [
   { id: "bold_avant_garde", icon: "\u{1F3AD}", label: "Bold/Avant-garde", description: "Experimental and artistic designs" },
   { id: "everyday_wear", icon: "\u{1F455}", label: "Everyday Wear", description: "Comfortable, wearable pieces" },
   { id: "functional_fashion", icon: "\u2699\uFE0F", label: "Functional fashion", description: "Practical and purposeful design" },
-  { id: "experimental_materials", icon: "\u{1F9EA}", label: "Experimental materials", description: "Innovative fabric and material use" }
+  { id: "experimental_materials", icon: "\u{1F9EA}", label: "Experimental materials", description: "Innovative fabric and material use" },
+  { id: "sustainable", icon: "\u{1F331}", label: "Sustainable/Eco-friendly", description: "Environmentally conscious practices" },
+  { id: "lgbtq_owned", icon: "\u{1F3F3}\uFE0F\u200D\u{1F308}", label: "LGBTQ+ owned", description: "LGBTQ+ owned business" },
+  { id: "minority_owned", icon: "\u{1F91D}", label: "Minority owned", description: "Minority-owned business" },
+  { id: "handmade", icon: "\u270B", label: "Handmade/Artisanal", description: "Hand-crafted with care" },
+  { id: "made_in_usa", icon: "\u{1F1FA}\u{1F1F8}", label: "Made in USA/Local", description: "Locally produced goods" },
+  { id: "vintage_upcycled", icon: "\u267B\uFE0F", label: "Vintage/Upcycled", description: "Reworked and repurposed materials" },
+  { id: "affordable", icon: "\u{1F4B0}", label: "Affordable/Budget-friendly", description: "Accessible pricing" },
+  { id: "custom_made", icon: "\u{1F4CF}", label: "Custom/Made-to-order", description: "Personalized and bespoke pieces" },
+  { id: "unisex", icon: "\u2696\uFE0F", label: "Unisex/Gender neutral", description: "Gender-inclusive designs" },
+  { id: "slow_fashion", icon: "\u{1F40C}", label: "Slow Fashion", description: "Quality over quantity approach" },
+  { id: "cruelty_free", icon: "\u{1F430}", label: "Cruelty-free/Vegan", description: "No animal products or testing" },
+  { id: "small_batch", icon: "\u{1F4E6}", label: "Small Batch", description: "Limited production runs" },
+  { id: "ethical_production", icon: "\u{1F932}", label: "Ethical Production", description: "Fair labor and wages" }
 ];
 function BrandAttributesStep() {
   const [selectedAttributes, setSelectedAttributes] = (0, import_react18.useState)([]);
   const navigate = useNavigate();
-  const maxSelection = 3;
+  const maxSelection = 5;
   const handleAttributeToggle = (attributeId) => {
     setSelectedAttributes((prev) => {
       if (prev.includes(attributeId)) {
@@ -46622,7 +46755,7 @@ function BrandAttributesStep() {
         body: JSON.stringify({ brand_attributes: selectedAttributes })
       });
       if (response.ok) {
-        navigate("/onboarding/personal-info");
+        navigate("/onboarding/brand-info");
       } else {
         console.error("Failed to save brand attributes");
       }
@@ -46637,7 +46770,7 @@ function BrandAttributesStep() {
       title: "Brand Attributes",
       subtitle: `Choose up to ${maxSelection} attributes that describe your brand (${selectedAttributes.length}/${maxSelection} selected)`
     },
-    /* @__PURE__ */ import_react18.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" }, brandAttributes.map((attribute) => {
+    /* @__PURE__ */ import_react18.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" }, brandAttributes.map((attribute) => {
       const isSelected = selectedAttributes.includes(attribute.id);
       const isDisabled = !isSelected && selectedAttributes.length >= maxSelection;
       return /* @__PURE__ */ import_react18.default.createElement(
@@ -46663,77 +46796,11 @@ function BrandAttributesStep() {
   );
 }
 
-// app/javascript/components/onboarding/PersonalInfoStep.jsx
-var import_react19 = __toESM(require_react());
-function PersonalInfoStep() {
-  const [firstName, setFirstName] = (0, import_react19.useState)("");
-  const [lastName, setLastName] = (0, import_react19.useState)("");
-  const navigate = useNavigate();
-  const handleNextClick = async () => {
-    if (!firstName.trim() || !lastName.trim()) return;
-    try {
-      const response = await fetch("/api/onboarding/personal_info", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName
-        })
-      });
-      if (response.ok) {
-        navigate("/onboarding/brand-info");
-      } else {
-        console.error("Failed to save personal info");
-      }
-    } catch (error) {
-      console.error("Error saving personal info:", error);
-    }
-  };
-  return /* @__PURE__ */ import_react19.default.createElement(
-    OnboardingLayout,
-    {
-      backUrl: "/onboarding/brand-attributes",
-      title: "Your Full Name"
-    },
-    /* @__PURE__ */ import_react19.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react19.default.createElement("div", null, /* @__PURE__ */ import_react19.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "First Name"), /* @__PURE__ */ import_react19.default.createElement(
-      "input",
-      {
-        type: "text",
-        value: firstName,
-        onChange: (e) => setFirstName(e.target.value),
-        className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent",
-        placeholder: "Enter your first name"
-      }
-    )), /* @__PURE__ */ import_react19.default.createElement("div", null, /* @__PURE__ */ import_react19.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Last Name"), /* @__PURE__ */ import_react19.default.createElement(
-      "input",
-      {
-        type: "text",
-        value: lastName,
-        onChange: (e) => setLastName(e.target.value),
-        className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent",
-        placeholder: "Enter your last name"
-      }
-    ))),
-    /* @__PURE__ */ import_react19.default.createElement(
-      "button",
-      {
-        onClick: handleNextClick,
-        disabled: !firstName.trim() || !lastName.trim(),
-        className: `mt-8 px-6 py-2 rounded-full font-medium text-white ${firstName.trim() && lastName.trim() ? "bg-indigo-500 hover:bg-indigo-600" : "bg-gray-300 cursor-not-allowed"}`
-      },
-      "Next"
-    )
-  );
-}
-
 // app/javascript/components/onboarding/BrandInfoStep.jsx
-var import_react20 = __toESM(require_react());
+var import_react19 = __toESM(require_react());
 function BrandInfoStep() {
-  const [brandName, setBrandName] = (0, import_react20.useState)("");
-  const [brandDescription, setBrandDescription] = (0, import_react20.useState)("");
+  const [brandName, setBrandName] = (0, import_react19.useState)("");
+  const [brandDescription, setBrandDescription] = (0, import_react19.useState)("");
   const navigate = useNavigate();
   const handleNextClick = async () => {
     if (!brandName.trim() || !brandDescription.trim()) return;
@@ -46758,13 +46825,13 @@ function BrandInfoStep() {
       console.error("Error saving brand info:", error);
     }
   };
-  return /* @__PURE__ */ import_react20.default.createElement(
+  return /* @__PURE__ */ import_react19.default.createElement(
     OnboardingLayout,
     {
-      backUrl: "/onboarding/personal-info",
+      backUrl: "/onboarding/brand-attributes",
       title: "Tell us about your brand"
     },
-    /* @__PURE__ */ import_react20.default.createElement("div", { className: "space-y-6" }, /* @__PURE__ */ import_react20.default.createElement("div", null, /* @__PURE__ */ import_react20.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Brand Name"), /* @__PURE__ */ import_react20.default.createElement(
+    /* @__PURE__ */ import_react19.default.createElement("div", { className: "space-y-6" }, /* @__PURE__ */ import_react19.default.createElement("div", null, /* @__PURE__ */ import_react19.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Brand Name"), /* @__PURE__ */ import_react19.default.createElement(
       "input",
       {
         type: "text",
@@ -46773,7 +46840,7 @@ function BrandInfoStep() {
         className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent",
         placeholder: "Enter your brand name"
       }
-    )), /* @__PURE__ */ import_react20.default.createElement("div", null, /* @__PURE__ */ import_react20.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Brand Description"), /* @__PURE__ */ import_react20.default.createElement(
+    )), /* @__PURE__ */ import_react19.default.createElement("div", null, /* @__PURE__ */ import_react19.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Brand Description"), /* @__PURE__ */ import_react19.default.createElement(
       "textarea",
       {
         value: brandDescription,
@@ -46783,7 +46850,7 @@ function BrandInfoStep() {
         placeholder: "Describe your brand's vision, style, or mission..."
       }
     ))),
-    /* @__PURE__ */ import_react20.default.createElement(
+    /* @__PURE__ */ import_react19.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -46796,9 +46863,9 @@ function BrandInfoStep() {
 }
 
 // app/javascript/components/onboarding/LocationStep.jsx
-var import_react21 = __toESM(require_react());
+var import_react20 = __toESM(require_react());
 function LocationStep() {
-  const [location2, setLocation] = (0, import_react21.useState)("");
+  const [location2, setLocation] = (0, import_react20.useState)("");
   const navigate = useNavigate();
   const handleNextClick = async () => {
     if (!location2.trim()) return;
@@ -46820,13 +46887,13 @@ function LocationStep() {
       console.error("Error saving location:", error);
     }
   };
-  return /* @__PURE__ */ import_react21.default.createElement(
+  return /* @__PURE__ */ import_react20.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/brand-info",
       title: "Where are you based?"
     },
-    /* @__PURE__ */ import_react21.default.createElement("div", null, /* @__PURE__ */ import_react21.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Location"), /* @__PURE__ */ import_react21.default.createElement(
+    /* @__PURE__ */ import_react20.default.createElement("div", null, /* @__PURE__ */ import_react20.default.createElement("label", { className: "block text-sm font-medium text-gray-700 mb-2" }, "Location"), /* @__PURE__ */ import_react20.default.createElement(
       "input",
       {
         type: "text",
@@ -46835,8 +46902,8 @@ function LocationStep() {
         className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent",
         placeholder: "e.g., New York, NY, USA"
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { className: "mt-2 text-sm text-gray-500" }, "This helps people find local designers and understand shipping logistics")),
-    /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react20.default.createElement("p", { className: "mt-2 text-sm text-gray-500" }, "This helps people find local designers and understand shipping logistics")),
+    /* @__PURE__ */ import_react20.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -46849,7 +46916,7 @@ function LocationStep() {
 }
 
 // app/javascript/components/onboarding/CollaborationStep.jsx
-var import_react22 = __toESM(require_react());
+var import_react21 = __toESM(require_react());
 var collaborationOptions = [
   {
     id: "manufacturing",
@@ -46883,7 +46950,7 @@ var collaborationOptions = [
   }
 ];
 function CollaborationStep() {
-  const [selectedOptions, setSelectedOptions] = (0, import_react22.useState)([]);
+  const [selectedOptions, setSelectedOptions] = (0, import_react21.useState)([]);
   const navigate = useNavigate();
   const handleOptionToggle = (optionId) => {
     setSelectedOptions((prev) => {
@@ -46921,25 +46988,25 @@ function CollaborationStep() {
       console.error("Error completing onboarding:", error);
     }
   };
-  return /* @__PURE__ */ import_react22.default.createElement(
+  return /* @__PURE__ */ import_react21.default.createElement(
     OnboardingLayout,
     {
       backUrl: "/onboarding/location",
       title: "How would you like to collaborate?",
       subtitle: "Select all that apply"
     },
-    /* @__PURE__ */ import_react22.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4" }, collaborationOptions.map((option) => /* @__PURE__ */ import_react22.default.createElement(
+    /* @__PURE__ */ import_react21.default.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4" }, collaborationOptions.map((option) => /* @__PURE__ */ import_react21.default.createElement(
       "div",
       {
         key: option.id,
         className: `flex flex-col border rounded-lg p-4 cursor-pointer transition-all ${selectedOptions.includes(option.id) ? "border-purple-500 bg-purple-50 shadow-sm" : "border-gray-200 hover:border-purple-300 hover:bg-purple-50"}`,
         onClick: () => handleOptionToggle(option.id)
       },
-      /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex items-center mb-2" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-2xl mr-3" }, option.icon), /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-sm font-medium" }, option.title), selectedOptions.includes(option.id) && /* @__PURE__ */ import_react22.default.createElement("div", { className: "ml-auto" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center" }, /* @__PURE__ */ import_react22.default.createElement("svg", { className: "w-3 h-3 text-white", fill: "currentColor", viewBox: "0 0 20 20" }, /* @__PURE__ */ import_react22.default.createElement("path", { fillRule: "evenodd", d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z", clipRule: "evenodd" }))))),
-      /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-xs text-gray-600" }, option.description)
+      /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex items-center mb-2" }, /* @__PURE__ */ import_react21.default.createElement("div", { className: "text-2xl mr-3" }, option.icon), /* @__PURE__ */ import_react21.default.createElement("div", { className: "text-sm font-medium" }, option.title), selectedOptions.includes(option.id) && /* @__PURE__ */ import_react21.default.createElement("div", { className: "ml-auto" }, /* @__PURE__ */ import_react21.default.createElement("div", { className: "w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center" }, /* @__PURE__ */ import_react21.default.createElement("svg", { className: "w-3 h-3 text-white", fill: "currentColor", viewBox: "0 0 20 20" }, /* @__PURE__ */ import_react21.default.createElement("path", { fillRule: "evenodd", d: "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z", clipRule: "evenodd" }))))),
+      /* @__PURE__ */ import_react21.default.createElement("div", { className: "text-xs text-gray-600" }, option.description)
     ))),
-    /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-sm text-gray-500" }, selectedOptions.length === 0 ? "Choose your collaboration preferences (optional)" : `${selectedOptions.length} collaboration type${selectedOptions.length !== 1 ? "s" : ""} selected`)),
-    /* @__PURE__ */ import_react22.default.createElement(
+    /* @__PURE__ */ import_react21.default.createElement("div", { className: "text-center mt-6" }, /* @__PURE__ */ import_react21.default.createElement("p", { className: "text-sm text-gray-500" }, selectedOptions.length === 0 ? "Choose your collaboration preferences (optional)" : `${selectedOptions.length} collaboration type${selectedOptions.length !== 1 ? "s" : ""} selected`)),
+    /* @__PURE__ */ import_react21.default.createElement(
       "button",
       {
         onClick: handleNextClick,
@@ -46951,14 +47018,14 @@ function CollaborationStep() {
 }
 
 // app/javascript/components/onboarding/CompletionStep.jsx
-var import_react23 = __toESM(require_react());
+var import_react22 = __toESM(require_react());
 function CompletionStep() {
-  const [isLoading, setIsLoading] = (0, import_react23.useState)(false);
-  const [error, setError] = (0, import_react23.useState)("");
+  const [isLoading, setIsLoading] = (0, import_react22.useState)(false);
+  const [error, setError] = (0, import_react22.useState)("");
   const navigate = useNavigate();
   const location2 = useLocation();
   const designer = location2.state?.designer;
-  (0, import_react23.useEffect)(() => {
+  (0, import_react22.useEffect)(() => {
     if (!designer) {
       setError("Designer information not found");
       return;
@@ -46968,7 +47035,7 @@ function CompletionStep() {
     }, 2e3);
   }, [designer, navigate]);
   if (!designer) {
-    return /* @__PURE__ */ import_react23.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react23.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-gray-600 mb-6" }, "Designer information not found. Please try again."), /* @__PURE__ */ import_react23.default.createElement(
+    return /* @__PURE__ */ import_react22.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react22.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-gray-600 mb-6" }, "Designer information not found. Please try again."), /* @__PURE__ */ import_react22.default.createElement(
       Link,
       {
         to: "/",
@@ -46978,7 +47045,7 @@ function CompletionStep() {
     )));
   }
   if (error) {
-    return /* @__PURE__ */ import_react23.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react23.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-gray-600 mb-6" }, error), /* @__PURE__ */ import_react23.default.createElement(
+    return /* @__PURE__ */ import_react22.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "bg-white rounded-xl shadow-xl p-8 text-center" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-red-500 text-5xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ import_react22.default.createElement("h2", { className: "text-xl font-semibold mb-4" }, "Something went wrong"), /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-gray-600 mb-6" }, error), /* @__PURE__ */ import_react22.default.createElement(
       Link,
       {
         to: "/",
@@ -46987,7 +47054,7 @@ function CompletionStep() {
       "Go to Homepage"
     )));
   }
-  return /* @__PURE__ */ import_react23.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" }, /* @__PURE__ */ import_react23.default.createElement(
+  return /* @__PURE__ */ import_react22.default.createElement("div", { className: "min-h-screen bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center p-4" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "bg-white rounded-xl shadow-xl w-full max-w-3xl overflow-hidden" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6" }, /* @__PURE__ */ import_react22.default.createElement(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
@@ -46999,21 +47066,21 @@ function CompletionStep() {
       strokeLinecap: "round",
       strokeLinejoin: "round"
     },
-    /* @__PURE__ */ import_react23.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
-    /* @__PURE__ */ import_react23.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
-  )), /* @__PURE__ */ import_react23.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community.", /* @__PURE__ */ import_react23.default.createElement("br", null), /* @__PURE__ */ import_react23.default.createElement("br", null), /* @__PURE__ */ import_react23.default.createElement("span", { className: "text-indigo-600 font-medium" }, "You'll be automatically redirected to your profile in a moment...")), /* @__PURE__ */ import_react23.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react23.default.createElement("h2", { className: "font-semibold text-lg" }, "@", designer.username), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-gray-500 text-sm" }, "Your profile is ready!")), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-gray-700" }, "Your designer profile has been successfully created and is now live.")), /* @__PURE__ */ import_react23.default.createElement(
+    /* @__PURE__ */ import_react22.default.createElement("path", { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
+    /* @__PURE__ */ import_react22.default.createElement("polyline", { points: "22 4 12 14.01 9 11.01" })
+  )), /* @__PURE__ */ import_react22.default.createElement("h1", { className: "text-2xl font-semibold mb-4" }, "Congratulations!"), /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-gray-600 mb-8 max-w-lg mx-auto" }, "Your designer profile has been created successfully. You're now ready to showcase your designs and collaborate with others in the 5th Season community.", /* @__PURE__ */ import_react22.default.createElement("br", null), /* @__PURE__ */ import_react22.default.createElement("br", null), /* @__PURE__ */ import_react22.default.createElement("span", { className: "text-indigo-600 font-medium" }, "You'll be automatically redirected to your profile in a moment...")), /* @__PURE__ */ import_react22.default.createElement("div", { className: "bg-gray-50 rounded-lg p-6 mb-8 text-left" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "mb-4" }, /* @__PURE__ */ import_react22.default.createElement("h2", { className: "font-semibold text-lg" }, "@", designer.username), /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-gray-500 text-sm" }, "Your profile is ready!")), /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-gray-700" }, "Your designer profile has been successfully created and is now live.")), /* @__PURE__ */ import_react22.default.createElement(
     Link,
     {
       to: `/${designer.username}`,
       className: "px-6 py-3 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 inline-block font-medium"
     },
     "View Your Profile"
-  )), /* @__PURE__ */ import_react23.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react23.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react23.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react23.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
+  )), /* @__PURE__ */ import_react22.default.createElement("div", { className: "border-t p-5 flex justify-between text-sm text-gray-500" }, /* @__PURE__ */ import_react22.default.createElement("div", null, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " 5th Season"), /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex gap-4" }, /* @__PURE__ */ import_react22.default.createElement(Link, { to: "/privacy-policy", className: "hover:text-gray-700" }, "Privacy Policy"), /* @__PURE__ */ import_react22.default.createElement(Link, { to: "/terms-of-service", className: "hover:text-gray-700" }, "Terms of Service")))));
 }
 
 // app/javascript/components/onboarding/OnboardingFlow.jsx
 function OnboardingFlow() {
-  return /* @__PURE__ */ import_react24.default.createElement(Routes, null, /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react24.default.createElement(Navigate, { to: "/onboarding/username", replace: true }) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/username", element: /* @__PURE__ */ import_react24.default.createElement(UsernameStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/product-type", element: /* @__PURE__ */ import_react24.default.createElement(ProductTypeStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/production-style", element: /* @__PURE__ */ import_react24.default.createElement(ProductionStyleStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/designer-role", element: /* @__PURE__ */ import_react24.default.createElement(DesignerRoleStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/brand-attributes", element: /* @__PURE__ */ import_react24.default.createElement(BrandAttributesStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/personal-info", element: /* @__PURE__ */ import_react24.default.createElement(PersonalInfoStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/brand-info", element: /* @__PURE__ */ import_react24.default.createElement(BrandInfoStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/location", element: /* @__PURE__ */ import_react24.default.createElement(LocationStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/collaboration", element: /* @__PURE__ */ import_react24.default.createElement(CollaborationStep, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/complete", element: /* @__PURE__ */ import_react24.default.createElement(CompletionStep, null) }));
+  return /* @__PURE__ */ import_react23.default.createElement(Routes, null, /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react23.default.createElement(Navigate, { to: "/onboarding/username", replace: true }) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/username", element: /* @__PURE__ */ import_react23.default.createElement(UsernameStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/product-type", element: /* @__PURE__ */ import_react23.default.createElement(ProductTypeStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/production-style", element: /* @__PURE__ */ import_react23.default.createElement(ProductionStyleStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/designer-role", element: /* @__PURE__ */ import_react23.default.createElement(DesignerRoleStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/brand-attributes", element: /* @__PURE__ */ import_react23.default.createElement(BrandAttributesStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/brand-info", element: /* @__PURE__ */ import_react23.default.createElement(BrandInfoStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/location", element: /* @__PURE__ */ import_react23.default.createElement(LocationStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/collaboration", element: /* @__PURE__ */ import_react23.default.createElement(CollaborationStep, null) }), /* @__PURE__ */ import_react23.default.createElement(Route, { path: "/complete", element: /* @__PURE__ */ import_react23.default.createElement(CompletionStep, null) }));
 }
 
 // app/javascript/routes/index.jsx
@@ -47029,22 +47096,32 @@ var AppRoutes = () => {
   if (isRailsRoute) {
     return null;
   }
-  return /* @__PURE__ */ import_react25.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react25.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react25.default.createElement(Routes, null, /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react25.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react25.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react25.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react25.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/profile", element: /* @__PURE__ */ import_react25.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react25.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/collection/:collectionId", element: /* @__PURE__ */ import_react25.default.createElement(CollectionView, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/onboarding/*", element: /* @__PURE__ */ import_react25.default.createElement(OnboardingFlow, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/sample/profile", element: /* @__PURE__ */ import_react25.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react25.default.createElement(Route, { path: "/:username", element: /* @__PURE__ */ import_react25.default.createElement(DynamicProfileView, null) })));
+  return /* @__PURE__ */ import_react24.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react24.default.createElement(Navigation_default, null), /* @__PURE__ */ import_react24.default.createElement(Routes, null, /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react24.default.createElement(Home_default, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/collaborate", element: /* @__PURE__ */ import_react24.default.createElement(Collaborate_default, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/launches", element: /* @__PURE__ */ import_react24.default.createElement(Events_default, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/launch/create", element: /* @__PURE__ */ import_react24.default.createElement(EventForm, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/profile", element: /* @__PURE__ */ import_react24.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/sample-profile", element: /* @__PURE__ */ import_react24.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/collection/:collectionId", element: /* @__PURE__ */ import_react24.default.createElement(CollectionView, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/onboarding/*", element: /* @__PURE__ */ import_react24.default.createElement(OnboardingFlow, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/sample/profile", element: /* @__PURE__ */ import_react24.default.createElement(ProfileView, null) }), /* @__PURE__ */ import_react24.default.createElement(Route, { path: "/:username", element: /* @__PURE__ */ import_react24.default.createElement(DynamicProfileView, null) })));
 };
 var routes_default = AppRoutes;
 
 // app/javascript/components/App.jsx
 var App = () => {
-  return /* @__PURE__ */ import_react26.default.createElement(import_react26.default.Fragment, null, /* @__PURE__ */ import_react26.default.createElement(routes_default, null));
+  return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement(routes_default, null));
 };
 var App_default = App;
 
 // app/javascript/components/index.jsx
+var RAILS_ROUTES2 = [
+  "/login",
+  "/signup",
+  "/logout"
+];
 document.addEventListener("turbo:load", () => {
-  const root = (0, import_client.createRoot)(
-    document.body.appendChild(document.createElement("div"))
+  const isRailsRoute = RAILS_ROUTES2.some(
+    (route) => window.location.pathname.startsWith(route)
   );
-  root.render(/* @__PURE__ */ import_react27.default.createElement(App_default, null));
+  if (!isRailsRoute) {
+    const root = (0, import_client.createRoot)(
+      document.body.appendChild(document.createElement("div"))
+    );
+    root.render(/* @__PURE__ */ import_react26.default.createElement(App_default, null));
+  }
 });
 /*! Bundled license information:
 

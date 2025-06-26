@@ -7,7 +7,6 @@ import ProductTypeStep from "./ProductTypeStep";
 import ProductionStyleStep from "./ProductionStyleStep";
 import DesignerRoleStep from "./DesignerRoleStep";
 import BrandAttributesStep from "./BrandAttributesStep";
-import PersonalInfoStep from "./PersonalInfoStep";
 import BrandInfoStep from "./BrandInfoStep";
 import LocationStep from "./LocationStep";
 import CollaborationStep from "./CollaborationStep";
@@ -22,7 +21,6 @@ export default function OnboardingFlow() {
       <Route path="/production-style" element={<ProductionStyleStep />} />
       <Route path="/designer-role" element={<DesignerRoleStep />} />
       <Route path="/brand-attributes" element={<BrandAttributesStep />} />
-      <Route path="/personal-info" element={<PersonalInfoStep />} />
       <Route path="/brand-info" element={<BrandInfoStep />} />
       <Route path="/location" element={<LocationStep />} />
       <Route path="/collaboration" element={<CollaborationStep />} />

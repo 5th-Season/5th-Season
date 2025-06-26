@@ -10,11 +10,8 @@ class SessionsController < ApplicationController
       
       # Redirect to onboarding if user doesn't have a designer profile yet
       if user.designer.nil?
-        # Force HTTPS redirect for Heroku
-        onboarding_url = Rails.env.production? ? 
-          "https://#{request.host}/onboarding" : 
-          onboarding_start_path
-        redirect_to onboarding_url
+        # Redirect to React onboarding flow
+        redirect_to "/onboarding/username"
       else
         # Force HTTPS redirect for profile URLs in production
         profile_url = Rails.env.production? ? 

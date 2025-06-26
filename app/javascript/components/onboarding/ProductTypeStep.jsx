@@ -11,7 +11,16 @@ const productTypes = [
   { id: "footwear", icon: "👠", label: "Footwear", sublabel: "Shoes & boots" },
   { id: "intimates", icon: "🩱", label: "Intimates / Loungewear", sublabel: "Underwear & comfort wear" },
   { id: "bridal", icon: "👰", label: "Bridal / Occasionwear", sublabel: "Wedding & special events" },
-  { id: "kidswear", icon: "👶", label: "Kidswear", sublabel: "Children's clothing" }
+  { id: "kidswear", icon: "👶", label: "Kidswear", sublabel: "Children's clothing" },
+  { id: "activewear", icon: "🏃", label: "Activewear / Athleisure", sublabel: "Sportswear & gym wear" },
+  { id: "vintage", icon: "🕰️", label: "Vintage / Upcycled", sublabel: "Reworked & vintage pieces" },
+  { id: "sustainable", icon: "🌱", label: "Sustainable Fashion", sublabel: "Eco-conscious design" },
+  { id: "plus_size", icon: "💪", label: "Plus Size Fashion", sublabel: "Extended & inclusive sizing" },
+  { id: "maternity", icon: "🤱", label: "Maternity Wear", sublabel: "Expecting & nursing mothers" },
+  { id: "workwear", icon: "💼", label: "Workwear / Professional", sublabel: "Business & office attire" },
+  { id: "costumes", icon: "🎭", label: "Costumes / Cosplay", sublabel: "Theatrical & character wear" },
+  { id: "tech_wear", icon: "⚡", label: "Tech Wear", sublabel: "Functional & tech-enhanced" },
+  { id: "home_lifestyle", icon: "🏠", label: "Home & Lifestyle", sublabel: "Home goods & living" }
 ];
 
 export default function ProductTypeStep() {
@@ -46,7 +55,7 @@ export default function ProductTypeStep() {
       backUrl="/onboarding/username"
       title="What best describes your brand or creative focus?"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {productTypes.map((type) => (
           <div
             key={type.id}

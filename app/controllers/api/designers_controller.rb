@@ -96,5 +96,19 @@ module Api
       
       render json: response
     end
+    
+    def check_current_user
+      if current_user&.designer.present?
+        render json: { 
+          designer: {
+            id: current_user.designer.id,
+            username: current_user.designer.username,
+            brand_name: current_user.designer.brand_name
+          }
+        }
+      else
+        render json: { designer: nil }
+      end
+    end
   end
 end

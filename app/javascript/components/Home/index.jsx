@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { designer1, designer2, designer3, designer4, designer5, designer6 } from '../../assets';
 import { Mixpanel } from '../../utils/Mixpanel';
 import { useSearchParams, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ const Home = () => {
   const scrollRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [userStatus, setUserStatus] = useState({ loading: true, user: null, designer: null });
 
   useEffect(() => {
     const scrollInterval = setInterval(() => {
@@ -39,8 +40,89 @@ const Home = () => {
 
   }, [searchParams]);
 
+  // Check user authentication status on component mount
+  useEffect(() => {
+    checkUserStatus();
+  }, []);
+
+  const checkUserStatus = async () => {
+    try {
+      const response = await fetch('/api/onboarding/current_user_info', {
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        const userData = await response.json();
+        if (userData.first_name) {
+          // User is authenticated, check if they have a designer profile
+          try {
+            const designerResponse = await fetch('/api/designers/check_current_user', {
+              credentials: 'same-origin',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            if (designerResponse.ok) {
+              const designerData = await designerResponse.json();
+              setUserStatus({ 
+                loading: false, 
+                user: userData, 
+                designer: designerData.designer 
+              });
+            } else {
+              setUserStatus({ 
+                loading: false, 
+                user: userData, 
+                designer: null 
+              });
+            }
+          } catch (designerError) {
+            // If designer check fails, assume no designer profile
+            setUserStatus({ 
+              loading: false, 
+              user: userData, 
+              designer: null 
+            });
+          }
+        } else {
+          // User is not authenticated
+          setUserStatus({ loading: false, user: null, designer: null });
+        }
+      } else {
+        // API call failed, assume user is not authenticated
+        setUserStatus({ loading: false, user: null, designer: null });
+      }
+    } catch (error) {
+      console.error('Error checking user status:', error);
+      // On any error, assume user is not authenticated
+      setUserStatus({ loading: false, user: null, designer: null });
+    }
+  };
+
   const handleCreateProfile = () => {
-    navigate('/onboarding');
+    if (userStatus.loading) return;
+
+    if (!userStatus.user) {
+      // User is not authenticated - send to signup (use window.location for Rails routes)
+      window.location.href = '/signup';
+    } else if (userStatus.designer) {
+      // User already has a designer profile - go to their profile
+      navigate(`/${userStatus.designer.username}`);
+    } else {
+      // User is authenticated but no designer profile - go to onboarding
+      // If user has username, skip username step, otherwise start with username
+      if (userStatus.user.username) {
+        navigate('/onboarding/product-type');
+      } else {
+        navigate('/onboarding/username');
+      }
+    }
   };
 
   return (
@@ -53,9 +135,17 @@ const Home = () => {
           <div className="mt-8">
             <button 
               onClick={handleCreateProfile}
-              className="bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors duration-200 shadow-lg"
+              disabled={userStatus.loading}
+              className="bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Create a Designer Profile
+              {userStatus.loading 
+                ? "Loading..." 
+                : userStatus.designer 
+                  ? "View My Profile" 
+                  : userStatus.user 
+                    ? "Complete Designer Profile" 
+                    : "Create a Designer Profile"
+              }
             </button>
           </div>
         </div>

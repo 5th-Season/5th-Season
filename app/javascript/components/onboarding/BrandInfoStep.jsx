@@ -35,7 +35,7 @@ export default function BrandInfoStep() {
   
   return (
     <OnboardingLayout
-      backUrl="/onboarding/personal-info"
+      backUrl="/onboarding/brand-attributes"
       title="Tell us about your brand"
     >
       <div className="space-y-6">

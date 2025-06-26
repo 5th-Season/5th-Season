@@ -11,13 +11,26 @@ const brandAttributes = [
   { id: "bold_avant_garde", icon: "🎭", label: "Bold/Avant-garde", description: "Experimental and artistic designs" },
   { id: "everyday_wear", icon: "👕", label: "Everyday Wear", description: "Comfortable, wearable pieces" },
   { id: "functional_fashion", icon: "⚙️", label: "Functional fashion", description: "Practical and purposeful design" },
-  { id: "experimental_materials", icon: "🧪", label: "Experimental materials", description: "Innovative fabric and material use" }
+  { id: "experimental_materials", icon: "🧪", label: "Experimental materials", description: "Innovative fabric and material use" },
+  { id: "sustainable", icon: "🌱", label: "Sustainable/Eco-friendly", description: "Environmentally conscious practices" },
+  { id: "lgbtq_owned", icon: "🏳️‍🌈", label: "LGBTQ+ owned", description: "LGBTQ+ owned business" },
+  { id: "minority_owned", icon: "🤝", label: "Minority owned", description: "Minority-owned business" },
+  { id: "handmade", icon: "✋", label: "Handmade/Artisanal", description: "Hand-crafted with care" },
+  { id: "made_in_usa", icon: "🇺🇸", label: "Made in USA/Local", description: "Locally produced goods" },
+  { id: "vintage_upcycled", icon: "♻️", label: "Vintage/Upcycled", description: "Reworked and repurposed materials" },
+  { id: "affordable", icon: "💰", label: "Affordable/Budget-friendly", description: "Accessible pricing" },
+  { id: "custom_made", icon: "📏", label: "Custom/Made-to-order", description: "Personalized and bespoke pieces" },
+  { id: "unisex", icon: "⚖️", label: "Unisex/Gender neutral", description: "Gender-inclusive designs" },
+  { id: "slow_fashion", icon: "🐌", label: "Slow Fashion", description: "Quality over quantity approach" },
+  { id: "cruelty_free", icon: "🐰", label: "Cruelty-free/Vegan", description: "No animal products or testing" },
+  { id: "small_batch", icon: "📦", label: "Small Batch", description: "Limited production runs" },
+  { id: "ethical_production", icon: "🤲", label: "Ethical Production", description: "Fair labor and wages" }
 ];
 
 export default function BrandAttributesStep() {
   const [selectedAttributes, setSelectedAttributes] = useState([]);
   const navigate = useNavigate();
-  const maxSelection = 3;
+  const maxSelection = 5;
   
   const handleAttributeToggle = (attributeId) => {
     setSelectedAttributes(prev => {
@@ -42,7 +55,7 @@ export default function BrandAttributesStep() {
       });
       
       if (response.ok) {
-        navigate("/onboarding/personal-info");
+        navigate("/onboarding/brand-info");
       } else {
         console.error("Failed to save brand attributes");
       }
@@ -57,7 +70,7 @@ export default function BrandAttributesStep() {
       title="Brand Attributes"
       subtitle={`Choose up to ${maxSelection} attributes that describe your brand (${selectedAttributes.length}/${maxSelection} selected)`}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {brandAttributes.map((attribute) => {
           const isSelected = selectedAttributes.includes(attribute.id);
           const isDisabled = !isSelected && selectedAttributes.length >= maxSelection;

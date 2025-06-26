@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingLayout from "./OnboardingLayout";
 
@@ -6,7 +6,47 @@ export default function UsernameStep() {
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [checkingExistingUser, setCheckingExistingUser] = useState(true);
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Check if user already has a username
+    const checkExistingUser = async () => {
+      try {
+        const response = await fetch("/api/onboarding/current_user_info", {
+          headers: {
+            "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+          }
+        });
+        
+        if (response.ok) {
+          const userData = await response.json();
+          if (userData.username) {
+            // User already has username, use it and skip to next step
+            const usernameResponse = await fetch("/api/onboarding/username", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content
+              },
+              body: JSON.stringify({ username: userData.username })
+            });
+            
+            if (usernameResponse.ok) {
+              navigate("/onboarding/product-type");
+              return;
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error checking existing user:", error);
+      } finally {
+        setCheckingExistingUser(false);
+      }
+    };
+    
+    checkExistingUser();
+  }, [navigate]);
   
   const handleNextClick = async () => {
     if (!username.trim()) {
@@ -47,6 +87,18 @@ export default function UsernameStep() {
     setUsername(value);
     setError("");
   };
+  
+  if (checkingExistingUser) {
+    return (
+      <OnboardingLayout
+        title="Setting up your profile..."
+      >
+        <div className="flex justify-center items-center py-12">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+        </div>
+      </OnboardingLayout>
+    );
+  }
   
   return (
     <OnboardingLayout
